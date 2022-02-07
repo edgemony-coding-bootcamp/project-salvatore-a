@@ -2,7 +2,7 @@
 
 ## Organizzazione
 
-- daily standup **lun-ven 9-9.30**
+- daily standup **lun-ven 9.30-10**
 - durante il daily si segnalano problemi, si discutono implementazioni e il team leader assegna i task
 - si lavora in maniera autonoma
 - se necessario potete creare e autosegnare nuovi task
