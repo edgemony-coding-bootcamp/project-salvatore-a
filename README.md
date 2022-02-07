@@ -1,3 +1,52 @@
+# EDGEMONY FINAL PROJECT - TEAM A
+
+## Organizzazione
+
+- daily standup **lun-ven 9-9.30**
+- durante il daily si segnalano problemi, si discutono implementazioni e il team leader assegna i task
+- si lavora in maniera autonoma
+- se necessario potete creare e autosegnare nuovi task
+
+## Strumenti
+
+- Github
+  - repo
+  - issues
+  - board
+- Slack
+- hosting: **a vostra discrezione**
+- backend: **a vostra discrezione**
+  - json-server usato durante il corso
+  - Firebase Firestore DB
+  - altro...
+
+## Repository
+
+- il branch `main` è protetto
+- ogni task viene sviluppato in una branch con nomenclatura `feature/[task]` o `fix/[task]` in base alla tipologia
+- per mergiare il codice da una branch verso `main` si crea una PR assegnando tutti i membri del team come reviewer
+- le PR possono essere mergiate solo aver ricevuto **almeno 1 approvazione**
+- siete liberi di fare fork ma solo questo repo sarà quello preso in considerazione
+
+## Obiettivo
+
+- SLACK CLONE!
+  - teniamo Slack come riferimento per UI/UX
+- login screen se non autenticati
+- utente loggato
+
+  - vedere i canali disponibili
+  - scrivere nei canali
+  - cancellare un messaggio
+  - creare canali
+  - vedere schermata del profilo
+
+- stretch objective
+  - editing dei messaggi
+  - creazioni nuove utente (signup)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
