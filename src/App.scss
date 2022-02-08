@@ -39,6 +39,19 @@
 
   width: 300px;
   height: 500px;
+
+  .userProfile {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profile {
+    border-radius: 50%;
+    border: 2px solid blue;
+
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .messages{
@@ -47,4 +60,9 @@
 
   width: 900px;
   height: 500px;
+
+  li {
+    border:2px solid black;
+    list-style: none;
+  }
 }
