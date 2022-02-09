@@ -50,11 +50,17 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
 
         <Route path="/" element={ 
-        <div className="flex-container">
-          <Searchbar></Searchbar>
-          <ConversationBlock></ConversationBlock>
-          <MessageBlock></MessageBlock>
-        </div>}
+          <div className="flex-container">
+            <div className="header">
+              <Searchbar></Searchbar>
+            </div>
+        
+            <div className="main"> 
+              <ConversationBlock></ConversationBlock>
+              <MessageBlock></MessageBlock>
+            </div>
+          
+          </div>}
         />
        </Routes>
     </>
