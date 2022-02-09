@@ -5,24 +5,22 @@ import {
   doc,
   setDoc,
   updateDoc,
-  collection,
-  query,
-  /* where, */ onSnapshot,
+  
 } from "firebase/firestore";
+import { fetchGroups, fetchUsers } from "../store/action";
 
 const db = getFirestore(app);
 //-------------------------------------------------------------GET USERS----------------------------------------------------------------------------//
-async function getUsers() {
+
+
+function getUser(querySnapshot,dispatch){
   const users = [];
-  const q = query(collection(db, "users") /* where("logged","==", true) */);
-  onSnapshot(q, (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      users.push(doc.data());
-    });
+  querySnapshot.forEach((doc) => {
+    users.push(doc.data());
   });
-  console.log(users);
-  return users
+  dispatch(fetchUsers(users))
 }
+
 //-------------------------------------------------------------/GET USERS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------ADD USERS-----------------------------------------------------------------------------//
@@ -51,28 +49,23 @@ async function patchUser(uid) {
 //-------------------------------------------------------------/PATCH USERS--------------------------------------------------------------------------//
 
 //-------------------------------------------------------------GET GROUPS----------------------------------------------------------------------------//
-async function getGroups() {
+
+
+function getGroups(querySnapshot,dispatch){
   const groups = [];
-  const q = query(collection(db, "groups") /* where("logged","==", true) */);
-  onSnapshot(q, (querySnapshot) => {
-    
-    querySnapshot.forEach((doc) => {
-      groups.push({name:doc.id,messages:doc.data().messages});
-    });
-    
-    
+  querySnapshot.forEach((doc) => {
+    groups.push(doc.data());
   });
-  
- 
-  
+  dispatch(fetchGroups(groups))  
 }
+
 //-------------------------------------------------------------/GET GROUPS---------------------------------------------------------------------------//
 
 //-------------------------------------------------------------ADD GROUPS----------------------------------------------------------------------------//
 async function addGroup(name) {
   try {
     const docRef = await setDoc(doc(db, "groups", name), {
-      messages:[]
+      messages: [],
     });
     return docRef;
   } catch (e) {
@@ -82,14 +75,12 @@ async function addGroup(name) {
 //-------------------------------------------------------------ADD GROUPS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH USERS---------------------------------------------------------------------------//
-async function patchGroups(name,updatedMessages) {
+async function patchGroups(name, updatedMessages) {
   await updateDoc(doc(db, "groups", name), {
     //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
-    messages: updatedMessages
-    
+    messages: updatedMessages,
   });
 }
 //-------------------------------------------------------------/PATCH USERS--------------------------------------------------------------------------//
 
-
-export { getUsers, addUser, patchUser,getGroups,addGroup,patchGroups };
+export {getUser, addUser, patchUser, addGroup, patchGroups,getGroups };
