@@ -1,7 +1,7 @@
 
 .flex-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 
   border: 2px solid black;
   width: 1400px;
@@ -10,59 +10,3 @@
   justify-content: center;
 }
 
-.searchbar {
-  border: 2px dashed red;
-  margin: 20px;
-
-
-  width: 95%;
-  height: 10%;
-
-}
-
-.flexItem-chatt {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-
-
-  border: 2px dashed blue;
-  margin: 20px;
-
-  width: 95%;
-  height: 85%;
-}
-
-.conversations {
-  border: 2px solid green;
-  margin: 10px;
-
-  width: 300px;
-  height: 500px;
-
-  .userProfile {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .profile {
-    border-radius: 50%;
-    border: 2px solid blue;
-
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.messages{
-  border: 2px solid brown;
-  margin: 10px;
-
-  width: 900px;
-  height: 500px;
-
-  li {
-    border:2px solid black;
-    list-style: none;
-  }
-}
