@@ -22,7 +22,7 @@ const Signup = () => {
                     <input onChange={(e)=> setUser({...user,password:e.target.value})} type="password" placeholder="password" />
                     <button>Registrati</button>
                 </form>
-                <h3>Torna al <a href="/">Login</a> </h3>
+                <h3>Torna al <a href="/login">Login</a> </h3>
             </div>
         </>
     )
