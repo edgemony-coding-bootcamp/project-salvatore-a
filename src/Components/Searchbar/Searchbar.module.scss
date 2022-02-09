@@ -1,0 +1,14 @@
+.searchbar {
+    border: 2px dashed red;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 95%;
+    height: 10%;
+
+    input {
+        width: 50%;
+    }
+  }
