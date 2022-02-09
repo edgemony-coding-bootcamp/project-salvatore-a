@@ -1,12 +1,13 @@
 .searchbar {
-    border: 2px dashed red;
-    margin: 20px;
+    border: 2px dashed ;
+    margin: 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    width: 95%;
-    height: 10%;
+
+    width: 50%;
+    height: 50%;
 
     input {
         width: 50%;

@@ -1,4 +1,12 @@
+@import  "../../libs/variabili.scss";
+
 .message {
     border:2px solid black;
     list-style: none;
+
+     h3 { 
+        @include myh3 
+
+
+    }
   }
