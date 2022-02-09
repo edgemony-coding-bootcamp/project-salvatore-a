@@ -23,7 +23,7 @@ const Login = () => {
                     <input onChange={(e)=> setUser({...user,password:e.target.value})} type="password"  placeholder="password"/>
                     <button>Accedi</button>
                 </form>
-                <h3>Non hai un account ? <a href="/">Registrati</a> </h3>
+                <h3>Non hai un account ? <a href="/signup">Registrati</a> </h3>
             </div>
         </>
     )
