@@ -1,3 +1,14 @@
+@import  "../../libs/variabili.scss";
+
 .conversation {
     width: 100%;
+    .newgroup__wrapper{
+        display: flex;
+        flex-direction: row;
+        div{
+            margin: 8px 0;
+            padding: 6px 8px;
+            background-color: $sidebarText;
+        }
+    }
 }
