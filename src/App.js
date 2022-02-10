@@ -1,6 +1,6 @@
 import './App.scss';
 import { onSnapshot, query, collection, getFirestore } from 'firebase/firestore'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import app from "./libs/firebase.config";
 import { getGroups, getUser } from './libs/firebaseFunctions';
 import { useEffect } from 'react';
@@ -35,12 +35,12 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const users = useSelector(state => state.users)
-  const groups = useSelector(state => state.groups)
-  console.log(users, groups)
+  
+  
+  
 
 
-
+  
   return (
     <>
 

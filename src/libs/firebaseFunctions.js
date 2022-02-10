@@ -55,6 +55,7 @@ function getGroups(querySnapshot,dispatch){
   const groups = [];
   querySnapshot.forEach((doc) => {
     groups.push(doc.data());
+    console.log(doc.data())
   });
   dispatch(fetchGroups(groups))  
 }
@@ -66,6 +67,7 @@ async function addGroup(name) {
   try {
     const docRef = await setDoc(doc(db, "groups", name), {
       messages: [],
+      name:name
     });
     return docRef;
   } catch (e) {
