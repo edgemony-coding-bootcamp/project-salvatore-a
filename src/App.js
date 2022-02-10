@@ -1,14 +1,12 @@
 import './App.scss';
 import { onSnapshot, query, collection, getFirestore } from 'firebase/firestore'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import app from "./libs/firebase.config";
 import { getGroups, getUser } from './libs/firebaseFunctions';
 import { useEffect } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-import { Searchbar } from './Components/Searchbar';
-import { ConversationBlock } from './Components/ConversationBlock';
-import { MessageBlock } from './Components/MessageBlock';
+import Home from "./pages/Home"
 import Login from "./Components/Login";
 import Signup from "./Components/Sign-up"
 
@@ -35,34 +33,19 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
-  
-  
+  const isLogged = useSelector(state=> state.logged);
 
-
-  
   return (
     <>
 
-
        <Routes>
-        <Route path="/login" element={<Login/>}/>
+       {/* {isLogged ?  :}  */}
+        <Route path="/home" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/" element={<Login/>}/>
 
-        <Route path="/" element={ 
-          <div className="flex-container">
-            <div className="header">
-              <Searchbar></Searchbar>
-            </div>
-        
-            <div className="main"> 
-              <ConversationBlock></ConversationBlock>
-              <MessageBlock></MessageBlock>
-            </div>
-          
-          </div>}
-        />
        </Routes>
+
     </>
   );
 }

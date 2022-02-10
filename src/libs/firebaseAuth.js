@@ -22,7 +22,8 @@ function signIn(user){
     .then((userCredential) => {
       
       const user = userCredential.user;
-      patchUser(user.uid)
+      patchUser(user, user.uid)
+     
       
     })
     .catch((error) => {
@@ -32,6 +33,8 @@ function signIn(user){
     });
 
 }
+
+
 
 
 export {

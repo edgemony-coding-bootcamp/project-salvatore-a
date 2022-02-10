@@ -41,11 +41,17 @@ async function addUser(user, uid) {
 //-------------------------------------------------------------/ADD USERS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH USERS---------------------------------------------------------------------------//
-async function patchUser(uid) {
-  await updateDoc(doc(db, "users", uid), {
-    logged: true,
-  });
+async function patchUser(user, uid) {
+  try {
+    const docRef = await updateDoc(doc(db, "users", uid), {
+      logged: !user.logged,
+    });
+    return docRef;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 }
+
 //-------------------------------------------------------------/PATCH USERS--------------------------------------------------------------------------//
 
 //-------------------------------------------------------------GET GROUPS----------------------------------------------------------------------------//
@@ -55,7 +61,7 @@ function getGroups(querySnapshot,dispatch){
   const groups = [];
   querySnapshot.forEach((doc) => {
     groups.push(doc.data());
-    console.log(doc.data())
+    // console.log(doc.data())
   });
   dispatch(fetchGroups(groups))  
 }

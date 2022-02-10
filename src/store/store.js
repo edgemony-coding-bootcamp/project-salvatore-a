@@ -5,7 +5,8 @@ import {myReducer }from "./reducer";
 const initStore = {
     selected:0,
     users:[],
-    groups:[]
+    groups:[],
+    logged: false,
 }
 
 const store = createStore(myReducer,initStore,compose(applyMiddleware(thunk)))

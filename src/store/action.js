@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_GROUPS,UPDATE_SELECTED } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS,UPDATE_SELECTED, UPDATE_LOGIN } from "./constants";
 
 const fetchUsers = (users) => {
   return async (dispatch) => {
@@ -17,4 +17,10 @@ const updateSelected = (index) => {
   }
 }
 
-export { fetchUsers, fetchGroups, updateSelected };
+const updateLogin = (logged) => {
+  return async(dispatch) => {
+    dispatch({ type: UPDATE_LOGIN, payload:logged})
+  }
+}
+
+export { fetchUsers, fetchGroups, updateSelected, updateLogin };
