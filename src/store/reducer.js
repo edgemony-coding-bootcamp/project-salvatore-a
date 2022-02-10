@@ -1,8 +1,9 @@
-import { FETCH_USERS, FETCH_GROUPS } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS,UPDATE_SELECTED } from "./constants";
 
 const initStore = {
+  selected:0,
   users: [],
-  groups: [],
+  groups: [{name:"",messages:[]}],
 };
 
 const myReducer = (state = initStore, action) => {
@@ -17,6 +18,11 @@ const myReducer = (state = initStore, action) => {
         ...state,
         groups: action.payload,
       };
+    case UPDATE_SELECTED:
+      return {
+        ...state,
+        selected:action.payload
+      }
 
     default:
       return initStore;

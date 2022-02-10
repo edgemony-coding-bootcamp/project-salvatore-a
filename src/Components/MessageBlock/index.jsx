@@ -3,15 +3,20 @@ import { useSelector } from "react-redux";
 import { Message } from '../Message';
 
 
+
 export const MessageBlock = () => {
-    const groups = useSelector(state => state.groups)
+    const index = useSelector(state => state.selected)
+    const group = useSelector(store => store.groups[index])
+    
+
+    
 
     return (
         <div className={style.messageBlock}>
-            <h2>Nome </h2>
+            <h2>{group.name || ""}</h2>
             <ul>
-                {groups.map((group, index) => (
-                    <Message key={index} data={group} />
+                {group.messages.map((message, index) => (
+                  group.messages.length > 0 ? <Message key={index} data={message} /> : <h3>"nessun messaggio"</h3> 
                 ))}
             </ul>
             <div className="input">
