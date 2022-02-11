@@ -17,8 +17,8 @@ export const MessageBlock = () => {
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       patchGroups(group.name, [...group.messages, message]);
-      
-      setMessage({...message,text:""});
+
+      setMessage({ ...message, text: "" });
     }
   }
   return (
