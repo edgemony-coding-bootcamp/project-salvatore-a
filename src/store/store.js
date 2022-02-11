@@ -7,6 +7,13 @@ const initStore = {
     users:[],
     groups:[],
     logged: false,
+    user:{
+        id:"",
+        name:"",
+        lastname:"",
+        photo:"",
+        email:""
+    }
 }
 
 const store = createStore(myReducer,initStore,compose(applyMiddleware(thunk)))

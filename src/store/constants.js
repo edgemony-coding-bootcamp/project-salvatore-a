@@ -12,11 +12,16 @@ export const FETCH_USERS = "FETCH_USERS"
 
 export const FETCH_GROUPS = "FETCH_GROUPS"
 
+export const UPDATE_SELECTED = "UPDATE_SELECTED"
 
 //----------------------------------------------------------/GROUPS------------------------------------------------------------------------//
 
 
-export const UPDATE_SELECTED = "UPDATE_SELECTED"
+//----------------------------------------------------------USER--------------------------------------------------------------------------//
 
 
 export const UPDATE_LOGIN = "UPDATE_LOGIN"
+export const UPDATE_USER = "UPDATE_USER"
+
+//----------------------------------------------------------/USER--------------------------------------------------------------------------//
+
