@@ -2,6 +2,7 @@ import { Searchbar } from "../../Components/Searchbar";
 import { ConversationBlock } from "../../Components/ConversationBlock";
 import { MessageBlock } from "../../Components/MessageBlock";
 
+
 const Home = () => {
     return (
           <div className="flex-container">
@@ -10,8 +11,8 @@ const Home = () => {
           </div>
       
           <div className="main"> 
-            <ConversationBlock></ConversationBlock>
-            <MessageBlock></MessageBlock>
+            <ConversationBlock/>
+            <MessageBlock/>
           </div>
         </div>
     )
