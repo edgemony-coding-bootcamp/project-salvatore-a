@@ -11,11 +11,8 @@ const Home = () => {
           </div>
       
           <div className="main"> 
-            <ConversationBlock></ConversationBlock>
-            <Routes>
-              <Route to={`/home/:in`} element={<MessageBlock/>} /> 
-            </Routes>
-           
+            <ConversationBlock/>
+            <MessageBlock/>
           </div>
         </div>
     )
