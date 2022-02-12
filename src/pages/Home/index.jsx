@@ -1,6 +1,7 @@
 import { Searchbar } from "../../Components/Searchbar";
 import { ConversationBlock } from "../../Components/ConversationBlock";
 import { MessageBlock } from "../../Components/MessageBlock";
+import { Routes,Route } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -11,7 +12,10 @@ const Home = () => {
       
           <div className="main"> 
             <ConversationBlock></ConversationBlock>
-            <MessageBlock></MessageBlock>
+            <Routes>
+              <Route to={`/home/:in`} element={<MessageBlock/>} /> 
+            </Routes>
+           
           </div>
         </div>
     )
