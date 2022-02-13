@@ -28,7 +28,7 @@ export const Conversation = () => {
 
     return (
         <div className={style.conversation}>
-            <h2>Conversazioni</h2>
+            <h3>Conversazioni</h3>
             {groups.length > 0 ? groups.map((group, index) => <li onClick={() => handleClick(index)} key={group.name}>{group.name}</li>) : <p>Nessun Gruppo</p>}
             <div className={style.newgroup__wrapper}>
                 <div onClick={()=> setIsClicked(!isClicked)}>+</div>

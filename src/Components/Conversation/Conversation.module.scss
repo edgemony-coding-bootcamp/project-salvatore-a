@@ -2,13 +2,30 @@
 
 .conversation {
     width: 100%;
+
+    h3 {
+        @include myh3;
+        color: $sidebarText;
+    }
+
+    li {
+        color:$sidebarText;
+        list-style: none;
+        
+    }
     .newgroup__wrapper{
         display: flex;
         flex-direction: row;
+
+        p {
+            color: $sidebarText;
+        }
         div{
             margin: 8px 0;
             padding: 6px 8px;
             background-color: $sidebarText;
+
+            
         }
     }
 }

@@ -1,12 +1,15 @@
+@import  "../../libs/variabili.scss";
+
 .conversation {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    
+    padding: 10px;
   
-  
-    border: 2px dashed blue;
-    margin: 10px;
-  
-    width: 35%;
-    height: 500px;
+    width: 19%;
+    height: 100vh;
+
+    background-color: $main;
+
   }
