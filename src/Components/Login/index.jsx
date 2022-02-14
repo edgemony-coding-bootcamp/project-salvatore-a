@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { signIn } from "../../libs/firebaseAuth";
 import style from "./Login.module.scss";
-
-import { useSelector, useDispatch } from "react-redux";
-
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const isLogged = useSelector((state) => state.logged);
-
   const [user, setUser] = useState({});
-  const handleLogin = (e) => {
-    e.preventDefault();
-
+    
+  const handleLogin =(e) => {
+    e.preventDefault();    
     signIn(user, true, dispatch);
   };
-
-  useEffect(() => {
-    isLogged ? navigate("/home") : navigate("/");
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLogged]);
 
   return (
     <>
