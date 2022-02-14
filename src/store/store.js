@@ -4,6 +4,7 @@ import {myReducer }from "./reducer";
 
 const initStore = {
     selected:0,
+    url:'',
     users:[],
     groups:[],
     logged: false,

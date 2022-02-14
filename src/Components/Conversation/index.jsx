@@ -1,21 +1,33 @@
+import { Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { updateSelected } from '../../store/action'
+import { updateSelected, updateUrl } from '../../store/action'
 import { addGroup } from "../../libs/firebaseFunctions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from './Conversation.module.scss'
 
 
 
-export const Conversation = () => {
+export const Conversation = ({flag}) => {
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");
+ 
 
     const groups = useSelector(store => store.groups)
+    console.log(groups)
+    // const url = useSelector(store => store.url)
+    // const index = useSelector(store => store.selected)
 
-    function handleClick(index) {
-        dispatch(updateSelected(index))
+    // function handleClick(index) {
+    //     dispatch(updateSelected(index))
+    // }
+
+
+    function upDateUrl(url) {
+        dispatch(updateUrl(url));
     }
+    const params = useParams()
+ 
 
     function handleInput(e) {
         if (e.key === "Enter" || e.keyCode === "13") {
@@ -23,13 +35,24 @@ export const Conversation = () => {
           setNewGroup("");
           setIsClicked(!isClicked)
         }
-      }
-
+        
+    }
+    const location = useLocation()
+    useEffect (()=>{
+        upDateUrl(params.id)
+        console.log(location)
+    }, [location]
+    )
 
     return (
         <div className={style.conversation}>
             <h2>Conversazioni</h2>
-            {groups.length > 0 ? groups.map((group, index) => <li onClick={() => handleClick(index)} key={group.name}>{group.name}</li>) : <p>Nessun Gruppo</p>}
+            
+            {groups.length > 0 ? groups.map((group, index) =>
+            <Link to={`/home/${group.name}`} key={group.name} replace>
+                <li>{group.name}</li>
+            </Link>) 
+            : <p>Nessun Gruppo</p>}
             <div className={style.newgroup__wrapper}>
                 <div onClick={()=> setIsClicked(!isClicked)}>+</div>
                 {isClicked ? <input
