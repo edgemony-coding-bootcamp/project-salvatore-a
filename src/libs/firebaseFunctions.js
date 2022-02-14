@@ -70,7 +70,7 @@ async function addGroup(name) {
 
 //-------------------------------------------------------------PATCH GROUPS---------------------------------------------------------------------------//
 async function patchGroups(name, updatedMessages) {
-  await updateDoc(doc(db, "groups", name), {
+  await updateDoc(doc(db, "groups", name),  {
     //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
     messages: updatedMessages,
   });

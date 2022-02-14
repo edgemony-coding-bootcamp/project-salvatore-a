@@ -1,6 +1,6 @@
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { updateSelected, updateUrl } from '../../store/action'
+import {  updateUrl } from '../../store/action'
 import { addGroup } from "../../libs/firebaseFunctions";
 import { useEffect, useState } from "react";
 import style from './Conversation.module.scss'
@@ -41,6 +41,7 @@ export const Conversation = ({flag}) => {
     useEffect (()=>{
         upDateUrl(params.id)
         console.log(location)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]
     )
 
