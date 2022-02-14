@@ -1,33 +1,92 @@
-.login{
 
-    position: absolute;
-    left: 50%;
-    top: 20%; 
-    margin-left: -150px;
-    margin-top: -150px;
+@import  "../../libs/variabili.scss";
 
-    height: 300px;
-    width: 450px;
-    background-color: skyblue;
+*:focus {
+    outline: none;
+}
 
+.wrapper_login {
 
-    form{
-        height: 100%;
+    width: 100%;
+    height: 100vh;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    background-color: $main;
 
-        input {
-            margin: 5px;
+    .login{
+
+        position: absolute;
+        left: 35%;
+        top: 26%; 
+      //  margin-left: -150px;
+      //  margin-top: -150px;
+
+        
+        width: 500px;
+        height: 300px;
+        background-color: $mainWhite;
+        border: 2px solid $sidebarText;
+        border-radius: 12px;
+
+        h1 {
+            text-align: center;
         }
-        button {
-            margin: 5px;
-            padding: 7px;
+
+        form{
+            width: 100%;
+            height: 50%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: space-evenly;
+            align-content: space-around;
+            
+
+            .wrapper_email {
+                width: 100%;
+                padding-left: 25%;
+                align-items: center;
+                
+
+                label {
+                    padding-right: 6%;
+                }
+
+            }
+
+            .wrapper_password {
+                width: 100%;
+                padding-left: 25%;
+                align-items: center;
+            }
+           
+            button {
+                width: 20%;
+                margin-left: 40%;
+
+                
+                
+            }
+
+            input {
+                height: 20px;
+                border: 1px solid $main;
+                border-radius: 3px;
+                background-color: $sidebarText;
+
+                &:focus {
+                    outline: none;
+                    
+                }
+            }
         }
+
+        
+        p {
+            margin: 0 auto;
+            text-align: center;
+        }
+
     }
-
-
 
 }
