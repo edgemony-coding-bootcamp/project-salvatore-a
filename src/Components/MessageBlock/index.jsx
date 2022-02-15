@@ -58,7 +58,7 @@ export const MessageBlock = () => {
     }
   }
   return (
-
+<>
       <div className={style.messageBlock_container}>
         <div className={style.messageBlock}>
          {group ?  <h2>{group.name || ""}</h2>
@@ -84,6 +84,6 @@ export const MessageBlock = () => {
             />
           </div> : <>loading</> }
         </div>
-
+</>
   );
 };
