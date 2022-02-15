@@ -81,17 +81,18 @@ export const MessageBlock = () => {
             )}
           </ul>
 
-        </div>
-
         <div className={style.input}>
-          <p>Scrivi qui il testo</p>
+          
           <input
             type="textarea"
             value={message.text}
             onChange={(e) => setMessage({ ...message, text: e.target.value })}
             onKeyDown={handleMessage}
+            placeholder="Scrivi qui il tuo messaggio"
           />
         </div>
+        </div>
+
       </>
         : <>loading</>}
     </div>

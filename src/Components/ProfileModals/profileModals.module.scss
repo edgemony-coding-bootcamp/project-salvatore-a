@@ -1,0 +1,45 @@
+@import  "../../libs/variabili.scss";
+
+.profileModals{
+    position: absolute;
+    right: 0px;
+    top: 37px;
+    z-index: 3;
+
+    
+    height: 100px;
+    width: 150px;
+    background-color: $mainHover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;    
+    border-bottom-left-radius: 8px;
+
+    p {
+        margin: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        margin: 10px;
+            font-size: 14px;
+            padding: 3px 20px;
+            color: white;
+            background-color:#148567;
+            &:hover{
+                background-color:#159b77;
+                text-decoration-line: underline;
+                text-decoration-thickness: 1px;
+            }
+            border-radius: 5px;
+            border: none;
+    }
+
+}
+
+.hiddenProfileModals {
+    top:-100px;
+    z-index: 3;
+}

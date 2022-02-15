@@ -1,12 +1,34 @@
-@import  "../../libs/variabili.scss";
+@import "../../libs/variabili.scss";
 
 .message {
-    
-    list-style: none;
-
-     h3 { 
-        @include myh3 
+  list-style: none;
 
 
+  .author {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: left;
+    h3 {
+      @include myh3;
+      font-size: 16px;
+      padding: 0 10px;
+      margin: 0;
+    }
+    div{
+      display: flex;
+      align-items: center;
+      text-align: center;
+      small {
+        font-size: 8px;
+        margin: 0;
+        
+      }
     }
   }
+  p {
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 0;
+  }
+}

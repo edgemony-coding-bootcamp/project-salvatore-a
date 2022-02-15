@@ -11,6 +11,7 @@ export const Conversation = () => {
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");
+    const location = useLocation()
 
 
     const groups = useSelector(store => store.groups)
@@ -30,7 +31,6 @@ export const Conversation = () => {
         }
 
     }
-    const location = useLocation()
     useEffect(() => {
         upDateUrl(params.id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,15 +41,17 @@ export const Conversation = () => {
         <div className={style.conversation}>
 
             <h3>Conversazioni</h3>
+            <ul>
             {groups.length > 0 ? groups.map((group) =>
                 <Link to={`/home/${group.name}`} key={group.name} replace>
                     <li>{group.name}</li>
                 </Link>)
-                : <p>Nessun Gruppo</p>}
+                : <li>Nessun Gruppo</li>}
+            </ul>
 
 
             <div className={style.newgroup__wrapper}>
-                <div onClick={() => setIsClicked(!isClicked)}>+</div>
+                <button onClick={() => setIsClicked(!isClicked)}>+</button>
                 {isClicked ? <input
                     type="textarea"
                     value={newGroup}

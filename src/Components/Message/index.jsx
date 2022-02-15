@@ -15,9 +15,10 @@ export const Message = (props) => {
     return (
       
            <li className={style.message}>
-           
+              <div className={style.author}>
               <h3>{message.author}</h3>
               <ShowTime date={toDateTime(date.seconds)}/>
+              </div>
               <p>{message.text}</p>
             </li>     
 

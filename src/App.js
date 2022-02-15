@@ -7,7 +7,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./Components/Login";
 import Signup from "./Components/Sign-up";
-import { onCheck, logOut } from "./libs/firebaseAuth";
+import { onCheck} from "./libs/firebaseAuth";
 
 
 
@@ -39,7 +39,7 @@ function App() {
         <Route path="/home/:id" element={<Home />} />      
         <Route path="/signup" element={<Signup />}/>
       </Routes>
-      <button onClick={() => logOut(dispatch)}>Esci</button>
+      
     </>
   );
 }
