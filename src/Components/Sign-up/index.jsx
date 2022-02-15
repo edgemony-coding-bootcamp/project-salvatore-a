@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { signup } from "../../libs/firebaseAuth";
+import { Link } from "react-router-dom";
 
+import { signup } from "../../libs/firebaseAuth";
 import style from "../../libs/Form.module.scss";
 
 
@@ -40,7 +41,7 @@ const Signup = () => {
                     
                     <button>Registrati</button>
                 </form>
-                <p>Torna al <a href="/">Login</a> </p>
+                <p>Torna al <Link to="/login">Login</Link> </p>
             </div>
             </div>
         
