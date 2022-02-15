@@ -15,10 +15,10 @@
     .login{
 
         position: absolute;
-        left: 35%;
-        top: 26%; 
-      //  margin-left: -150px;
-      //  margin-top: -150px;
+        left: 50%;
+        top: 50%; 
+        margin-left: -250px;
+        margin-top: -150px;
 
         
         width: 500px;
@@ -27,7 +27,7 @@
         border: 2px solid $sidebarText;
         border-radius: 12px;
 
-        h1 {
+        h2 {
             text-align: center;
         }
 
@@ -37,45 +37,64 @@
 
             display: flex;
             flex-direction: column;
-            align-items: stretch;
+            align-items: center;
             justify-content: space-evenly;
             align-content: space-around;
             
 
             .wrapper_email {
                 width: 100%;
-                padding-left: 25%;
-                align-items: center;
                 
-
-                label {
-                    padding-right: 6%;
-                }
+                align-items: center;              
 
             }
 
             .wrapper_password {
                 width: 100%;
-                padding-left: 25%;
+                
                 align-items: center;
             }
-           
+            label {
+                margin-left: 15px;
+                font-weight: bold;
+            }
+            
             button {
-                width: 20%;
-                margin-left: 40%;
+                padding: 3px 40px;
+                color: $mainWhite;
+                background-color:#148567;
+                &:hover{
+                    background-color:#159b77;
+                    text-decoration-line: underline;
+                    text-decoration-thickness: 1px;
+                }
+                border-radius: 5px;
+                border: none;
+                
 
                 
                 
             }
 
             input {
+                position: absolute;
+                right: 45px;
+                padding: 5px;
                 height: 20px;
                 border: 1px solid $main;
                 border-radius: 3px;
                 background-color: $sidebarText;
 
+
                 &:focus {
-                    outline: none;
+                    &:valid{
+
+                        border: 1px solid rgba(2, 206, 2, 0.623);
+                    }
+                    &:invalid{
+
+                        border: 1px solid rgba(206, 2, 2, 0.623);
+                    }
                     
                 }
             }
@@ -85,6 +104,7 @@
         p {
             margin: 0 auto;
             text-align: center;
+            font-size: 12px;
         }
 
     }

@@ -16,22 +16,24 @@ const Login = () => {
   return (
     <div className={style.wrapper_login}>
       <div className={style.login}>
-        <h1> Benvenuto</h1>
+        <h2> Benvenuto</h2>
         <form onSubmit={handleLogin}>
         <div className={style.wrapper_email}>
-            <label> Email </label>
+            <label> Email: </label>
             <input
               onChange={(e) => setUser({ ...user, email: e.target.value })}
               type="email"
               placeholder="email"
+              required
             />
         </div>
         <div className={style.wrapper_password}>
-          <label> Password </label>
+          <label> Password: </label>
           <input
             onChange={(e) => setUser({ ...user, password: e.target.value })}
             type="password"
             placeholder="password"
+            required
           />
         </div>
           <button>Accedi</button>
@@ -39,7 +41,7 @@ const Login = () => {
         <p>
           Non hai un account ? <a href="/signup">Registrati</a>{" "}
         </p>
-        <button>Esci</button>
+        
         
       </div>
     </div>
