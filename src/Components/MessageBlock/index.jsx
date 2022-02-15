@@ -18,11 +18,12 @@ const db = getFirestore(app);
 
 
 export const MessageBlock = () => {
-  
+
   const url = useSelector((state) => state.url);
- 
+  const name = useSelector((state) => state.user.name);
+
   const [group, setGroup] = useState({ name: "gruppo", messages: [] })
- 
+
   useEffect(() => {
     if (url !== undefined) {
       const qg = query(collection(db, "groups"), where("name", "==", url));
@@ -32,15 +33,16 @@ export const MessageBlock = () => {
         });
 
       });
-    } else {   
+    } else {
       const qg = query(collection(db, "groups"), limit(1));
       onSnapshot(qg, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        setGroup(doc.data())
-      });
+        querySnapshot.forEach((doc) => {
+          setGroup(doc.data())
+        });
 
-    });}
-    
+      });
+    }
+
   }, [url])
 
 
@@ -50,6 +52,11 @@ export const MessageBlock = () => {
     text: "",
     date: new Date(),
   });
+  useEffect(() =>{
+    setMessage({...message, author: name})
+  },[name])
+  console.log(message)
+
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       patchGroups(group.name, [...group.messages, message]);
@@ -59,10 +66,10 @@ export const MessageBlock = () => {
   }
   return (
 
-      <div className={style.messageBlock_container}>
-    {group ? <>    
-    <div className={style.messageBlock}>
-           <h2>{group.name || ""}</h2>
+    <div className={style.messageBlock_container}>
+      {group ? <>
+        <div className={style.messageBlock}>
+          <h2>{group.name || ""}</h2>
           <ul>
             {group.messages.map((message, index) =>
               group.messages.length > 0 ? (
@@ -72,21 +79,21 @@ export const MessageBlock = () => {
               )
             )}
           </ul>
-          
+
         </div>
 
         <div className={style.input}>
-            <p>Scrivi qui il testo</p>
-            <input
-              type="textarea"
-              value={message.text}
-              onChange={(e) => setMessage({ ...message, text: e.target.value })}
-              onKeyDown={handleMessage}
-            />
-          </div> 
-            </>
-              : <>loading</> }
+          <p>Scrivi qui il testo</p>
+          <input
+            type="textarea"
+            value={message.text}
+            onChange={(e) => setMessage({ ...message, text: e.target.value })}
+            onKeyDown={handleMessage}
+          />
         </div>
+      </>
+        : <>loading</>}
+    </div>
 
   );
 };
