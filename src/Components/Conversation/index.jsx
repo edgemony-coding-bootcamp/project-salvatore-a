@@ -1,47 +1,39 @@
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import {  updateUrl } from '../../store/action'
+import { updateUrl } from '../../store/action'
 import { addGroup } from "../../libs/firebaseFunctions";
 import { useEffect, useState } from "react";
 import style from './Conversation.module.scss'
 
 
 
-export const Conversation = ({flag}) => {
+export const Conversation = () => {
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");
- 
+
 
     const groups = useSelector(store => store.groups)
-    console.log(groups)
-    // const url = useSelector(store => store.url)
-    // const index = useSelector(store => store.selected)
-
-    // function handleClick(index) {
-    //     dispatch(updateSelected(index))
-    // }
 
 
     function upDateUrl(url) {
         dispatch(updateUrl(url));
     }
     const params = useParams()
- 
+
 
     function handleInput(e) {
         if (e.key === "Enter" || e.keyCode === "13") {
-          addGroup(newGroup);
-          setNewGroup("");
-          setIsClicked(!isClicked)
+            addGroup(newGroup);
+            setNewGroup("");
+            setIsClicked(!isClicked)
         }
-        
+
     }
     const location = useLocation()
-    useEffect (()=>{
+    useEffect(() => {
         upDateUrl(params.id)
-        console.log(location)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]
     )
 
@@ -49,15 +41,15 @@ export const Conversation = ({flag}) => {
         <div className={style.conversation}>
 
             <h3>Conversazioni</h3>
-            {groups.length > 0 ? groups.map((group, index) =>
-              <Link to={`/home/${group.name}`} key={group.name} replace>
-                <li>{group.name}</li>
-              </Link>) 
-              : <p>Nessun Gruppo</p>}
-          
+            {groups.length > 0 ? groups.map((group) =>
+                <Link to={`/home/${group.name}`} key={group.name} replace>
+                    <li>{group.name}</li>
+                </Link>)
+                : <p>Nessun Gruppo</p>}
+
 
             <div className={style.newgroup__wrapper}>
-                <div onClick={()=> setIsClicked(!isClicked)}>+</div>
+                <div onClick={() => setIsClicked(!isClicked)}>+</div>
                 {isClicked ? <input
                     type="textarea"
                     value={newGroup}

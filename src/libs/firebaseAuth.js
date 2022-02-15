@@ -25,7 +25,7 @@ function signup(newUser) {
 }
 function signIn(newUser, logged, dispatch) {
   signInWithEmailAndPassword(auth, newUser.email, newUser.password)
-    .then((userCredential) => {})
+    .then((userCredential) => { })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -53,10 +53,11 @@ function onCheck(dispatch, users, id) {
 
 function logOut(dispatch) {
   signOut(auth)
-    .then(() => {})
+    .then(() => { })
     .catch((error) => {
       console.log(error);
     });
+  dispatch(updateUser({ id: "", name: "", lastname: "", photo: "" }))
 }
 
 export { signup, signIn, onCheck, logOut };
