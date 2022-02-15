@@ -44,13 +44,14 @@ const Home = () => {
   useEffect(() => {
 
     if (user) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       uid = user.uid;
 
     } else {
       console.log("no user")
     }
 
-    const filteredUser = users.filter(x => x.id == uid)
+    const filteredUser = users.filter(x => x.id === uid)
     dispatch(updateUser(filteredUser[0]))
 
   }, [users])
