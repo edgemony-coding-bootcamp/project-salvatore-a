@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signup } from "../../libs/firebaseAuth";
 
-import style from './Signup.module.scss'
+import style from "../../libs/Form.module.scss";
 
 
 
@@ -14,16 +14,36 @@ const Signup = () => {
     }
     return(
         <>
-            <div className={style.signup}>
+        <div className={style.wrapper}>
+            <div className={style.wrapper_form}>
                 <form onSubmit={handleSignup}>
-                    <input onChange={(e)=> setUser({...user,name:e.target.value})} type="text" placeholder="name" />
-                    <input onChange={(e)=> setUser({...user,lastname:e.target.value})} type="text" placeholder="lastname" />
-                    <input onChange={(e)=> setUser({...user,email:e.target.value})} type="email" placeholder="email" />
-                    <input onChange={(e)=> setUser({...user,password:e.target.value})} type="password" placeholder="password" />
+                    <h2> Registrazione </h2>
+                    <div className={style.wrapper_item}>
+                        <label> Nome </label>
+                        <input onChange={(e)=> setUser({...user,name:e.target.value})} type="text" placeholder="name" />
+                    </div>
+
+                    <div className={style.wrapper_item}>
+                        <label> Cognome </label>
+                        <input onChange={(e)=> setUser({...user,lastname:e.target.value})} type="text" placeholder="lastname" />
+                    </div>
+                    
+                    <div className={style.wrapper_item}>
+                        <label> E-mail </label>
+                        <input onChange={(e)=> setUser({...user,email:e.target.value})} type="email" placeholder="email" />
+                    </div>
+            
+                    <div className={style.wrapper_item}>
+                        <label> Password </label>
+                        <input onChange={(e)=> setUser({...user,password:e.target.value})} type="password" placeholder="password" />
+                    </div>
+                    
                     <button>Registrati</button>
                 </form>
-                <h3>Torna al <a href="/">Login</a> </h3>
+                <p>Torna al <a href="/">Login</a> </p>
             </div>
+            </div>
+        
         </>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { signIn } from "../../libs/firebaseAuth";
-import style from "./Login.module.scss";
+import style from "../../libs/Form.module.scss";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
@@ -14,11 +14,11 @@ const Login = () => {
   };
 
   return (
-    <div className={style.wrapper_login}>
-      <div className={style.login}>
+    <div className={style.wrapper}>
+      <div className={style.wrapper_form}>
         <h2> Benvenuto</h2>
         <form onSubmit={handleLogin}>
-        <div className={style.wrapper_email}>
+        <div className={style.wrapper_item}>
             <label> Email: </label>
             <input
               onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -27,7 +27,7 @@ const Login = () => {
               required
             />
         </div>
-        <div className={style.wrapper_password}>
+        <div className={style.wrapper_item}>
           <label> Password: </label>
           <input
             onChange={(e) => setUser({ ...user, password: e.target.value })}
