@@ -1,16 +1,16 @@
-import { FETCH_USERS, FETCH_GROUPS,UPDATE_SELECTED, UPDATE_LOGIN, UPDATE_USER } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS, UPDATE_SELECTED, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL } from "./constants";
 
 const initStore = {
-  selected:0,
+  selected: 0,
   users: [],
-  groups: [{name:"",messages:[]}],
+  groups: [{ name: "", messages: [] }],
   logged: false,
-  user:{
-    id:"",
-    name:"",
-    lastname:"",
-    photo:"",
-    email:""
+  user: {
+    id: "",
+    name: "",
+    lastname: "",
+    photo: "",
+    email: ""
   }
 };
 
@@ -29,29 +29,34 @@ const myReducer = (state = initStore, action) => {
     case UPDATE_SELECTED:
       return {
         ...state,
-        selected:action.payload
+        selected: action.payload
       }
-      case UPDATE_LOGIN:
-        return {
+    case UPDATE_URL:
+      return {
         ...state,
-        logged:action.payload
+        url: action.payload
+      }
+    case UPDATE_LOGIN:
+      return {
+        ...state,
+        logged: action.payload
+      }
+    case UPDATE_USER:
+      const payload = action.payload
+
+      return {
+        ...state,
+        user: {
+          id: payload.id,
+          name: payload.name,
+          lastname: payload.lastname,
+          photo: `${payload.photo !== "" ? payload.photo : ""}`,
+          email: payload.email
         }
-      case UPDATE_USER:
-        const payload = action.payload
-        
-        return {
-          ...state,
-          user:{
-            id:payload.id,
-            name:payload.name,
-            lastname:payload.lastname,
-            photo:`${payload.photo !== "" ? payload.photo : ""}`,
-            email: payload.email
-          }
-        } 
+      }
     default:
       return initStore;
   }
 };
 
-export {myReducer}
+export { myReducer }

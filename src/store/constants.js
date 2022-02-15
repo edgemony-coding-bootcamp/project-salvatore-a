@@ -14,6 +14,7 @@ export const FETCH_GROUPS = "FETCH_GROUPS"
 
 export const UPDATE_SELECTED = "UPDATE_SELECTED"
 
+export const UPDATE_URL = "UPDATE_URL"
 //----------------------------------------------------------/GROUPS------------------------------------------------------------------------//
 
 
