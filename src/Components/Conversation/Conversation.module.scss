@@ -5,30 +5,34 @@
 
 .conversation {
     width: 100%;
-
+    
     h3 {
         @include myh3;
-        color: $sidebarText;
+        color: white;
     }
-
-    li {
-        color:$sidebarText;
-        list-style: none;
-        font-size: 20px;
-
-        &:hover{
-            background-color: $mainHover;
+    ul{
+        margin-top: 30px;
+        li {
+            padding: 10px 0;
+            color:$sidebarText;
+            list-style: none;
+            font-size: 20px;
+    
+            &:hover{
+                background-color: $mainHover;
+            }
+    
+            &:focus {
+                background-color: $mainActive;
+                color:$mainWhite;
+            }
+            
         }
-
-        &:focus {
-            background-color: $mainActive;
-            color:$mainWhite;
-        }
-        
     }
     .newgroup__wrapper{
         display: flex;
-        flex-direction: row;
+        align-items: center;
+        margin-top: 40px;
 
         p {
             color: $sidebarText;
@@ -40,6 +44,18 @@
             background-color: $sidebarText;
 
             
+        }
+        button{
+            font-size: 22px;
+            padding: 10px 20px;
+            margin: 0 5px 0 0;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            padding: 10px 0px;
+            border-radius: 5px;
         }
     }
 }

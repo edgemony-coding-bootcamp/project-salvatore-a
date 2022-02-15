@@ -4,7 +4,7 @@ import { it } from "date-fns/locale";
 const ShowTime = (props) => {
     const date = props.date || new Date();
     return (
-        <p>
+        <div>
 
             <small>
                 {formatDistance(new Date(date), new Date(),
@@ -14,7 +14,7 @@ const ShowTime = (props) => {
                     }
                 )}
             </small>
-        </p>
+        </div>
     )
 }
 
