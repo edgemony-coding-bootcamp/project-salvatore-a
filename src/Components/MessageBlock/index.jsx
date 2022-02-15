@@ -58,10 +58,11 @@ export const MessageBlock = () => {
     }
   }
   return (
-<>
+
       <div className={style.messageBlock_container}>
-        <div className={style.messageBlock}>
-         {group ?  <h2>{group.name || ""}</h2>
+    {group ? <>    
+    <div className={style.messageBlock}>
+           <h2>{group.name || ""}</h2>
           <ul>
             {group.messages.map((message, index) =>
               group.messages.length > 0 ? (
@@ -82,8 +83,10 @@ export const MessageBlock = () => {
               onChange={(e) => setMessage({ ...message, text: e.target.value })}
               onKeyDown={handleMessage}
             />
-          </div> : <>loading</> }
+          </div> 
+            </>
+              : <>loading</> }
         </div>
-</>
+
   );
 };
