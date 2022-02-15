@@ -14,27 +14,35 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className={style.wrapper_login}>
       <div className={style.login}>
+        <h1> Benvenuto</h1>
         <form onSubmit={handleLogin}>
-          <input
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-            type="email"
-            placeholder="email"
-          />
+        <div className={style.wrapper_email}>
+            <label> Email </label>
+            <input
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              type="email"
+              placeholder="email"
+            />
+        </div>
+        <div className={style.wrapper_password}>
+          <label> Password </label>
           <input
             onChange={(e) => setUser({ ...user, password: e.target.value })}
             type="password"
             placeholder="password"
           />
+        </div>
           <button>Accedi</button>
         </form>
-        <button>Esci</button>
-        <h3>
+        <p>
           Non hai un account ? <a href="/signup">Registrati</a>{" "}
-        </h3>
+        </p>
+        <button>Esci</button>
+        
       </div>
-    </>
+    </div>
   );
 };
 

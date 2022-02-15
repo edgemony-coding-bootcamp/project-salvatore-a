@@ -1,8 +1,42 @@
-.messageBlock {
-  border: 2px solid brown;
-  margin: 10px;
+@import  "../../libs/variabili.scss";
 
-  width: 60%;
-  height: 500px;
-  overflow: auto;
+
+
+
+.messageBlock_container {
+
+  width: 100%;
+
+  .messageBlock {
+    
+    width: 100%;
+    height: 70%;
+    overflow-x:hidden;
+    overflow-y:scroll;
+     
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
+    
+
+    
+  }
+
+  .input {
+    width: 100%;
+    position: fixed;
+    bottom: 5%;
+    left: 20%;
+
+    input {
+      width: 75%;
+      height: 70px;
+      margin: 5px;
+
+      border: solid 4px $mainGray;
+      border-radius: 12px;
+    }
+  }
 }
+

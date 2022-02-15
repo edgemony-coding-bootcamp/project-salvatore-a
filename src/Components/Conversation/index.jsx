@@ -47,13 +47,15 @@ export const Conversation = ({flag}) => {
 
     return (
         <div className={style.conversation}>
-            <h2>Conversazioni</h2>
-            
+
+            <h3>Conversazioni</h3>
             {groups.length > 0 ? groups.map((group, index) =>
-            <Link to={`/home/${group.name}`} key={group.name} replace>
+              <Link to={`/home/${group.name}`} key={group.name} replace>
                 <li>{group.name}</li>
-            </Link>) 
-            : <p>Nessun Gruppo</p>}
+              </Link>) 
+              : <p>Nessun Gruppo</p>}
+          
+
             <div className={style.newgroup__wrapper}>
                 <div onClick={()=> setIsClicked(!isClicked)}>+</div>
                 {isClicked ? <input

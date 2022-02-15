@@ -1,5 +1,6 @@
 
-import { Searchbar } from "../../Components/Searchbar";
+import { Header } from "../../Components/Header";
+
 import { ConversationBlock } from "../../Components/ConversationBlock";
 import { MessageBlock } from "../../Components/MessageBlock";
 import {
@@ -14,6 +15,7 @@ import app from "../../libs/firebase.config";
 import {  getUser, getGroups } from "../../libs/firebaseFunctions"
 
 export const db = getFirestore(app);
+
 
 
 const Home = () => {
@@ -38,15 +40,15 @@ const Home = () => {
   
     return (
           <div className="flex-container">
-          <div className="header">
-            <Searchbar/>
-          </div>
+
+            <Header/>
       
-          <div className="main"> 
-            <ConversationBlock/>
-            <MessageBlock/>
+            <div className="main"> 
+              <ConversationBlock/>
+              <MessageBlock/>
+            </div>
+
           </div>
-        </div>
     )
 };
 
