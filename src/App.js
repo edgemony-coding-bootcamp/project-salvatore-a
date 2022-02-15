@@ -22,7 +22,6 @@ function App() {
 
 
   const baseUrl = location === '' ? `/home` : url === undefined ? '/home' : `/home/${url}`;
-  console.log(baseUrl)
 
   useEffect(() => {
 
@@ -40,7 +39,7 @@ function App() {
         <Route path="/home/:id" element={<Home />} />      
         <Route path="/signup" element={<Signup />}/>
       </Routes>
-      <button onClick={() => logOut()}>Esci</button>
+      <button onClick={() => logOut(dispatch)}>Esci</button>
     </>
   );
 }
