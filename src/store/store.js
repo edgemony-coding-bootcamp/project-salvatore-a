@@ -18,6 +18,8 @@ const initStore = {
     }
 }
 
+
 const store = createStore(myReducer,initStore,composeWithDevTools(applyMiddleware(thunk)))
+
 
 export default store
