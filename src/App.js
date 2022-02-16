@@ -1,5 +1,5 @@
 import "./App.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
@@ -12,6 +12,7 @@ import { onCheck} from "./libs/firebaseAuth";
 
 
 function App() {
+  const dispatch = useDispatch()
   const location = useLocation();
   const navigate = useNavigate();
   const isLogged = useSelector((state) => state.logged);
@@ -24,10 +25,12 @@ function App() {
   useEffect(() => {
 
     isLogged ? navigate(baseUrl) : navigate("/login")
-    onCheck(user.id);
+    onCheck(user.id, dispatch);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogged]);
+
+ 
   
   return (
     <>
