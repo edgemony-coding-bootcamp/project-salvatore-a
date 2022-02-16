@@ -50,7 +50,9 @@ export const Conversation = () => {
             <ul>
             {groups.length > 0 ? groups.map((group, i) =>
                 <Link to={`/home/${group.name}`} key={group.name} replace >
-                    <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>{group.name}</li>
+                    <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>{group.name}
+                    <button>🗑️</button>
+                    </li>
                 </Link>)
                 : <li>Nessun Gruppo</li>}
             </ul>
