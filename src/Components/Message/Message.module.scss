@@ -3,26 +3,29 @@
 .message {
   list-style: none;
 
-
   .author {
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: left;
+    img {
+      margin: 5px;
+      width: 40px;
+      height: 40px;
+    }
     h3 {
       @include myh3;
       font-size: 16px;
       padding: 0 10px;
       margin: 0;
     }
-    div{
+    div {
       display: flex;
       align-items: center;
       text-align: center;
       small {
         font-size: 8px;
         margin: 0;
-        
       }
     }
   }

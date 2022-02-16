@@ -50,7 +50,7 @@ const myReducer = (state = initStore, action) => {
           id: payload.id,
           name: payload.name,
           lastname: payload.lastname,
-          photo: `${payload.photo !== "" ? payload.photo : ""}`,
+          photo: `${payload.photo !== "" ? payload.photo : "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png"}`,
           email: payload.email
         }
       }
