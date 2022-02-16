@@ -17,6 +17,6 @@ const initStore = {
     }
 }
 
-const store = createStore(myReducer,initStore,compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(myReducer,initStore,compose(applyMiddleware(thunk)))
 
 export default store
