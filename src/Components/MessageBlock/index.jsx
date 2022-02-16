@@ -56,7 +56,6 @@ export const MessageBlock = () => {
     setMessage({...message, author: name})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[name])
-  console.log(message)
 
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
