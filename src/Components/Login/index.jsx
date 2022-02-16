@@ -3,16 +3,21 @@ import { Link } from "react-router-dom";
 
 import { signIn } from "../../libs/firebaseAuth";
 import style from "../../libs/Form.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import Banner from "../Banner";
+import { updateShowModal } from "../../store/action";
 
 const Login = () => {
 
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
+  const modal = useSelector((state) => state.modal);
     
   const handleLogin =(e) => {
-    e.preventDefault();    
-    signIn(user, true, dispatch);
+    e.preventDefault();
+    dispatch(updateShowModal(false)) 
+    signIn(user,dispatch);
   };
 
   return (
@@ -39,6 +44,7 @@ const Login = () => {
           />
         </div>
           <button>Accedi</button>
+          {modal && <Banner value="red"/>}
         </form>
         <p>
           Non hai un account ? <Link to="/signup">Registrati</Link>{" "}

@@ -12,7 +12,7 @@ export const FETCH_USERS = "FETCH_USERS"
 
 export const FETCH_GROUPS = "FETCH_GROUPS"
 
-export const UPDATE_SELECTED = "UPDATE_SELECTED"
+export const UPDATE_MODAL = "UPDATE_MODAL"
 
 export const UPDATE_URL = "UPDATE_URL"
 //----------------------------------------------------------/GROUPS------------------------------------------------------------------------//

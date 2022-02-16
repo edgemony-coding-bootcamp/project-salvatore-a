@@ -44,7 +44,6 @@ const Home = () => {
   useEffect(() => {
 
     if (user) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       uid = user.uid;
 
     } else {
