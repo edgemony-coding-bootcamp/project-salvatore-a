@@ -36,7 +36,7 @@
 
         p {
             color: $sidebarText;
-            margin-left: 5px;
+            margin-left: 65px;
         }
         div{
             margin: 8px 0;
@@ -46,16 +46,41 @@
             
         }
         button{
+            position: absolute;
             font-size: 22px;
             padding: 10px 20px;
-            margin: 0 5px 0 0;
+            
             background-color: white;
             border: none;
             border-radius: 5px;
+            z-index: 3;
         }
         input {
-            padding: 10px 0px;
+            
             border-radius: 5px;
+        }
+    }
+    .addGroup{
+        z-index: 2;
+        padding: 10px 0;
+        font-size: 22px;
+        position: absolute;
+        margin-left: 32px;
+        width: 0px;
+        border: none;
+        transition: all 0.4s ease;
+    }
+    .hiddenAddGroup{
+        z-index: 2;
+        padding: 10px ;
+        position: absolute;
+        margin-left: 60px;
+        width: 300px;
+        border: none;
+        transition: all 0.4s ease;
+        &:focus{
+            border: none;
+            outline: none;
         }
     }
 }

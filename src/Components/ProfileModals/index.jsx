@@ -8,9 +8,9 @@ const ProfileModals = (props) => {
 
     return (
     <>
-        <div className={`${style.profileModals} ${props.hidden && style.hiddenProfileModals}`}>
+        <div className={`${style.profileModals} ${props.hidden === true  && style.hiddenProfileModals}`}>
              <p>{props.name}</p>
-            <button onClick={()=> logOut(dispatch)}>Esci</button>
+            <button onClick={()=> {logOut(dispatch); props.setHidden(false)}}>Esci</button>
         </div>
     </>
     )
