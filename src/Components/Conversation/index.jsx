@@ -11,7 +11,8 @@ export const Conversation = () => {
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");
-    const location = useLocation()
+    const location = useLocation();
+    const [isActive, setActive] = useState();
 
 
     const groups = useSelector(store => store.groups)
@@ -37,14 +38,19 @@ export const Conversation = () => {
     }, [location]
     )
 
+ 
+    const toggleActive = (i) => {
+        setActive(i);
+    };
+
     return (
         <div className={style.conversation}>
 
             <h3>Conversazioni</h3>
             <ul>
-            {groups.length > 0 ? groups.map((group) =>
-                <Link to={`/home/${group.name}`} key={group.name} replace>
-                    <li>{group.name}</li>
+            {groups.length > 0 ? groups.map((group, i) =>
+                <Link to={`/home/${group.name}`} key={group.name} replace >
+                    <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>{group.name}</li>
                 </Link>)
                 : <li>Nessun Gruppo</li>}
             </ul>

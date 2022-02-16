@@ -21,11 +21,13 @@
             &:hover{
                 background-color: $mainHover;
             }
-    
-            &:focus {
-                background-color: $mainActive;
-                color:$mainWhite;
-            }
+
+            
+        }
+        .active, .active:hover{
+            background-color: $mainActive;
+            color: $mainWhite;
+
             
         }
     }
@@ -59,3 +61,4 @@
         }
     }
 }
+
