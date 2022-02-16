@@ -21,6 +21,7 @@ export const MessageBlock = () => {
 
   const url = useSelector((state) => state.url);
   const name = useSelector((state) => state.user.name);
+  const photo = useSelector((state) => state.user.photo);
 
   const [group, setGroup] = useState({ name: "gruppo", messages: [] })
 
@@ -51,9 +52,10 @@ export const MessageBlock = () => {
     author: "Giuvanni",
     text: "",
     date: new Date(),
+    photo: "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png",
   });
   useEffect(() =>{
-    setMessage({...message, author: name})
+    setMessage({...message, author: name, photo: photo})
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[name])
 
