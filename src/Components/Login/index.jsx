@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { signIn } from "../../libs/firebaseAuth";
 import style from "../../libs/Form.module.scss";
 import { useDispatch } from "react-redux";
@@ -39,7 +41,7 @@ const Login = () => {
           <button>Accedi</button>
         </form>
         <p>
-          Non hai un account ? <a href="/signup">Registrati</a>{" "}
+          Non hai un account ? <Link to="/signup">Registrati</Link>{" "}
         </p>
         
         
