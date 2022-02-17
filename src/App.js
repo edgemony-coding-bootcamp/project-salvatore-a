@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
+import EditProfile from "./pages/EditProfile";
 import Login from "./Components/Login";
 import Signup from "./Components/Sign-up";
 import { onCheck} from "./libs/firebaseAuth";
@@ -39,6 +40,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/home/:id" element={<Home />} />      
         <Route path="/signup" element={<Signup />}/>
+        <Route path="/edit_profile" element={<EditProfile />}/>
       </Routes>
       
     </>

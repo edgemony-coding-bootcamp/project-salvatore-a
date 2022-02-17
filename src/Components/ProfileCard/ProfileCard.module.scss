@@ -20,18 +20,25 @@
   background: $mainGray;
   border-radius: 15px;
   border: 1px solid $mainBlack;
-  
+
   transition: opacity 0.35s;
   button {
     padding: 0px 15px;
     color: $mainWhite;
+    cursor: pointer;
 
     border-radius: 5px;
     border: none;
+    background-color: $mainButton;
+    &:hover {
+      background-color: $mainButtonHover;
+      text-decoration-line: underline;
+      text-decoration-thickness: 1px;
+    }
   }
 
-  .head{
-    top: 5px;;
+  .head {
+    top: 5px;
     width: 100%;
     margin: 5px;
     display: flex;
@@ -39,7 +46,7 @@
     justify-content: space-between;
     position: absolute;
 
-    .title{
+    .title {
       text-align: left;
       margin: 5px;
       @include myh1;
@@ -47,15 +54,8 @@
     .closeButton {
       margin: 5px;
       font-size: 16px;
-      background-color: $mainButton;
-      &:hover {
-        background-color: $mainButtonHover;
-        text-decoration-line: underline;
-        text-decoration-thickness: 1px;
-      }
     }
   }
-
 
   img {
     position: absolute;
@@ -73,15 +73,26 @@
     @include myh2;
   }
 
-  p{
+  p {
     position: absolute;
     top: 380px;
     @include myp;
     color: $mainBlack;
   }
 
-  .email{
+  .email {
     top: 400px;
   }
 
+  .editButton {
+    position: absolute;
+    bottom: 30px;
+    left: 160px;
+    padding: 10px 40px;
+    &:disabled {
+      background-color: gray;
+      cursor: default;
+      text-decoration: none;
+    }
+  }
 }

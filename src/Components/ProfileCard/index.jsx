@@ -1,6 +1,11 @@
 import style from './ProfileCard.module.scss'
+import { getAuth } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 const ProfileCard = (props) => {
+    const auth = getAuth();
+    const loggedUser = auth.currentUser;
+    const uid = loggedUser.uid;
 
     return (
         <div className={style.modal}>
@@ -14,6 +19,13 @@ const ProfileCard = (props) => {
             <h2 className={style.name}>{`${props.user.name}` + ` ` + `${props.user.lastname}`}</h2>
             <p>Indirizzo email</p>
             <p className={style.email}>{props.user.email}</p>
+            <Link to="/edit_profile">
+                <button disabled={uid === props.user.id ? "" : "true"}
+                    className={style.editButton}
+                    onClick={() => { props.setShow(false) }}>
+                    Modifica
+                </button>
+            </Link>
 
         </div>
     )
