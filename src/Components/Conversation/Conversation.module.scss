@@ -1,65 +1,73 @@
 @import  "../../libs/variabili.scss";
 
-
-
-
 .conversation {
-    width: 100%;
-    
-    h3 {
-        @include myh3;
-        color: white;
+    width: 260px;
+    margin-top: 25px;
+        
+    .channelName {
+        @include myp;
+        margin: 3px 16px 10px 29px;
     }
-    ul{
-        margin-top: 30px;
+    ul{      
         li {
-            padding: 10px 0;
+            position: relative;
+            display: flex;
+            justify-content: left;
+            padding: 5px 0;
             color:$sidebarText;
-            list-style: none;
-            font-size: 20px;
+            list-style: none;           
+  
+            p {
+                @include myp;
+                margin: 0 16px 0 0px;
+            }
+
+            span {
+                margin: 0 16px 0 29px;
+            }
     
             &:hover{
                 background-color: $mainHover;
-            }
-
-            
+            }            
         }
         .active, .active:hover{
             background-color: $mainActive;
             color: $mainWhite;
-
-            
         }
     }
     .newgroup__wrapper{
         display: flex;
         align-items: center;
-        margin-top: 40px;
+        margin: 5px 16px 0 24px;
 
         p {
-            color: $sidebarText;
-            margin-left: 65px;
+            @include myp;
+            margin-left: 32px;
         }
         div{
             margin: 8px 0;
             padding: 6px 8px;
             background-color: $sidebarText;
-
-            
+       
         }
         button{
             position: absolute;
-            font-size: 22px;
-            padding: 10px 20px;
-            
-            background-color: white;
+            font-size: 15px;
+            width: 19px;
+            height: 19px;            
+            background-color:rgba(255, 255, 255, 0.274);
+            color: $sidebarText;
             border: none;
             border-radius: 5px;
             z-index: 3;
         }
         input {
             
-            border-radius: 5px;
+            height: 19px;
+            border-radius: 2px;
+            @include myp;
+            color: $mainBlack;
+            margin-top: 2px;
         }
     }
 
@@ -68,7 +76,7 @@
         padding: 10px 0;
         font-size: 22px;
         position: absolute;
-        margin-left: 32px;
+        margin-left: 30px;
         width: 0px;
         border: none;
         transition: all 0.4s ease;
@@ -77,8 +85,8 @@
         z-index: 2;
         padding: 10px ;
         position: absolute;
-        margin-left: 60px;
-        width: 300px;
+        margin-left: 30px;
+        width: 180px;
         border: none;
         transition: all 0.4s ease;
         &:focus{
