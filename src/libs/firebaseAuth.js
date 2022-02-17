@@ -41,6 +41,7 @@ function onCheck(id, dispatch) {
       let uid = user.uid;
       patchUser(uid, true);
       dispatch(updateLogin(true));
+      
 
     } else {
       if (id) {
