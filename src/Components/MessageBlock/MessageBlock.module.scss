@@ -140,10 +140,22 @@
       padding: 20px 40px;
       display: flex;
       flex-direction: column;
-      input {
+        input {
         margin-top: 10px;
         border-radius: 10px;
         padding: 10px;
+      }
+      .modifyButton{
+        width: 132px;
+        margin-top: 10px;
+        font-size: 16px;
+        background-color: #148567;
+        &:hover {
+          background-color: #159b77;
+          text-decoration-line: underline;
+          text-decoration-thickness: 1px;
+        }
+
       }
     }
     .deleteGroup {

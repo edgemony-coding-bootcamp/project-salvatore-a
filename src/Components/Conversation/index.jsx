@@ -34,6 +34,7 @@ export const Conversation = () => {
     }
     useEffect(() => {
         upDateUrl(params.id)
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]
     )
