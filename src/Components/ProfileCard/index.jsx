@@ -6,6 +6,7 @@ const ProfileCard = (props) => {
     const auth = getAuth();
     const loggedUser = auth.currentUser;
     const uid = loggedUser.uid;
+    const photo = props.user.photo || "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png"
 
     return (
         <div className={style.modal}>
