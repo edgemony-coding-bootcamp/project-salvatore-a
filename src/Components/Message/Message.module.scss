@@ -5,14 +5,28 @@
 
   .author {
     display: flex;
-    align-items: center;
-    text-align: center;
+    
+      
+    
+    
     justify-content: left;
     img {
       margin: 5px;
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
     }
+    .nameText{
+      margin: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+    }
+    .authorDate{
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
     h3 {
       @include myh3;
       font-size: 16px;
@@ -21,8 +35,7 @@
     }
     div {
       display: flex;
-      align-items: center;
-      text-align: center;
+      
       small {
         font-size: 8px;
         margin: 0;
@@ -32,6 +45,6 @@
   p {
     font-size: 14px;
     padding: 5px 10px;
-    margin: 0;
+   
   }
 }

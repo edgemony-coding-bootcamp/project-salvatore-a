@@ -1,12 +1,14 @@
 @import  "../../libs/variabili.scss";
 
 .conversation {
+
     width: 260px;
     margin-top: 25px;
         
     .channelName {
         @include myp;
         margin: 3px 16px 10px 29px;
+
     }
     ul{      
         li {
