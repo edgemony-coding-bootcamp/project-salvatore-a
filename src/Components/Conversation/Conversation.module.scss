@@ -21,11 +21,13 @@
             &:hover{
                 background-color: $mainHover;
             }
-    
-            &:focus {
-                background-color: $mainActive;
-                color:$mainWhite;
-            }
+
+            
+        }
+        .active, .active:hover{
+            background-color: $mainActive;
+            color: $mainWhite;
+
             
         }
     }
@@ -60,6 +62,7 @@
             border-radius: 5px;
         }
     }
+
     .addGroup{
         z-index: 2;
         padding: 10px 0;
@@ -84,3 +87,7 @@
         }
     }
 }
+
+}
+
+
