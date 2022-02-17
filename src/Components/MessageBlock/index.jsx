@@ -54,10 +54,7 @@ export const MessageBlock = () => {
     date: new Date(),
     photo: "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png",
   });
-  useEffect(() =>{
-    setMessage({...message, author: name, photo: photo})
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[name])
+  
 
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
@@ -87,7 +84,7 @@ export const MessageBlock = () => {
           <input
             type="textarea"
             value={message.text}
-            onChange={(e) => setMessage({ ...message, text: e.target.value })}
+            onChange={(e) => setMessage({...message, author: name, photo: photo, text: e.target.value })}
             onKeyDown={handleMessage}
             placeholder="Scrivi qui il tuo messaggio"
           />

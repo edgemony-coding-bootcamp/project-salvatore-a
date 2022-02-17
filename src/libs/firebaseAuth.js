@@ -35,12 +35,13 @@ function signIn(newUser, dispatch) {
       dispatch(updateShowModal(true))
     });
 }
-function onCheck(id, dispatch) {
+function onCheck(id, dispatch,myUser) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       let uid = user.uid;
       patchUser(uid, true);
       dispatch(updateLogin(true));
+      
 
     } else {
       if (id) {
