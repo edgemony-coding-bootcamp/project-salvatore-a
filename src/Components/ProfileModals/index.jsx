@@ -11,7 +11,7 @@ const ProfileModals = (props) => {
     <>
         <div className={`${style.profileModals} ${props.hidden === true  && style.hiddenProfileModals}`}>
             <div className={style.userProfile}>
-                <img src={props.photo} alt={user.name}></img>
+                <img src={props.photo} alt={props.name}></img>
                 <p>{props.name}</p>
             </div>
             <div className={style.buttonModals}>
