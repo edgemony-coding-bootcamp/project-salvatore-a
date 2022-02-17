@@ -46,11 +46,13 @@ export const Conversation = () => {
     return (
         <div className={style.conversation}>
 
-            <h3>Conversazioni</h3>
+            <p className={style.channelName}>Canali</p>
             <ul>
             {groups.length > 0 ? groups.map((group, i) =>
                 <Link to={`/home/${group.name}`} key={group.name} replace >
-                    <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>{group.name}
+                    <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
+                    <span>#</span>
+                    <p>{group.name}</p>
                     <button>🗑️</button>
                     </li>
                 </Link>)
@@ -59,9 +61,9 @@ export const Conversation = () => {
 
 
             <div className={style.newgroup__wrapper}>
-                <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "x" : "+"} </button>
+                <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "×" : "+"} </button>
                 <input
-                    className={`${style.addGroup} ${!isClicked && style.hiddenAddGroup}`}
+                    className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
                     type="textarea"
                     value={newGroup}
                     onChange={(e) => setNewGroup(e.target.value)}
