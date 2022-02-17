@@ -2,44 +2,69 @@
 
 .profileModals{
     position: absolute;
-    right: 0px;
-    top: 50px;
+    right: 20px;
+    top: 55px;
     z-index: 3;
 
     
-    height: 130px;
-    width: 170px;
-    background-color: $mainHover;
+    height: 170px;
+    width: 300px;
+    background-color: $main;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.5s ease;    
-    border-bottom-left-radius: 8px;
+    // justify-content: center;
+    // align-items: center;
+    // transition: all 0.5s ease;    
+    border-radius: 8px;
+
 
     p {
         margin: 10px;
         font-size: 18px;
+        font-weight: bold;
+    }
+
+    img {
+        border-radius: 10%;
+        
+        width: 50px;
+        height: 50px;
+        // z-index: 4;
     }
 
     button {
-        margin: 10px;
-            font-size: 18px;
-            padding: 3px 20px;
-            color: white;
-            background-color:#148567;
-            &:hover{
-                background-color:#159b77;
+        width: 90px;
+        height: auto;
+
+        margin: 10px 10px 10px 0;
+        font-size: 18px;
+        padding: 3px 20px;
+        color: white;
+        background-color:$mainButton;
+           
+        &:hover{
+                background-color:$mainButtonHover;
                 text-decoration-line: underline;
                 text-decoration-thickness: 1px;
             }
             border-radius: 5px;
             border: none;
+            cursor: pointer;
     }
+    
+    .buttonModals, .userProfile {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        row-gap: 5px;
+        margin-top: 30px;
+        margin-left: 40px;
+        
 
+    }
 }
 
 .hiddenProfileModals {
-    top:-100px;
+    top:-300px;
     z-index: 3;
 }

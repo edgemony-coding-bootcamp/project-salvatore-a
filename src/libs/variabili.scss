@@ -9,6 +9,8 @@ $mainBlack: black;
 $mainHover: #350d36;
 $sidebarText: #bcabbc;
 $mainActive: #1164a3;
+$mainButton: #148567;
+$mainButtonHover: #159b77;
 
 // Fonts // 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
@@ -31,7 +33,7 @@ $mainFontBold: 'Poppins', sans-serif;
 }
 
 @mixin myh3 {
-    font-size: 1.2em;
+    font-size: 18px;
     line-height: 1.3;
     font-weight: 600;
     font-family: $mainFont;
@@ -44,3 +46,11 @@ $mainFontBold: 'Poppins', sans-serif;
     font-weight: 400;
     font-family: $mainFont;
 }
+
+@mixin myp {
+    font-size: 15px;
+    font-family: $mainFont;
+    color: $sidebarText;
+}
+
+

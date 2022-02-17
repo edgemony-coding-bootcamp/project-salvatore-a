@@ -12,9 +12,7 @@
             top: 50%; 
             margin-left: -250px;
             margin-top: -150px;
-            
-
-
+ 
             width: 500px;
             height: auto;
             border: 2px solid $sidebarText;
@@ -40,7 +38,6 @@
             row-gap: 25px;
 
         .wrapper_item{  
-            
 
                 display: flex;
                 width: 500px;
@@ -49,8 +46,6 @@
                 align-items: center;
                 justify-content: left;
                 gap: 40px;
-            
-            
 
             input {
                 display: block;
@@ -66,18 +61,14 @@
                 background-color: $sidebarText;
                 font-size: 18px;
 
-
                 &:focus {
                     border: none;
                     &:valid{
-
                         border: 1px solid rgba(2, 206, 2, 0.623);
                     }
                     &:invalid{
-
                         border: 1px solid rgba(206, 2, 2, 0.623);
                     }
-
                 }
             }
 
@@ -85,24 +76,25 @@
                 font-size: 16px;
                 margin-left: 60px;
                 font-weight: bold;
-            }
-
-           
+            }     
         }
 
         button {
             font-size: 16px;
+
+            margin-top: 10px;
+            height: 30px;
             
-            padding: 10px 40px;
+            padding: 3px 40px;
+
             color: $mainWhite;
-            background-color:#148567;
+            background-color: $mainButton;
             &:hover{
-                background-color:#159b77;
-                text-decoration-line: underline;
-                text-decoration-thickness: 1px;
+                background-color: $mainButtonHover;
             }
             border-radius: 5px;
             border: none;
+            cursor: pointer;
         }
     }
     
