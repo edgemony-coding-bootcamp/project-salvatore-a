@@ -60,8 +60,8 @@ const Home = () => {
     <div className="flex-container">
 
       <Header />
-
       <div className="main">
+
         <ConversationBlock />
         <MessageBlock />
       </div>
