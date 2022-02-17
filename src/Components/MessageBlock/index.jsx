@@ -14,15 +14,21 @@ import style from "./MessageBlock.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
 
+
 const db = getFirestore(app);
 
 export const MessageBlock = () => {
+  
   const url = useSelector((state) => state.url);
   const name = useSelector((state) => state.user.name);
   const photo = useSelector((state) => state.user.photo);
 
   const [group, setGroup] = useState({ name: "gruppo", messages: [] });
   const [modal, setModal] = useState(false);
+  const [updateGroup, setUpdateGroup] = useState({
+    name:"",
+    messages: [],
+  });
 
   useEffect(() => {
     if (url !== undefined) {
@@ -30,6 +36,8 @@ export const MessageBlock = () => {
       onSnapshot(qg, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setGroup(doc.data());
+          
+          
         });
       });
     } else {
@@ -37,6 +45,8 @@ export const MessageBlock = () => {
       onSnapshot(qg, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setGroup(doc.data());
+          
+          
         });
       });
     }
@@ -55,10 +65,16 @@ export const MessageBlock = () => {
 
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
-      patchGroups(group.name, [...group.messages, message]);
+      patchGroups("messages", group.name, [...group.messages, message]);
 
       setMessage({ ...message, text: "" });
     }
+  }
+  function handleChangeName(e) {
+    e.preventDefault();
+    patchGroups("name", group.name, updateGroup);
+    setModal(false);
+    setGroup(updateGroup);    
   }
   return (
     <>
@@ -66,13 +82,24 @@ export const MessageBlock = () => {
         {modal && (
           <div className={modal ? style.groupModal : null}>
             <h2>{`#${group.name}  ` || ""}</h2>
-            <form>
+            <form onSubmit={(e) => handleChangeName(e)}>
               <label htmlFor="updateGroup">Cambia il Nome del Gruppo:</label>
-              <input name="updateGroup" type="text" defaultValue={group.name} />
+              <input
+                value={updateGroup.name}
+                onChange={(e) =>
+                  setUpdateGroup({
+                    messages: group.messages,
+                    name: e.target.value,
+                  })
+                }
+                name="updateGroup"
+                type="text"
+              />
+              <button className={style.modifyButton}>Modifica</button>
             </form>
             <div className={style.deleteGroup}>
               <p>Elimina Gruppo</p>
-              <button className={style.deleteButton}>Elimina</button>
+              <button onClick={()=> {patchGroups("delete",group.name);setModal(false)} } className={style.deleteButton}>Elimina</button>
             </div>
             <button
               className={style.closeButton}
@@ -90,9 +117,8 @@ export const MessageBlock = () => {
               <div className={style.groupName}>
                 <div onClick={() => setModal(true)}>
                   <h2>{`#${group.name}  ` || ""}</h2>
-                  <p>▼</p>                  
+                  <p>▼</p>
                 </div>
-                  
               </div>
 
               <ul>

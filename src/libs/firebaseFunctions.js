@@ -1,6 +1,6 @@
 import app from "./firebase.config";
 
-import { getFirestore, doc, setDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { fetchGroups, fetchUsers } from "../store/action";
 
 const db = getFirestore(app);
@@ -69,11 +69,22 @@ async function addGroup(name) {
 //-------------------------------------------------------------ADD GROUPS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH GROUPS---------------------------------------------------------------------------//
-async function patchGroups(name, updatedMessages) {
-  await updateDoc(doc(db, "groups", name),  {
-    //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
-    messages: updatedMessages,
-  });
+async function patchGroups(type,name, update) {
+ if(type === "messages"){
+    await updateDoc(doc(db, "groups", name),  {
+      //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
+      messages: update,
+    });
+  } else if(type === "name"){
+    await setDoc(doc(db, "groups", update.name), update);
+    await deleteDoc(doc(db,"groups",name))
+  } else if(type === "delete"){
+    await deleteDoc(doc(db,"groups",name))
+  }
+
+   
+  
+  
 }
 //-------------------------------------------------------------/PATCH GROUPS--------------------------------------------------------------------------//
 

@@ -1,32 +1,25 @@
-@import  "../../libs/variabili.scss";
-
+@import "../../libs/variabili.scss";
 
 .profile {
-    position: absolute;
-    right: 0;
-    margin-right: 0;
+  position: absolute;
+  right: 0;
+  margin-right: 0;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: auto;
-    height: 30px;
-    padding: 4px;
-    
-    
-
-    
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  height: 30px;
+  padding: 4px;
 
   p {
-    color: $mainWhite ;
+    color: $mainWhite;
     font-size: 14px;
     font-family: $mainFont;
     margin: 0;
-    
   }
 
   .profileImg {
-    
     border-radius: 20%;
     border: 2px solid $main;
 
@@ -36,14 +29,10 @@
     margin: 20px 20px 0 10px;
     z-index: 4;
 
-    cursor:pointer;
-
+    cursor: pointer;
 
     &:hover {
       border: 2px solid $mainWhite;
-    
     }
-    
   }
-
 }
