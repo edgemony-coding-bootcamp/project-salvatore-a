@@ -60,7 +60,7 @@ export const Conversation = () => {
 
 
             <div className={style.newgroup__wrapper}>
-                <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "×" : "+"} </button>
+                <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "+" : "×"} </button>
                 <input
                     className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
                     type="textarea"
