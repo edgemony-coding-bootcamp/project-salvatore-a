@@ -35,7 +35,7 @@ function signIn(newUser, dispatch) {
       dispatch(updateShowModal(true))
     });
 }
-function onCheck(id, dispatch,myUser) {
+function onCheck(id, dispatch) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       let uid = user.uid;
