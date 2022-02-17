@@ -53,7 +53,6 @@ export const Conversation = () => {
                     <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
                     <span>#</span>
                     <p>{group.name}</p>
-                    <button>🗑️</button>
                     </li>
                 </Link>)
                 : <li>Nessun Gruppo</li>}

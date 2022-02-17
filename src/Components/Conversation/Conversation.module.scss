@@ -1,8 +1,5 @@
 @import  "../../libs/variabili.scss";
 
-
-
-
 .conversation {
     width: 260px;
     margin-top: 25px;
@@ -18,8 +15,7 @@
             justify-content: left;
             padding: 5px 0;
             color:$sidebarText;
-            list-style: none;
-            
+            list-style: none;           
   
             p {
                 @include myp;
@@ -29,26 +25,14 @@
             span {
                 margin: 0 16px 0 29px;
             }
-
-            button {
-                position: absolute;
-                right:0;
-                margin: 0 5px;
-                border: none;
-                background-color: rgba(255, 255, 255, 0);
-            }
     
             &:hover{
                 background-color: $mainHover;
-            }
-
-            
+            }            
         }
         .active, .active:hover{
             background-color: $mainActive;
             color: $mainWhite;
-            // margin: 0;
-            
         }
     }
     .newgroup__wrapper{
@@ -64,8 +48,7 @@
             margin: 8px 0;
             padding: 6px 8px;
             background-color: $sidebarText;
-
-            
+       
         }
         button{
             position: absolute;
