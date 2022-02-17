@@ -19,6 +19,7 @@ function App() {
   const isLogged = useSelector((state) => state.logged);
   const user = useSelector((state) => state.user);
   const url = useSelector((state) => state.url);
+  console.log(url)
 
 
   const baseUrl = location === '' ? `/home` : url === undefined ? '/home' : `/home/${url}`;

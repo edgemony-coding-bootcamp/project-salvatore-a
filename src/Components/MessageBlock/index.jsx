@@ -13,6 +13,7 @@ import {
 import style from "./MessageBlock.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
+import { Link } from "react-router-dom"
 
 
 const db = getFirestore(app);
@@ -29,6 +30,8 @@ export const MessageBlock = () => {
     name:"",
     messages: [],
   });
+
+  
 
   useEffect(() => {
     if (url !== undefined) {
@@ -73,6 +76,9 @@ export const MessageBlock = () => {
     setModal(false);
     setGroup(updateGroup);    
   }
+
+  console.log(updateGroup)
+
   return (
 
     <>
@@ -87,17 +93,19 @@ export const MessageBlock = () => {
                 onChange={(e) =>
                   setUpdateGroup({
                     messages: group.messages,
-                    name: e.target.value,
+                    name: e.target.value.replace(/ /g,"_"),
                   })
                 }
                 name="updateGroup"
                 type="text"
               />
-              <button className={style.modifyButton}>Modifica</button>
+              <button onClick={handleChangeName} className={style.modifyButton}><Link to={`/home/${updateGroup.name}`}>Modifica</Link></button>
             </form>
             <div className={style.deleteGroup}>
               <p>Elimina Gruppo</p>
-              <button onClick={()=> {patchGroups("delete",group.name);setModal(false)} } className={style.deleteButton}>Elimina</button>
+              <button onClick={()=> {patchGroups("delete",group.name);setModal(false)} } className={style.deleteButton}>
+              <Link to={`/home`}>Elimina</Link>
+              </button>
             </div>
             <button
               className={style.closeButton}
@@ -114,7 +122,7 @@ export const MessageBlock = () => {
             <div className={style.messageBlock}>
               <div className={style.groupName}>
                 <div onClick={() => setModal(true)}>
-                  <h2>{`#${group.name}  ` || ""}</h2>
+                  <h2>{`#${group.name.replace(/_/g," ")}  ` || ""}</h2>
                   <p>▼</p>
                 </div>
               </div>
