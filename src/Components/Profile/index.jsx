@@ -6,13 +6,14 @@ import { useState } from 'react';
 
 export const Profile = () => {
     const user = useSelector((state) => state.user);
-    const [hidden,setHidden] = useState(false)
+    const [hidden,setHidden] = useState(true)
+    
     
     return (
         <div className={style.profile}>
-            <ProfileModals name={user.name + " " + user.lastname} hidden={hidden}/>
+            <ProfileModals name={user.name + " " + user.lastname} hidden={hidden} setHidden={()=>setHidden()}/>
             
-            <img onClick={()=> !hidden ? setHidden(true) : setHidden(false)} className={style.profileImg} src={user.photo} alt={user.name} />
+            <img onClick={()=> setHidden(!hidden)} className={style.profileImg} src={user.photo} alt={user.name} />
         </div>
     )
 }

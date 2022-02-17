@@ -25,6 +25,7 @@
         h2 {
             text-align: center;
             margin: 20px 0 35px 0;
+            @include myh2;
         }   
 
         form{
@@ -81,6 +82,7 @@
             }
 
             label {
+                font-size: 16px;
                 margin-left: 60px;
                 font-weight: bold;
             }
@@ -89,6 +91,7 @@
         }
 
         button {
+            font-size: 16px;
             margin-top: 10px;
             padding: 3px 40px;
             color: $mainWhite;

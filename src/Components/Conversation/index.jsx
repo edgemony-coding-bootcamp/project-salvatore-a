@@ -59,13 +59,15 @@ export const Conversation = () => {
 
 
             <div className={style.newgroup__wrapper}>
-                <button onClick={() => setIsClicked(!isClicked)}>+</button>
-                {isClicked ? <input
+                <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "x" : "+"} </button>
+                <input
+                    className={`${style.addGroup} ${!isClicked && style.hiddenAddGroup}`}
                     type="textarea"
                     value={newGroup}
                     onChange={(e) => setNewGroup(e.target.value)}
                     onKeyDown={handleInput}
-                /> : <p>Aggiungi Gruppi</p>}
+                    placeholder="Premi Invio Per Confermare"
+                />  <p>Aggiungi Gruppi</p>
             </div>
         </div>
     )
