@@ -28,7 +28,8 @@
       transition: all 0.1s ease;
 
       h2 {
-        @include myh2;
+        @include myh3;
+        font-weight: bold;
       }
       p {
         margin-left: 10px;
@@ -90,7 +91,7 @@
     position: absolute;
     width: 97.5%;
     bottom: 25px;
-    margin: 10px 20px;
+    margin: 5px 15px;
 
     input {
       width: 100%;

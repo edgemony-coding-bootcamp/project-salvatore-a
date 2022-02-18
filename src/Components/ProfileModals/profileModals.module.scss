@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
    
+    
 
     p {
         margin: 10px;
@@ -23,39 +24,28 @@
     img {
         border-radius: 10%;
         
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 
     button {
-        width: 90px;
-        height: auto;
-
-        margin: 10px 10px 10px 0;
-        font-size: 18px;
-        padding: 3px 20px;
-        color: white;
-        background-color:$mainButton;
+        @include buttonModal;
            
         &:hover{
-                background-color:$mainButtonHover;
+                @include hoverButton;
             }
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
     }
     
+    }
     .buttonModals, .userProfile {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        row-gap: 5px;
+        justify-content: center;
+        column-gap: 10px;
         margin-top: 30px;
-        margin-left: 40px;
         
-
     }
-}
+
 
 .hiddenProfileModals {
     top:-300px;
@@ -82,16 +72,16 @@
         button {
             width: 50px;
 
-            margin: 6px 6px 16px 0;
+            // margin: 6px 6px 15px 0;
             font-size: 10px;
             padding: 3px 10px;
             
             border-radius: 5px;
         }
         .buttonModals, .userProfile {
-            row-gap: 5px;
+            // row-gap: 5px;
             margin-top: 15px;
-            margin-left: 20px;
+    
         }
     }
     
