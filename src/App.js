@@ -6,8 +6,8 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import EditProfile from "./pages/EditProfile";
-import Login from "./Components/Login";
-import Signup from "./Components/Sign-up";
+import Login from "./pages/Login";
+import Signup from "./pages/Sign-up";
 import { onCheck} from "./libs/firebaseAuth";
 
 

@@ -13,7 +13,7 @@ import {
 import style from "./MessageBlock.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
-import { Link } from "react-router-dom"
+import MessageBlockModals from "../MessageBlockModals";
 
 
 const db = getFirestore(app);
@@ -69,48 +69,15 @@ export const MessageBlock = () => {
       setMessage({ ...message, text: "" });
     }
   }
-  function handleChangeName(e) {
-    e.preventDefault();
-    patchGroups("name", group.name, updateGroup);
-    setModal(false);
-    setGroup(updateGroup);    
-  }
+  
 
   return (
 
     <>
       <div className={modal ? style.modalBackground : null}>
         {modal && (
-          <div className={modal ? style.groupModal : null}>
-            <h2>{`#${group.name}  ` || ""}</h2>
-            <form onSubmit={(e) => handleChangeName(e)}>
-              <label htmlFor="updateGroup">Cambia il Nome del Gruppo:</label>
-              <input
-                value={updateGroup.name}
-                onChange={(e) =>
-                  setUpdateGroup({
-                    messages: group.messages,
-                    name: e.target.value.replace(/ /g,"_"),
-                  })
-                }
-                name="updateGroup"
-                type="text"
-              />
-              <button onClick={handleChangeName} className={style.modifyButton}><Link to={`/home/${updateGroup.name}`}>Modifica</Link></button>
-            </form>
-            <div className={style.deleteGroup}>
-              <p>Elimina Gruppo</p>
-              <button onClick={()=> {patchGroups("delete",group.name);setModal(false)} } className={style.deleteButton}>
-              <Link to={`/home`}>Elimina</Link>
-              </button>
-            </div>
-            <button
-              className={style.closeButton}
-              onClick={() => setModal(false)}
-            >
-              Chiudi
-            </button>
-          </div>
+          <MessageBlockModals modal={modal} setModal={setModal} group={group} setGroup={setGroup} patchGroups={patchGroups} updateGroup={updateGroup} setUpdateGroup={setUpdateGroup}  />
+          
         )}
       </div>
       <div className={style.messageBlock_container}>
@@ -127,7 +94,7 @@ export const MessageBlock = () => {
               <ul>
                 {group.messages.map((message, index) =>
                   group.messages.length > 0 ? (
-                    <Message key={index} data={message} />
+                    <Message key={index} data={message} messages={group.messages} />
                   ) : (
                     <h3>"nessun messaggio"</h3>
                   )

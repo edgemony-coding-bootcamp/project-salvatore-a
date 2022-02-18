@@ -10,14 +10,17 @@
   justify-content: flex-start;
  
   width: 230px;
-  height: calc(100vh - 35px);
-  margin-top: 5px;
+  height: calc(100vh - 45px);
+  // margin-top: 5px;
 
   background-color: $main;
   transition: all 0.5s ease;
+  
   }
 
   .hideGroups {
       left: -300px;
+      transition: all 0.5s ease;
+
   }
 }

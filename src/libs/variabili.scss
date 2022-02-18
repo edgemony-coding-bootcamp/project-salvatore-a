@@ -13,6 +13,7 @@ $mainButton: #148567;
 $mainButtonHover: #159b77;
 $redButton: #851414;
 $redButtonHover: #a13131;
+$overlay: rgba(80, 80, 80, 0.63);
 
 // Fonts // 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
@@ -39,6 +40,7 @@ $mainFontBold: 'Poppins', sans-serif;
     width: 300px;
     z-index: 3;
     border-radius: 30px;
+    
 }
 
 @mixin buttonModal {
@@ -50,6 +52,9 @@ $mainFontBold: 'Poppins', sans-serif;
     border-radius: 5px;
     border: none;
     cursor: pointer; 
+    a{
+        color: $mainWhite;
+    }
 }
 
 @mixin buttonModalRed {
@@ -61,6 +66,9 @@ $mainFontBold: 'Poppins', sans-serif;
     border-radius: 5px;
     border: none;
     cursor: pointer; 
+    a{
+        color: $mainWhite;
+    }
 }
 
 @mixin myh1 {
