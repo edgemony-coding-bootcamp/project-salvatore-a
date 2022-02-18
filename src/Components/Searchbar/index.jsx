@@ -22,8 +22,9 @@ export const Searchbar = () => {
         message.name = user.name
         message.lastname = user.lastname
         message.photo = user.photo
-      }}))
-      //  message.author === user.id ? (message.name = `${user.name} ${user.lastname}`; message.photo = user.photo) : null))}
+      }
+      return message
+    }))
       setSearchResult(aa.filter((message)=> 
        message.text.toLowerCase().includes(input.toLowerCase())||message.name.toLowerCase().includes(input.toLowerCase()))) 
     }
