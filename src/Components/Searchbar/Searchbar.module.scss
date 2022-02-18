@@ -4,22 +4,53 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     width: 70%;
-    height: 60%;
+    height: 25px;
     margin: 10px auto;
   
 
     input {
+
         width: 60%;
         height: 100%;
         
+
         background-color: $sidebarText;
         color: $mainWhite;
         border: none;
         border-radius: 3px;
         
+        &:focus{
+          outline: none;
+        }
     }
+
+    h3 {
+      position: absolute;
+      right: 12%;
+      @include myp;
+      line-height: 1.4;
+      color:$main;
+      cursor: pointer;
+    }
+    .searched {
+      width: 60%;
+      height: 350px;
+      overflow: scroll;
+      position: absolute;
+      top: 25px;
+      z-index: 2;
+      background-color: $mainWhite;
+      padding: 10px;
+      border: 1px solid $sidebarText;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+  .hideResult {
+    display: none;
   }
 
   @media screen and (max-width: 767px) {

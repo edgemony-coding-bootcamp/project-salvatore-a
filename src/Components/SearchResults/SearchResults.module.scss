@@ -1,0 +1,37 @@
+@import  "../../libs/variabili.scss";
+
+.searchResults{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    .name{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    h4{
+        @include myp;  
+        
+        color: $mainBlack;
+    }
+    img {
+        width: 24px;
+        height: auto;
+        border-radius: 4px;
+        margin: 0 10px;
+    }
+    }
+    span {
+        margin: 0 15px
+    }
+    .results{
+        display: flex;
+        flex-direction: row;
+
+       
+
+        p{
+            @include myp;
+            color: $mainBlack;
+        }
+    }
+}
