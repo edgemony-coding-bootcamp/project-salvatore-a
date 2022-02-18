@@ -11,3 +11,12 @@
     background-color: $main;
 
   }
+
+@media screen and (max-width: 767px) {
+  .conversation{
+    // width: 130px;
+    // height: calc(100vh - 35px);
+    display: none;
+  }
+  
+}

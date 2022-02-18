@@ -96,3 +96,56 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .modal {
+    @include positionModal;
+    
+    
+    padding-bottom: 50px;
+    transform: none;
+    height: 300px;
+  
+    button {
+     @include buttonModal;
+     &:hover {
+       @include hoverButton;
+     }
+    }
+    .head {
+      top: 5px;
+      width: 100%;
+      margin: 5px;
+  
+      .title {
+        margin: 5px;
+        font-size: 20px;
+      }
+      .closeButton {
+        width: 25px;
+      }
+    }
+    img {
+      top: 60px;
+      width: 100px;
+      height: 100px;
+    }
+  
+    .name {
+      top: 150px;
+      color: $mainBlack;
+      font-size: 20px;
+    }
+  
+    p {
+      top: 200px;
+      color: $mainBlack;
+    }
+  
+    .editButton {
+      bottom: 20px;
+      left: 100px;
+      @include buttonModal;
+    }
+  }
+}

@@ -36,3 +36,22 @@
     }
   }
 }
+
+
+@media screen and (max-width: 767px) {
+  .profile{
+    padding: 2px;
+    
+
+  
+  .profileImg {
+    border: 1px solid $main;
+
+    width: 25px;
+    height: 25px;
+
+    margin: 7px 7px 1px 5px;
+
+  }
+  }
+}

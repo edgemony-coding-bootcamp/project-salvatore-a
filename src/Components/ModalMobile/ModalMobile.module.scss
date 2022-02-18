@@ -1,0 +1,23 @@
+@import  "../../libs/variabili.scss";
+
+@media screen and (max-width: 767px) {
+
+.modalMobile {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+ 
+  width: 230px;
+  height: calc(100vh - 35px);
+  margin-top: 5px;
+
+  background-color: $main;
+  transition: all 0.5s ease;
+  }
+
+  .hideGroups {
+      left: -300px;
+  }
+}

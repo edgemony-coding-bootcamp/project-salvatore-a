@@ -14,7 +14,6 @@ export const Conversation = () => {
     const location = useLocation();
     const [isActive, setActive] = useState();
 
-
     const groups = useSelector(store => store.groups)
 
 
@@ -44,9 +43,12 @@ export const Conversation = () => {
         setActive(i);
     };
 
+    
+
+
     return (
         <div className={style.conversation}>
-
+           
             <p className={style.channelName}>Canali</p>
             <ul>
             {groups.length > 0 ? groups.map((group, i) =>
