@@ -140,7 +140,7 @@ export const MessageBlock = () => {
                 <input
                   type="textarea"
                   value={message.text}
-                  onChange={(e) => setMessage({...message, author: authorId, text: e.target.value })}
+                  onChange={(e) => setMessage({...message, author: authorId,message_group:group.name,message_id:Date.now(), text: e.target.value })}
                   onKeyDown={handleMessage}
                   placeholder="Scrivi qui il tuo messaggio"
                 />
