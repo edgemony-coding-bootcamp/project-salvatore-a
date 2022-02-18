@@ -40,6 +40,7 @@ $mainFontBold: 'Poppins', sans-serif;
     width: 300px;
     z-index: 3;
     border-radius: 30px;
+    
 }
 
 @mixin buttonModal {
@@ -51,6 +52,9 @@ $mainFontBold: 'Poppins', sans-serif;
     border-radius: 5px;
     border: none;
     cursor: pointer; 
+    a{
+        color: $mainWhite;
+    }
 }
 
 @mixin buttonModalRed {
@@ -62,6 +66,9 @@ $mainFontBold: 'Poppins', sans-serif;
     border-radius: 5px;
     border: none;
     cursor: pointer; 
+    a{
+        color: $mainWhite;
+    }
 }
 
 @mixin myh1 {
