@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_GROUPS,UPDATE_MODAL, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL } from "./constants";
 
 const fetchUsers = (users) => {
   return async (dispatch) => {
@@ -10,13 +10,6 @@ const fetchGroups = (groups) => {
     dispatch({ type: FETCH_GROUPS, payload: groups });
   };
 };
-
-const updateShowModal = (show) => {
-  return (dispatch) => {
-    dispatch({type: UPDATE_MODAL, payload: show})
-  }
-}
-
 
 const updateUrl = (url) => {
   return (dispatch) => {
@@ -36,4 +29,4 @@ const updateUser = (user) => {
   }
 }
 
-export { fetchUsers, fetchGroups, updateShowModal, updateLogin, updateUser, updateUrl };
+export { fetchUsers, fetchGroups, updateLogin, updateUser, updateUrl };

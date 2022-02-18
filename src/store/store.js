@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import {myReducer }from "./reducer";
 
 const initStore = {
-    modal:false,
     url:'',
     users:[],
     groups:[],
