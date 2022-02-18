@@ -203,6 +203,7 @@
     height: 100vh;
     max-height: calc(100vh - 35px);
   .messageBlock{
+
     padding-right: 2px;
   
     .groupName {
@@ -222,9 +223,11 @@
         }
         
       }
+    }
       ul {
         top: 50%;
-        max-height: calc(100vh - 235px);
+        height: 550px;
+        max-height: none;
         
     
         &::-webkit-scrollbar {
@@ -296,4 +299,4 @@
         
       }
     }
-  }
+  
