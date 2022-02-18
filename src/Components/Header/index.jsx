@@ -3,8 +3,7 @@ import { Searchbar } from "../Searchbar";
 import { Profile } from '../Profile'
 import style from "./Header.module.scss";
 import { ModalMobile } from "../ModalMobile";
-import image from "./ham.png"
-
+import logo from "./logo256.png"
 
 export const Header = () => {
     const [hideGroup, setHideGroup] = useState(true);
@@ -18,10 +17,13 @@ export const Header = () => {
         <>
             <div className={style.header}>
             <div className={style.mediaGroup}>
-                <img src={image} onClick={toggleMenu} alt="navbar"/>
-                <ModalMobile  hideGroup={hideGroup} setHideGroup={()=>setHideGroup()}/>
-                
+                <img src={logo} onClick={toggleMenu} alt="navbar"/>
+                <ModalMobile  hideGroup={hideGroup} setHideGroup={()=>setHideGroup()}/>        
             </div>
+                <div className={style.logo}>
+                    <img src={logo} alt="logo"/>
+                    <h2>Slack clone</h2>
+                </div>
                 <Searchbar/>
                 <Profile/>
 
