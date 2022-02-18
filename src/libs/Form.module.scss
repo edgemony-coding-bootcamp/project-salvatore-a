@@ -9,7 +9,7 @@
     .wrapper_form{
             position: absolute;
             left: 50%;
-            top: 50%; 
+            top: 30%; 
             margin-left: -250px;
             margin-top: -150px;
  
@@ -22,7 +22,7 @@
 
         h2 {
             text-align: center;
-            margin: 20px 0 35px 0;
+            margin: 10px 0 25px 0;
             @include myh2;
         }   
 
@@ -44,7 +44,7 @@
                 height: auto;
 
                 align-items: center;
-               justify-content: left;
+                justify-content: left;
                 gap: 40px;
 
             input {
@@ -75,7 +75,14 @@
                 font-size: 16px;
                 margin-left: 60px;
                 font-weight: bold;
-            }     
+            }
+
+            img {
+                margin-left: 170px;
+                height: 160px;
+                width: 160px;
+
+            }
         }
 
         button {

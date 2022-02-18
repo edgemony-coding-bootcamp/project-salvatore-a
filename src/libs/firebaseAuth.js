@@ -5,7 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-import { updateLogin, updateShowModal, updateUser } from "../store/action";
+import { updateLogin, updateUser } from "../store/action";
 
 import { addUser, patchUser } from "./firebaseFunctions";
 
@@ -23,7 +23,7 @@ function signup(newUser) {
       console.log(errorCode, errorMessage);
     });
 }
-function signIn(newUser, dispatch) {
+function signIn(newUser, dispatch, setBanner) {
   signInWithEmailAndPassword(auth, newUser.email, newUser.password)
     .then(() => {
       dispatch(updateLogin(true));
@@ -32,20 +32,20 @@ function signIn(newUser, dispatch) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
-      dispatch(updateShowModal(true))
+      setBanner(true)
     });
 }
 function onCheck(id, dispatch) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       let uid = user.uid;
-      patchUser(uid, true);
+      patchUser(uid, {logged:true});
       dispatch(updateLogin(true));
       
 
     } else {
       if (id) {
-        patchUser(id, false);
+        patchUser(id, {logged:false});
       }
     }
   });

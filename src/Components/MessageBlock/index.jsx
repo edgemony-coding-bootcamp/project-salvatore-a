@@ -71,8 +71,6 @@ export const MessageBlock = () => {
   }
   
 
-  console.log(updateGroup)
-
   return (
 
     <>

@@ -6,7 +6,7 @@ const Banner = (props) => {
     if (props.value === "red"){
         result = "Utente e/o Password errati";
     } if (props.value === "green"){
-        result = "Tutto ok"
+        result = "Modifica Riuscita"
     }
     return (
         <div className={styles.banner} style={{background: props.value}}>

@@ -35,10 +35,15 @@ async function addUser(user, uid) {
 //-------------------------------------------------------------/ADD USERS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH USERS---------------------------------------------------------------------------//
-async function patchUser(uid, loggeds) {
-  await updateDoc(doc(db, "users", uid), {
-    logged: loggeds,
-  });
+async function patchUser(uid, newData, setColor) {
+  try {
+    const docUpdt = await updateDoc(doc(db, "users", uid), newData);
+    setColor("green");
+    return docUpdt;
+  } catch (e) {
+    console.error("Error updating document: ", e);
+    setColor("red");
+  }
 }
 //-------------------------------------------------------------/PATCH USERS--------------------------------------------------------------------------//
 
@@ -69,22 +74,22 @@ async function addGroup(name) {
 //-------------------------------------------------------------ADD GROUPS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH GROUPS---------------------------------------------------------------------------//
-async function patchGroups(type,name, update) {
- if(type === "messages"){
-    await updateDoc(doc(db, "groups", name),  {
+async function patchGroups(type, name, update) {
+  if (type === "messages") {
+    await updateDoc(doc(db, "groups", name), {
       //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
       messages: update,
     });
-  } else if(type === "name"){
+  } else if (type === "name") {
     await setDoc(doc(db, "groups", update.name), update);
-    await deleteDoc(doc(db,"groups",name))
-  } else if(type === "delete"){
-    await deleteDoc(doc(db,"groups",name))
+    await deleteDoc(doc(db, "groups", name))
+  } else if (type === "delete") {
+    await deleteDoc(doc(db, "groups", name))
   }
 
-   
-  
-  
+
+
+
 }
 //-------------------------------------------------------------/PATCH GROUPS--------------------------------------------------------------------------//
 
