@@ -25,7 +25,7 @@ export const Conversation = () => {
 
     function handleInput(e) {
         if (e.key === "Enter" || e.keyCode === "13") {
-            addGroup(newGroup);
+            addGroup(newGroup.replace(/ /g,"_"));
             setNewGroup("");
             setIsClicked(!isClicked)
         }
@@ -33,7 +33,7 @@ export const Conversation = () => {
     }
     useEffect(() => {
         upDateUrl(params.id)
-        
+        //
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]
     )
@@ -55,7 +55,7 @@ export const Conversation = () => {
                 <Link to={`/home/${group.name}`} key={group.name} replace >
                     <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
                     <span>#</span>
-                    <p>{group.name}</p>
+                    <p>{group.name.replace(/_/g," ")}</p>
                     </li>
                 </Link>)
                 : <li>Nessun Gruppo</li>}
