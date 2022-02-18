@@ -18,7 +18,7 @@ export const Header = () => {
         <>
             <div className={style.header}>
             <div className={style.mediaGroup}>
-                <img src={image} onClick={toggleMenu}/>
+                <img src={image} onClick={toggleMenu} alt="navbar"/>
                 <ModalMobile  hideGroup={hideGroup} setHideGroup={()=>setHideGroup()}/>
                 
             </div>
