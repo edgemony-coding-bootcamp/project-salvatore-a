@@ -21,8 +21,7 @@ const db = getFirestore(app);
 export const MessageBlock = () => {
   
   const url = useSelector((state) => state.url);
-  const name = useSelector((state) => state.user.name);
-  const photo = useSelector((state) => state.user.photo);
+  const authorId = useSelector((state) => state.user.id);
 
   const [group, setGroup] = useState({ name: "gruppo", messages: [] });
   const [modal, setModal] = useState(false);
@@ -56,7 +55,7 @@ export const MessageBlock = () => {
   }, [url]);
 
   const [message, setMessage] = useState({
-    author: "Giuvanni",
+    author: authorId,
     text: "",
     date: new Date(),
     photo: "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png",
@@ -141,7 +140,7 @@ export const MessageBlock = () => {
                 <input
                   type="textarea"
                   value={message.text}
-                  onChange={(e) => setMessage({...message, author: name, photo: photo, text: e.target.value })}
+                  onChange={(e) => setMessage({...message, author: authorId, text: e.target.value })}
                   onKeyDown={handleMessage}
                   placeholder="Scrivi qui il tuo messaggio"
                 />
