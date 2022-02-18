@@ -39,13 +39,13 @@ function onCheck(id, dispatch) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       let uid = user.uid;
-      patchUser(uid, true);
+      patchUser(uid, {logged:true});
       dispatch(updateLogin(true));
       
 
     } else {
       if (id) {
-        patchUser(id, false);
+        patchUser(id, {logged:false});
       }
     }
   });

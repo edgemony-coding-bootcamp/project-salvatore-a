@@ -76,8 +76,6 @@ export const MessageBlock = () => {
     setGroup(updateGroup);    
   }
 
-  console.log(updateGroup)
-
   return (
 
     <>
