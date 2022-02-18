@@ -11,12 +11,57 @@ $sidebarText: #bcabbc;
 $mainActive: #1164a3;
 $mainButton: #148567;
 $mainButtonHover: #159b77;
+$redButton: #851414;
+$redButtonHover: #a13131;
 
 // Fonts // 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
 $mainFont:'Noto Sans', sans-serif; 
 $mainFontBold: 'Poppins', sans-serif;
 
+@mixin hoverButton {
+        background-color: $mainButtonHover;
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+}
+
+@mixin hoverButtonRed {
+        background-color: $redButtonHover;
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+}
+
+@mixin positionModal {
+    left: 50%;
+    top: 20%; 
+    margin: 0 0 0 -150px;   
+    min-width: 0;  
+    width: 300px;
+    z-index: 3;
+    border-radius: 30px;
+}
+
+@mixin buttonModal {
+    width: 80px;
+    padding: 8px;
+    font-size: 12px;
+    color: $mainWhite;
+    background-color: $mainButton;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
+}
+
+@mixin buttonModalRed {
+    width: 80px;
+    padding: 8px;
+    font-size: 12px;
+    color: $mainWhite;
+    background-color: $redButton;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer; 
+}
 
 @mixin myh1 {
     font-size: 28px;

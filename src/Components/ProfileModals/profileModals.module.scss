@@ -4,19 +4,15 @@
     position: absolute;
     right: 20px;
     top: 55px;
+    border-radius: 8px;
     z-index: 3;
 
-    
     height: 170px;
     width: 300px;
     background-color: $main;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    // align-items: center;
-    // transition: all 0.5s ease;    
-    border-radius: 8px;
-
+   
 
     p {
         margin: 10px;
@@ -29,7 +25,6 @@
         
         width: 50px;
         height: 50px;
-        // z-index: 4;
     }
 
     button {
@@ -44,8 +39,6 @@
            
         &:hover{
                 background-color:$mainButtonHover;
-                text-decoration-line: underline;
-                text-decoration-thickness: 1px;
             }
             border-radius: 5px;
             border: none;
@@ -67,4 +60,43 @@
 .hiddenProfileModals {
     top:-300px;
     z-index: 3;
+}
+
+@media screen and (max-width: 767px) {
+    .profileModals{
+        right: 6px;
+        top: 38px;
+
+        height: 85px;
+        width: 150px;
+    
+        p {
+            margin: 5px;
+            font-size: 10px;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+        button {
+            width: 50px;
+
+            margin: 6px 6px 16px 0;
+            font-size: 10px;
+            padding: 3px 10px;
+            
+            border-radius: 5px;
+        }
+        .buttonModals, .userProfile {
+            row-gap: 5px;
+            margin-top: 15px;
+            margin-left: 20px;
+        }
+    }
+    
+    .hiddenProfileModals {
+        top:-300px;
+        z-index: 3;
+    }
 }

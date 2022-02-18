@@ -4,7 +4,11 @@
 
     width: 260px;
     margin-top: 25px;
-        
+     
+    
+    .mediaGroup {
+        display: none;
+    }
     .channelName {
         @include myp;
         margin: 3px 16px 10px 29px;
@@ -99,5 +103,62 @@
 }
 
 
+@media screen and (max-width: 767px) {
+    .conversation {
 
+        width: 230px;
+        margin-top: 15px;
+        
+        
+        .channelName {
+            color: $sidebarText;
+            font-size: 18px;
+            margin: 3px 16px 10px 29px;
+    
+        }
+        ul{      
+            li {
+                padding: 5px 0;
+      
+                p {
+                    color: $sidebarText;
+                    margin: 0 5px 0 0px;
+                }
+    
+                span {
+                    margin: 0 5px 0 8px;
+                }
+            }
+            .newgroup__wrapper{
+                margin: 0 10px 0 5px;
+        
+                p {
+                    margin-left: 5px;
+                }
+                button{
+                    font-size: 5px;
+                    width: 19px;
+                    height: 19px;            
+                    border-radius: 5px;
+                    z-index: 3;
+                }
+                input {
+                    height: 19px;
+                    margin-top: 2px;
+                }
+            }
 
+            .addGroup{
+                padding: 5px 0;
+                font-size: 20px;
+                margin-left: 10px;
+                width: 0px;
+            }
+            .hiddenAddGroup{
+                padding: 5px ;
+                margin-left: 15px;
+                width: 100px;   
+            }
+        }     
+    }
+}

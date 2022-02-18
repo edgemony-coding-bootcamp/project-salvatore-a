@@ -37,14 +37,14 @@
             align-content: center;
             row-gap: 25px;
 
-        .wrapper_item{  
+         .wrapper_item{  
 
                 display: flex;
                 width: 500px;
                 height: auto;
 
                 align-items: center;
-                justify-content: left;
+               justify-content: left;
                 gap: 40px;
 
             input {
@@ -55,7 +55,6 @@
                 right: 60px;
                 position: absolute;
                 padding: 18px 10px;
-                height: 20px;
                 border: 1px solid black;
                 border-radius: 3px;
                 background-color: $sidebarText;
@@ -90,7 +89,7 @@
             color: $mainWhite;
             background-color: $mainButton;
             &:hover{
-                background-color: $mainButtonHover;
+                @include hoverButton;
             }
             border-radius: 5px;
             border: none;
@@ -106,5 +105,65 @@
         text-align: center;
         font-size: 12px;
     }
+}
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper{    
+        .wrapper_form{
+                left: 50%;
+                top: 50%; 
+                margin-left: -125px;
+     
+                width: 250px;
+
+                h2 {
+                margin: 10px 0 15px 0;
+                font-size: 18px;
+                line-height: 1.2;
+            }   
+    
+            form {
+            width: 250px;
+            row-gap: 15px;
+            
+            .wrapper_item{  
+                width: 250px;
+
+                gap: 10px;
+
+            input {
+                right: 8px;
+                width: 130px;
+                height: 15px;
+                padding: 10px 5px;
+                font-size: 10px;
+
+            }
+
+            label {
+                font-size: 13px;
+                margin-left: 5px;
+                font-weight: bold;
+            }     
+        }
+
+        button {
+            font-size: 13px;
+
+            margin-top: 10px;
+            height: 25px;
+            
+            padding: 3px 30px;
+            
+        }
+    }
+    
+    p {
+        padding: 0 0 10px 0;
+        margin: 5px auto 0 0;
+        font-size: 10px;
+    }
+}
 }
 }

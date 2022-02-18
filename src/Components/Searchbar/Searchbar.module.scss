@@ -1,12 +1,9 @@
 @import  "../../libs/variabili.scss";
 
 .searchbar {
-   
-   
     display: flex;
     justify-content: center;
     align-items: center;
-
 
     width: 70%;
     height: 60%;
@@ -21,5 +18,12 @@
         border: none;
         border-radius: 3px;
         
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .searchbar {
+        margin: 7px auto;
+
     }
   }
