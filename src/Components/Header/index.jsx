@@ -21,7 +21,7 @@ export const Header = () => {
                 <ModalMobile  hideGroup={hideGroup} setHideGroup={()=>setHideGroup()}/>        
             </div>
                 <div className={style.logo}>
-                    <img src={logo}/>
+                    <img src={logo} alt="logo"/>
                     <h2>Slack clone</h2>
                 </div>
                 <Searchbar/>
