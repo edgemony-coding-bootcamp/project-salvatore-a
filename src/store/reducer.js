@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL, UPDATE_MODAL } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL } from "./constants";
 
 const initStore = {
   users: [],
