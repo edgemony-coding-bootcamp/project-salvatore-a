@@ -2,6 +2,28 @@
 
 .message {
   list-style: none;
+  .lilModal{
+    position: relative;
+    margin: auto 10px auto auto;
+
+    height: 45px;
+    width: 150px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+    button{
+      background-color: transparent;
+      border: none;
+      
+      &:hover{
+        transform: scale(1.2);
+      }
+    }
+    
+  }
 
   .author {
     display: flex;

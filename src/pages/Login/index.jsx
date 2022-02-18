@@ -5,7 +5,7 @@ import { signIn } from "../../libs/firebaseAuth";
 import style from "../../libs/Form.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 
-import Banner from "../Banner";
+import Banner from "../../Components/Banner";
 import { updateShowModal } from "../../store/action";
 
 const Login = () => {
