@@ -14,8 +14,10 @@
         margin: 3px 16px 10px 29px;
 
     }
-    ul{      
+    ul{  
         li {
+              
+            align-items: center;  
             position: relative;
             display: flex;
             justify-content: left;
@@ -30,6 +32,7 @@
 
             span {
                 margin: 0 16px 0 29px;
+                @include myp;
             }
     
             &:hover{
@@ -111,8 +114,9 @@
         
         
         .channelName {
+            
             color: $sidebarText;
-            font-size: 18px;
+            
             margin: 3px 16px 10px 29px;
     
         }
