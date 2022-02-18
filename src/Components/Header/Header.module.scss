@@ -14,14 +14,17 @@
  
   @media screen and (max-width: 767px) {
     .header {
-      height: 35px;
+      height: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       .mediaGroup {
         display: block;
         img {
-          width: 20px;
-          height: 20px;
-          margin-top: 5px;
-          margin-left: 5px;
+          width: 25px;
+          height: 25px;
+          margin: 6px 5px 4px 6px;
+         
         }
       }
     }

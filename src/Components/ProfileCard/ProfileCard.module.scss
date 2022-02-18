@@ -100,6 +100,7 @@
 @media screen and (max-width: 767px) {
   .modal {
     @include positionModal;
+
     
     
     padding-bottom: 50px;
@@ -115,13 +116,14 @@
     .head {
       top: 5px;
       width: 100%;
-      margin: 5px;
+      padding: 5px 10px;
   
       .title {
-        margin: 5px;
+        margin: 0;
         font-size: 20px;
       }
       .closeButton {
+        margin: 0;
         width: 25px;
       }
     }
@@ -141,10 +143,13 @@
       top: 200px;
       color: $mainBlack;
     }
+    .email {
+      top: 225px;
+    }
   
     .editButton {
-      bottom: 20px;
-      left: 100px;
+      bottom: 10px;
+      left: 106px;
       @include buttonModal;
     }
   }
