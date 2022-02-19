@@ -9,13 +9,12 @@
     width: 70%;
     height: 25px;
     margin: 10px auto;
-  
 
     input {
 
         width: 60%;
         height: 100%;
-        
+        padding: 10px;
 
         background-color: $sidebarText;
         color: $mainWhite;
@@ -29,7 +28,7 @@
 
     h3 {
       position: absolute;
-      right: 12%;
+      right: 22%;
       @include myp;
       line-height: 1.4;
       color:$main;
@@ -37,16 +36,34 @@
     }
     .searched {
       width: 60%;
-      height: 350px;
-      overflow: scroll;
+      height: auto;
+      max-height: 250px;
+      padding: 10px;
       position: absolute;
       top: 25px;
       z-index: 2;
-      background-color: $mainWhite;
-      padding: 10px;
+    
       border: 1px solid $sidebarText;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
+
+      overflow-y:scroll;
+      background-color: $mainWhite;
+     
+      &::-webkit-scrollbar {
+        width: 7px;
+        /* width of the entire scrollbar */
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent; 
+        /* color of the tracking area */
+      }  
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(122, 122, 122); /* color of the scroll thumb */
+        border-radius: 20px; /* roundness of the scroll thumb */
+        border: none; /* creates padding around scroll thumb */
+        
+      }
     }
   }
   .hideResult {
@@ -57,6 +74,8 @@
     .searchbar {
       
         margin: 0 0 0 15px;
-
+        .searched {
+          padding: 5px;
+        }
     }
   }
