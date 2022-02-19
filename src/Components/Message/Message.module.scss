@@ -2,6 +2,31 @@
 
 .message {
   list-style: none;
+  .updateMessageForm{
+    width: 90%;
+    height: 60px;
+    position: absolute;
+    .updateMessage{
+      position: relative;
+      width: 250px;
+      padding: 2px 5px;
+      top: 28px;
+      left: 76px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition:all 0.5s ease ;
+    }
+    .hiddenUpdateMessage{
+      position: relative;   
+      top: 28px;
+      left: 76px;
+      width: 0px;
+      border: none;
+      
+      
+    }
+  }
+
   .lilModal{
     position: relative;
     margin: auto 10px auto auto;
@@ -76,6 +101,28 @@
 
 @media screen and (max-width: 767px) {
   .message {
+    .updateMessageForm{
+    .updateMessage{
+      position: absolute;
+      top: 24px;
+      left: 48px;
+    }
+    .hiddenUpdateMessage{
+      position: absolute;   
+      top: 24px;
+      left: 48px;
+      width: 0px;
+      border: none;
+      
+      
+    }
+  }
+    .lilModal{
+      
+      width: 100px;
+      
+      
+    }
     .author {
       img {
         margin: 5px;
