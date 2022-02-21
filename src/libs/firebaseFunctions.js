@@ -78,6 +78,7 @@ async function patchGroups(type, name, update) {
       //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
       messages: update,
     });
+    
   } else if (type === "name") {
     await setDoc(doc(db, "groups", update.name), update);
     await deleteDoc(doc(db, "groups", name))

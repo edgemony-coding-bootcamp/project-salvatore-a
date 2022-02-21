@@ -36,18 +36,21 @@ export const Message = (props) => {
   });
   const [lilModalDisplay, setLilModalDisplay] = useState(false);
   const currentUser = useSelector((state) => state.user);
-
+  
   useEffect(() => {
     const qu = query(
       collection(db, "users"),
       where("id", "==", message.author)
-    );
-    onSnapshot(qu, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        setUser(doc.data());
+      );
+      onSnapshot(qu, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setUser(doc.data());
+        });
       });
-    });
-  }, [message]);
+    }, [message]);
+
+
+  
 
   const [showProfile, setShowProfile] = useState(false);
   function handleDeleteMessage() {
@@ -73,9 +76,11 @@ export const Message = (props) => {
         <ProfileCard show={showProfile} setShow={setShowProfile} user={user} />
       )}
       <li
+        
         onMouseLeave={() => setLilModalDisplay(false)}
         onMouseOver={() => setLilModalDisplay(true)}
         className={style.message}
+        
       >
 
 
