@@ -25,8 +25,8 @@ function toDateTime(secs) {
 export const Message = (props) => {
   const message = props.data;
   const date = message.date || { seconds: 1644405843 };
-  const [updateMessage,setUpdateMessage] = useState({message:message,status:false})
-  
+  const [updateMessage, setUpdateMessage] = useState({ message: message, status: false })
+
   const [user, setUser] = useState({
     name: "",
     lastname: "",
@@ -58,13 +58,13 @@ export const Message = (props) => {
   }
   function handleUpdateMessage(e) {
     e.preventDefault();
-    let updatedMessages = props.messages.map((x) => { 
-      if(x.message_id === message.message_id){return updateMessage.message} 
+    let updatedMessages = props.messages.map((x) => {
+      if (x.message_id === message.message_id) { return updateMessage.message }
       return x
     });
-    
+
     patchGroups("messages", message.message_group, updatedMessages);
-    setUpdateMessage({...updateMessage,status:!updateMessage.status});
+    setUpdateMessage({ ...updateMessage, status: !updateMessage.status });
   }
 
   return (
@@ -105,7 +105,7 @@ export const Message = (props) => {
           {lilModalDisplay && message.author === currentUser.id && (
             <div className={style.lilModal}>
               <button onClick={() => handleDeleteMessage()}>❌</button>
-              <button onClick={()=> setUpdateMessage({...updateMessage,status:!updateMessage.status})}>✍️</button>
+              <button onClick={() => setUpdateMessage({ ...updateMessage, status: !updateMessage.status })}>✍️</button>
             </div>
           )}
         </div>
