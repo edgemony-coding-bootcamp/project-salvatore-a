@@ -1,0 +1,59 @@
+@import  "../../libs/variabili.scss";
+
+.searchResults{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    .name{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        h4{
+            @include myp;        
+            color: $mainBlack;
+        }
+        img {
+            width: 24px;
+            height: auto;
+            border-radius: 4px;
+            margin: 0 10px;
+        }
+    }
+    span {
+        margin: 0 15px;
+    }
+    .results{
+        display: flex;
+        flex-direction: row;
+
+        p{
+            @include myp;
+            color: $mainBlack;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .searchResults{
+        flex-direction: column;
+        padding: 10px 5px;
+        .name{
+            align-self: flex-start;
+            img {
+                margin: 0 5px;
+            }
+        }
+        .results{
+            align-self: flex-start;
+            margin-top: 5px;
+
+            span {
+                display: none;
+            }
+            p {
+                margin-left: 68px;
+            }
+    }
+  }
+
+}

@@ -4,28 +4,78 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     width: 70%;
-    height: 60%;
+    height: 25px;
     margin: 10px auto;
-  
 
     input {
+
         width: 60%;
         height: 100%;
-        
+        padding: 10px;
+
         background-color: $sidebarText;
         color: $mainWhite;
         border: none;
         border-radius: 3px;
         
+        &:focus{
+          outline: none;
+        }
     }
+
+    h3 {
+      position: absolute;
+      right: 22%;
+      @include myp;
+      line-height: 1.4;
+      color:$main;
+      cursor: pointer;
+    }
+    .searched {
+      width: 60%;
+      height: auto;
+      max-height: 250px;
+      padding: 10px;
+      position: absolute;
+      top: 25px;
+      z-index: 2;
+    
+      border: 1px solid $sidebarText;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+
+      overflow-y:scroll;
+      background-color: $mainWhite;
+     
+      &::-webkit-scrollbar {
+        width: 7px;
+        /* width of the entire scrollbar */
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent; 
+        /* color of the tracking area */
+      }  
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(122, 122, 122); /* color of the scroll thumb */
+        border-radius: 20px; /* roundness of the scroll thumb */
+        border: none; /* creates padding around scroll thumb */
+        
+      }
+    }
+  }
+  .hideResult {
+    display: none;
   }
 
   @media screen and (max-width: 767px) {
     .searchbar {
       
         margin: 0 0 0 15px;
-
+        .searched {
+          padding: 5px;
+        }
     }
   }
