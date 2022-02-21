@@ -36,18 +36,21 @@ export const Message = (props) => {
   });
   const [lilModalDisplay, setLilModalDisplay] = useState(false);
   const currentUser = useSelector((state) => state.user);
-
+  
   useEffect(() => {
     const qu = query(
       collection(db, "users"),
       where("id", "==", message.author)
-    );
-    onSnapshot(qu, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        setUser(doc.data());
+      );
+      onSnapshot(qu, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setUser(doc.data());
+        });
       });
-    });
-  }, [message]);
+    }, [message]);
+
+
+  
 
   const [showProfile, setShowProfile] = useState(false);
   function handleDeleteMessage() {
@@ -73,19 +76,21 @@ export const Message = (props) => {
         <ProfileCard show={showProfile} setShow={setShowProfile} user={user} />
       )}
       <li
+        
         onMouseLeave={() => setLilModalDisplay(false)}
         onMouseOver={() => setLilModalDisplay(true)}
         className={style.message}
+        
       >
 
 
         <form className={style.updateMessageForm} onSubmit={(e) => handleUpdateMessage(e)}>
-
+        <label className={style.label} htmlFor={"inputMex" + updateMessage.message.text}>Modifica qui</label>
           <input
             value={updateMessage.message.text}
             onChange={(e) => setUpdateMessage({ ...updateMessage, message: { ...message, text: e.target.value } })}
             className={`${updateMessage.status ? style.updateMessage : style.hiddenUpdateMessage}`}
-            type="text"
+            type="text" id={"inputMex" + updateMessage.message.text}
           />
 
         </form>

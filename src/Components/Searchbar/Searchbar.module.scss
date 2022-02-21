@@ -10,12 +10,14 @@
     height: 25px;
     margin: 10px auto;
 
+
     label {
       img{
         width: 24px;
         margin: 0 5px;
       }
       
+
     }
 
     input {
@@ -25,7 +27,7 @@
         padding: 10px;
 
         background-color: $sidebarText;
-        color: $mainWhite;
+        color: $mainBlack;
         border: none;
         border-radius: 3px;
         
@@ -81,6 +83,15 @@
 
   @media screen and (max-width: 767px) {
     .searchbar {
+      .label{
+        // display: none;
+        color: transparent;
+        height: 1px;
+        width: 1px;
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+      }
       
         margin: 0 0 0 15px;
         .searched {

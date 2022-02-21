@@ -35,14 +35,12 @@ async function addUser(user, uid) {
 //-------------------------------------------------------------/ADD USERS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH USERS---------------------------------------------------------------------------//
-async function patchUser(uid, newData, setColor) {
+async function patchUser(uid, newData) {
   try {
     const docUpdt = await updateDoc(doc(db, "users", uid), newData);
-    setColor("green");
     return docUpdt;
   } catch (e) {
     console.error("Error updating document: ", e);
-    setColor("red");
   }
 }
 //-------------------------------------------------------------/PATCH USERS--------------------------------------------------------------------------//
@@ -80,6 +78,7 @@ async function patchGroups(type, name, update) {
       //mandare un array contenente tutti i messaggi precedenti + il nuovo messaggio
       messages: update,
     });
+    
   } else if (type === "name") {
     await setDoc(doc(db, "groups", update.name), update);
     await deleteDoc(doc(db, "groups", name))

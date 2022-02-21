@@ -16,7 +16,12 @@ const EditProfile = () => {
     const handleUpdate = (e) => {
         e.preventDefault();
         setBanner(false)
-        patchUser(userLogged.id, user, setColor);
+        patchUser(userLogged.id, user)
+        try{
+            setColor("green")
+        } catch (e){
+            setColor("red")
+        }
         setBanner(true)
     }
 
