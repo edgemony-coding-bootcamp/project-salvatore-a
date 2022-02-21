@@ -56,7 +56,7 @@ export const Conversation = () => {
             {groups.length > 0 ? groups.map((group, i) =>
 
                 <Link onClick={()=> GetMessageId(undefined)} to={`/home/${group.name}`} key={group.name} replace >
-                    <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
+                    <div className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
                     <span>#</span>
                     <p>{group.name.replace(/_/g," ")}</p>
                     </div>
