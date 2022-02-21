@@ -14,7 +14,7 @@ const MessageBlockModals = (props) => {
     return(
         <>
         <div className={props.modal ? style.groupModal : null}>
-        <h2>{`#${props.group.name}  ` || ""}</h2>
+        <h2>{`#${props.group.name.replace(/_/g," ")}  ` || ""}</h2>
         <form onSubmit={(e) => handleChangeName(e)}>
           <label htmlFor="updateGroup">Cambia il Nome del Gruppo:</label>
           <input
