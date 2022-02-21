@@ -6,6 +6,9 @@
     width: 90%;
     height: 60px;
     position: absolute;
+    .labelInput{
+      display: none;
+    }
     .updateMessage{
       position: relative;
       width: 250px;
