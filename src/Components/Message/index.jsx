@@ -80,12 +80,12 @@ export const Message = (props) => {
 
 
         <form className={style.updateMessageForm} onSubmit={(e) => handleUpdateMessage(e)}>
-
+        <label className={style.label} for="input">Modifica qui</label>
           <input
             value={updateMessage.message.text}
             onChange={(e) => setUpdateMessage({ ...updateMessage, message: { ...message, text: e.target.value } })}
             className={`${updateMessage.status ? style.updateMessage : style.hiddenUpdateMessage}`}
-            type="text"
+            type="text" id="input"
           />
 
         </form>

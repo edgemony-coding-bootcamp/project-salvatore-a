@@ -10,6 +10,10 @@
     height: 25px;
     margin: 10px auto;
 
+    .label{
+      display: none;
+    }
+
     input {
 
         width: 60%;
@@ -17,7 +21,7 @@
         padding: 10px;
 
         background-color: $sidebarText;
-        color: $mainWhite;
+        color: $mainBlack;
         border: none;
         border-radius: 3px;
         

@@ -7,6 +7,9 @@
     left: 76px;
     height: 60px;
     position: absolute;
+    .label{
+      display: none;
+    }
     .updateMessage{
       position: relative;
       width: 250px;
