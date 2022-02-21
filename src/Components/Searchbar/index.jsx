@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import { SearchResults } from "../SearchResults";
+import searchIcon from "./search_icon_label.png"
 
 export const Searchbar = () => {
   const [input, setInput] = useState("");
@@ -32,7 +33,10 @@ export const Searchbar = () => {
 
   return (
     <div className={style.searchbar}>
+
+      <label><img src={searchIcon} alt='cerca'/></label>
       <input type="text" value={input} onChange={search} />
+
       <h3 className={hidden === true ? style.hideResult : null} onClick={() => {setHidden(true);setInput('')}}>X</h3>
       {searchResults && <div className={`${style.searched} ${hidden === true && style.hideResult}`}>
 

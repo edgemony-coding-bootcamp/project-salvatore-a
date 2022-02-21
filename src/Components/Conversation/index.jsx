@@ -52,16 +52,17 @@ export const Conversation = () => {
         <div className={style.conversation}>
            
             <p className={style.channelName}>Canali</p>
-            <ul>
+            <div className={style.list}>
             {groups.length > 0 ? groups.map((group, i) =>
+
                 <Link onClick={()=> GetMessageId(undefined)} to={`/home/${group.name}`} key={group.name} replace >
                     <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
                     <span>#</span>
                     <p>{group.name.replace(/_/g," ")}</p>
-                    </li>
+                    </div>
                 </Link>)
                 : <li>Nessun Gruppo</li>}
-            </ul>
+            </div>
 
 
             <div className={style.newgroup__wrapper}>
