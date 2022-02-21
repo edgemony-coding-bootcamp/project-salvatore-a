@@ -13,7 +13,6 @@ import ProfileCard from "../ProfileCard";
 import app from "../../libs/firebase.config";
 import { useSelector } from "react-redux";
 import { patchGroups } from "../../libs/firebaseFunctions";
-import { unstable_batchedUpdates } from "react-dom";
 
 const db = getFirestore(app);
 
@@ -81,7 +80,7 @@ export const Message = (props) => {
 
 
         <form className={style.updateMessageForm} onSubmit={(e) => handleUpdateMessage(e)}>
-        <label className={style.label} for={"inputMex" + updateMessage.message.tex}>Modifica qui</label>
+        <label className={style.label} htmlFor={"inputMex" + updateMessage.message.text}>Modifica qui</label>
           <input
             value={updateMessage.message.text}
             onChange={(e) => setUpdateMessage({ ...updateMessage, message: { ...message, text: e.target.value } })}
