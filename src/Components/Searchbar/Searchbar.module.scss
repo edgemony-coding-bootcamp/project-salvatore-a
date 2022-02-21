@@ -11,7 +11,13 @@
     margin: 10px auto;
 
     .label{
-      display: none;
+      // display: none;
+      color: transparent;
+      height: 2px;
+      width: 2px;
+      padding: 0;
+      margin: 0;
+      font-size: 0;
     }
 
     input {
