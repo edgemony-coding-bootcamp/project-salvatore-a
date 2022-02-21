@@ -14,7 +14,8 @@ const initStore = {
         lastname:"",
         photo:"",
         email:""
-    }
+    },
+    messageId: 0
 }
 
 

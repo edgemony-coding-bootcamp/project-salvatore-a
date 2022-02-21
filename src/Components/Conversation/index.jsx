@@ -1,6 +1,6 @@
 import { Link, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { updateUrl } from '../../store/action'
+import { updateUrl, getMessageId } from '../../store/action'
 import { addGroup } from "../../libs/firebaseFunctions";
 import { useEffect, useState } from "react";
 import style from './Conversation.module.scss'
@@ -43,7 +43,9 @@ export const Conversation = () => {
         setActive(i);
     };
 
-    
+    function GetMessageId(index) {
+        dispatch(getMessageId(index));
+      }
 
 
     return (
@@ -52,7 +54,7 @@ export const Conversation = () => {
             <p className={style.channelName}>Canali</p>
             <ul>
             {groups.length > 0 ? groups.map((group, i) =>
-                <Link to={`/home/${group.name}`} key={group.name} replace >
+                <Link onClick={()=> GetMessageId(undefined)} to={`/home/${group.name}`} key={group.name} replace >
                     <li className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
                     <span>#</span>
                     <p>{group.name.replace(/_/g," ")}</p>

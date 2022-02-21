@@ -2,10 +2,18 @@ import style from "./SearchResults.module.scss";
 import { Link } from "react-router-dom";
 import ProfileCard from "../ProfileCard";
 import { useState } from "react";
-
+import { getMessageId } from "../../store/action.js"
+import { useSelector, useDispatch} from "react-redux";
 
 export const SearchResults = (props) => {
+  const dispatch = useDispatch();
   const [showProfile,setShowProfile] = useState(false)
+  const messageIndex = useSelector(state => state.messageId)
+  console.log(messageIndex)
+
+  function GetMessageId(index) {
+    dispatch(getMessageId(index));
+  }
 
   return (
         <div className={style.searchResults}>
@@ -18,7 +26,7 @@ export const SearchResults = (props) => {
             {showProfile && <ProfileCard show={showProfile} setShow={setShowProfile} user={props.text}/>}         
             <Link className= {style.results} onClick={()=> {props.setHidden(true); props.setInput('')}} to={`/home/${props.text.message_group}`}> 
               <span> - </span>
-              <p>{props.text.text}</p>
+              <p onClick={()=> GetMessageId(props.text.index)}>{props.text.text}</p>
             </Link>
          </div>
   )

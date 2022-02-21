@@ -9,17 +9,17 @@ import {
   where,
   limit,
 } from "firebase/firestore";
-
+import { getMessageId } from "../../store/action.js"
 import style from "./MessageBlock.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
 import MessageBlockModals from "../MessageBlockModals";
-
+import { useDispatch } from "react-redux";
 
 const db = getFirestore(app);
 
 export const MessageBlock = () => {
-  
+  const dispatch = useDispatch();
   const url = useSelector((state) => state.url);
   const authorId = useSelector((state) => state.user.id);
 
@@ -29,6 +29,8 @@ export const MessageBlock = () => {
     name:"",
     messages: [],
   });
+  const messageIndex = useSelector(state => state.messageId)
+  console.log(messageIndex)
 
   
 
@@ -62,28 +64,34 @@ export const MessageBlock = () => {
     photo: "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png",
   });
 
+  function GetMessageId(index) {
+    dispatch(getMessageId(index));
+  }
+
   
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       patchGroups("messages", group.name, [...group.messages, message]);
-      
       setMessage({ ...message, text: "" });
-      
+      GetMessageId(undefined)
     }
   }
   
   const ulElement = useRef();
   useEffect(() => {
-    if(group.messages.length > 0){
+    if (messageIndex === undefined) {
       setTimeout(() => {
         ulElement.current.lastChild.scrollIntoView({behavior: 'smooth',block:'end'});
-        
-        console.log(ulElement.current.childElementCount)
-      }, 200);    
-    }
-  }, [group.messages]);
-  
-  
+      }, 200);} 
+
+      else {
+        setTimeout(() => {
+          
+          ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
+        }, 200);
+      }
+  }, [group.messages,messageIndex]);
+
 
   return (
 
