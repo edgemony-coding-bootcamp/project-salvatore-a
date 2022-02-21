@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Message } from "../Message";
-import { useEffect, useState } from "react";
+import { useEffect,  useRef,  useState } from "react";
 import {
   onSnapshot,
   query,
@@ -42,6 +42,7 @@ export const MessageBlock = () => {
           
         });
       });
+      
     } else {
       const qg = query(collection(db, "groups"), limit(1));
       onSnapshot(qg, (querySnapshot) => {
@@ -61,14 +62,27 @@ export const MessageBlock = () => {
     photo: "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png",
   });
 
-
+  
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       patchGroups("messages", group.name, [...group.messages, message]);
-
+      
       setMessage({ ...message, text: "" });
+      
     }
   }
+  
+  const ulElement = useRef();
+  useEffect(() => {
+    if(group.messages.length > 0){
+      setTimeout(() => {
+        ulElement.current.lastChild.scrollIntoView({behavior: 'smooth',block:'end'});
+        
+        console.log(ulElement.current.childElementCount)
+      }, 200);    
+    }
+  }, [group.messages]);
+  
   
 
   return (
@@ -91,10 +105,10 @@ export const MessageBlock = () => {
                 </div>
               </div>
 
-              <ul>
+              <ul ref={ulElement}>
                 {group.messages.map((message, index) =>
                   group.messages.length > 0 ? (
-                    <Message key={index} data={message} messages={group.messages} />
+                    <Message  key={index} data={message} messages={group.messages} />
                   ) : (
                     <h3>"nessun messaggio"</h3>
                   )
