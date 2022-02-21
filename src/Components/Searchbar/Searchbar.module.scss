@@ -10,6 +10,14 @@
     height: 25px;
     margin: 10px auto;
 
+    label {
+      img{
+        width: 24px;
+        margin: 0 5px;
+      }
+      
+    }
+
     input {
 
         width: 60%;
@@ -28,7 +36,7 @@
 
     h3 {
       position: absolute;
-      right: 22%;
+      right: 20%;
       @include myp;
       line-height: 1.4;
       color:$main;
@@ -37,6 +45,7 @@
     .searched {
       width: 60%;
       height: auto;
+      margin-left: 34px;
       max-height: 250px;
       padding: 10px;
       position: absolute;
