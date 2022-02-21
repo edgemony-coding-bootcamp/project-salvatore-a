@@ -85,7 +85,7 @@ export const Message = (props) => {
             value={updateMessage.message.text}
             onChange={(e) => setUpdateMessage({ ...updateMessage, message: { ...message, text: e.target.value } })}
             className={`${updateMessage.status ? style.updateMessage : style.hiddenUpdateMessage}`}
-            type="text" name="inputMex"
+            type="text" id={"inputMex" + Math.random()}
           />
 
         </form>
