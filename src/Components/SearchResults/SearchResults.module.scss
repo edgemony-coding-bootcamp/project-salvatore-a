@@ -12,6 +12,11 @@
             @include myp;        
             color: $mainBlack;
         }
+
+        .icon{
+            width: 24px;
+            margin: 0
+        }
         img {
             width: 24px;
             height: auto;
