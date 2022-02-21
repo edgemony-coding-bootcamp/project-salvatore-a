@@ -32,7 +32,7 @@ export const Searchbar = () => {
   return (
     <div className={style.searchbar}>
       <label className={style.label} for="inputSearchbar">Cerca qui</label>
-      <input type="text" value={input} onChange={search}  id="inputSearchbar"/>
+      <input type="text" value={input} onChange={search}  name="inputSearchbar"/>
       <h3 className={hidden === true ? style.hideResult : null} onClick={() => {setHidden(true);setInput('')}}>X</h3>
       {searchResults && <div className={`${style.searched} ${hidden === true && style.hideResult}`}>
 
