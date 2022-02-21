@@ -35,14 +35,12 @@ async function addUser(user, uid) {
 //-------------------------------------------------------------/ADD USERS----------------------------------------------------------------------------//
 
 //-------------------------------------------------------------PATCH USERS---------------------------------------------------------------------------//
-async function patchUser(uid, newData, setColor) {
+async function patchUser(uid, newData) {
   try {
     const docUpdt = await updateDoc(doc(db, "users", uid), newData);
-    setColor("green");
     return docUpdt;
   } catch (e) {
     console.error("Error updating document: ", e);
-    setColor("red");
   }
 }
 //-------------------------------------------------------------/PATCH USERS--------------------------------------------------------------------------//
