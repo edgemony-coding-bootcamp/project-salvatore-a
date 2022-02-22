@@ -39,6 +39,7 @@
     h3 {
       position: absolute;
       right: 20%;
+      
       @include myp;
       line-height: 1.4;
       color:$main;
@@ -82,20 +83,16 @@
   }
 
   @media screen and (max-width: 767px) {
+
     .searchbar {
-      .label{
-        // display: none;
-        color: transparent;
-        height: 1px;
-        width: 1px;
-        padding: 0;
-        margin: 0;
-        font-size: 0;
-      }
-      
+
         margin: 0 0 0 15px;
         .searched {
+          top: 32px;
+          
+          width: 90%;
           padding: 5px;
+          margin: 0px 0px 0 5px;
         }
     }
   }

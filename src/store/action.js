@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL, MESSAGE_ID} from "./constants";
 
 const fetchUsers = (users) => {
   return async (dispatch) => {
@@ -29,4 +29,10 @@ const updateUser = (user) => {
   }
 }
 
-export { fetchUsers, fetchGroups, updateLogin, updateUser, updateUrl };
+const getMessageId = (messageID) => {
+  return (dispatch) => {
+    dispatch({type: MESSAGE_ID, payload: messageID})
+  }
+}
+
+export { fetchUsers, fetchGroups, updateLogin, updateUser, updateUrl, getMessageId };
