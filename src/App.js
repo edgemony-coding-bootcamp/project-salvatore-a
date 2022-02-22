@@ -3,13 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+
 import { onCheck} from "./libs/firebaseAuth";
 
-
-// import Home from "./pages/Home";
-// import EditProfile from "./pages/EditProfile";
-// import Login from "./pages/Login";
-// import Signup from "./pages/Sign-up";
 import {Loader} from "./Components/Loader";
 
 const Home = lazy(()=> import ("./pages/Home"));
@@ -51,11 +47,7 @@ function App() {
         <Route path="/home/:id" element={
           <Suspense fallback={<Loader />}>
             <Home/> 
-          </Suspense>} />      
-        <Route path="/signup" element={
-          <Suspense fallback={<Loader />}>
-            <SignUp/> 
-          </Suspense>} />
+          </Suspense>} />  
         <Route path="/edit_profile" element={
           <Suspense fallback={<Loader />}>
             <EditProfile/> 

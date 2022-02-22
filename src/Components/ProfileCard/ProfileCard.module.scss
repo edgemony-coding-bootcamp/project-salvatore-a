@@ -1,173 +1,181 @@
 @import "../../libs/variabili.scss";
 
-    .modal {
-      z-index: 3;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+.modal_background {
+  z-index: 5;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100vh;
+  width: 100%;
+  background-color: $overlay;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-
-      width: 450px;
-      height: 600px;
-      max-width: 100%;
-      max-height: 100%;
-
-      background: $mainGray;
-      //border-radius: 8px;
-      border: 2px solid $sidebarText;
-
-      transition: opacity 0.35s;
-      button {
-        cursor: pointer;
-        border: none;
-        
-      }
-
-      .head {
-        top: 5px;
-        width: 100%;
-        margin: 5px;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        position: absolute;
-
-        .closeButton {
-          width: 30px;
-          height: 30px;
-          margin: 10px 20px;
-          border-radius: 5px;
-          font-size: 16px;
-          color: gray;
-          background-color: transparent;
-
-          &:hover {
-            background-color: rgba(189, 185, 185, 0.13);
-            color: $mainBlack;
-          }
-        }
-      }
-
-      img {
-        position: absolute;
-        border-radius: 8px;
-        top: 60px;
-        width: 250px;
-        height: 250px;
-      }
-
-      .name {
-        position: absolute;
-        top: 310px;
-        margin: 10px auto;
-        color: $mainBlack;
-        @include myh2;
-      }
-
-      p {
-        position: absolute;
-        top: 380px;
-        @include myp;
-        color: black;
-      }
-
-      .email {
-        top: 400px;
-        color: $mainBlack;
-      }
-
-      .email_black{
-        color: $mainBlack;
-        font-weight: 400;
-      }
-
-      .editButton {
-        position: absolute;
-        bottom: 30px;
-        left: 160px;
-        padding: 10px 40px;
-        border-radius: 5px;
-        background-color: $mainButton;
-        color: $mainWhite;
-
-        &:hover {
-          background-color: $mainButtonHover;
-          text-decoration-line: underline;
-          text-decoration-thickness: 1px;
-        }
-
-        &:disabled {
-          background-color: gray;
-          cursor: default;
-          text-decoration: none;
-        }
-      }
-    }
-  
-    .buttonHidden {
-      display: none;
-    }
-
-
-@media screen and (max-width: 767px) {
   .modal {
-    @include positionModal;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-    
-    
-    padding-bottom: 50px;
-    transform: none;
-    height: 300px;
-  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 450px;
+    height: 500px;
+    max-width: 100%;
+    max-height: 100%;
+
+    background: $mainGray;
+    border: 2px solid $sidebarText;
+
+    transition: opacity 0.35s;
     button {
-     @include buttonModal;
-     &:hover {
-       @include hoverButton;
-     }
+      cursor: pointer;
+      border: none;
     }
+
     .head {
       top: 5px;
       width: 100%;
-      padding: 5px 10px;
-  
-      .title {
-        margin: 0;
+      margin: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      position: absolute;
+
+      .closeButton {
+        width: 30px;
+        height: 30px;
+        margin: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        color: gray;
+        background-color: transparent;
+
+        &:hover {
+          background-color: rgba(189, 185, 185, 0.13);
+          color: $mainBlack;
+        }
+      }
+    }
+
+    img {
+      position: absolute;
+      border-radius: 8px;
+      top: 60px;
+      width: 250px;
+      height: 250px;
+    }
+
+    .name {
+      position: absolute;
+      top: 310px;
+      margin: 10px auto;
+      color: $mainBlack;
+      @include myh2;
+    }
+
+    p {
+      position: absolute;
+      top: 380px;
+      @include myp;
+      color: $mainBlack;
+    }
+
+    .email {
+      top: 400px;
+      color: $mainBlack;
+    }
+
+    .email_black {
+      color: $mainBlack;
+      font-weight: 400;
+    }
+
+    .editButton {
+      position: absolute;
+      bottom: 30px;
+      left: 160px;
+      padding: 10px 40px;
+      border-radius: 5px;
+      background-color: $mainButton;
+      color: $mainWhite;
+
+      &:hover {
+        background-color: $mainButtonHover;
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+      }
+
+      &:disabled {
+        background-color: $mainGray;
+        cursor: default;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .buttonHidden {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal_background {
+    width: 100%;
+    .modal {
+      @include positionModal;
+
+      padding-bottom: 50px;
+      transform: none;
+      height: 300px;
+
+      button {
+        @include buttonModal;
+        &:hover {
+          @include hoverButton;
+        }
+      }
+      .head {
+        top: 5px;
+        width: 100%;
+        padding: 5px 10px;
+
+        .title {
+          margin: 0;
+          font-size: 20px;
+        }
+        .closeButton {
+          margin: 0;
+          width: 25px;
+        }
+      }
+      img {
+        top: 40px;
+        width: 120px;
+        height: 120px;
+      }
+
+      .name {
+        top: 160px;
+        color: $mainBlack;
         font-size: 20px;
       }
-      .closeButton {
-        margin: 0;
-        width: 25px;
+
+      p {
+        top: 210px;
+        color: $mainBlack;
       }
-    }
-    img {
-      top: 60px;
-      width: 100px;
-      height: 100px;
-    }
-  
-    .name {
-      top: 150px;
-      color: $mainBlack;
-      font-size: 20px;
-    }
-  
-    p {
-      top: 200px;
-      color: $mainBlack;
-    }
-    .email {
-      top: 225px;
-    }
-  
-    .editButton {
-      bottom: 10px;
-      left: 106px;
-      @include buttonModal;
+      .email {
+        top: 230px;
+      }
+
+      .editButton {
+        bottom: 10px;
+        left: 106px;
+        @include buttonModal;
+      }
     }
   }
 }
