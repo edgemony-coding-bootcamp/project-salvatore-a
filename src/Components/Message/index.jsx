@@ -98,6 +98,7 @@ export const Message = (props) => {
           <img
             src={user.photo}
             alt={user.name}
+            loading="lazy"
             onClick={() => setShowProfile(!showProfile)}
           />
           <div className={style.nameText}>

@@ -17,11 +17,11 @@ export const Header = () => {
         <>
             <div className={style.header}>
             <div className={style.mediaGroup}>
-                <img src={logo} onClick={toggleMenu} alt="navbar"/>
+                <img src={logo} onClick={toggleMenu} alt="navbar" loading="lazy"/>
                 <ModalMobile  hideGroup={hideGroup} setHideGroup={()=>setHideGroup()}/>        
             </div>
                 <div className={style.logo}>
-                    <img src={logo} alt="logo"/>
+                    <img src={logo} alt="logo" loading="lazy"/>
                     <h2>Slack clone</h2>
                 </div>
                 <Searchbar/>
