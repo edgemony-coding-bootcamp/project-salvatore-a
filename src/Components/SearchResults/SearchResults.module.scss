@@ -1,9 +1,12 @@
 @import  "../../libs/variabili.scss";
 
 .searchResults{
+    
     padding: 10px;
     display: flex;
     align-items: center;
+    justify-content: left;
+    text-align: left;
     .name{
         display: flex;
         align-items: center;
@@ -34,6 +37,9 @@
         p{
             @include myp;
             color: $mainBlack;
+            display: flex;
+            text-align: center;
+            align-items: center;
         }
     }
 }

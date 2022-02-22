@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
+
 import { updateLogin, updateUser } from "../store/action";
 
 import { addUser, patchUser } from "./firebaseFunctions";
@@ -39,15 +40,17 @@ function onCheck(id, dispatch) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       let uid = user.uid;
-      patchUser(uid, {logged:true});
-      dispatch(updateLogin(true));
-      
-
-    } else {
-      if (id) {
-        patchUser(id, {logged:false});
+      if (user.uid){
+        patchUser(uid, {logged:true});
+        dispatch(updateLogin(true));
       }
     }
+    else if (auth.currentUser === null && id) {
+      patchUser(id, {logged:false});
+      console.log(id)
+      dispatch(updateUser({ id: "", name: "", lastname: "", photo: "" }))
+    }
+
   });
 }
 
@@ -59,7 +62,7 @@ function logOut(dispatch) {
     .catch((error) => {
       console.log(error);
     });
-  dispatch(updateUser({ id: "", name: "", lastname: "", photo: "" }))
+  
 }
 
 export { signup, signIn, onCheck, logOut };
