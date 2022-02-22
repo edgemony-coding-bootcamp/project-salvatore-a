@@ -42,7 +42,8 @@ const Login = () => {
             <div className={style.wrapper_item}>
               <label> Email: </label>
               <input
-                className={ banner && style.error}
+                className={ banner ? style.error : null}
+                
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
                 type="email"
                 placeholder="email@example.it"
@@ -52,8 +53,8 @@ const Login = () => {
             <div className={style.wrapper_item}>
               <label> Password: </label>
               <input
-                className={banner && style.error}
-                autoComplete={false}
+                className={banner ? style.error : null}
+                
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
                 type="password"
                 placeholder="******"
