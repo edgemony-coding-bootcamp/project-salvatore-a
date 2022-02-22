@@ -80,22 +80,29 @@
       .buttonGroup {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        margin-top: 20px;
+        justify-content: space-evenly;
+        margin-top: 15px;
+        height: 40px;
 
         .modifyButton {
-          padding: 10px 40px;
+          
           background-color: $mainButton;
           &:hover {
             @include hoverButton;
           }
+          a{
+            padding: 10px 40px;
+          }
         }
 
         .deleteButton {
-          padding: 10px 40px;
+          
           background-color: $redButton;
           &:hover {
             @include hoverButtonRed;
+          }
+          a{
+            padding: 10px 40px;
           }
         }
       }

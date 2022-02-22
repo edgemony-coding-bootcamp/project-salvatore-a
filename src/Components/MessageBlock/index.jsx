@@ -80,13 +80,14 @@ export const MessageBlock = () => {
 
   const ulElement = useRef();
   useEffect(() => {
-    if (messageIndex === undefined) {
+    
+    if (ulElement.current.children.length > 0 && messageIndex === undefined) {
       setTimeout(() => {
         ulElement.current.lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }, 200);
     }
 
-    else {
+    else if(ulElement.current.children.length > 0) {
       setTimeout(() => {
 
         ulElement.current.children[messageIndex].scrollIntoView({ behavior: 'smooth', block: 'end' });
