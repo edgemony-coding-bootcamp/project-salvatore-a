@@ -7,7 +7,7 @@ import style from './Conversation.module.scss'
 
 
 
-export const Conversation = () => {
+export const Conversation = (props) => {
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");
@@ -47,6 +47,7 @@ export const Conversation = () => {
         dispatch(getMessageId(index));
       }
 
+      const component = props.component;
 
     return (
         <div className={style.conversation}>
@@ -67,7 +68,7 @@ export const Conversation = () => {
 
             <div className={style.newgroup__wrapper}>
                 <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "+" : "×"} </button>
-                <label htmlFor='addGroup'>Aggiungi gruppo</label>
+                <label htmlFor={component}>Aggiungi gruppo</label>
                 <input
                     className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
                     type="textarea"
@@ -75,7 +76,7 @@ export const Conversation = () => {
                     onChange={(e) => setNewGroup(e.target.value)}
                     onKeyDown={handleInput}
                     placeholder="Premi Invio Per Confermare"
-                    id="addGroup"
+                    id={component}
                 />  <p>Aggiungi Gruppi</p>
             </div>
         </div>
