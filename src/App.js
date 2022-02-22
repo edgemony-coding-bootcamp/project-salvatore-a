@@ -40,6 +40,7 @@ function App() {
         <Route path="/signup" element={<Signup />}/>
         <Route path="/edit_profile" element={<EditProfile />}/>
       </Routes>
+      
     </>
   );
 }
