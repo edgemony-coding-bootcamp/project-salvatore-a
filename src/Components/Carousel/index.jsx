@@ -1,9 +1,9 @@
 import styles from "./Carousel.module.scss";
 
 import { useEffect, useState } from "react";
-import slideOne from '../../img/slide_1.jpg'
-import slideTwo from '../../img/slide_2.jpg'
-import slideThree from '../../img/slide_3.jpg'
+import slideOne from '../../img/thor.png'
+import slideTwo from '../../img/deadpool.png'
+import slideThree from '../../img/wolverine.png'
 
 
 let carouselData = [slideOne,slideTwo,slideThree];
