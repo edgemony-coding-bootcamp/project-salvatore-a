@@ -3,7 +3,7 @@ import { Searchbar } from "../Searchbar";
 import { Profile } from '../Profile'
 import style from "./Header.module.scss";
 import { ModalMobile } from "../ModalMobile";
-import logo from "./logo256.png"
+import logo from "../../img/logo256.png"
 
 export const Header = () => {
     const [hideGroup, setHideGroup] = useState(true);

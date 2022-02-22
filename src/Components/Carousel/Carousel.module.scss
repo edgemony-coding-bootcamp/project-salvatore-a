@@ -1,0 +1,89 @@
+.carousel {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  width: 50%;
+  height: 100vh;
+  .inner {
+    
+    
+    white-space: nowrap;
+    transition: transform 0.3s infinite;
+
+    .slides {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      
+      background-repeat: repeat;
+      
+
+      color: #fff;
+      img {        
+        height: 100%;
+             
+        
+      }
+    }
+  }
+
+  .buttonLeft {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    background: none;
+    border: none;
+    transition: all 0.4s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .buttonRight {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    background: none;
+    border: none;
+    transition: all 0.4s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.movementMinus {
+  animation: myMoveMinus 0.5s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes myMoveMinus {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0%;
+  }
+}
+
+.movementMax {
+  animation: myMoveMax 0.5s ease;
+  animation-fill-mode: forwards;
+}
+@keyframes myMoveMax {
+  from {
+    right: 0;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .carousel{
+    width: 0px;
+  }
+}
