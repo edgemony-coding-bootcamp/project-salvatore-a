@@ -103,9 +103,8 @@
 @media screen and (max-width: 767px) {
   .messageBlock_container {
     width: 100%;
-    height: calc(100vh - 45px);
-    .messageBlock {
-
+    height: calc(100vh - 60px);
+  .messageBlock{
       padding-right: 2px;
 
       .groupName {

@@ -31,16 +31,17 @@
  
   @media screen and (max-width: 767px) {
     .header {
-      height: 40px;
+      height: 60px;
       display: flex;
       flex-direction: row;
       align-items: center;
       .mediaGroup {
         display: block;
+        
         img {
-          width: 30px;
-          height: 30px;
-          margin: 6px 5px 0px 6px;
+          width: 35px;
+          height: 35px;
+          margin-left: 5px;
          
         }
       }
