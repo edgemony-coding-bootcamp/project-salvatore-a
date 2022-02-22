@@ -40,24 +40,26 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             {banner && <h5>Email o Password Errati</h5>}
             <div className={style.wrapper_item}>
-              <label> Email: </label>
+              <label htmlfor="userEmail"> Email: </label>
               <input
                 className={ banner ? style.error : null}
                 
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
                 type="email"
                 placeholder="email@example.it"
+                id="userEmail"
                 required
               />
             </div>
             <div className={style.wrapper_item}>
-              <label> Password: </label>
+              <label htmlFor="userPassword"> Password: </label>
               <input
                 className={banner ? style.error : null}
                 
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
                 type="password"
                 placeholder="******"
+                id="userPassword"
                 required
               />
             </div>
