@@ -46,12 +46,12 @@
                 display: flex;
                 flex-direction: column; 
                 label{
-                    font-size: 28px;   
+                    font-size: 22px;   
                     font-weight: bold; 
                     margin-bottom:10px;
                 }
                 input{
-                    font-size: 26px;
+                    font-size: 20px;
                     
                     
                     margin-bottom:30px;
@@ -95,7 +95,7 @@
                 
             }
             button{
-                font-size: 26px;
+                font-size: 20px;
                 font-weight: bold;
                 padding: 10px 35px;
                 border: none;
@@ -188,10 +188,15 @@
             left: 50%;
         }
         .head{
+            top: 15px;
             width: 100%;
             left: 0;
+            img{
+                position: fixed;
+                left: 5px;
+            }
             h1{
-                font-size: 40px;
+                font-size: 28px;
             }
         }
     }
