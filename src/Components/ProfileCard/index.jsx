@@ -16,7 +16,7 @@ const ProfileCard = (props) => {
                         X
                     </button>
                 </div>
-                <img src={props.user.photo} alt={props.user.name}></img>
+                <img src={props.user.photo} alt={props.user.name} loading="lazy"/>
                 <h2 className={style.name}>{props.user.name + ` ` + props.user.lastname}</h2>
                 <p className={style.email_black}>Email</p>
                 <p className={style.email}>{props.user.email}</p>

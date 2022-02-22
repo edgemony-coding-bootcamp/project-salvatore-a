@@ -30,7 +30,7 @@ const Login = () => {
       <Carousel  />
       <div className={`${style.wrapper_form} ${switchPage && style.switch}`}>
         <div className={style.head}>
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" loading="lazy"/>
           <h1> Slack-Clone</h1>
         </div>
         <div className={style.wrapper_reg}>

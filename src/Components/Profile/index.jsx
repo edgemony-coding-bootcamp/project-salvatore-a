@@ -14,7 +14,7 @@ export const Profile = () => {
             {/* <ProfileModals name={user.name + " " + user.lastname} photo={user.photo} hidden={hidden} setHidden={()=>setHidden()}/> */}
             <ProfileModals userData={user} hidden={hidden} setHidden={setHidden}/>
             
-            <img onClick={()=> setHidden(!hidden)} className={style.profileImg} src={user.photo} alt={user.name} />
+            <img onClick={()=> setHidden(!hidden)} className={style.profileImg} src={user.photo} alt={user.name} loading="lazy" />
         </div>
     )
 }
