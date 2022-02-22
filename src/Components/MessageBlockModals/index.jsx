@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
-import style from '../MessageBlock/MessageBlock.module.scss'
+import style from '../MessageBlock/MessageBlock.module.scss';
+//import style from "./MessageBlockModals.module.scss";
+
+
 
 
 const MessageBlockModals = (props) => {
