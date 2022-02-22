@@ -5,7 +5,6 @@ import { signup } from "../../libs/firebaseAuth";
 import style from "../../libs/Form.module.scss";
 
 
-
 const Signup = () => {
     const [user,setUser] = useState({})
 
