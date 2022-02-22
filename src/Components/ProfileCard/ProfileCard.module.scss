@@ -50,7 +50,7 @@
         margin: 10px 20px;
         border-radius: 5px;
         font-size: 16px;
-        color: gray;
+        color: $mainGray;
         background-color: transparent;
 
         &:hover {
@@ -80,7 +80,7 @@
       position: absolute;
       top: 380px;
       @include myp;
-      color: black;
+      color: $mainBlack;
     }
 
     .email {
@@ -109,7 +109,7 @@
       }
 
       &:disabled {
-        background-color: gray;
+        background-color: $mainGray;
         cursor: default;
         text-decoration: none;
       }
