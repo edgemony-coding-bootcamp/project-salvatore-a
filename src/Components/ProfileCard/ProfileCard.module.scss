@@ -1,101 +1,118 @@
 @import "../../libs/variabili.scss";
 
-.modal {
-  z-index: 3;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    .modal {
+      z-index: 3;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
 
-  width: 450px;
-  height: 600px;
-  max-width: 100%;
-  max-height: 100%;
+      width: 450px;
+      height: 600px;
+      max-width: 100%;
+      max-height: 100%;
 
-  background: $mainGray;
-  border-radius: 15px;
-  border: 1px solid $mainBlack;
+      background: $mainGray;
+      //border-radius: 8px;
+      border: 2px solid $sidebarText;
 
-  transition: opacity 0.35s;
-  button {
-    padding: 0px 15px;
-    color: $mainWhite;
-    cursor: pointer;
+      transition: opacity 0.35s;
+      button {
+        cursor: pointer;
+        border: none;
+        
+      }
 
-    border-radius: 5px;
-    border: none;
-    background-color: $mainButton;
-    &:hover {
-      background-color: $mainButtonHover;
-      text-decoration-line: underline;
-      text-decoration-thickness: 1px;
+      .head {
+        top: 5px;
+        width: 100%;
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        position: absolute;
+
+        .closeButton {
+          width: 30px;
+          height: 30px;
+          margin: 10px 20px;
+          border-radius: 5px;
+          font-size: 16px;
+          color: gray;
+          background-color: transparent;
+
+          &:hover {
+            background-color: rgba(189, 185, 185, 0.13);
+            color: $mainBlack;
+          }
+        }
+      }
+
+      img {
+        position: absolute;
+        border-radius: 8px;
+        top: 60px;
+        width: 250px;
+        height: 250px;
+      }
+
+      .name {
+        position: absolute;
+        top: 310px;
+        margin: 10px auto;
+        color: $mainBlack;
+        @include myh2;
+      }
+
+      p {
+        position: absolute;
+        top: 380px;
+        @include myp;
+        color: black;
+      }
+
+      .email {
+        top: 400px;
+        color: $mainBlack;
+      }
+
+      .email_black{
+        color: $mainBlack;
+        font-weight: 400;
+      }
+
+      .editButton {
+        position: absolute;
+        bottom: 30px;
+        left: 160px;
+        padding: 10px 40px;
+        border-radius: 5px;
+        background-color: $mainButton;
+        color: $mainWhite;
+
+        &:hover {
+          background-color: $mainButtonHover;
+          text-decoration-line: underline;
+          text-decoration-thickness: 1px;
+        }
+
+        &:disabled {
+          background-color: gray;
+          cursor: default;
+          text-decoration: none;
+        }
+      }
     }
-  }
-
-  .head {
-    top: 5px;
-    width: 100%;
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: absolute;
-
-    .title {
-      text-align: left;
-      margin: 5px;
-      @include myh1;
+  
+    .buttonHidden {
+      display: none;
     }
-    .closeButton {
-      margin: 5px;
-      font-size: 16px;
-    }
-  }
 
-  img {
-    position: absolute;
-    border-radius: 10px;
-    top: 60px;
-    width: 250px;
-    height: 250px;
-  }
-
-  .name {
-    position: absolute;
-    top: 310px;
-    margin: 10px auto;
-    color: $mainBlack;
-    @include myh2;
-  }
-
-  p {
-    position: absolute;
-    top: 380px;
-    @include myp;
-    color: $mainBlack;
-  }
-
-  .email {
-    top: 400px;
-  }
-
-  .editButton {
-    position: absolute;
-    bottom: 30px;
-    left: 160px;
-    padding: 10px 40px;
-    &:disabled {
-      background-color: gray;
-      cursor: default;
-      text-decoration: none;
-    }
-  }
-}
 
 @media screen and (max-width: 767px) {
   .modal {

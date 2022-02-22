@@ -10,10 +10,11 @@ import {
   limit,
 } from "firebase/firestore";
 
-import style from "./MessageBlock.module.scss";
+
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
 import MessageBlockModals from "../MessageBlockModals";
+import style from "./MessageBlock.module.scss";
 
 
 const db = getFirestore(app);

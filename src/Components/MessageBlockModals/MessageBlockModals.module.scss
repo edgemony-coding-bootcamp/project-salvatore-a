@@ -1,0 +1,92 @@
+/*@import "../../libs/variabili.scss";
+
+.modalBackground {
+    position: absolute;
+    z-index: 5;
+    height: calc(100vh - 55px);
+    width: 100%;
+    background-color: $overlay;
+  
+    .groupModal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -20% 0 0 -21%;
+      height: auto;
+      width: 42%;
+      min-width: 400px;
+      z-index: 6;
+  
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: left;
+  
+      background-color: $mainGray;
+      border-radius: 4px;
+      opacity: 2 !important;
+  
+      padding-bottom: 50px;
+  
+      h2 {
+        top: 0;
+        margin: 10px auto;
+        position: relative;
+        padding-bottom: 20px;
+      }
+  
+      form {
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
+          input {
+          margin-top: 10px;
+          border-radius: 3px;
+          padding: 10px;
+        }
+        .modifyButton{
+          width: 132px;
+          margin-top: 10px;
+          font-size: 16px;
+          background-color: $mainButton;
+          &:hover {
+            @include hoverButton;
+          }
+  
+        }
+      }
+      .deleteGroup {
+        padding: 10px 40px;
+  
+        .deleteButton {
+          margin-top: 10px;
+          font-size: 16px;
+          background-color: $redButton;
+          &:hover {
+            @include hoverButtonRed
+          }
+        }
+      }
+      .closeButton {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+  
+        margin-left: -63px;
+        font-size: 16px;
+        background-color: $mainButton;
+        &:hover {
+          @include hoverButton;
+        }
+      }
+      button {
+        padding: 10px 40px;
+        color: $mainWhite;
+  
+        border-radius: 5px;
+        border: none;
+      }
+    }
+  }
+
+  */
