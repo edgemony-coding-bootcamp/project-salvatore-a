@@ -15,6 +15,11 @@ $redButton: #851414;
 $redButtonHover: #a13131;
 $overlay: rgba(80, 80, 80, 0.63);
 
+a{
+    color: $mainWhite;
+    text-decoration: none;
+}
+
 // Fonts // 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
 $mainFont:'Noto Sans', sans-serif; 
