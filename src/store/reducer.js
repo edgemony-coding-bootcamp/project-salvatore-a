@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL, MESSAGE_ID } from "./constants";
 
 const initStore = {
   users: [],
@@ -48,6 +48,11 @@ const myReducer = (state = initStore, action) => {
           email: payload.email
         }
       }
+    case MESSAGE_ID:
+      return {
+          ...state,
+          messageId: action.payload
+        }
     default:
       return initStore;
   }
