@@ -83,11 +83,6 @@ export const MessageBlock = () => {
         ulElement.current.lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }, 200);
     }
-
-    else {
-      setTimeout(() => {
-
-
       else {
         setTimeout(() => {   
           ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
