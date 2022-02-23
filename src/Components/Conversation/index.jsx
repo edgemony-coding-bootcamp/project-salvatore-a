@@ -26,7 +26,7 @@ export const Conversation = (props) => {
 
     function handleInput(e) {
         if (e.key === "Enter" || e.keyCode === "13") {
-            addGroup(newGroup.replace(/ /g,"_"));
+            addGroup(newGroup.replace(/ /g, "_"));
             setNewGroup("");
             setIsClicked(!isClicked)
         }
@@ -40,37 +40,37 @@ export const Conversation = (props) => {
     )
 
     useEffect(() => {
-        groups.map((group,i )=> group.name === url?toggleActive(i):null)
+        groups.map((group, i) => group.name === url ? toggleActive(i) : null)
         //
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url]
     )
 
- 
+
     const toggleActive = (i) => {
         setActive(i);
     };
 
     function GetMessageId(index) {
         dispatch(getMessageId(index));
-      }
+    }
 
-      const component = props.component;
+    const component = props.component;
 
     return (
         <div className={style.conversation}>
-           
+
             <p className={style.channelName}>Canali</p>
             <div className={style.list}>
-            {groups.length > 0 ? groups.map((group, i) =>
+                {groups.length > 0 ? groups.map((group, i) =>
 
-                <Link onClick={()=> GetMessageId(undefined)} to={`/home/${group.name}`} key={group.name} replace >
-                    <div className={isActive === i ? style.active : null}  onClick={() => toggleActive(i)}>
-                    <span>#</span>
-                    <p>{group.name.replace(/_/g," ")}</p>
-                    </div>
-                </Link>)
-                : <li>Nessun Gruppo</li>}
+                    <Link onClick={() => GetMessageId(undefined)} to={`/home/${group.name}`} key={group.name} replace >
+                        <div className={isActive === i ? style.active : null} onClick={() => toggleActive(i)}>
+                            <span>#</span>
+                            <p>{group.name.replace(/_/g, " ")}</p>
+                        </div>
+                    </Link>)
+                    : <li>Nessun Gruppo</li>}
             </div>
 
 

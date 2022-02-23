@@ -79,23 +79,24 @@ export const MessageBlock = () => {
 
   const ulElement = useRef();
   useEffect(() => {
-    
+
     if (ulElement.current.children.length > 0 && messageIndex === undefined) {
       setTimeout(() => {
         ulElement.current.lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }, 200);
     }
 
-     else if(ulElement.current.children.length > 0) {
-      ulElement.current.childNodes[messageIndex] && ulElement.current.childNodes[messageIndex].classList.add(`${styleMessage.add}`)        
-      setTimeout(() => {ulElement.current.children[messageIndex].classList.remove(`${styleMessage.add}`)          
-    }, 3000)
-        setTimeout(() => {   
-          ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
-        }, 200); 
-               
-  }
-}, [group.messages,messageIndex, alternativeMessageId]);
+    else if (ulElement.current.children.length > 0) {
+      ulElement.current.childNodes[messageIndex] && ulElement.current.childNodes[messageIndex].classList.add(`${styleMessage.add}`)
+      setTimeout(() => {
+        ulElement.current.children[messageIndex].classList.remove(`${styleMessage.add}`)
+      }, 4000)
+      setTimeout(() => {
+        ulElement.current.children[messageIndex].scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 200);
+
+    }
+  }, [group.messages, messageIndex, alternativeMessageId]);
 
 
 
