@@ -15,7 +15,8 @@ export const Conversation = (props) => {
     const [isActive, setActive] = useState();
 
     const groups = useSelector(store => store.groups)
-
+    const url = useSelector(store => store.url)
+    console.log(url)
 
     function upDateUrl(url) {
         dispatch(updateUrl(url));
@@ -36,6 +37,13 @@ export const Conversation = (props) => {
         //
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]
+    )
+
+    useEffect(() => {
+        groups.map((group,i )=> group.name === url?toggleActive(i):null)
+        //
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [url]
     )
 
  
