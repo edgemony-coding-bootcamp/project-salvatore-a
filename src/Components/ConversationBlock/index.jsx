@@ -7,7 +7,7 @@ export const ConversationBlock = () => {
     return (
         <div className={style.conversation}>
             
-            <Conversation/>
+            <Conversation component="ConversationBlock"/>
         </div>
     )
 }

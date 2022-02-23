@@ -85,12 +85,12 @@ export const Message = (props) => {
 
 
         <form className={style.updateMessageForm} onSubmit={(e) => handleUpdateMessage(e)}>
-        <label className={style.label} htmlFor={"inputMex" + updateMessage.message.text}>Modifica qui</label>
+        <label className={style.label} htmlFor={message.message_id}>Modifica qui</label>
           <input
             value={updateMessage.message.text}
             onChange={(e) => setUpdateMessage({ ...updateMessage, message: { ...message, text: e.target.value } })}
             className={`${updateMessage.status ? style.updateMessage : style.hiddenUpdateMessage}`}
-            type="text" id={"inputMex" + updateMessage.message.text}
+            type="text" id={message.message_id}
           />
 
         </form>
@@ -98,6 +98,7 @@ export const Message = (props) => {
           <img
             src={user.photo}
             alt={user.name}
+            loading="lazy"
             onClick={() => setShowProfile(!showProfile)}
           />
           <div className={style.nameText}>

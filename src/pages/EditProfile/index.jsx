@@ -34,22 +34,22 @@ const EditProfile = () => {
 
                         <div className={style.wrapper_item}>
                             {/* <label> Anteprima foto </label> */}
-                            <img src={user.photo || userLogged.photo} alt={user.name || userLogged.name}></img>
+                            <img src={user.photo || userLogged.photo} alt={user.name || userLogged.name} loading="lazy"/>
                         </div>
 
                         <div className={style.wrapper_item}>
-                            <label> Photo </label>
-                            <input onChange={(e) => setUser({ ...user, photo: e.target.value })} type="text" placeholder={userLogged.photo} />
+                            <label htmlFor="userPhoto" > Foto </label>
+                            <input onChange={(e) => setUser({ ...user, photo: e.target.value })} type="text" placeholder={userLogged.photo} id="userPhoto" />
                         </div>
 
                         <div className={style.wrapper_item}>
-                            <label> Nome </label>
-                            <input onChange={(e) => setUser({ ...user, name: e.target.value })} type="text" placeholder={userLogged.name} />
+                            <label htmlFor="userName"> Nome </label>
+                            <input onChange={(e) => setUser({ ...user, name: e.target.value })} type="text" placeholder={userLogged.name} id="userName" />
                         </div>
 
                         <div className={style.wrapper_item}>
-                            <label> Cognome </label>
-                            <input onChange={(e) => setUser({ ...user, lastname: e.target.value })} type="text" placeholder={userLogged.lastname} />
+                            <label htmlFor="userSurname"> Cognome </label>
+                            <input onChange={(e) => setUser({ ...user, lastname: e.target.value })} type="text" placeholder={userLogged.lastname} id="userSurname"/>
                         </div>
 
                         <button>Invia Modifiche</button>

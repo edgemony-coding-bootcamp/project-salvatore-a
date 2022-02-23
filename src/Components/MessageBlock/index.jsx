@@ -78,12 +78,14 @@ export const MessageBlock = () => {
 
   const ulElement = useRef();
   useEffect(() => {
-    if (messageIndex === undefined) {
+    
+    if (ulElement.current.children.length > 0 && messageIndex === undefined) {
       setTimeout(() => {
         ulElement.current.lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }, 200);
     }
-      else {
+
+     else if(ulElement.current.children.length > 0)
         setTimeout(() => {   
           ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
           ulElement.current.children[messageIndex].classList.toggle(`${styleMessage.add}`)
@@ -93,6 +95,7 @@ export const MessageBlock = () => {
                
   }
 }, [group.messages,messageIndex]);
+
 
 
   return (
@@ -124,12 +127,14 @@ export const MessageBlock = () => {
               </ul>
 
               <div className={style.input}>
+                <label htmlFor="inputText">Scrivi qui</label>
                 <input
                   type="textarea"
                   value={message.text}
                   onChange={(e) => setMessage({ ...message, author: authorId, message_group: group.name, message_id: Date.now(), text: e.target.value })}
                   onKeyDown={handleMessage}
                   placeholder="Scrivi qui il tuo messaggio"
+                  id="inputText"
                 />
               </div>
             </div>

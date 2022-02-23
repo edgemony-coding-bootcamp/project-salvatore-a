@@ -23,23 +23,23 @@ const Signup = (props) => {
                 <form onSubmit={handleSignup}>
                     
                     <div className={style.wrapper_item}>
-                        <label> Nome </label>
-                        <input onChange={(e)=> setUser({...user,name:e.target.value})} type="text" placeholder="name" required/>
+                        <label htmlFor="name"> Nome </label>
+                        <input onChange={(e)=> setUser({...user,name:e.target.value})} type="text" placeholder="name" id="name" required />
                     
 
                     
-                        <label> Cognome </label>
-                        <input onChange={(e)=> setUser({...user,lastname:e.target.value})} type="text" placeholder="lastname" required />
+                        <label htmlFor="surname"> Cognome </label>
+                        <input onChange={(e)=> setUser({...user,lastname:e.target.value})} type="text" placeholder="lastname" id="surname" required />
                     
                     
                     
-                        <label> E-mail </label>
-                        <input onChange={(e)=> setUser({...user,email:e.target.value})} type="email" placeholder="email" required />
+                        <label htmlFor="email"> E-mail </label>
+                        <input onChange={(e)=> setUser({...user,email:e.target.value})} type="email" placeholder="email" id="email" required />
                     
             
                     
-                        <label> Password </label>
-                        <input onChange={(e)=> setUser({...user,password:e.target.value})} type="password" placeholder="password" required/>
+                        <label htmlFor="password"> Password </label>
+                        <input onChange={(e)=> setUser({...user,password:e.target.value})} type="password" placeholder="password" id="password" required/>
                     
                     </div>
                     

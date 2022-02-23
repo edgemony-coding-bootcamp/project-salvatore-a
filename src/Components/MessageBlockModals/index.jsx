@@ -7,11 +7,16 @@ import style from "./MessageBlockModals.module.scss";
 const MessageBlockModals = (props) => {
   function handleChangeName(e) {
     e.preventDefault();
-    props.patchGroups("name", props.group.name, props.updateGroup);
+    let newMessages = props.group.messages.map(message => {
+      let newMessage = {...message,message_group:props.updateGroup.name};
+      return newMessage
+    })
+    
+    props.patchGroups("name", props.group.name, {name:props.updateGroup.name,messages:newMessages});
     props.setModal(false);
     props.setGroup(props.updateGroup);
   }
-
+  
 
   return (
     <div className={style.modalBackground}>
