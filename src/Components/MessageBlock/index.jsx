@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Message } from "../Message";
-import { useEffect,  useRef,  useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   onSnapshot,
   query,
@@ -9,6 +9,7 @@ import {
   where,
   limit,
 } from "firebase/firestore";
+
 import { getMessageId } from "../../store/action.js"
 import style from "./MessageBlock.module.scss";
 import styleMessage from "../Message/Message.module.scss";
@@ -27,29 +28,29 @@ export const MessageBlock = () => {
   const [group, setGroup] = useState({ name: "gruppo", messages: [] });
   const [modal, setModal] = useState(false);
   const [updateGroup, setUpdateGroup] = useState({
-    name:"",
+    name: "",
     messages: [],
   });
   const messageIndex = useSelector(state => state.messageId)
-   
+
   useEffect(() => {
     if (url !== undefined) {
       const qg = query(collection(db, "groups"), where("name", "==", url));
       onSnapshot(qg, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setGroup(doc.data());
-          
-          
+
+
         });
       });
-      
+
     } else {
       const qg = query(collection(db, "groups"), limit(1));
       onSnapshot(qg, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setGroup(doc.data());
-          
-          
+
+
         });
       });
     }
@@ -66,7 +67,7 @@ export const MessageBlock = () => {
     dispatch(getMessageId(index));
   }
 
-  
+
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       patchGroups("messages", group.name, [...group.messages, message]);
@@ -74,13 +75,18 @@ export const MessageBlock = () => {
       GetMessageId(undefined)
     }
   }
-  
+
   const ulElement = useRef();
   useEffect(() => {
     if (messageIndex === undefined) {
       setTimeout(() => {
-        ulElement.current.lastChild.scrollIntoView({behavior: 'smooth',block:'end'});
-      }, 200);} 
+        ulElement.current.lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 200);
+    }
+
+    else {
+      setTimeout(() => {
+
 
       else {
         setTimeout(() => {   
@@ -97,19 +103,17 @@ export const MessageBlock = () => {
   return (
 
     <>
-      <div className={modal ? style.modalBackground : null}>
-        {modal && (
-          <MessageBlockModals modal={modal} setModal={setModal} group={group} setGroup={setGroup} patchGroups={patchGroups} updateGroup={updateGroup} setUpdateGroup={setUpdateGroup}  />
-          
-        )}
-      </div>
+      {modal && (
+        <MessageBlockModals modal={modal} setModal={setModal} group={group} setGroup={setGroup} patchGroups={patchGroups} updateGroup={updateGroup} setUpdateGroup={setUpdateGroup} />
+
+      )}
       <div className={style.messageBlock_container}>
         {group ? (
           <>
             <div className={style.messageBlock}>
               <div className={style.groupName}>
                 <div onClick={() => setModal(true)}>
-                  <h2>{`#${group.name.replace(/_/g," ")}  ` || ""}</h2>
+                  <h2>{`#${group.name.replace(/_/g, " ")}  ` || ""}</h2>
                   <p>▼</p>
                 </div>
               </div>
@@ -117,7 +121,7 @@ export const MessageBlock = () => {
               <ul ref={ulElement}>
                 {group.messages.map((message, index) =>
                   group.messages.length > 0 ? (
-                    <Message  key={index} data={message} messages={group.messages} />
+                    <Message key={index} data={message} messages={group.messages} />
                   ) : (
                     <h3>"nessun messaggio"</h3>
                   )
@@ -128,7 +132,7 @@ export const MessageBlock = () => {
                 <input
                   type="textarea"
                   value={message.text}
-                  onChange={(e) => setMessage({...message, author: authorId,message_group:group.name,message_id:Date.now(), text: e.target.value })}
+                  onChange={(e) => setMessage({ ...message, author: authorId, message_group: group.name, message_id: Date.now(), text: e.target.value })}
                   onKeyDown={handleMessage}
                   placeholder="Scrivi qui il tuo messaggio"
                 />

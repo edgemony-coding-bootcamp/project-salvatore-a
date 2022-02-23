@@ -15,6 +15,11 @@ $redButton: #851414;
 $redButtonHover: #a13131;
 $overlay: rgba(80, 80, 80, 0.63);
 
+a{
+    color: $mainWhite;
+    text-decoration: none;
+}
+
 // Fonts // 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@700&display=swap');
 $mainFont:'Noto Sans', sans-serif; 
@@ -39,7 +44,7 @@ $mainFontBold: 'Poppins', sans-serif;
     min-width: 0;  
     width: 300px;
     z-index: 3;
-    border-radius: 30px;
+    //border-radius: 30px;
     
 }
 
@@ -72,7 +77,7 @@ $mainFontBold: 'Poppins', sans-serif;
 }
 
 @mixin myh1 {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.2;
     font-weight: 800;
     font-family: $mainFont;

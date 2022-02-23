@@ -2,6 +2,7 @@
 
 .searchbar {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -86,13 +87,35 @@
 
     .searchbar {
 
-        margin: 0 0 0 15px;
+        margin: 0 0 0 10px;
+
+        label {
+          img{
+            width: 24px;
+            margin: 0 5px 0 0;
+          }
+          
+    
+        }
+
+        input {
+          width: 190px;
+          height: 35px;
+          padding: 10px;
+
+        }
+
+        h3 {
+          right: 12%;
+        }
+
         .searched {
           top: 25px;
           
           width: 60%;
           padding: 5px;
           margin: 0px 0px 0 34px;
+
         }
     }
   }
