@@ -18,6 +18,11 @@ export const SearchResults = (props) => {
     dispatch(getMessageId(index));
   }
 
+//   function cutPhrase(text,nWords) {
+//     const firstNwords = text.split(' ').slice(0, nWords).join(' ');
+//     return firstNwords;
+// }
+
   return (
         <div className={style.searchResults}>
             <div className={style.name} onClick={()=>setShowProfile(true)}>
@@ -25,11 +30,16 @@ export const SearchResults = (props) => {
               <img src={props.text.photo} alt={props.text.name} loading="lazy"/>
               <h4 to={`/home/${props.text.message_group}`}>{`${props.text.name} ${props.text.lastname}`}</h4> 
             </div>
-            
-            {showProfile && <ProfileCard show={showProfile} setShow={setShowProfile} user={props.text}/>}         
-            <Link className= {style.results} onClick={()=> {props.setHidden(true); props.setInput('')}} to={`/home/${props.text.message_group}`}> 
-              <span> - </span>
-              <p onClick={()=> GetMessageId(props.text.index)}>{props.text.text}</p>
+            {showProfile && <ProfileCard show={showProfile} setShow={setShowProfile} user={props.text}/>}  
+                   
+            <Link className= {style.results} onClick={()=> {props.setHidden(true); props.setInput('')}} to={`/home/${props.text.group_name}`}>    
+              <div className={style.text}>
+                <span> - </span>
+                <p onClick={()=> GetMessageId(props.text.index)}>{props.text.text}</p>
+              </div>
+              <div className={style.group}>
+                <p>{`in:#${props.text.group_name.replace(/_/g," ")}`}</p>
+              </div>
             </Link>
          </div>
   )

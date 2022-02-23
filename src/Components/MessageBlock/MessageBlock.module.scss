@@ -65,22 +65,14 @@
         /* color of the tracking area */
       }
 
+
       &::-webkit-scrollbar-thumb {
         background-color: rgb(122, 122, 122); /* color of the scroll thumb */
         border-radius: 20px; /* roundness of the scroll thumb */
         border: none; /* creates padding around scroll thumb */
       }
 
-      li {
-        background-color: rgb(255, 255, 255);
-        border-bottom: solid 1px #ccc;
-        border-radius: 5px;
-
-        padding: 15px 15px;
-        &:hover {
-          background-color: $mainGray;
-        }
-      }
+     
     }
   }
 

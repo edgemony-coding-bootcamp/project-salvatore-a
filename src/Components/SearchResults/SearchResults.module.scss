@@ -1,16 +1,18 @@
 @import  "../../libs/variabili.scss";
 
 .searchResults{
-    
+    margin-bottom: 10px;
     padding: 10px;
     display: flex;
-    align-items: center;
-    justify-content: left;
-    text-align: left;
+    align-items: flex-start;
+    border-bottom: 0.5px solid $sidebarText;
+
+   
     .name{
         display: flex;
         align-items: center;
         cursor: pointer;
+        margin-bottom: 5px;
         h4{
             @include myp;        
             color: $mainBlack;
@@ -27,19 +29,35 @@
             margin: 0 10px;
         }
     }
-    span {
-        margin: 0 15px;
-    }
+    
     .results{
-        display: flex;
-        flex-direction: row;
-
-        p{
-            @include myp;
-            color: $mainBlack;
+        width: 100%;
+        margin-top: 4px;
+        .text{
             display: flex;
-            text-align: center;
-            align-items: center;
+            flex-direction: row;
+            align-items: flex-start;
+            span {
+                margin: 0 15px;
+            }
+            p{
+                @include myp;
+                color: $mainBlack;
+                text-align: left;
+            }
+
+        }     
+        .group {
+            width: fit-content;
+            float: right;  
+            p {
+                border-radius: 4px;
+                background-color: $sidebarText;
+                padding: 2px;
+                font-size: 12px;
+                width: 100%;
+                color: $mainBlack;
+            }              
         }
     }
 }
@@ -48,6 +66,7 @@
     .searchResults{
         flex-direction: column;
         padding: 10px 5px;
+        width: 100%;
         .name{
             align-self: flex-start;
             img {
@@ -55,15 +74,22 @@
             }
         }
         .results{
-            align-self: flex-start;
+            
+            flex-direction: column;
             margin-top: 5px;
+            width: 100%;
+            align-items:flex-start; 
 
             span {
                 display: none;
             }
             p {
-                margin-left: 68px;
+                display: inline;
+                text-align: left;
+                margin: 0 0 20px 30px;
+                
             }
+            
     }
   }
 
