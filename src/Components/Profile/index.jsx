@@ -1,20 +1,22 @@
 import style from './Profile.module.scss'
 import { useSelector } from "react-redux";
-import ProfileModals from '../ProfileModals';
+
 import { useState } from 'react';
+import Modal from '../Modal';
 
 
 export const Profile = () => {
     const user = useSelector((state) => state.user);
-    const [hidden,setHidden] = useState(true)
     
+    const [trigger,setTrigger] = useState(true)
     
     return (
         <div className={style.profile}>
-            {/* <ProfileModals name={user.name + " " + user.lastname} photo={user.photo} hidden={hidden} setHidden={()=>setHidden()}/> */}
-            <ProfileModals userData={user} hidden={hidden} setHidden={setHidden}/>
             
-            <img onClick={()=> setHidden(!hidden)} className={style.profileImg} src={user.photo} alt={user.name} loading="lazy" />
+            <Modal trigger={trigger} setTrigger={setTrigger}  type="profile" userData={user} />
+            
+            
+            <img onClick={()=> setTrigger(false)} className={style.profileImg} src={user.photo} alt={user.name} loading="lazy" />
         </div>
     )
 }
