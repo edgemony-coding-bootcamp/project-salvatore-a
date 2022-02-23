@@ -114,36 +114,21 @@
 }
 
 .add{
-
   animation: background 2s linear;
-  .author {    
-    .nameText{
-      animation: text 2s linear;
-    }
-  }
 }
 
 @keyframes background{
   0%{background-color:$mainWhite;}
-  25%{background-color:rgb(230, 230, 230);}
   50%{background-color:rgb(230, 230, 230);}
-  75%{background-color:rgb(230, 230, 230);}
   100%{background-color:$mainWhite;}
 }
 
-@keyframes text{
-  0%{transform: scale(1.0);}
-  25%{transform: scale(1.05);}
-  50%{transform: scale(1.05);}
-  75%{transform: scale(1.05);}
-  100%{transform: scale(1);}
-}
+
 
 @media screen and (max-width: 767px) {
   .message {
     .updateMessageForm{
       .label{
-        // display: none;
         color: transparent;
         height: 1px;
         width: 1px;
@@ -160,16 +145,12 @@
       top: 24px;
       left: 48px;
       width: 0px;
-      border: none;
-      
-      
+      border: none;   
     }
   }
     .lilModal{
       
-      width: 100px;
-      
-      
+      width: 100px; 
     }
     .author {
       img {
@@ -180,7 +161,6 @@
       .nameText{
         margin: 5px;
       }
-  
       h3 {
         font-size: 13px;
       }

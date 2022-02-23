@@ -32,13 +32,13 @@ export const SearchResults = (props) => {
             </div>
             {showProfile && <ProfileCard show={showProfile} setShow={setShowProfile} user={props.text}/>}  
                    
-            <Link className= {style.results} onClick={()=> {props.setHidden(true); props.setInput('')}} to={`/home/${props.text.group_name}`}>    
+            <Link className= {style.results} onClick={()=> {props.setHidden(true); props.setInput('')}} to={`/home/${props.text.message_group}`}>    
               <div className={style.text}>
                 <span> - </span>
                 <p onClick={()=> GetMessageId(props.text.index)}>{props.text.text}</p>
               </div>
               <div className={style.group}>
-                <p>{`in:#${props.text.group_name.replace(/_/g," ")}`}</p>
+                <p>{`in:#${props.text.message_group.replace(/_/g," ")}`}</p>
               </div>
             </Link>
          </div>
