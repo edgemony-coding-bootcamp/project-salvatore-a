@@ -21,6 +21,7 @@ export const UPDATE_URL = "UPDATE_URL"
 
 export const UPDATE_LOGIN = "UPDATE_LOGIN"
 export const UPDATE_USER = "UPDATE_USER"
+export const ACTION_STATUS = "ACTION_STATUS"
 
 //----------------------------------------------------------/USER--------------------------------------------------------------------------//
 

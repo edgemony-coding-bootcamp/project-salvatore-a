@@ -13,7 +13,8 @@ const initStore = {
         name:"",
         lastname:"",
         photo:"",
-        email:""
+        email:"",
+        status:false
     },
     messageId: 0
 }
