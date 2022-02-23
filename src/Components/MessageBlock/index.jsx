@@ -85,7 +85,7 @@ export const MessageBlock = () => {
       }, 200);
     }
 
-     else if(ulElement.current.children.length > 0)
+     else if(ulElement.current.children.length > 0) {
         setTimeout(() => {   
           ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
           ulElement.current.children[messageIndex].classList.toggle(`${styleMessage.add}`)
