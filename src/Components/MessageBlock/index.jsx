@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { getMessageId } from "../../store/action.js"
 import style from "./MessageBlock.module.scss";
+import styleMessage from "../Message/Message.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
 import MessageBlockModals from "../MessageBlockModals";
@@ -30,10 +31,7 @@ export const MessageBlock = () => {
     messages: [],
   });
   const messageIndex = useSelector(state => state.messageId)
-  console.log(messageIndex)
-
-  
-
+   
   useEffect(() => {
     if (url !== undefined) {
       const qg = query(collection(db, "groups"), where("name", "==", url));
@@ -85,12 +83,15 @@ export const MessageBlock = () => {
       }, 200);} 
 
       else {
-        setTimeout(() => {
-          
+        setTimeout(() => {   
           ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
-        }, 200);
-      }
-  }, [group.messages,messageIndex]);
+          ulElement.current.children[messageIndex].classList.toggle(`${styleMessage.add}`)
+          setTimeout(() => {ulElement.current.children[messageIndex].classList.remove(`${styleMessage.add}`)
+            }, 3000)
+        }, 200); 
+               
+  }
+}, [group.messages,messageIndex]);
 
 
   return (

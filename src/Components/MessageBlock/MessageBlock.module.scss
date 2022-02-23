@@ -72,17 +72,6 @@
       border: none; /* creates padding around scroll thumb */
     }
 
-    li {
-      background-color: rgb(255, 255, 255);
-      border-bottom: solid 1px #ccc;
-      border-radius: 5px;
-      
-      
-      padding: 15px 15px;
-      &:hover {
-        background-color: $mainGray;
-      }
-    }
   }
   }
 
@@ -125,7 +114,7 @@
     align-items: left;
 
     background-color: rgb(255, 255, 255);
-    border-radius: 10px;
+    // border-radius: 0px;
     opacity: 2 !important;
 
     padding-bottom: 50px;
@@ -190,6 +179,7 @@
     }
   }
 }
+
 
 
 @media screen and (max-width: 767px) {

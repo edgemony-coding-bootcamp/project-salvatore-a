@@ -1,7 +1,15 @@
 @import "../../libs/variabili.scss";
 
 .message {
+  background-color: rgb(255, 255, 255);
+  border-bottom: solid 1px #ccc;
+  border-radius: 5px;  
+  padding: 15px 15px;
   list-style: none;
+  &:hover {
+    background-color: $mainGray;
+  }
+
   .updateMessageForm{
     width: 60%;
     left: 76px;
@@ -96,12 +104,39 @@
         margin: 0;
       }
     }
+   
   }
   p {
     font-size: 14px;
     padding: 5px 10px;
    
   }
+}
+
+.add{
+
+  animation: background 2s linear;
+  .author {    
+    .nameText{
+      animation: text 2s linear;
+    }
+  }
+}
+
+@keyframes background{
+  0%{background-color:$mainWhite;}
+  25%{background-color:rgb(230, 230, 230);}
+  50%{background-color:rgb(230, 230, 230);}
+  75%{background-color:rgb(230, 230, 230);}
+  100%{background-color:$mainWhite;}
+}
+
+@keyframes text{
+  0%{transform: scale(1.0);}
+  25%{transform: scale(1.05);}
+  50%{transform: scale(1.05);}
+  75%{transform: scale(1.05);}
+  100%{transform: scale(1);}
 }
 
 @media screen and (max-width: 767px) {
