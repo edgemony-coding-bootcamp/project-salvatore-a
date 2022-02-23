@@ -21,8 +21,8 @@ export const SearchResults = (props) => {
   return (
         <div className={style.searchResults}>
             <div className={style.name} onClick={()=>setShowProfile(true)}>
-              <img className={style.icon} src={searchIcon} alt="icona"/>
-              <img src={props.text.photo} alt={props.text.name}/>
+              <img className={style.icon} src={searchIcon} alt="icona" loading="lazy"/>
+              <img src={props.text.photo} alt={props.text.name} loading="lazy"/>
               <h4 to={`/home/${props.text.message_group}`}>{`${props.text.name} ${props.text.lastname}`}</h4> 
             </div>
             

@@ -34,7 +34,7 @@ const EditProfile = () => {
 
                         <div className={style.wrapper_item}>
                             {/* <label> Anteprima foto </label> */}
-                            <img src={user.photo || userLogged.photo} alt={user.name || userLogged.name}></img>
+                            <img src={user.photo || userLogged.photo} alt={user.name || userLogged.name} loading="lazy"/>
                         </div>
 
                         <div className={style.wrapper_item}>
