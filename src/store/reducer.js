@@ -1,14 +1,15 @@
-import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL, MESSAGE_ID } from "./constants";
+import { FETCH_USERS, FETCH_GROUPS, UPDATE_LOGIN, UPDATE_USER, UPDATE_URL, MESSAGE_ID,ACTION_STATUS } from "./constants";
 
 const initStore = {
   users: [],
   groups: [{ name: "", messages: [] }],
-  logged: false,
+  logged: false,  
   user: {
     id: "",
     name: "",
     lastname: "",
     photo: "",
+    status: false,
     email: ""
   }
 };
@@ -45,13 +46,23 @@ const myReducer = (state = initStore, action) => {
           name: payload.name,
           lastname: payload.lastname,
           photo: `${payload.photo !== "" ? payload.photo : "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png"}`,
-          email: payload.email
+          email: payload.email,
+          status: false
         }
       }
     case MESSAGE_ID:
       return {
           ...state,
           messageId: action.payload
+        }
+    case ACTION_STATUS:
+        return{
+          ...state,
+          user:{
+            ...state.user,
+            status:!state.user.status
+            
+          } 
         }
     default:
       return initStore;

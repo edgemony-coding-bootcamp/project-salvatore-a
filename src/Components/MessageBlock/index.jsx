@@ -10,7 +10,7 @@ import {
   limit,
 } from "firebase/firestore";
 
-import { getMessageId } from "../../store/action.js"
+import { actionStatus, getMessageId } from "../../store/action.js"
 import style from "./MessageBlock.module.scss";
 import styleMessage from "../Message/Message.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
@@ -73,6 +73,7 @@ export const MessageBlock = () => {
       patchGroups("messages", group.name, [...group.messages, message]);
       setMessage({ ...message, text: "" });
       GetMessageId(undefined)
+      dispatch(actionStatus())
     }
   }
 

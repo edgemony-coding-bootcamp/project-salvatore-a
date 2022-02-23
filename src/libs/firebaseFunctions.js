@@ -10,6 +10,7 @@ function getUser(querySnapshot, dispatch) {
   const users = [];
   querySnapshot.forEach((doc) => {
     users.push(doc.data());
+    
   });
   dispatch(fetchUsers(users));
 }
@@ -26,6 +27,7 @@ async function addUser(user, uid) {
       logged: false,
       id: uid,
       photo: "",
+      status:false
     });
     return docRef;
   } catch (e) {
