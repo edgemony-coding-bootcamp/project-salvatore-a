@@ -8,7 +8,7 @@ import searchIcon from "./search_icon_label.png"
 export const Searchbar = () => {
   const groups = useSelector(state => 
     state.groups.map((group) => 
-    group.messages.map((message,index) =>{ let newMessage = {...message,index:index, group_name: group.name }; return newMessage})))
+    group.messages.map((message,index) =>{ let newMessage = {...message,index:index }; return newMessage})))
   const users = useSelector(state => state.users)
 
   const [searchResults, setSearchResult] = useState()

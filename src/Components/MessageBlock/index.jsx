@@ -32,6 +32,7 @@ export const MessageBlock = () => {
     messages: [],
   });
   const messageIndex = useSelector(state => state.messageId)
+  const alternativeMessageId = useSelector(state => state.alternativeMessageId)
 
   useEffect(() => {
     if (url !== undefined) {
@@ -86,15 +87,15 @@ export const MessageBlock = () => {
     }
 
      else if(ulElement.current.children.length > 0) {
+      ulElement.current.childNodes[messageIndex] && ulElement.current.childNodes[messageIndex].classList.add(`${styleMessage.add}`)        
+      setTimeout(() => {ulElement.current.children[messageIndex].classList.remove(`${styleMessage.add}`)          
+    }, 3000)
         setTimeout(() => {   
           ulElement.current.children[messageIndex].scrollIntoView({behavior: 'smooth',block:'end'});
-          ulElement.current.children[messageIndex].classList.toggle(`${styleMessage.add}`)
-          setTimeout(() => {ulElement.current.children[messageIndex].classList.remove(`${styleMessage.add}`)
-            }, 3000)
         }, 200); 
                
   }
-}, [group.messages,messageIndex]);
+}, [group.messages,messageIndex, alternativeMessageId]);
 
 
 

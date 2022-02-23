@@ -49,10 +49,19 @@ const myReducer = (state = initStore, action) => {
         }
       }
     case MESSAGE_ID:
-      return {
+      if (state.messageId === action.payload){
+        return {
           ...state,
-          messageId: action.payload
+          alternativeMessageId: !state.alternativeMessageId
         }
+      }else {
+
+        return {
+            ...state,
+            messageId: action.payload,
+            alternativeMessageId: false
+          }
+      }
     default:
       return initStore;
   }
