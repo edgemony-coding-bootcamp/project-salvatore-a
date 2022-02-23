@@ -124,12 +124,14 @@ export const MessageBlock = () => {
               </ul>
 
               <div className={style.input}>
+                <label htmlFor="inputText">Scrivi qui</label>
                 <input
                   type="textarea"
                   value={message.text}
                   onChange={(e) => setMessage({ ...message, author: authorId, message_group: group.name, message_id: Date.now(), text: e.target.value })}
                   onKeyDown={handleMessage}
                   placeholder="Scrivi qui il tuo messaggio"
+                  id="inputText"
                 />
               </div>
             </div>
