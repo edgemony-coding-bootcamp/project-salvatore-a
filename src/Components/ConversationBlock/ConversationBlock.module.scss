@@ -14,6 +14,7 @@
 
 @media screen and (max-width: 767px) {
   .conversation{
+    height: calc(100vh - 70px);
     display: none;
   }
   

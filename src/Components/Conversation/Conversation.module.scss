@@ -111,45 +111,44 @@
 
 @media screen and (max-width: 767px) {
     .conversation {
-
-        width: 230px;
-        margin-top: 15px;
-        
-        
+        width: 100%;
+        // margin-top: 15px;
         .channelName {
-            font-size: 18px;
-            margin: 3px 16px 10px 15px;
+            font-size: 20px;
+            margin: 3px 16px 10px 40px;
     
         }
         .list{      
             div {
-                padding: 5px 0;
-      
+                width: 100%;
+                padding: 10px 30px;  
+                   
                 p {
+                    font-size: 18px;
                     margin: 0 5px 0 0px;
                 }
-    
                 span {
+                    font-size: 18px;
                     margin: 0 5px 0 8px;
                 }
             }
         }
             .newgroup__wrapper{
-                margin: 15px 10px 0 5px;
-        
+                margin: 15px 10px 0 35px;
                 p {
+                    font-size: 18px;
                     margin-left: 25px;
                 }
                 
                 button{
-                    width: 18px;
-                    height: 18px;
-                    font-size: 15px;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 18px;
                 }
                 input {
-                    height: 19px;
+                    height: 25px;
                     margin-top: 2px;
-                    font-size:12px;
+                    font-size:18px;
                 }
             }
 
@@ -161,7 +160,7 @@
             .hiddenAddGroup{
                 padding: 6px ;
                 margin-left: 25px;
-                width: 170px;   
+                width: 60%;  
             }
         }     
     }
