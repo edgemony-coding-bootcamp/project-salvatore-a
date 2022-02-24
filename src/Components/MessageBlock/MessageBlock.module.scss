@@ -99,7 +99,9 @@
 @media screen and (max-width: 767px) {
   .messageBlock_container {
     width: 100%;
+
     height: calc(100vh - 70px);
+
   .messageBlock{
       padding-right: 2px;
 
@@ -120,7 +122,9 @@
       }
       ul {
         top: 50%;
+
         height: calc(100vh - 205px);
+
 
         &::-webkit-scrollbar {
           width: 5px;
@@ -130,9 +134,11 @@
 
     .input {
       width: 100%;
+
       input {
         height: 70px;
       }
+
     }
   }
 }

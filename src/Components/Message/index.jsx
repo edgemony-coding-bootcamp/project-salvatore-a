@@ -8,11 +8,14 @@ import {
   getFirestore,
   where,
 } from "firebase/firestore";
-import ProfileCard from "../ProfileCard";
+
 
 import app from "../../libs/firebase.config";
 import { useSelector } from "react-redux";
 import { patchGroups } from "../../libs/firebaseFunctions";
+import Modal from "../Modal";
+import modify from '../../img/modify.png';
+import deleteIco from '../../img/delete.png';
 
 const db = getFirestore(app);
 
@@ -24,9 +27,11 @@ function toDateTime(secs) {
 
 
 export const Message = (props) => {
+  const myUser = useSelector((state) => state.user);
   const message = props.data;
   const date = message.date || { seconds: 1644405843 };
   const [updateMessage, setUpdateMessage] = useState({ message: message, status: false })
+  const [trigger,setTrigger] = useState(true)
 
 
 
@@ -58,7 +63,7 @@ export const Message = (props) => {
 
   
 
-  const [showProfile, setShowProfile] = useState(false);
+
   function handleDeleteMessage() {
     let updatedMessages = props.messages.filter(
       (x) => x.message_id !== message.message_id
@@ -78,8 +83,8 @@ export const Message = (props) => {
 
   return (
     <>
-      {showProfile && (
-        <ProfileCard show={showProfile} setShow={setShowProfile} user={user} />
+      {!trigger && (
+        <Modal trigger={trigger} setTrigger={setTrigger}  type="profile" userData={user} myProfile={user.photo === myUser.photo ? true : false}/>
       )}
       <li
         
@@ -102,10 +107,14 @@ export const Message = (props) => {
         </form>
         <div className={style.author}>
           <img
+
+            className={style.author_img}
+
             src={`${user.photo ? user.photo : message.photo}`}
+
             alt={user.name}
             loading="lazy"
-            onClick={() => setShowProfile(!showProfile)}
+            onClick={()=> setTrigger(false)}
           />
           <div className={style.nameText}>
             <div className={style.authorDate}>
@@ -116,8 +125,8 @@ export const Message = (props) => {
           </div>
           {lilModalDisplay && message.author === currentUser.id && (
             <div className={style.lilModal}>
-              <button onClick={() => handleDeleteMessage()}>❌</button>
-              <button onClick={() => setUpdateMessage({ ...updateMessage, status: !updateMessage.status })}>✍️</button>
+              <img src={modify} alt="modify" onClick={() => setUpdateMessage({ ...updateMessage, status: !updateMessage.status })} />
+              <img src={deleteIco} alt="delete" onClick={() => handleDeleteMessage()}/>
             </div>
           )}
         </div>

@@ -3,6 +3,7 @@ import {
   query,
   collection,
   getFirestore,
+  
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import app from "../../libs/firebase.config";
@@ -19,6 +20,7 @@ export const db = getFirestore(app);
 
 
 const Home = () => {
+  const url = useSelector(state=> state.url)
   const auth = getAuth();
   const user = auth.currentUser;
   const dispatch = useDispatch();
@@ -27,10 +29,16 @@ const Home = () => {
 
   useEffect(() => {
     // const q + onSnapshot possono essere spostati per intero nel componente dove verranno renderizzati gli utenti //
-    const qg = query(collection(db, "groups") /*, where("name","==", url)*/);
-    onSnapshot(qg, (querySnapshot) => {
-      getGroups(querySnapshot, dispatch);
-    })
+    
+      function groupsRender(){
+
+        const qg = query(collection(db, "groups") );
+        onSnapshot(qg, (querySnapshot) => {
+          getGroups(querySnapshot, dispatch);
+        })
+      }
+      groupsRender()
+    
 
     const q = query(collection(db, "users") /* where("logged","==", true) */);
     onSnapshot(q, (querySnapshot) => {
@@ -39,7 +47,7 @@ const Home = () => {
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     
