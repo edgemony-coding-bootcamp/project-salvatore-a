@@ -10,7 +10,7 @@ import {
   limit,
 } from "firebase/firestore";
 
-import { actionStatus, getMessageId } from "../../store/action.js"
+import { actionStatus, getMessageId } from "../../store/action.js";
 import style from "./MessageBlock.module.scss";
 import styleMessage from "../Message/Message.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
@@ -21,42 +21,43 @@ import Modal from "../Modal";
 
 const db = getFirestore(app);
 
-export const MessageBlock = () => {
+export const MessageBlock = (props) => {
   const dispatch = useDispatch();
   const url = useSelector((state) => state.url);
   const authorId = useSelector((state) => state.user.id);
 
   const [group, setGroup] = useState({ name: "gruppo", messages: [] });
-  
+
   const [updateGroup, setUpdateGroup] = useState({
     name: "",
     messages: [],
   });
-  const messageIndex = useSelector(state => state.messageId)
-  const alternativeMessageId = useSelector(state => state.alternativeMessageId)
+  const messageIndex = useSelector((state) => state.messageId);
+  const alternativeMessageId = useSelector(
+    (state) => state.alternativeMessageId
+  );
 
   useEffect(() => {
     if (url !== undefined) {
       const qg = query(collection(db, "groups"), where("name", "==", url));
+
       onSnapshot(qg, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setGroup(doc.data());
-
-
         });
       });
-
     } else {
-      const qg = query(collection(db, "groups"), limit(1));
+      const qg =
+        group.name === "gruppo"
+          ? query(collection(db, "groups"), limit(1))
+          : query(collection(db, "groups"), where("name", "==", group.name));
       onSnapshot(qg, (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           setGroup(doc.data());
-
-
         });
       });
     }
-  }, [url]);
+  }, [url, group.name]);
 
   const [message, setMessage] = useState({
     author: authorId,
@@ -69,64 +70,69 @@ export const MessageBlock = () => {
     dispatch(getMessageId(index));
   }
 
-
   function handleMessage(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       patchGroups("messages", group.name, [...group.messages, message]);
       setMessage({ ...message, text: "" });
-      GetMessageId(undefined)
-      dispatch(actionStatus())
+      GetMessageId(undefined);
+      dispatch(actionStatus());
     }
   }
 
   const ulElement = useRef();
   useEffect(() => {
-
     if (ulElement.current.children.length > 0 && messageIndex === undefined) {
       setTimeout(() => {
-        ulElement.current.lastChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        ulElement.current.lastChild.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
       }, 200);
-    }
-
-    else if (ulElement.current.children.length > 0) {
-      ulElement.current.childNodes[messageIndex] && ulElement.current.childNodes[messageIndex].classList.add(`${styleMessage.add}`)
+    } else if (ulElement.current.children.length > 0) {
+      ulElement.current.childNodes[messageIndex] &&
+        ulElement.current.childNodes[messageIndex].classList.add(
+          `${styleMessage.add}`
+        );
       setTimeout(() => {
-        ulElement.current.children[messageIndex].classList.remove(`${styleMessage.add}`)
-      }, 4000)
+        ulElement.current.children[messageIndex].classList.remove(
+          `${styleMessage.add}`
+        );
+      }, 4000);
       setTimeout(() => {
-        ulElement.current.children[messageIndex].scrollIntoView({ behavior: 'smooth', block: 'end' });
+        ulElement.current.children[messageIndex].scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
       }, 200);
-
     }
   }, [group.messages, messageIndex, alternativeMessageId]);
 
-
-  const [trigger,setTrigger]=useState(true);
-  
+  const [trigger, setTrigger] = useState(true);
 
   function handleChangeName(e) {
     e.preventDefault();
-    let newMessages = group.messages.map(message => {
-      let newMessage = {...message,message_group:updateGroup.name};
-      return newMessage
-    })
-    
-    patchGroups("name", group.name, {name:updateGroup.name,messages:newMessages});
+
+    if(updateGroup.name !== ""){let newMessages = group.messages.map((message) => {
+      let newMessage = { ...message, message_group: updateGroup.name };
+      return newMessage;
+    });
+
+    patchGroups("name", group.name, {
+      name: updateGroup.name,
+      messages: newMessages,
+    });
     setTrigger(true);
-    setGroup(updateGroup);
-  }
-  
-  function handleDeleteGroup(){
-    patchGroups("delete", group.name);
-    setTrigger(true)
+    setGroup(updateGroup);}
   }
 
+  function handleDeleteGroup() {
+    patchGroups("delete", group.name);
+    setTrigger(true);
+  }
 
   return (
-
     <>
       {!trigger && (
-        
         <Modal
           trigger={trigger}
           setTrigger={setTrigger}
@@ -136,16 +142,14 @@ export const MessageBlock = () => {
           handleChangeName={handleChangeName}
           handleDeleteGroup={handleDeleteGroup}
           type="group"
-
         />
-
       )}
       <div className={style.messageBlock_container}>
         {group ? (
           <>
             <div className={style.messageBlock}>
               <div className={style.groupName}>
-                <div onClick={() => setTrigger(false) }>
+                <div onClick={() => setTrigger(false)}>
                   <h2>{`#${group.name.replace(/_/g, " ")}  ` || ""}</h2>
                   <p>▼</p>
                 </div>
@@ -154,7 +158,11 @@ export const MessageBlock = () => {
               <ul ref={ulElement}>
                 {group.messages.map((message, index) =>
                   group.messages.length > 0 ? (
-                    <Message key={index} data={message} messages={group.messages} />
+                    <Message
+                      key={index}
+                      data={message}
+                      messages={group.messages}
+                    />
                   ) : (
                     <h3>"nessun messaggio"</h3>
                   )
@@ -166,7 +174,15 @@ export const MessageBlock = () => {
                 <input
                   type="textarea"
                   value={message.text}
-                  onChange={(e) => setMessage({ ...message, author: authorId, message_group: group.name, message_id: Date.now(), text: e.target.value })}
+                  onChange={(e) =>
+                    setMessage({
+                      ...message,
+                      author: authorId,
+                      message_group: group.name,
+                      message_id: Date.now(),
+                      text: e.target.value,
+                    })
+                  }
                   onKeyDown={handleMessage}
                   placeholder="Scrivi qui il tuo messaggio"
                   id="inputText"
@@ -179,6 +195,5 @@ export const MessageBlock = () => {
         )}
       </div>
     </>
-
   );
 };

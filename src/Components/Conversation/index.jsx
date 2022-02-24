@@ -1,4 +1,4 @@
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUrl, getMessageId } from '../../store/action'
 import { addGroup } from "../../libs/firebaseFunctions";
@@ -10,13 +10,13 @@ import style from './Conversation.module.scss'
 export const Conversation = (props) => {
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
-    const [newGroup, setNewGroup] = useState("");
-    const location = useLocation();
+    const [newGroup, setNewGroup] = useState("");   
     const [isActive, setActive] = useState();
+    const [changeLocation,setChangeLocation] = useState(false)
 
     const groups = useSelector(store => store.groups)
     const url = useSelector(store => store.url)
-    console.log(url)
+    
 
     function upDateUrl(url) {
         dispatch(updateUrl(url));
@@ -36,7 +36,7 @@ export const Conversation = (props) => {
         upDateUrl(params.id)
         //
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [location]
+    }, [changeLocation]
     )
 
     useEffect(() => {
@@ -64,7 +64,7 @@ export const Conversation = (props) => {
             <div className={style.list}>
                 {groups.length > 0 ? groups.map((group, i) =>
 
-                    <Link onClick={() => GetMessageId(undefined)} to={`/home/${group.name}`} key={group.name} replace >
+                    <Link onClick={() => {GetMessageId(undefined);setChangeLocation(!changeLocation)}} to={`/home/${group.name}`} key={group.name} replace >
                         <div className={isActive === i ? style.active : null} onClick={() => toggleActive(i)}>
                             <span>#</span>
                             <p>{group.name.replace(/_/g, " ")}</p>

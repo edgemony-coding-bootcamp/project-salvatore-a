@@ -12,7 +12,7 @@ const Modal = (props) => {
     return (
         <div className={`${ style.main_wrapper} ${props.trigger && style.hidden_main_wrapper}`}>
         <div className={`${style.wrapper} `}>
-            <button onClick={()=>{props.setTrigger(true);setHidden(!hidden)}} className={style.close_modals}>X</button>
+            <button onClick={()=>{props.setTrigger(true);setHidden(false)}} className={style.close_modals}>X</button>
             {(()=>{switch (props.type) {
                 case  "group":
                     return(
@@ -24,7 +24,7 @@ const Modal = (props) => {
                     />);
                 case "profile":
                     return(
-                        <ProfileModals hidden={hidden} setHidden={setHidden}  userData={props.userData} trigger={props.trigger} setTrigger={props.setTrigger}/>
+                        <ProfileModals myProfile={props.myProfile} hidden={hidden} setHidden={setHidden}  userData={props.userData} trigger={props.trigger} setTrigger={props.setTrigger}/>
                     )                 
     
                     default:

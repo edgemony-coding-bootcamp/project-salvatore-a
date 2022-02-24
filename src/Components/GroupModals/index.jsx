@@ -17,11 +17,13 @@ const GroupModal = (props) => {
         <label htmlFor="modify_input">Modifica Gruppo:</label>
         <input
           value={props.updateGroup.name}
-          onChange={(e) =>
+          onChange={(e) =>{
             props.setUpdateGroup({
               messages: props.group.messages,
               name: e.target.value.replace(/ /g, "_"),
-            })
+            });
+            
+          }
           }
           type="text"
           name="modify_input"
