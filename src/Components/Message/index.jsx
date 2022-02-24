@@ -25,12 +25,15 @@ function toDateTime(secs) {
   return t;
 }
 
+
 export const Message = (props) => {
   const myUser = useSelector((state) => state.user);
   const message = props.data;
   const date = message.date || { seconds: 1644405843 };
   const [updateMessage, setUpdateMessage] = useState({ message: message, status: false })
   const [trigger,setTrigger] = useState(true)
+
+
 
   const [user, setUser] = useState({
     name: "",
@@ -39,6 +42,9 @@ export const Message = (props) => {
     id: "",
     email: "",
   });
+
+  console.log(message.photo)
+
   const [lilModalDisplay, setLilModalDisplay] = useState(false);
   const currentUser = useSelector((state) => state.user);
   
@@ -101,8 +107,11 @@ export const Message = (props) => {
         </form>
         <div className={style.author}>
           <img
+
             className={style.author_img}
-            src={user.photo}
+
+            src={`${user.photo ? user.photo : message.photo}`}
+
             alt={user.name}
             loading="lazy"
             onClick={()=> setTrigger(false)}
