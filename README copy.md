@@ -1,3 +1,5 @@
+![Slack Clone](./img/cover-readme.jpg)
+
 # Slack Clone
  >Web site created in the context of the Edgemony Bootcamp final project
 
