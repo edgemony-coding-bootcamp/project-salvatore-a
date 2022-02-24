@@ -50,9 +50,9 @@ async function patchUser(uid, newData) {
 //-------------------------------------------------------------GET GROUPS----------------------------------------------------------------------------//
 
 function getGroups(querySnapshot, dispatch) {
-  const groups = [];
+  let groups = [];
   querySnapshot.forEach((doc) => {
-    groups.push(doc.data());
+    groups=[...groups,doc.data()];
   });
   dispatch(fetchGroups(groups));
 }

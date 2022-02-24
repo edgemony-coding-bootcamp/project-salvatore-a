@@ -13,10 +13,10 @@ export const Profile = () => {
     return (
         <div className={style.profile}>
             
-            <Modal trigger={trigger} setTrigger={setTrigger}  type="profile" userData={user} />
+            <Modal trigger={trigger} setTrigger={setTrigger} myProfile={true}  type="profile" userData={user} />
             
             
-            <img onClick={()=> setTrigger(false)} className={style.profileImg} src={user.photo} alt={user.name} loading="lazy" />
+            <img onClick={()=> setTrigger(false)} className={style.profileImg} src={user.photo} alt={user.name}  loading="lazy" />
         </div>
     )
 }

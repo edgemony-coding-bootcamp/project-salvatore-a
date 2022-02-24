@@ -9,7 +9,7 @@ import { onCheck} from "./libs/firebaseAuth";
 import {Loader} from "./Components/Loader";
 
 const Home = lazy(()=> import ("./pages/Home"));
-const EditProfile = lazy(()=> import ("./pages/EditProfile"));
+
 const Login = lazy(()=> import ("./pages/Login"));
 
 
@@ -50,10 +50,7 @@ function App() {
           <Suspense fallback={<Loader />}>
             <Home/> 
           </Suspense>} />  
-        <Route path="/edit_profile" element={
-          <Suspense fallback={<Loader />}>
-            <EditProfile/> 
-          </Suspense>} />
+        
       </Routes>
     </>
   );
