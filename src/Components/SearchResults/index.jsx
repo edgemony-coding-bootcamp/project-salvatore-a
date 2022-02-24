@@ -26,6 +26,10 @@ export const SearchResults = (props) => {
     props.setHidden(true);
     props.setInput('');
     GetMessageId(props.text.index)
+    
+
+    console.log(props)
+    
   }
 
   return (

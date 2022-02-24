@@ -1,94 +1,103 @@
-import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
-import { updateUrl, getMessageId } from '../../store/action'
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUrl, getMessageId } from "../../store/action";
 import { addGroup } from "../../libs/firebaseFunctions";
 import { useEffect, useState } from "react";
-import style from './Conversation.module.scss'
-
-
+import style from "./Conversation.module.scss";
 
 export const Conversation = (props) => {
-    const dispatch = useDispatch()
-    const [isClicked, setIsClicked] = useState(false)
-    const [newGroup, setNewGroup] = useState("");   
-    const [isActive, setActive] = useState();
-    const [changeLocation,setChangeLocation] = useState(false)
+  const dispatch = useDispatch();
+  const [isClicked, setIsClicked] = useState(false);
+  const [newGroup, setNewGroup] = useState("");
+  const [isActive, setActive] = useState();
+  const [changeLocation, setChangeLocation] = useState(false);
 
-    const groups = useSelector(store => store.groups)
-    const url = useSelector(store => store.url)
-    
+  const groups = useSelector((store) => store.groups);
+  const url = useSelector((store) => store.url);
 
-    function upDateUrl(url) {
-        dispatch(updateUrl(url));
+  
+
+  function upDateUrl(url) {
+    dispatch(updateUrl(url));
+  }
+  const params = useParams();
+
+  function handleInput(e) {
+    if (e.key === "Enter" || e.keyCode === "13") {
+      addGroup(newGroup.replace(/ /g, "_"));
+      setNewGroup("");
+      setIsClicked(!isClicked);
     }
-    const params = useParams()
+  }
+  useEffect(() => {
+    upDateUrl(params.id);
+    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeLocation]);
 
+  useEffect(() => {
+    groups.map((group, i) => (group.name === url ? toggleActive(i) : null));
+    //
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url]);
 
-    function handleInput(e) {
-        if (e.key === "Enter" || e.keyCode === "13") {
-            addGroup(newGroup.replace(/ /g, "_"));
-            setNewGroup("");
-            setIsClicked(!isClicked)
-        }
+  const toggleActive = (i) => {
+    setActive(i);
+  };
 
-    }
-    useEffect(() => {
-        upDateUrl(params.id)
-        //
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [changeLocation]
-    )
+  function GetMessageId(index) {
+    dispatch(getMessageId(index));
+  }
 
-    useEffect(() => {
-        groups.map((group, i) => group.name === url ? toggleActive(i) : null)
-        //
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [url]
-    )
+  const component = props.component;
 
+  return (
+    <div className={style.conversation} >
+      <p className={style.channelName}>Canali</p>
+      <div className={style.list}>
+        {groups.length > 0 ? (
+          groups.map((group, i) => (
+            <Link
+              onClick={() => {
+                GetMessageId(undefined);
+                setChangeLocation(!changeLocation);
+                
+                props.offSet !== undefined  && props.offSet.offsetHeight !== 0 && props.setHideGroup(!props.hideGroup);
+              }}
+              to={`/home/${group.name}`}
+              key={group.name}
+              replace
+            >
+              <div
+                className={isActive === i ? style.active : null}
+                onClick={() => toggleActive(i)}
+              >
+                <span>#</span>
+                <p>{group.name.replace(/_/g, " ")}</p>
+              </div>
+            </Link>
+          ))
+        ) : (
+          <li>Nessun Gruppo</li>
+        )}
+      </div>
 
-    const toggleActive = (i) => {
-        setActive(i);
-    };
-
-    function GetMessageId(index) {
-        dispatch(getMessageId(index));
-    }
-
-    const component = props.component;
-
-    return (
-        <div className={style.conversation}>
-
-            <p className={style.channelName}>Canali</p>
-            <div className={style.list}>
-                {groups.length > 0 ? groups.map((group, i) =>
-
-
-                    <Link onClick={() => {GetMessageId(undefined); setChangeLocation(!changeLocation);props.setHideGroup(true)}} to={`/home/${group.name}`} key={group.name} replace >
-                <div className={isActive === i ? style.active : null} onClick={() => toggleActive(i)}>
-                            <span>#</span>
-                            <p>{group.name.replace(/_/g, " ")}</p>
-                        </div>
-                    </Link>)
-                    : <li>Nessun Gruppo</li>}
-            </div>
-
-
-            <div className={style.newgroup__wrapper}>
-                <button onClick={() => setIsClicked(!isClicked)}>{!isClicked ? "+" : "×"} </button>
-                <label htmlFor={component}>Aggiungi gruppo</label>
-                <input
-                    className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
-                    type="textarea"
-                    value={newGroup}
-                    onChange={(e) => setNewGroup(e.target.value)}
-                    onKeyDown={handleInput}
-                    placeholder="Premi Invio Per Confermare"
-                    id={component}
-                />  <p>Aggiungi Gruppi</p>
-            </div>
-        </div>
-    )
-}
-
+      <div className={style.newgroup__wrapper}>
+        <button onClick={() => setIsClicked(!isClicked)}>
+          {!isClicked ? "+" : "×"}{" "}
+        </button>
+        <label htmlFor={component}>Aggiungi gruppo</label>
+        <input
+          className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
+          type="textarea"
+          value={newGroup}
+          onChange={(e) => setNewGroup(e.target.value)}
+          onKeyDown={handleInput}
+          placeholder="Premi Invio Per Confermare"
+          id={component}
+        />{" "}
+        <p>Aggiungi Gruppi</p>
+      </div>
+    </div>
+  );
+};

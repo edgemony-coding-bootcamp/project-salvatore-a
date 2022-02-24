@@ -1,12 +1,14 @@
 @import  "../../libs/variabili.scss";
 
 .header {
+  position: relative;
     display: flex;    
     width: 100%;
     height: 50px;
     align-items: center;
    
     background-color: $mainHover;
+    z-index: 95;
 
     .mediaGroup {
       display: none;
