@@ -38,6 +38,7 @@ export const Message = (props) => {
     email: "",
   });
 
+  console.log(message.photo)
 
   const [lilModalDisplay, setLilModalDisplay] = useState(false);
   const currentUser = useSelector((state) => state.user);
@@ -106,7 +107,6 @@ export const Message = (props) => {
             loading="lazy"
             onClick={() => setShowProfile(!showProfile)}
           />
-          {console.log("qui"+!user.photo)}
           <div className={style.nameText}>
             <div className={style.authorDate}>
               <h3>{user.name + " " + user.lastname}</h3>
