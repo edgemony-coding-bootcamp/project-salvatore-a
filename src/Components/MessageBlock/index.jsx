@@ -15,8 +15,9 @@ import style from "./MessageBlock.module.scss";
 import styleMessage from "../Message/Message.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
 import app from "../../libs/firebase.config";
-import MessageBlockModals from "../MessageBlockModals";
+
 import { useDispatch } from "react-redux";
+import Modal from "../Modal";
 
 const db = getFirestore(app);
 
@@ -26,7 +27,7 @@ export const MessageBlock = () => {
   const authorId = useSelector((state) => state.user.id);
 
   const [group, setGroup] = useState({ name: "gruppo", messages: [] });
-  const [modal, setModal] = useState(false);
+  
   const [updateGroup, setUpdateGroup] = useState({
     name: "",
     messages: [],
@@ -100,12 +101,43 @@ export const MessageBlock = () => {
   }, [group.messages, messageIndex, alternativeMessageId]);
 
 
+  const [trigger,setTrigger]=useState(true);
+  
+
+  function handleChangeName(e) {
+    e.preventDefault();
+    let newMessages = group.messages.map(message => {
+      let newMessage = {...message,message_group:updateGroup.name};
+      return newMessage
+    })
+    
+    patchGroups("name", group.name, {name:updateGroup.name,messages:newMessages});
+    setTrigger(true);
+    setGroup(updateGroup);
+  }
+  
+  function handleDeleteGroup(){
+    patchGroups("delete", group.name);
+    setTrigger(true)
+  }
+
 
   return (
 
     <>
-      {modal && (
-        <MessageBlockModals modal={modal} setModal={setModal} group={group} setGroup={setGroup} patchGroups={patchGroups} updateGroup={updateGroup} setUpdateGroup={setUpdateGroup} />
+      {!trigger && (
+        
+        <Modal
+          trigger={trigger}
+          setTrigger={setTrigger}
+          updateGroup={updateGroup}
+          setUpdateGroup={setUpdateGroup}
+          group={group}
+          handleChangeName={handleChangeName}
+          handleDeleteGroup={handleDeleteGroup}
+          type="group"
+
+        />
 
       )}
       <div className={style.messageBlock_container}>
@@ -113,7 +145,7 @@ export const MessageBlock = () => {
           <>
             <div className={style.messageBlock}>
               <div className={style.groupName}>
-                <div onClick={() => setModal(true)}>
+                <div onClick={() => setTrigger(false) }>
                   <h2>{`#${group.name.replace(/_/g, " ")}  ` || ""}</h2>
                   <p>▼</p>
                 </div>

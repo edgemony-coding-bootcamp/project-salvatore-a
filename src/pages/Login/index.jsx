@@ -40,7 +40,7 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             {banner && <h5>Email o Password Errati</h5>}
             <div className={style.wrapper_item}>
-              <label htmlfor="userEmail"> Email: </label>
+              <label htmlFor="userEmail"> Email: </label>
               <input
                 className={ banner ? style.error : null}
                 

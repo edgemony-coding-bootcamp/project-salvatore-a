@@ -1,0 +1,84 @@
+@import "../../libs/variabili.scss";
+.main_wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.452);
+    
+    z-index: 98;
+    .wrapper{
+        
+        position: absolute;
+        top:10%;
+        left: 50%;
+        
+       
+        margin-left: -200px;
+        
+    
+        height: auto;
+        width: 400px;
+    
+        background-color: #fff;
+    
+        z-index: 99;
+
+        border: 2px solid #ccc;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        padding: 20px;
+        
+
+        .close_modals{
+            
+            padding: 4px 5px 2px 5px;
+            background-color: transparent;
+            color: $main;
+            border: none;
+            
+            position: absolute;
+            top: 3px;
+            right: 5px;
+            font-size: 16px;
+            &:hover{
+                background-color: rgb(231, 231, 231);
+                
+                border-radius: 2px;
+            }
+        }
+    }
+    
+}
+
+.hidden_main_wrapper{
+    top: -100%;
+}
+
+@media screen and (max-width: 767px) {
+    .main_wrapper{
+        .wrapper{
+            position: absolute;
+            top: 30%;
+            left: 0;
+            
+            margin-left: 0;
+            margin-top: -150px;
+            
+            width: 100%;
+            border: none;
+            outline: none;
+            .close_modals{
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+        }
+        }
+}
+
+}
