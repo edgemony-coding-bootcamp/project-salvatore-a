@@ -1,6 +1,21 @@
 # Slack Clone
  >Web site created in the context of the Edgemony Bootcamp final project
 
+## Table of Contents
+
+- [Introduction](#introduction)
+  - [Description](#description)  
+  - [How does it work?](#how-does-it-work)  
+  - [Try it](#try-it-now)
+- [The Team](#introducing-the-team)
+  - [Members](#team-members)
+  - [Mentor](#mentor)
+- [Project Setup](#project-setup)
+
+
+
+# Introduction 
+
 ## Description
 The goal of this project is to reproduce the main  characteristics of Slack, a platform to connect your team through a easy-to-use chat.
 
