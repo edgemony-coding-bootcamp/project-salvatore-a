@@ -6,7 +6,7 @@ export const ModalMobile = (props) => {
  
     return (
         <div className={`${style.modalMobile} ${props.hideGroup === true  && style.hideGroups}`}>
-            <Conversation component="modalMobile"/>
+            <Conversation setHideGroup= {props.setHideGroup} component="modalMobile"/>
         </div>
     )
 }
