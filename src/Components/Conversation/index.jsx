@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUrl, getMessageId } from '../../store/action'
 import { addGroup } from "../../libs/firebaseFunctions";
@@ -8,6 +8,7 @@ import style from './Conversation.module.scss'
 
 
 export const Conversation = (props) => {
+    const location = useLocation();
     const dispatch = useDispatch()
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");   
@@ -36,7 +37,7 @@ export const Conversation = (props) => {
         upDateUrl(params.id)
         //
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [changeLocation]
+    }, [location]
     )
 
     useEffect(() => {
@@ -65,8 +66,8 @@ export const Conversation = (props) => {
                 {groups.length > 0 ? groups.map((group, i) =>
 
 
-                    <Link onClick={() => {GetMessageId(undefined); setChangeLocation(!changeLocation);props.setHideGroup(true)}} to={`/home/${group.name}`} key={group.name} replace >
-                <div className={isActive === i ? style.active : null} onClick={() => toggleActive(i)}>
+                    <Link onClick={() => {GetMessageId(undefined); setChangeLocation(!changeLocation)}} to={`/home/${group.name}`} key={group.name} replace >
+                        <div className={isActive === i ? style.active : null} onClick={() => {toggleActive(i); props.setHideGroup(true)}}>
                             <span>#</span>
                             <p>{group.name.replace(/_/g, " ")}</p>
                         </div>
