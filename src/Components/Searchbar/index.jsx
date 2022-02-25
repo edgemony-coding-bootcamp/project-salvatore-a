@@ -25,6 +25,7 @@ export const Searchbar = () => {
         message.name = user.name
         message.lastname = user.lastname
         message.photo = user.photo
+        message.email = user.email
       }
       return message
     }))

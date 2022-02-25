@@ -39,8 +39,8 @@ const ProfileModals = (props) => {
     
         <div className={`${style.profileModals}`}>
             <div className={style.userProfile}>
-                <img src={props.userData.photo } alt={props.userData.name}></img>                
-                <h3>{props.userData.name + " " + props.userData.lastname}</h3>
+                <img src={props.userData.photo || "https://img.icons8.com/pastel-glyph/64/000000/person-male--v1.png" } alt={props.userData.name}></img>                
+                <h2>{props.userData.name + " " + props.userData.lastname}</h2>
                 <p>{props.userData.email}</p>
             </div>
             
