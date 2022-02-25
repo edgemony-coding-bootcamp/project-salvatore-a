@@ -13,7 +13,6 @@ export const Conversation = (props) => {
     const [isClicked, setIsClicked] = useState(false)
     const [newGroup, setNewGroup] = useState("");   
     const [isActive, setActive] = useState();
-    const [changeLocation,setChangeLocation] = useState(false)
 
     const groups = useSelector(store => store.groups)
     const url = useSelector(store => store.url)
