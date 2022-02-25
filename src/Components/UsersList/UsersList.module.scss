@@ -1,0 +1,12 @@
+@import  "../../libs/variabili.scss";
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    .card{
+        display: flex;
+        flex-direction: row;
+        p{
+            @include myp
+        }
+    }
+}

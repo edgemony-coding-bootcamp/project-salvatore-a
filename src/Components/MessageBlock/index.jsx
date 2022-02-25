@@ -26,7 +26,8 @@ export const MessageBlock = (props) => {
   const dispatch = useDispatch();
   const url = useSelector((state) => state.url);
   const authorId = useSelector((state) => state.user.id);
-
+  
+  
   const [group, setGroup] = useState({ name: "gruppo", messages: [] });
 
   const [updateGroup, setUpdateGroup] = useState({
@@ -167,6 +168,7 @@ export const MessageBlock = (props) => {
                       key={index}
                       data={message}
                       messages={group.messages}
+                      
                     />
                   ) : (
                     <h3>"nessun messaggio"</h3>

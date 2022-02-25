@@ -5,6 +5,7 @@ import style from "./Header.module.scss";
 import { ModalMobile } from "../ModalMobile";
 import logo from "../../img/logo256.png"
 
+
 export const Header = () => {
     const [hideGroup, setHideGroup] = useState(true);
 
@@ -17,6 +18,7 @@ export const Header = () => {
         <>
             <div className={style.header}>
             <div className={style.mediaGroup}>
+                
                 <img src={logo} onClick={toggleMenu} alt="navbar" loading="lazy"/>
                 <ModalMobile  hideGroup={hideGroup} setHideGroup={setHideGroup}/>        
             </div>
