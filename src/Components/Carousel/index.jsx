@@ -1,9 +1,9 @@
 import styles from "./Carousel.module.scss";
 
 import { useEffect, useState } from "react";
-import slideOne from '../../img/thor.png'
-import slideTwo from '../../img/deadpool.png'
-import slideThree from '../../img/wolverine.png'
+import slideOne from '../../img/slide_1.jpg'
+import slideTwo from '../../img/slide_2.jpg'
+import slideThree from '../../img/slide_3.jpg'
 
 
 let carouselData = [slideOne,slideTwo,slideThree];
@@ -41,7 +41,7 @@ const Carousel = () => {
         setFlaggerMax(true);
         
       }
-    }, 8000);
+    }, 4000);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
