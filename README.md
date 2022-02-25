@@ -1,119 +1,97 @@
-# EDGEMONY FINAL PROJECT - TEAM A
+![Slack Clone](./img/cover-readme.jpg)
 
-## Organizzazione
+# Slack Clone
+ >Web site created in the context of the Edgemony Bootcamp final project
 
-- daily standup **lun-ven 9.30-10**
-- durante il daily si segnalano problemi, si discutono implementazioni e il team leader assegna i task
-- si lavora in maniera autonoma
-- se necessario potete creare e autosegnare nuovi task
+## Table of Contents
 
-## Strumenti
+- [Introduction](#introduction)
+  - [Description](#description)  
+  - [How does it work?](#how-does-it-work) 
+  - [Mobile](#mobile-version-available) 
+  - [Try it](#try-it-now)
+- [The Team](#introducing-the-team)
+  - [Members](#team-members)
+  - [Mentor](#mentor)
+- [Project Setup](#project-setup)
 
-- Github
-  - repo
-  - issues
-  - board
-- Slack
-- hosting: **a vostra discrezione**
-- backend: **a vostra discrezione**
-  - json-server usato durante il corso
-  - Firebase Firestore DB
-  - altro...
 
-## Repository
 
-- il branch `main` è protetto
-- ogni task viene sviluppato in una branch con nomenclatura `feature/[task]` o `fix/[task]` in base alla tipologia
-- per mergiare il codice da una branch verso `main` si crea una PR assegnando tutti i membri del team come reviewer
-- le PR possono essere mergiate solo aver ricevuto **almeno 1 approvazione**
-- siete liberi di fare fork ma solo questo repo sarà quello preso in considerazione
+# Introduction 
 
-## Obiettivo
+## Description
+The goal of this project is to reproduce the main  characteristics of Slack, a platform to connect your team through a easy-to-use chat.
 
-- SLACK CLONE!
-  - teniamo Slack come riferimento per UI/UX
-- login screen se non autenticati
-- utente loggato
+## How does it work?
+After registering as a user, you can access different chat groups. Slack clone allows you to send and read messages in each group, create new chat groups and edit your messages.
 
-  - vedere i canali disponibili
-  - scrivere nei canali
-  - cancellare un messaggio
-  - creare canali
-  - vedere schermata del profilo
+## Mobile version available
+You can always bring Slack Clone with you thanks to the mobile version. Keep your closest ones in your pocket!
 
-- stretch objective
-  - editing dei messaggi
-  - creazioni nuove utente (signup)
+![Mobile](./img/mobile.gif)
 
----
+## Try it now!
+### [>>> Start Slack-Clone!](https://fake-slack-faa26.web.app/)
 
-# Getting Started with Create React App
+<hr>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introducing the team
+Here we are! Meet the creators of Slack-Clone
 
-## Available Scripts
+## Team Members
 
-In the project directory, you can run:
+- [Giorgio Collovà](https://github.com/Gcollova) 🔥
+- [Silvia Lechthaler](https://github.com/silhth) 🍃
+- [Alessandra Perricone](https://github.com/Aleperri98) 🐻
+- [Maria Rotolo](https://github.com/MariaRotolo) 😼
+- [Antonio Tutone](https://github.com/Tutanto) 🛰️
 
-### `npm start`
+## Mentor
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Salvatore Laisa](https://github.com/moebiusmania) 🦁
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<hr>
 
-### `npm test`
+# Project setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Clone project locally
+- On GitHub, navigate to the repo (you’re probably there right now, click the "Code" tab at the top).
 
-### `npm run build`
+![Clone Step 1](./img/clone_1.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Click the green "Clone or download" button and copy the web URL.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Clone Step 2](./img/clone_2.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- From your terminal, `cd` into the directory where you want this project to live.
 
-### `npm run eject`
+![Clone Step 3](./img/clone_3.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Once you’re in the directory, type git clone followed by the web URL you just copied to your clipboard from GitHub.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Clone Step 4](./img/clone_4.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ - Then navigate into the project by typing `cd` followed by the project directory’s name.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ - Once you have the project locally and you are in the project directory, you’ll want to update all the project’s dependencies. To do so, type the following into your terminal: `npm update`
 
-## Learn More
+ ![Clone Step 5](./img/clone_5.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ ### Access the project in your browser
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- After you’ve cloned the project locally and updated the dependencies, run the project by typing the following into your terminal: `npm start`. You should be able to see the project at `localhost:3000`.
 
-### Code Splitting
+🎉 You did it! You’re ready to start chatting!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Features:
+- Front-End in React JS (CRA)
+- Back-end:
+  - Firebase Authentication
+  - Firestore Database
+- Hosting by Firebase
+- Sass
+- User sign-up/login
+- Searchbar for users/messages
+- Full-Responsive
+- Editable user profile
+- Automatic log-out after 5 minutes of inactivity
