@@ -55,7 +55,6 @@ const Login = () => {
               <label htmlFor="userPassword"> Password: </label>
               <input
                 className={banner ? style.error : null}
-                
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
                 type="password"
                 placeholder="******"
@@ -67,7 +66,7 @@ const Login = () => {
             
           </form>
           <p onClick={() => handleSwitch(true)}>
-            Non hai un account ?Registrati!
+            Non hai un account? Registrati!
           </p>
         </div>
       </div>

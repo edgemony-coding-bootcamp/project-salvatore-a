@@ -5,7 +5,6 @@ const ShowTime = (props) => {
     const date = props.date || new Date();
     return (
         <div>
-
             <small>
                 {formatDistance(new Date(date), new Date(),
                     {

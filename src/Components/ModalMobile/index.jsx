@@ -8,7 +8,6 @@ export const ModalMobile = (props) => {
     const sideBar = useRef();
     if(sideBar.current !== undefined){
 
-      console.log(sideBar.current.offsetHeight)
     }
  
     return (

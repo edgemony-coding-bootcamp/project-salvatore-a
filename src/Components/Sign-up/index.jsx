@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
-
 import { signup } from "../../libs/firebaseAuth";
 import style from "./Signup.module.scss";
-
-
 
 const Signup = (props) => {
     const [user,setUser] = useState({})

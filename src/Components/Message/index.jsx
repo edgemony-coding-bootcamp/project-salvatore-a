@@ -35,11 +35,6 @@ export const Message = (props) => {
   const [updateMessage, setUpdateMessage] = useState({ message: message, status: false })
   const [trigger,setTrigger] = useState(true)
   
-
-  
-
-
-
   const [user, setUser] = useState({
     name: "",
     lastname: "",
@@ -63,10 +58,6 @@ export const Message = (props) => {
         });
       });
     }, [message]);
-
-
-  
-
 
   function handleDeleteMessage() {
     let updatedMessages = props.messages.filter(
@@ -111,16 +102,6 @@ export const Message = (props) => {
         </form>
         <div className={style.author}>
           <ImageProfile setTrigger={setTrigger} photo={`${user.photo ? user.photo : message.photo}`} logged={user.logged} />
-          {/* <img
-
-            className={style.author_img}
-
-            src={`${user.photo ? user.photo : message.photo}`}
-
-            alt={user.name}
-            loading="lazy"
-            onClick={()=> setTrigger(false)}
-          /> */}
           <div className={style.nameText}>
             <div className={style.authorDate}>
               <h3>{user.name + " " + user.lastname}</h3>

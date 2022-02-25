@@ -9,7 +9,7 @@ const UsersList =()=>{
             <p className={style.title}>Contatti</p>
             <div className={style.wrapper}>
             
-                {users.map((user,index)=>(
+                {users.map((user)=>(
                     <div className={style.card}>
                     <ImageProfile logged={user.logged} photo={user.photo} trigger={null} mini={true} />
                     <p>{user.name + " "+ user.lastname}</p>
