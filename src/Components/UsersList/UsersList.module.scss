@@ -1,12 +1,71 @@
 @import  "../../libs/variabili.scss";
+.title{
+    margin: 10px 0;
+    @include myp;
+    margin: 25px 16px 10px 29px;
+}
 .wrapper{
     display: flex;
     flex-direction: column;
+    margin: 0 16px 0px 20px;
+    height: 300px;
+    overflow-y:scroll;
+     
+      &::-webkit-scrollbar {
+        width: 7px;
+        /* width of the entire scrollbar */
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent; 
+        /* color of the tracking area */
+      }  
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(122, 122, 122); /* color of the scroll thumb */
+        border-radius: 20px; /* roundness of the scroll thumb */
+        border: none; /* creates padding around scroll thumb */
+        
+      }
+   
     .card{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        margin: 3px 0;
+        img{
+            margin-right: 15px;
+        }
         p{
             @include myp
         }
     }
+}
+
+@media screen and (max-width: 767px) {
+    .title {
+        display: inline;
+        font-size: 20px;
+        width: 70%;
+        margin: 35px 0px 10px 40px;
+    }
+    .wrapper{
+        width: 90%;
+        overflow-y:scroll;
+        margin-bottom: 20px;
+        padding: 5px 0;
+     
+        &::-webkit-scrollbar {
+         display: none;
+          /* width of the entire scrollbar */
+        }
+        .card{
+            margin-left: 15px;
+            width: 90%;
+         
+           
+            p {
+                font-size: 18px;
+            }
+        }
+    }
+
 }

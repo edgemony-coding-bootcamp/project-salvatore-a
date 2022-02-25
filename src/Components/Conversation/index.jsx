@@ -1,5 +1,5 @@
 
-import { Link, useParams, useLocation} from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUrl, getMessageId } from "../../store/action";
 import { addGroup } from "../../libs/firebaseFunctions";
@@ -15,7 +15,7 @@ export const Conversation = (props) => {
   const groups = useSelector((store) => store.groups);
   const url = useSelector((store) => store.url);
 
-  
+
 
   function upDateUrl(url) {
     dispatch(updateUrl(url));
@@ -52,50 +52,53 @@ export const Conversation = (props) => {
   const component = props.component;
 
   return (
-    <div className={style.conversation} >
+    <>
       <p className={style.channelName}>Canali</p>
-      <div className={style.list}>
-        {groups.length > 0 ? (
-          groups.map((group, i) => (
-            <Link
-              onClick={() => {
-                GetMessageId(undefined);
-                props.offSet !== undefined  && props.offSet.offsetHeight !== 0 && props.setHideGroup(!props.hideGroup);
-              }}
-              to={`/home/${group.name}`}
-              key={group.name}
-              replace
-            >
-              <div
-                className={isActive === i ? style.active : null}
-                onClick={() => toggleActive(i)}
-              >
-                <span>#</span>
-                <p>{group.name.replace(/_/g, " ")}</p>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <li>Nessun Gruppo</li>
-        )}
-      </div>
+      <div className={style.conversation} >
 
-      <div className={style.newgroup__wrapper}>
-        <button onClick={() => setIsClicked(!isClicked)}>
-          {!isClicked ? "+" : "×"}{" "}
-        </button>
-        <label htmlFor={component}>Aggiungi gruppo</label>
-        <input
-          className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
-          type="textarea"
-          value={newGroup}
-          onChange={(e) => setNewGroup(e.target.value)}
-          onKeyDown={handleInput}
-          placeholder="Premi Invio Per Confermare"
-          id={component}
-        />{" "}
-        <p>Aggiungi Gruppi</p>
-      </div>
-    </div>
+        <div className={style.list}>
+          {groups.length > 0 ? (
+            groups.map((group, i) => (
+              <Link
+                onClick={() => {
+                  GetMessageId(undefined);
+                  props.offSet !== undefined && props.offSet.offsetHeight !== 0 && props.setHideGroup(!props.hideGroup);
+                }}
+                to={`/home/${group.name}`}
+                key={group.name}
+                replace
+              >
+                <div
+                  className={isActive === i ? style.active : null}
+                  onClick={() => toggleActive(i)}
+                >
+                  <span>#</span>
+                  <p>{group.name.replace(/_/g, " ")}</p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <li>Nessun Gruppo</li>
+          )}
+        </div>
+        </div>
+        <div className={style.newgroup__wrapper}>
+          <button onClick={() => setIsClicked(!isClicked)}>
+            {!isClicked ? "+" : "×"}{" "}
+          </button>
+          <label htmlFor={component}>Aggiungi gruppo</label>
+          <input
+            className={`${style.addGroup} ${isClicked && style.hiddenAddGroup}`}
+            type="textarea"
+            value={newGroup}
+            onChange={(e) => setNewGroup(e.target.value)}
+            onKeyDown={handleInput}
+            placeholder="Premi Invio Per Confermare"
+            id={component}
+          />{" "}
+          <p>Aggiungi Gruppo</p>
+        </div>
+      
+    </>
   );
 };

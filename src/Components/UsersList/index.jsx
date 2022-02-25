@@ -6,7 +6,9 @@ const UsersList =()=>{
  const users = useSelector(state=> state.users)
     return(
         <>
+            <p className={style.title}>Contatti</p>
             <div className={style.wrapper}>
+            
                 {users.map((user,index)=>(
                     <div className={style.card}>
                     <ImageProfile logged={user.logged} photo={user.photo} trigger={null} mini={true} />
