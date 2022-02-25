@@ -16,6 +16,7 @@ import { patchGroups } from "../../libs/firebaseFunctions";
 import Modal from "../Modal";
 import modify from '../../img/modify.png';
 import deleteIco from '../../img/delete.png';
+import ImageProfile from "../ImageProfile";
 
 const db = getFirestore(app);
 
@@ -28,10 +29,14 @@ function toDateTime(secs) {
 
 export const Message = (props) => {
   const myUser = useSelector((state) => state.user);
+  
   const message = props.data;
   const date = message.date || { seconds: 1644405843 };
   const [updateMessage, setUpdateMessage] = useState({ message: message, status: false })
   const [trigger,setTrigger] = useState(true)
+  
+
+  
 
 
 
@@ -42,8 +47,7 @@ export const Message = (props) => {
     id: "",
     email: "",
   });
-
-  console.log(message.photo)
+  
 
   const [lilModalDisplay, setLilModalDisplay] = useState(false);
   const currentUser = useSelector((state) => state.user);
@@ -84,7 +88,7 @@ export const Message = (props) => {
   return (
     <>
       {!trigger && (
-        <Modal trigger={trigger} setTrigger={setTrigger}  type="profile" userData={user} myProfile={user.photo === myUser.photo ? true : false}/>
+        <Modal trigger={trigger} setTrigger={setTrigger}   type="profile" userData={user} myProfile={user.photo === myUser.photo ? true : false} />
       )}
       <li
         
@@ -106,7 +110,8 @@ export const Message = (props) => {
 
         </form>
         <div className={style.author}>
-          <img
+          <ImageProfile setTrigger={setTrigger} photo={`${user.photo ? user.photo : message.photo}`} logged={user.logged} />
+          {/* <img
 
             className={style.author_img}
 
@@ -115,7 +120,7 @@ export const Message = (props) => {
             alt={user.name}
             loading="lazy"
             onClick={()=> setTrigger(false)}
-          />
+          /> */}
           <div className={style.nameText}>
             <div className={style.authorDate}>
               <h3>{user.name + " " + user.lastname}</h3>

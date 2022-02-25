@@ -30,9 +30,9 @@
     z-index: 4;
 
     cursor: pointer;
-
+    transition: all 0.4s ease;
     &:hover {
-      border: 2px solid $mainWhite;
+      filter: brightness(1.2);
     }
   }
 }
@@ -47,8 +47,8 @@
   .profileImg {
     border: 1px solid $main;
 
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
 
     margin: 0 5px 0 0 ;
     

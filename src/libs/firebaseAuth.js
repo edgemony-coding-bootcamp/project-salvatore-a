@@ -47,12 +47,13 @@ function onCheck(id, dispatch) {
       let uid = user.uid;
       if (user.uid){
         localStorage.setItem("login Time", Date.now())
-        patchUser(uid, {logged:true});
+        patchUser(uid, {logged:true,status:true});
         dispatch(updateLogin(true));
+        dispatch(updateUser({status:true}))
       }
     }
     else if ((auth.currentUser === null && id && calc > 15) || calc > 15 ) {
-      patchUser(id, {logged:false});      
+      patchUser(id, {logged:false,status:false});      
       dispatch(updateUser({ id: "", name: "", lastname: "", photo: "",status:false }))
       dispatch(updateLogin(false));
     } 
@@ -60,10 +61,12 @@ function onCheck(id, dispatch) {
   });
 }
 
-function logOut(dispatch) {
+function logOut(dispatch, id) {
   signOut(auth)
     .then(() => {
+      patchUser(id, {logged:false,status:false});
       dispatch(updateLogin(false));
+      dispatch(updateUser({ id: "", name: "", lastname: "", photo: "",status:false }))
      })
     .catch((error) => {
       console.log(error);
