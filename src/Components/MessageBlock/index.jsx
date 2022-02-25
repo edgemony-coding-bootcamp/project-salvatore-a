@@ -10,7 +10,7 @@ import {
   limit,
 } from "firebase/firestore";
 
-import { actionStatus, getMessageId } from "../../store/action.js";
+import { getMessageId } from "../../store/action.js";
 import style from "./MessageBlock.module.scss";
 import styleMessage from "../Message/Message.module.scss";
 import { patchGroups } from "../../libs/firebaseFunctions";
