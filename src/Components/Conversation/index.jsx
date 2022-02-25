@@ -1,4 +1,5 @@
-import { Link, useParams } from "react-router-dom";
+
+import { Link, useParams, useLocation} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUrl, getMessageId } from "../../store/action";
 import { addGroup } from "../../libs/firebaseFunctions";
@@ -6,12 +7,11 @@ import { useEffect, useState } from "react";
 import style from "./Conversation.module.scss";
 
 export const Conversation = (props) => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
   const [newGroup, setNewGroup] = useState("");
   const [isActive, setActive] = useState();
-  const [changeLocation, setChangeLocation] = useState(false);
-
   const groups = useSelector((store) => store.groups);
   const url = useSelector((store) => store.url);
 
@@ -33,7 +33,7 @@ export const Conversation = (props) => {
     upDateUrl(params.id);
     //
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [changeLocation]);
+  }, [location]);
 
   useEffect(() => {
     groups.map((group, i) => (group.name === url ? toggleActive(i) : null));
@@ -60,8 +60,6 @@ export const Conversation = (props) => {
             <Link
               onClick={() => {
                 GetMessageId(undefined);
-                setChangeLocation(!changeLocation);
-                
                 props.offSet !== undefined  && props.offSet.offsetHeight !== 0 && props.setHideGroup(!props.hideGroup);
               }}
               to={`/home/${group.name}`}
