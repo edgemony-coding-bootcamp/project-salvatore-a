@@ -18,7 +18,7 @@ import app from "../../libs/firebase.config";
 
 import { useDispatch } from "react-redux";
 import Modal from "../Modal";
-import { useLocation } from "react-router";
+
 
 const db = getFirestore(app);
 
@@ -39,7 +39,7 @@ export const MessageBlock = (props) => {
     (state) => state.alternativeMessageId
   );
 
-  const location = useLocation();
+ 
   useEffect(() => {
     if (url !== undefined) {
       const qg = query(collection(db, "groups"), where("name", "==", url));
@@ -62,7 +62,7 @@ export const MessageBlock = (props) => {
         });
       });
     }
-  }, [url, group.name,location]);
+  }, [url, group.name]);
 
 
   const [message, setMessage] = useState({
