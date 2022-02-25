@@ -8,30 +8,19 @@ import { useSelector, useDispatch } from "react-redux";
 import searchIcon from "./search_icon.png"
 import Modal from "../Modal";
 
-
 export const SearchResults = (props) => {
   const myUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [trigger,setTrigger] = useState(true)
-  const messageIndex = useSelector(state => state.messageId)
-  console.log(messageIndex)
 
   function GetMessageId(index) {
     dispatch(getMessageId(index));
   }
 
-  //   function cutPhrase(text,nWords) {
-  //     const firstNwords = text.split(' ').slice(0, nWords).join(' ');
-  //     return firstNwords;
-  // }
   const goToResult = () => {
     props.setHidden(true);
     props.setInput('');
     GetMessageId(props.text.index)
-    
-
-    console.log(props)
-    
   }
 
   return (

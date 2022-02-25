@@ -31,10 +31,6 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLogged,url,user.status]);
 
-  
-
- 
-  
   return (
     <>
        <Routes>

@@ -22,7 +22,7 @@ import Modal from "../Modal";
 
 const db = getFirestore(app);
 
-export const MessageBlock = (props) => {
+export const MessageBlock = () => {
   const dispatch = useDispatch();
   const url = useSelector((state) => state.url);
   const authorId = useSelector((state) => state.user.id);

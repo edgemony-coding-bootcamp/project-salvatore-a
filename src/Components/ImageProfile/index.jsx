@@ -1,12 +1,6 @@
-
-
 import style from './ImageProfile.module.scss'
 
 const ImageProfile = (props) =>{
-    
-   
-   
-    
     return(
         <>
             <div  className={`${props.mini && style.img_wrapper_mini}  ${style.img_wrapper}`}>

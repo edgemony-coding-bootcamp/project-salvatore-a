@@ -4,9 +4,7 @@ import { Conversation } from '../Conversation'
 import UsersList from '../UsersList'
 
 
-export const ConversationBlock = (props) => {
-    
- 
+export const ConversationBlock = () => {
     return (
         <div className={style.conversation} >
             
