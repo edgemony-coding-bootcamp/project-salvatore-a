@@ -81,7 +81,6 @@ export const MessageBlock = (props) => {
       patchGroups("messages", group.name, [...group.messages, message]);
       setMessage({ ...message, text: "" });
       GetMessageId(undefined);
-      dispatch(actionStatus());
     }
   }
 
