@@ -1,29 +1,49 @@
 @import  "../../libs/variabili.scss";
+.channelName {
+    @include myp;
+    margin: 25px 16px 10px 29px;
 
+}
 .conversation {
 
     width: 260px;
-    margin-top: 25px;
+    margin-top: 5px;
+    height: auto;
+    max-height: 250px;
+    margin-bottom: 20px;
+    overflow-y:scroll;
+     
+            &::-webkit-scrollbar {
+              width: 7px;
+              /* width of the entire scrollbar */
+            }
+            &::-webkit-scrollbar-track {
+              background: transparent; 
+              /* color of the tracking area */
+            }  
+            &::-webkit-scrollbar-thumb {
+              background-color: rgb(122, 122, 122); /* color of the scroll thumb */
+              border-radius: 20px; /* roundness of the scroll thumb */
+              border: none; /* creates padding around scroll thumb */
+              
+            }       
      
     
     .mediaGroup {
         display: none;
     }
-    .channelName {
-        @include myp;
-        margin: 3px 16px 10px 29px;
-
-    }
+    
     .list{  
         div {
-              
+            
             align-items: center;  
             position: relative;
             display: flex;
             justify-content: left;
             padding: 5px 0;
             color:$sidebarText;
-            list-style: none;           
+            list-style: none; 
+               
   
             p {
                 @include myp;
@@ -44,80 +64,86 @@
             color: $mainWhite;
         }
     }
-    .newgroup__wrapper{
-        display: flex;
-        align-items: center;
-        margin: 5px 16px 0 24px;
+    
+}
+.newgroup__wrapper{
+    display: flex;
+    align-items: center;
+    margin: 5px 16px 20px 24px;
 
-        p {
-            @include myp;
-            margin-left: 32px;
-        }
-        div{
-            margin: 8px 0;
-            padding: 6px 8px;
-            background-color: $sidebarText;
-       
-        }
-        button{
-            position: absolute;
-            font-size: 15px;
-            width: 19px;
-            height: 19px;            
-            background-color:rgba(255, 255, 255, 0.274);
-            color: $sidebarText;
-            border: none;
-            border-radius: 5px;
-            z-index: 3;
-        }
-        label{
-            display: none;
-        }
-        input {
-            
-            height: 19px;
-            border-radius: 2px;
-            font-size: 13px;
-            color: $mainBlack;
-            margin-top: 2px;
-        }
+    p {
+        @include myp;
+        margin-left: 32px;
     }
-
-    .addGroup{
-        z-index: 2;
-        padding: 10px 0;
-        font-size: 22px;
-        position: absolute;
-        margin-left: 30px;
-        width: 0px;
-        border: none;
-        transition: all 0.4s ease;
+    div{
+        margin: 8px 0;
+        padding: 6px 8px;
+        background-color: $sidebarText;
+   
     }
-    .hiddenAddGroup{
-        z-index: 2;
-        padding: 10px ;
+    button{
         position: absolute;
-        margin-left: 30px;
-        width: 180px;
+        font-size: 15px;
+        width: 19px;
+        height: 19px;            
+        background-color:rgba(255, 255, 255, 0.274);
+        color: $sidebarText;
         border: none;
-        transition: all 0.4s ease;
-        &:focus{
-            border: none;
-            outline: none;
-        }
+        border-radius: 5px;
+        z-index: 3;
+    }
+    label{
+        display: none;
+    }
+    input {
+        
+        height: 19px;
+        border-radius: 2px;
+        font-size: 13px;
+        color: $mainBlack;
+        margin-top: 2px;
     }
 }
 
+.addGroup{
+    z-index: 2;
+    padding: 10px 0;
+    font-size: 22px;
+    position: absolute;
+    margin-left: 30px;
+    width: 0px;
+    border: none;
+    transition: all 0.4s ease;
+}
+.hiddenAddGroup{
+    z-index: 2;
+    padding: 10px ;
+    position: absolute;
+    margin-left: 30px;
+    width: 180px;
+    border: none;
+    transition: all 0.4s ease;
+    &:focus{
+        border: none;
+        outline: none;
+    }
+}
 
 @media screen and (max-width: 767px) {
+    .channelName {
+        font-size: 20px;
+        margin: 25px 16px 10px 40px;
+
+    }
     .conversation {
-        width: 100%;
-        // margin-top: 15px;
-        .channelName {
-            font-size: 20px;
-            margin: 3px 16px 10px 40px;
-    
+        width: 95%;
+        overflow-y:scroll;
+     
+        &::-webkit-scrollbar {
+         display: none;
+          /* width of the entire scrollbar */
         }
+
         .list{      
             div {
                 width: 100%;
@@ -133,35 +159,36 @@
                 }
             }
         }
-            .newgroup__wrapper{
-                margin: 15px 10px 0 35px;
-                p {
-                    font-size: 18px;
-                    margin-left: 25px;
-                }
-                
-                button{
-                    width: 20px;
-                    height: 20px;
-                    font-size: 18px;
-                }
-                input {
-                    height: 25px;
-                    margin-top: 2px;
-                    font-size:18px;
-                }
-            }
-
-            .addGroup{
-                padding: 5px 0;
-                font-size: 20px;
-                width: 0px;
-            }
-            .hiddenAddGroup{
-                padding: 6px ;
-                margin-left: 25px;
-                width: 60%;  
-            }
-        }     
+            
     }
 
+    .newgroup__wrapper{
+        margin: 15px 10px 0 35px;
+        p {
+            font-size: 18px;
+            margin-left: 25px;
+        }
+        
+        button{
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+        }
+        input {
+            height: 25px;
+            margin-top: 2px;
+            font-size:18px;
+        }
+    }
+
+    .addGroup{
+        padding: 5px 0;
+        font-size: 20px;
+        width: 0px;
+    }
+    .hiddenAddGroup{
+        padding: 6px ;
+        margin-left: 25px;
+        width: 60%;  
+    }
+}     
