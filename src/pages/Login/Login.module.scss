@@ -138,10 +138,12 @@
     z-index: 12;
     width: 50%;
     left: 50%;
-    top: 30px;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    padding: 30px 0;
     
     img{
         
@@ -156,17 +158,22 @@
 @media screen and (max-width: 767px) {
     .main_wrapper{
         width: 200%;
-        overflow: hidden;
+        overflow:hidden;
         left: -100%;
         .wrapper_form{
-            overflow: hidden;
+            
             .wrapper_login{
+                height: 100%;
+                overflow: auto;
+                &::-webkit-scrollbar {
+                    display: none;
+                     /* width of the entire scrollbar */
+                   }
 
-                form{
-                    
+                form{ 
+                    height: 100vh;
+                    margin: 120px auto 15px auto;                     
                     .wrapper_item{
-
-                        
 
                         label{
                             font-size: 20px;
@@ -180,7 +187,7 @@
                     }
                 }
                 p{
-                    
+                    margin: 10px auto 130px auto;
                     text-decoration: underline; 
                 }
             }
@@ -189,7 +196,10 @@
             left: 50%;
         }
         .head{
-            top: 15px;
+            background-color: white;
+            z-index: 99;
+            top: 0px;
+            padding: 15px 0 40px 0;
             width: 100%;
             left: 0;
             img{

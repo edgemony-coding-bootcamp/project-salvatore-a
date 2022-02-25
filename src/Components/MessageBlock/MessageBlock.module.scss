@@ -92,6 +92,11 @@
       padding: 30px 25px;
       border-radius: 5px;
       border: solid 1px #ccc;
+      &:active, &:focus { 
+        border: 2px solid $sidebarText;
+        outline: none; 
+        background-color: #ffffff;
+      }
     }
   }
 }
