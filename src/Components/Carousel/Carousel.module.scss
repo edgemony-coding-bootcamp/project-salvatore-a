@@ -1,5 +1,6 @@
 .carousel {
   position: absolute;
+  left: 0;
   z-index: 10;
   overflow: hidden;
   width: 50%;
@@ -25,9 +26,11 @@
       
 
       color: #fff;
-      img {        
-        width: 100%;
+      img {    
+        position: absolute;    
+        left: 0;
         height: 100%;
+        
         
         
              
