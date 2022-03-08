@@ -21,7 +21,6 @@ export const Conversation = (props) => {
     dispatch(updateUrl(url));
   }
   const params = useParams();
-
   function handleInput(e) {
     if (e.key === "Enter" || e.keyCode === "13") {
       addGroup(newGroup.replace(/ /g, "_"));
@@ -33,8 +32,8 @@ export const Conversation = (props) => {
     upDateUrl(params.id);
     //
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
-
+  }, [location, url]);
+ 
   useEffect(() => {
     groups.map((group, i) => (group.name === url ? toggleActive(i) : null));
     //
@@ -64,6 +63,7 @@ export const Conversation = (props) => {
                   GetMessageId(undefined);
                   props.offSet !== undefined && props.offSet.offsetHeight !== 0 && props.setHideGroup(!props.hideGroup);
                 }}
+                
                 to={`/home/${group.name}`}
                 key={group.name}
                 replace

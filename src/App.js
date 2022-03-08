@@ -1,18 +1,13 @@
 import "./App.scss";
 import { useSelector, useDispatch } from "react-redux";
 
-import { useEffect, lazy, Suspense,} from "react";
+import { useEffect} from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 import { onCheck} from "./libs/firebaseAuth";
-
-import {Loader} from "./Components/Loader";
-
-const Home = lazy(()=> import ("./pages/Home"));
-
-const Login = lazy(()=> import ("./pages/Login"));
-
-
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+ 
 function App() {
   const dispatch = useDispatch()
   const location = useLocation();
@@ -21,10 +16,9 @@ function App() {
   const user = useSelector((state) => state.user);
   
   const url = useSelector((state) => state.url);
-  const baseUrl = location === '' ? `/home` : url === undefined ? '/home' : `/home/${url}`;
-  
+  const baseUrl = location.pathname === '' ? `/home` : url === undefined ? '/home' : `/home/${url}`;
+ 
   useEffect(() => {
-
     isLogged ? navigate(baseUrl) : navigate("/login")
     onCheck(user.id, dispatch);
 
@@ -35,18 +29,11 @@ function App() {
     <>
        <Routes>
         <Route path="/login" element={
-          <Suspense fallback={<Loader />}>
-            <Login/> 
-          </Suspense>} />
+            <Login/> }/>
         <Route path="/home" element={
-          <Suspense fallback={<Loader />}>
-            <Home /> 
-          </Suspense>} />
+            <Home /> }/>
         <Route path="/home/:id" element={
-          <Suspense fallback={<Loader />}>
-            <Home/> 
-          </Suspense>} />  
-        
+            <Home/> }/>
       </Routes>
     </>
   );

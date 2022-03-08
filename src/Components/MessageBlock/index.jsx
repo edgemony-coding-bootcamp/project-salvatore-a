@@ -41,27 +41,21 @@ export const MessageBlock = () => {
 
  
   useEffect(() => {
+    let qg;
     if (url !== undefined) {
-      const qg = query(collection(db, "groups"), where("name", "==", url));
-
-      onSnapshot(qg, (querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          
-          setGroup(doc.data());
-
-        });
-      });
+      qg = query(collection(db, "groups"), where("name", "==", url));
     } else {
-      const qg =
+      console.log(group.name)
+      qg =
         group.name === "gruppo"
           ? query(collection(db, "groups"), limit(1))
           : query(collection(db, "groups"), where("name", "==", group.name));
-       onSnapshot(qg, (querySnapshot) => {
-         querySnapshot.forEach( (doc) => {
-           setGroup(doc.data());
-        });
-      });
     }
+    onSnapshot(qg, (querySnapshot) => {
+      querySnapshot.forEach( (doc) => {
+        setGroup(doc.data());
+     });
+   })
   }, [url, group.name]);
 
 
@@ -133,6 +127,7 @@ export const MessageBlock = () => {
   function handleDeleteGroup() {
     patchGroups("delete", group.name);
     setTrigger(true);
+    setGroup({...group, name:'gruppo'})
   }
 
   return (
