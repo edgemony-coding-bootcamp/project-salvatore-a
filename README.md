@@ -1,97 +1,73 @@
-![Slack Clone](./img/cover-readme.jpg)
+# EDGEMONY FINAL PROJECT - TEAM A
 
-# Slack Clone
- >Web site created in the context of the Edgemony Bootcamp final project
+## Organizzazione
 
-## Table of Contents
+- daily standup **lun-ven 9-9.30**
+- durante il daily si segnalano problemi, si discutono implementazioni
+- si lavora in maniera autonoma
+- i task possono essere assegnati sia dal team leader che dal team stesso
 
-- [Introduction](#introduction)
-  - [Description](#description)  
-  - [How does it work?](#how-does-it-work) 
-  - [Mobile](#mobile-version-available) 
-  - [Try it](#try-it-now)
-- [The Team](#introducing-the-team)
-  - [Members](#team-members)
-  - [Mentor](#mentor)
-- [Project Setup](#project-setup)
+## Strumenti
 
+- Github
+  - repo
+  - issues
+  - board
+- Slack
+- hosting: **scelta libera**
+- framework: **scelta tra CRA, Vite, Next**
+- librerie: **scelta libera**
 
+## Backend
 
-# Introduction 
+L'endpoint di backend è:
 
-## Description
-The goal of this project is to reproduce the main  characteristics of Slack, a platform to connect your team through a easy-to-use chat.
+[https://edgemony-backend.herokuapp.com/series/](https://edgemony-backend.herokuapp.com/series/)
 
-## How does it work?
-After registering as a user, you can access different chat groups. Slack clone allows you to send and read messages in each group, create new chat groups and edit your messages.
+i dati esposti seguono questo schema:
 
-## Mobile version available
-You can always bring Slack Clone with you thanks to the mobile version. Keep your closest ones in your pocket!
+```json
+{
+  "id": number,
+  "title": string,
+  "seasons": number,
+  "poster": string,
+  "year": number,
+  "description": string,
+  "genres": string[],
+  "new": boolean,
+  "favorite": boolean,
+  "rating": number,
+  "users": number[],
+  "cast": string[]
+}
+```
 
-![Mobile](./img/mobile.gif)
+su richiesta è possibile modificare lo schema per aggiungere nuovi dati.
 
-## Try it now!
-### [>>> Start Slack-Clone!](https://fake-slack-faa26.web.app/)
+## Repository
 
-<hr>
+- il branch `main` è protetto
+- ogni task viene sviluppato in una branch con nomenclatura `feature/[task]` o `fix/[task]` in base alla tipologia
+- per mergiare il codice da una branch verso `main` si crea una PR assegnando tutti i membri del team come reviewer
+- le PR possono essere mergiate solo aver ricevuto **almeno 1 approvazione**
+- siete liberi di fare fork ma solo questo repo sarà quello preso in considerazione
 
-# Introducing the team
-Here we are! Meet the creators of Slack-Clone
+## Obiettivo
 
-## Team Members
-
-- [Giorgio Collovà](https://github.com/Gcollova) 🔥
-- [Silvia Lechthaler](https://github.com/silhth) 🍃
-- [Alessandra Perricone](https://github.com/Aleperri98) 🐻
-- [Maria Rotolo](https://github.com/MariaRotolo) 😼
-- [Antonio Tutone](https://github.com/Tutanto) 🛰️
-
-## Mentor
-
-- [Salvatore Laisa](https://github.com/moebiusmania) 🦁
-
-<hr>
-
-# Project setup
-
-## Clone project locally
-- On GitHub, navigate to the repo (you’re probably there right now, click the "Code" tab at the top).
-
-![Clone Step 1](./img/clone_1.png)
-
-- Click the green "Clone or download" button and copy the web URL.
-
-![Clone Step 2](./img/clone_2.png)
-
-- From your terminal, `cd` into the directory where you want this project to live.
-
-![Clone Step 3](./img/clone_3.png)
-
-- Once you’re in the directory, type git clone followed by the web URL you just copied to your clipboard from GitHub.
-
-![Clone Step 4](./img/clone_4.png)
-
- - Then navigate into the project by typing `cd` followed by the project directory’s name.
-
- - Once you have the project locally and you are in the project directory, you’ll want to update all the project’s dependencies. To do so, type the following into your terminal: `npm update`
-
- ![Clone Step 5](./img/clone_5.png)
-
- ### Access the project in your browser
-
-- After you’ve cloned the project locally and updated the dependencies, run the project by typing the following into your terminal: `npm start`. You should be able to see the project at `localhost:3000`.
-
-🎉 You did it! You’re ready to start chatting!
-
-## Features:
-- Front-End in React JS (CRA)
-- Back-end:
-  - Firebase Authentication
-  - Firestore Database
-- Hosting by Firebase
-- Sass
-- User sign-up/login
-- Searchbar for users/messages
-- Full-Responsive
-- Editable user profile
-- Automatic log-out after 5 minutes of inactivity
+- **NETFLIX CLONE! (EDGEFLIX)**
+  - usate l'attuale UI di Netflix come punto di partenza ma siete liberi di applicare eventuali personalizzazioni
+- **obiettivi minimi:**
+  - visualizzare lista (in griglia) serie disponibili
+    - filtri per genere
+  - cliccando su una locandina vedo i dettagli di una singola serie
+  - nel dettaglio di una serie posso:
+    - marcare una serie come preferita
+    - esprimere un giudizio, voto da 1 a 5
+    - cancellare/nascondere la serie
+  - layout responsive
+- **obiettivi extra:**
+  - flusso di login (signin) e mostrare solo i dati legati all'utente loggato
+  - flusso creazione nuove utente (signup)
+  - ricerca testuale (titolo)
+  - video in autoplay in home
