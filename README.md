@@ -14,6 +14,7 @@
   - issues
   - board
 - Slack
+- Google Meet & Calendar
 - hosting: **scelta libera**
 - framework: **scelta tra CRA, Vite, Next**
 - librerie: **scelta libera**
