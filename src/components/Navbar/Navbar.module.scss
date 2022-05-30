@@ -2,7 +2,7 @@
 
 .Navbar {
   @include flex($justify: space-between, $align: center);
-  padding: 1em;
+  padding: 1em 2em;
   height: 80px;
 
   &__Logo {
@@ -10,6 +10,7 @@
   }
 
   &__IconsWrapper {
+    position: relative;
     @include flex;
     > svg {
       margin: 5px;
@@ -29,7 +30,37 @@
       }
     }
   }
+
+  &__UserMenu{
+    position: absolute;
+    width: 200px;
+    top: 40px;
+    right: 0;
+    border: 1px solid rgb(125, 121, 121);
+    background-color: rgba(0, 0, 0, 0.525);
+    li{
+      @include flex($align:center);
+      list-style: none;
+      font-size: 0.8rem;
+      height: 40px;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    >svg{
+      font-size: 2em;
+    }
+    &__UserIcon{
+      height: 70%;
+    }
+    &__Exit{
+      justify-content: center !important;
+      margin: 0 !important;
+      height: 50px !important;
+    }
+  }
 }
+
+
 
 
 @media all and (min-width: 700px){
