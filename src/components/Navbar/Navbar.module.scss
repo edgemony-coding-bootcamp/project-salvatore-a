@@ -10,9 +10,34 @@
   }
 
   &__IconsWrapper {
+    @include flex;
     > svg {
       margin: 5px;
+      cursor: pointer;
     }
     font-size: 20px;
+
+    &__Notify{
+      display: none;
+    }
+
+    &__User {
+      @include flex($align:center, $gap:3px);
+      cursor: pointer;
+      img {
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+
+@media all and (min-width: 700px){
+  .Navbar{
+    &__IconsWrapper{
+      &__Notify{
+        display: block;
+      }
+    }
   }
 }
