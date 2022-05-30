@@ -1,0 +1,62 @@
+@import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
+
+.Footer {
+    @include flex-center;
+    
+    &__Wrapper{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    &__IconsWrapper{
+     @include flex($gap:40px);
+      font-size: 20px;
+      margin: 20px 0;
+      > svg {
+        cursor: pointer;
+      }
+    }
+
+    &__ColumnWrapper{
+        display: flex;
+        justify-content: center;
+        color: #808080;
+    }
+
+    &__column {
+        list-style-type: none;
+        width: 100%;
+        > li {
+            padding: 8px 0;
+        }
+            > li a {
+                cursor: pointer;
+                font-size: 14px;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+            }
+    }
+    
+    &__button {
+        color: #808080;
+        background-color:$black;
+        padding: 6px;
+        border:1px solid #808080;
+        cursor: pointer;
+        font-size: 13px;
+        width: 140px;
+        margin: 20px 0;
+            &:hover {
+                color: $white;
+            }
+    }
+    
+    &__authors {
+        color: #808080;
+        font-size: 12px;
+    }
+}
