@@ -1,9 +1,13 @@
 @import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
 
 .Navbar {
   @include flex($justify: space-between, $align: center);
-  padding: 1em 2em;
+  padding: 1em;
   height: 80px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
 
   &__Logo {
     height: 100%;
@@ -36,8 +40,9 @@
     width: 200px;
     top: 40px;
     right: 0;
-    border: 1px solid rgb(125, 121, 121);
-    background-color: rgba(0, 0, 0, 0.525);
+    border: 1px solid $grey;
+    background-color: rgba(0, 0, 0, 0.831);
+    z-index: 1;
     li{
       @include flex($align:center);
       list-style: none;
@@ -60,11 +65,10 @@
   }
 }
 
-
-
-
 @media all and (min-width: 700px){
   .Navbar{
+    padding: 1em 2em;
+
     &__IconsWrapper{
       &__Notify{
         display: block;

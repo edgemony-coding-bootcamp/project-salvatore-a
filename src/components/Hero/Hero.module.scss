@@ -1,170 +1,156 @@
 .Hero {
+    position: absolute;
+    top: 0;
+  &__ContVideo {
+    position: relative;
+  }
 
+  &__BackgrVid {
+    margin-top: -300px;
+    min-height: 1300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 
-    &__ContVideo {
-        position: relative;
+  &__WrapOver {
+    margin-left: 60px;
+    flex-wrap: wrap;
+    max-width: 800px;
+  }
 
-    }
+  &__Title {
+    font-size: 80px;
+    padding-top: 200px;
+  }
 
+  &__Desc {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 500;
+  }
 
-    &__BackgrVid {
+  &__BtnPlay {
+    margin-top: 30px;
+    cursor: pointer;
+    justify-content: center;
+    gap: 10px;
+    width: 250px;
+    border: none;
+    border-radius: 7px;
+    font-size: 25px;
+    font-weight: 800;
+    padding: 10px;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  &__BtnPlay:hover {
+    background-color: rgb(173, 173, 173);
+  }
+
+  &__BtnInfo {
+    margin-top: 30px;
+    cursor: pointer;
+    background-color: rgba(43, 43, 43, 0.514);
+    color: white;
+    justify-content: center;
+    gap: 10px;
+    width: 250px;
+    border: none;
+    border-radius: 7px;
+    margin-left: 1em;
+    font-size: 25px;
+    font-weight: 800;
+    padding: 10px;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  &__BtnInfo:hover {
+    background-color: rgba(18, 18, 18, 0.514);
+  }
+
+  &__BtnIcon {
+    font-size: 50px;
+    vertical-align: middle;
+  }
+
+  &__BtnMute {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border: #fff solid 4px;
+    border-radius: 50px;
+    font-size: 50px;
+    transition: all 0.3;
+    vertical-align: middle;
+  }
+
+  @media all and (min-width: 300px) and (max-width: 600px) {
+    .Hero {
+      &__BackgrVid {
         margin-top: -300px;
         min-height: 1300px;
         position: absolute;
         top: 0;
         left: 0;
         z-index: -1;
+      }
 
-    }
+      &__WrapOver {
+        margin-left: 10px;
+        max-width: 300px;
+      }
 
-    &__WrapOver {
-        margin-left: 60px;
-        flex-wrap: wrap;
-        max-width: 800px;
-    }
-
-    &__Title {
-        font-size: 80px;
-        padding-top: 200px;
-    }
-
-    &__Desc {
-        margin-top: 20px;
-        font-size: 25px;
-        font-weight: 500;
-    }
-
-    &__BtnPlay {
-        margin-top: 30px;
-        cursor: pointer;
-        justify-content: center;
-        gap: 10px;
-        width: 250px;
-        border: none;
-        border-radius: 7px;
-        font-size: 25px;
-        font-weight: 800;
-        padding: 10px;
-        align-items: center;
-        vertical-align: middle;
-    }
-
-    &__BtnPlay:hover {
-        background-color: rgb(173, 173, 173);
-    }
-
-    &__BtnInfo {
-        margin-top: 30px;
-        cursor: pointer;
-        background-color: rgba(43, 43, 43, 0.514);
-        color: white;
-        justify-content: center;
-        gap: 10px;
-        width: 250px;
-        border: none;
-        border-radius: 7px;
-        margin-left: 1em;
-        font-size: 25px;
-        font-weight: 800;
-        padding: 10px;
-        align-items: center;
-        vertical-align: middle;
-    }
-
-    &__BtnInfo:hover {
-        background-color: rgba(18, 18, 18, 0.514);
-    }
-
-    &__BtnIcon {
+      &__Title {
         font-size: 50px;
-        vertical-align: middle;
+      }
+
+      &__Desc {
+        font-size: 20px;
+      }
+
+      &__BtnPlay {
+        width: 120px;
+        font-size: 15px;
+      }
+
+      &__BtnInfo {
+        width: 120px;
+        font-size: 15px;
+      }
+
+      &__BtnIcon {
+        font-size: 20px;
+      }
+
+      &__BtnMute {
+        border: #fff solid 2px;
+        font-size: 40px;
+      }
     }
+  }
 
-    &__BtnMute {
-        margin-top: 10px;
-        cursor: pointer;
-        padding: 5px;
-        border: #fff solid 4px;
-        border-radius: 50px;
-        font-size: 50px;
-        transition: all 0.3;
-        vertical-align: middle;
+  @media all and (min-width: 600px) and (max-width: 1000px) {
+    .Hero {
+      &__WrapOver {
+        margin-left: 30px;
+        max-width: 500px;
+      }
+
+      &__Title {
+        font-size: 60px;
+      }
+
+      &__BtnPlay {
+        width: 200px;
+      }
+
+      &__BtnInfo {
+        width: 200px;
+      }
     }
-
-
-    @media all and (min-width: 300px) and (max-width:600px) {
-        .Hero {
-
-            &__BackgrVid {
-                margin-top: -300px;
-                min-height: 1300px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: -1;
-
-            }
-
-            &__WrapOver {
-                margin-left: 10px;
-                max-width: 300px;
-            }
-
-            &__Title {
-                font-size: 50px;
-            }
-
-            &__Desc {
-                font-size: 20px;
-            }
-
-            &__BtnPlay {
-                width: 120px;
-                font-size: 15px;
-            }
-
-            &__BtnInfo {
-                width: 120px;
-                font-size: 15px;
-            }
-
-            &__BtnIcon {
-                font-size: 20px;
-            }
-
-            &__BtnMute {
-                border: #fff solid 2px;
-                font-size: 40px;
-            }
-        }
-
-
-
-    }
-
-    @media all and (min-width: 600px) and (max-width:1000px) {
-        .Hero {
-
-            &__WrapOver {
-                margin-left: 30px;
-                max-width: 500px;
-            }
-
-            &__Title {
-                font-size: 60px;
-            }
-
-
-            &__BtnPlay {
-                width: 200px;
-
-            }
-
-            &__BtnInfo {
-                width: 200px;
-
-            }
-        }
-
-    }
+  }
 }

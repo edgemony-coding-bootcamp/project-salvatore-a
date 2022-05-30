@@ -3,12 +3,13 @@
 
 .Footer {
     @include flex-center;
+    width: 100vw;
+    margin-top: 600px;
     
     &__Wrapper{
         width: 70%;
         display: flex;
         flex-direction: column;
-        
     }
     
     &__IconsWrapper{
@@ -23,7 +24,7 @@
     &__ColumnWrapper{
         display: flex;
         justify-content: center;
-        color: #808080;
+        color: $grey;
     }
 
     &__column {
@@ -42,10 +43,10 @@
     }
     
     &__button {
-        color: #808080;
+        color: $grey;
         background-color:$black;
         padding: 6px;
-        border:1px solid #808080;
+        border:1px solid $grey;
         cursor: pointer;
         font-size: 13px;
         width: 140px;
@@ -56,7 +57,7 @@
     }
     
     &__authors {
-        color: #808080;
+        color: $grey;
         font-size: 12px;
     }
 }
