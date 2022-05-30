@@ -1,10 +1,13 @@
-import './App.scss';
-import Header from './components/Header';
+import "./App.scss";
+import Header from "./components/Header";
+import UserContextProvider from "./Context/UserContext/UserProvider";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <UserContextProvider>
+        <Header />
+      </UserContextProvider>
     </div>
   );
 }
