@@ -19,10 +19,11 @@ export default function Navbar() {
     "https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbEpsFiYWCUEB6_95Mf5IggdpqegCC_zRIn-zI6GYFN94vp5_tX9qNfNOFwNb6LH4Tng7ENAwvNxJ-_I2gePe-sdPO0E7k1FLUXF.png?r=9cc",
     "https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABWbBDxHBii4kJ-J6A29-cKvhLPlsTDLbzNDVdXftJo16-oIKJ9OVVLP8zqUV1oJPFOAjLMegxfPK8KEmJjyDP_Ysow38gR_yzvrb.png?r=358",
     "https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABVYlqs0gdvmIiy4URfqxfTn-g7wXStJI2Dk7LolX7UViiQxcrcudQcz-nYfcj1cwUS_uZxRnvwAO-5SHe-OeLuFL3QceVPv1N21t.png?r=552",
-  ]
+  ];
 
   useEffect(() => {
     fetchAllUsers();
+    //eslint-disable-next-line
   }, []);
 
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -30,8 +31,8 @@ export default function Navbar() {
   const getOnlyName = (text) => {
     const textToArray = text.split("");
     textToArray.splice(textToArray.findIndex((char) => char === "@"));
-    return textToArray[0].toUpperCase()+textToArray.slice(1).join("");
-  }
+    return textToArray[0].toUpperCase() + textToArray.slice(1).join("");
+  };
 
   return (
     <div className={styles.Navbar}>
@@ -44,6 +45,7 @@ export default function Navbar() {
           onMouseOver={() => {
             setMenuOpen(true);
           }}
+          onClick={() => setMenuOpen((prev) => !prev)}
         >
           <img
             alt="User Icon"
@@ -59,23 +61,34 @@ export default function Navbar() {
               }}
             >
               <ul>
-                  {users &&
-                    users.filter(user => user.id !== 0).map((user, index) => (
-                      <li key={user.id}><img className={styles.Navbar__UserMenu__UserIcon} src={icons[index]} alt={`${getOnlyName(user.email)} icon`}/>{getOnlyName(user.email)}</li>
+                {users &&
+                  users
+                    .filter((user) => user.id !== 0)
+                    .map((user, index) => (
+                      <li key={user.id}>
+                        <img
+                          className={styles.Navbar__UserMenu__UserIcon}
+                          src={icons[index]}
+                          alt={`${getOnlyName(user.email)} icon`}
+                        />
+                        {getOnlyName(user.email)}
+                      </li>
                     ))}
-                  <li>
-                    <BsPencil /> Gestisci i profili
-                  </li>
-                  <hr />
-                  <li>
-                    <AiOutlineUser /> Account
-                  </li>
-                  <li>
-                    <AiOutlineQuestionCircle />
-                    Centro assistenza
-                  </li>
+                <li>
+                  <BsPencil /> Gestisci i profili
+                </li>
                 <hr />
-                <li className={styles.Navbar__UserMenu__Exit}>Esci da Edgeflix</li>
+                <li>
+                  <AiOutlineUser /> Account
+                </li>
+                <li>
+                  <AiOutlineQuestionCircle />
+                  Centro assistenza
+                </li>
+                <hr />
+                <li className={styles.Navbar__UserMenu__Exit}>
+                  Esci da Edgeflix
+                </li>
               </ul>
             </div>
           )}

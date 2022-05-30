@@ -2,8 +2,11 @@ import styles from './App.module.scss';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import SliderSection from './components/SliderSection/SliderSection';
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
+import MovieContextProvider from "./Context/MovieContext/MovieProvider";
+import SliderWrapper from './components/SliderWrapper';
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
         <Header />
       </UserContextProvider>
        <Hero />
+       <MovieContextProvider>
+        <SliderWrapper/>
+       </MovieContextProvider>
        <Footer/>
     </div>
   );

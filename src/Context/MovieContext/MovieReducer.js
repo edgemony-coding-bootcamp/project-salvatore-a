@@ -1,6 +1,6 @@
 import { FETCH_ALL_MOVIES_ERROR, FETCH_ALL_MOVIES_SUCCESS, FETCH_ALL_MOVIES_REQUEST } from "./MovieConst";
 
-export default MovieReducer = (state, action) => {
+export default function MovieReducer (state, action) {
     switch(action.type){
         case FETCH_ALL_MOVIES_REQUEST:
             return {

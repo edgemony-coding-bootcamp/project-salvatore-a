@@ -65,4 +65,9 @@ body {
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: $black;
   color: $white;
+  scroll-behavior: smooth;
+}
+
+.App{
+  overflow: hidden;
 }
