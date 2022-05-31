@@ -37,9 +37,11 @@ export default function Navbar({ getFilter }) {
   };
 
   const [navColor, setnavColor] = useState("transparent");
+
   const listenScrollEvent = () => {
-    window.scrollY > 10 ? setnavColor("#141414") : setnavColor("transparent");
+    window.scrollY > 10 ? setnavColor("rgb(20, 20, 20)") : setnavColor("transparent");
   };
+
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
     return () => {
@@ -105,12 +107,11 @@ export default function Navbar({ getFilter }) {
             src="https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZoA7Ad6wq_Mr6n2PeiNE7b3crY5UFBH3HZBKFEn-sNnuFYr2nFRDhXaJ-n4AffDKow6laNMiqveHP9dquslaL1U7sGHr8g.png?r=e59"
           ></img>
           <MdArrowDropDown />
-
           {isMenuOpen && (
             <div
               className={styles.Navbar__UserMenu}
               onMouseLeave={() => {
-                return isMenuOpen ? setMenuOpen(false) : null;
+                return isMenuOpen ? setTimeout(()=>setMenuOpen(false), 1000) : null;
               }}
             >
               <ul>

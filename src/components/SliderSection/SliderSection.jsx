@@ -46,8 +46,8 @@ export default function SliderSection({ moviesData, title, toggleModal }) {
           />
         </div>
       ) : (
-        <div>
-          Aggiungi qualcosa alla tua lista! <FaSmileWink />
+        <div className={styles.SliderSection__ListEmpty}>
+          Whoooops, lista vuota... aggiungi qualcosa! <FaSmileWink />
         </div>
       )}
     </div>
