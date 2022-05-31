@@ -1,9 +1,4 @@
-.SliderWrapper {
-    margin-top: 80px;
-}
-
-@media all and (min-width: 600px) {
-    .SliderWrapper {
-        margin-top: 100px;
-    }
+.SliderWrapper{
+    margin-top: -100px;
+    position: relative;
 }

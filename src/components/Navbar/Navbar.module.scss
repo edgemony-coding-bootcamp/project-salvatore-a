@@ -3,20 +3,18 @@
 
 .Navbar {
   @include flex($justify: space-between, $align: center);
-  padding: 1em;
-  height: 80px;
+  padding: 0.5em;
+  height: 65px;
   position: fixed;
-  top: 0;
   width: 100vw;
-  background: transparent;
+  background: $grey;
   z-index: 1;
   
   &__Wrapper {
     display: flex;
   }
   &__Logo {
-    height: 50px;
-    margin-right: 20px;
+    height: 35px;
   }
 
   &__MenuWrapper{
@@ -32,7 +30,11 @@
       cursor: pointer;
       font-size: 1.2em;
     }
-    font-size: 20px;
+    @media all and (min-width: 700px) {
+      svg{
+        font-size:1.4em;
+      }
+    }
 
     &__Notify {
       display: none;
@@ -47,7 +49,6 @@
     &__SearchGroup {
       @include flex($align:center);
       input {
-        padding: 10px 10px 10px 50px;
         opacity: 0;
         width: 0;
         transition: opacity 0.5s ease-out;
@@ -55,12 +56,14 @@
         background-color: rgba(0, 0, 0, 0.628);
         border: 1px solid $white;
         color: $white;
-        position: relative;
-        left: 50px;
+
       }
       &__showInput {
+        padding: 10px 10px 10px 50px;
         width: 250px !important;
         opacity: 1 !important;
+        position: relative;
+        left: 50px;
       }
       span{
         position: relative;
@@ -68,6 +71,7 @@
         transition: right 0.5s ease-out;
         cursor: pointer;
         z-index: 1;
+        padding: 5px 0;
       }
       &__moveBtn{
         right: 210px !important;
@@ -107,7 +111,7 @@
 
 @media all and (min-width: 700px) {
   .Navbar {
-    padding: 1em 2em;
+    padding: 0 3.5em;
 
     &__IconsWrapper {
       &__Notify {

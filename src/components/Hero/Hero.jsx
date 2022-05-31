@@ -11,7 +11,7 @@ export default function Hero({ toggleModal }) {
 
     return (
         < div className={styles.Hero}>
-            <div className={styles.Hero__ContVideo}>
+            {/* <div className={styles.Hero__ContVideo}> */}
                 <img className={styles.Hero__BackgrVid} src={strangerImage} alt="Stranger Things" />
                 {/* <ReactPlayer
                     playing={true}
@@ -26,7 +26,7 @@ export default function Hero({ toggleModal }) {
 
                     url='https://vimeo.com/593786555'
                 /> */}
-            </div>
+            {/* </div> */}
             <div className={styles.Hero__WrapOver}>
                 <h1 className={styles.Hero__Title} >Stranger Things </h1>
                 <h3 className={styles.Hero__Desc}> Sono passati sei mesi dalla battaglia di Starcourt, che ha portato terrore e distruzione a Hawkins. Mentre affrontano le conseguenze ... </h3>
@@ -36,14 +36,14 @@ export default function Hero({ toggleModal }) {
 
 
                 </div>
-                {isMuted ? (
+                {/* {isMuted ? (
                     <BiVolumeMute className={styles.Hero__BtnMute}
                         onClick={() => setIsMuted(false)} />) : (
                     <BiVolumeFull className={styles.Hero__BtnMute}
                         onClick={() => setIsMuted(true)} />
 
                 )
-                }
+                } */}
             </div>
         </div >
     );
