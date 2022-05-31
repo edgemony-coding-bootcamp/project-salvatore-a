@@ -6,7 +6,7 @@ import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
 import styles from "./Hero.module.scss";
 const strangerImage = new URL("https://pad.mymovies.it/filmclub/2016/06/082/coverlg_home.jpg");
 
-export default function Hero() {
+export default function Hero({ toggleModal }) {
     const [isMuted, setIsMuted] = useState(true)
 
     return (
@@ -31,7 +31,7 @@ export default function Hero() {
                 <h1 className={styles.Hero__Title} >Stranger Things </h1>
                 <h3 className={styles.Hero__Desc}> Sono passati sei mesi dalla battaglia di Starcourt, che ha portato terrore e distruzione a Hawkins. Mentre affrontano le conseguenze ... </h3>
                 <div className={styles.Hero__BtnWrap}>
-                    <button onClick={() => alert('Mi piacerebbe :) ... ma non posso riprodurre')} className={styles.Hero__BtnPlay}> < BsFillPlayFill className={styles.Hero__BtnIcon} />  Riproduci</button>
+                    <button onClick={() => toggleModal()} className={styles.Hero__BtnPlay}> < BsFillPlayFill className={styles.Hero__BtnIcon} />  Riproduci</button>
                     <button className={styles.Hero__BtnInfo}> < AiOutlineInfoCircle className={styles.Hero__BtnIcon} /> Altre info</button>
 
 
