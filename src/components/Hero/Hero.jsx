@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
-import ReactPlayer from 'react-player'
+// import ReactPlayer from 'react-player'
 import styles from "./Hero.module.scss";
 const strangerImage = new URL("https://pad.mymovies.it/filmclub/2016/06/082/coverlg_home.jpg");
 
@@ -12,7 +12,7 @@ export default function Hero({ toggleModal }) {
     return (
         < div className={styles.Hero}>
             <div className={styles.Hero__ContVideo}>
-                <img className={styles.Hero__BackgrVid} src={strangerImage} />
+                <img className={styles.Hero__BackgrVid} src={strangerImage} alt="Stranger Things"/>
                 {/* <ReactPlayer
                     playing={true}
                     loop={true}
@@ -24,9 +24,7 @@ export default function Hero({ toggleModal }) {
                     className={styles.Hero__BackgrVid}
                     volume={1}
 
-
                     url='https://vimeo.com/593786555'
-
                 /> */}
             </div>
             <div className={styles.Hero__WrapOver}>
