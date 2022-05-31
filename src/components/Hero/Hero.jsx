@@ -4,13 +4,16 @@ import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
 import ReactPlayer from 'react-player'
 import styles from "./Hero.module.scss";
+const strangerImage = new URL("https://pad.mymovies.it/filmclub/2016/06/082/coverlg_home.jpg");
+
 export default function Hero() {
     const [isMuted, setIsMuted] = useState(true)
 
     return (
         < div className={styles.Hero}>
             <div className={styles.Hero__ContVideo}>
-                <ReactPlayer
+                <img className={styles.Hero__BackgrVid} src={strangerImage} />
+                {/* <ReactPlayer
                     playing={true}
                     loop={true}
                     width='100vw'
@@ -24,8 +27,7 @@ export default function Hero() {
 
                     url='https://vimeo.com/593786555'
 
-                />
-                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/yQEondeGvKo?start=44" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen></iframe> */}
+                /> */}
             </div>
             <div className={styles.Hero__WrapOver}>
                 <h1 className={styles.Hero__Title} >Stranger Things </h1>

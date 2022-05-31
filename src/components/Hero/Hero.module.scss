@@ -1,16 +1,14 @@
+@import "./../../styles/variables.scss";
+
 .Hero {
-    position: absolute;
-    top: 0;
-  &__ContVideo {
-    position: relative;
-  }
+  position: relative;
 
   &__BackgrVid {
-    margin-top: -300px;
-    min-height: 1300px;
     position: absolute;
+    object-fit: cover;
     top: 0;
     left: 0;
+    min-width: 100vw;
     z-index: -1;
   }
 
@@ -21,8 +19,9 @@
   }
 
   &__Title {
+    text-shadow: 8px 8px 16px $black;
     font-size: 80px;
-    padding-top: 200px;
+    padding-top: 300px;
   }
 
   &__Desc {
@@ -39,9 +38,9 @@
     width: 250px;
     border: none;
     border-radius: 7px;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 800;
-    padding: 10px;
+    padding: 5px;
     align-items: center;
     vertical-align: middle;
   }
@@ -61,9 +60,9 @@
     border: none;
     border-radius: 7px;
     margin-left: 1em;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 800;
-    padding: 10px;
+    padding: 5px;
     align-items: center;
     vertical-align: middle;
   }
@@ -73,7 +72,7 @@
   }
 
   &__BtnIcon {
-    font-size: 50px;
+    font-size: 40px;
     vertical-align: middle;
   }
 
