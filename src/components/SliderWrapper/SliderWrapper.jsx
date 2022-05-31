@@ -4,7 +4,7 @@ import SliderSection from "../SliderSection";
 import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 import { useEffect } from "react";
 
-export default function SliderWrapper() {
+export default function SliderWrapper({toggleModal}) {
   const { fetchAllMovies, movies } = useMovieContext();
   const newMovies = useMovieContext().movies.filter((movie) => movie.new);
   const favoriteMovies = useMovieContext().movies.filter(
@@ -19,13 +19,13 @@ export default function SliderWrapper() {
   return (
     <div className={styles.SliderWrapper}>
       {movies &&
-      <SliderSection moviesData={movies} title="Serie TV"/>
+      <SliderSection toggleModal={toggleModal} moviesData={movies} title="Serie TV"/>
       }
       {newMovies && (
-        <SliderSection moviesData={newMovies} title="Nuovi e popolari" />
+        <SliderSection toggleModal={toggleModal} moviesData={newMovies} title="Nuovi e popolari" />
       )}
       {favoriteMovies && (
-        <SliderSection moviesData={favoriteMovies} title="La tua lista" />
+        <SliderSection toggleModal={toggleModal} moviesData={favoriteMovies} title="La tua lista" />
       )}
     </div>
   );

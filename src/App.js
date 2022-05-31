@@ -1,37 +1,52 @@
-import styles from './App.module.scss';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ModalPlay from './components/ModalPlay/ModalPlay';
-import ModalDetails from './components/ModalDetails/ModalDetails';
-import SliderSection from './components/SliderSection/SliderSection';
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import ModalDetails from "./components/ModalDetails/ModalDetails";
+
+import SliderWrapper from "./components/SliderWrapper";
+import ModalPlay from "./components/ModalPlay/ModalPlay";
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
 import MovieContextProvider from "./Context/MovieContext/MovieProvider";
-import SliderWrapper from './components/SliderWrapper';
-import { useState } from 'react';
+
+import styles from "./App.module.scss";
+import { useState } from "react";
 
 function App() {
-  const [isVisible, setVisible] = useState(false)
+  const [modalInfos, setModalInfos] = useState({
+    visibility: false,
+    datas: {}
+  });
+  const [isVisible, setVisible] = useState(false);
 
-  const toggleModal = () => {
-    setVisible(!isVisible)
+  const toggleDetailsModal = (datas = {}) => {
+    setModalInfos({
+      visibility: !modalInfos.visibility,
+      datas: datas
+    });
+  };
+
+  const togglePlayModal = () => {
+    setVisible(!isVisible);
   }
-  return (
 
+  return (
     <div className={styles.App}>
       <UserContextProvider>
         <Header />
       </UserContextProvider>
-      <Hero toggleModal={toggleModal} />
-      <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
+
       <MovieContextProvider>
-        <SliderWrapper />
-        <ModalDetails isVisible={isVisible} toggleModal={toggleModal} />
+        <Hero toggleModal={togglePlayModal} />
+        <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
+        <SliderWrapper toggleModal={toggleDetailsModal} />
+        <ModalDetails isVisible={modalInfos.visibility} movieData={modalInfos.datas} toggleModal={toggleDetailsModal} />
       </MovieContextProvider>
       <Footer />
     </div>
   );
 }
+
+
 
 export default App;
