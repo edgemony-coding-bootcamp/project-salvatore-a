@@ -1,0 +1,69 @@
+@import "./../../styles/variables.scss";
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.681);
+    z-index: 1;
+}
+
+.ModalContainer {
+    background-color: black;
+    z-index: 2;
+    text-align: center;
+    position: fixed;
+    width: 90vw;
+    max-width: 700px;
+    padding: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1.5rem 4rem rgba($black, 0.15);
+    transition: all 0.3s;
+    border-radius: 10px;
+
+
+    &__Title {
+
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 20px;
+
+    }
+
+    &__TitleTwo {
+        text-align: center;
+        font-weight: 300;
+    }
+
+    &__BtnClose {
+        margin-top: 30px;
+        cursor: pointer;
+        justify-content: center;
+        gap: 10px;
+        width: 250px;
+        border: none;
+        border-radius: 7px;
+        font-size: 20px;
+        font-weight: 800;
+        padding: 15px;
+
+    }
+
+    &__BtnClose:hover {
+        background-color: rgb(173, 173, 173);
+    }
+
+    @media all and (min-width: 600px) {
+
+        &__Title {
+            font-size: 40px;
+        }
+
+
+    }
+
+}
