@@ -10,7 +10,7 @@ import { AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({getFilter}) {
   const { fetchAllUsers, users } = useUserContext();
 
   const icons = [
@@ -28,6 +28,7 @@ export default function Navbar() {
 
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [searchClass, setSearchClass] = useState(false);
+  const [filter, setFilter] = useState("");
 
   const getOnlyName = (text) => {
     const textToArray = text.split("");
@@ -48,6 +49,8 @@ export default function Navbar() {
             }
             type="text"
             placeholder="Titoli, persone, generi"
+            value={filter}
+            onChange={(e)=>{setFilter(e.target.value); getFilter(e.target.value)}}
           />
           <span
             onClick={() => setSearchClass((prev) => !prev)}

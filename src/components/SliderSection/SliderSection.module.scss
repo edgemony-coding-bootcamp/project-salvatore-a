@@ -15,24 +15,7 @@
     scroll-behavior: smooth;
     background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 100%);
     img {
-      cursor: pointer;
-      height: 150px;
-      width: 120px;
-      object-fit: cover;
-      transition: 250ms all;
-      padding: 0 5px;
-    }
-  }
-}
-
-@media screen and (min-width: 700px) {
-  .SliderSection {
-    &__Slider {
-      img {
-        width: 222px;
-        height: 127px;
-        object-fit: cover;
-      }
+      @include imageStyle;
     }
   }
 }

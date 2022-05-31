@@ -7,26 +7,37 @@ import SliderWrapper from "./components/SliderWrapper";
 import ModalPlay from "./components/ModalPlay/ModalPlay";
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
-import MovieContextProvider from "./Context/MovieContext/MovieProvider";
+import { useMovieContext } from "./Context/MovieContext/MovieProvider";
 import { useState } from "react";
 
 function App() {
   const [isVisible, setVisible] = useState(false);
+  const [filter, setFilter] = useState("");
+  const {movies} = useMovieContext();
 
   const toggleModal = () => {
     setVisible(!isVisible);
   };
+
+  const getFilter = (filter) => {
+    setFilter(filter);
+  };
+
   return (
     <div className={styles.App}>
       <UserContextProvider>
-        <Header />
+        <Header getFilter={getFilter} />
       </UserContextProvider>
-
-      <MovieContextProvider>
-        <Hero toggleModal={toggleModal} />
-        <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
-        <SliderWrapper />
-      </MovieContextProvider>
+      {!filter ?
+      <>
+      <Hero toggleModal={toggleModal} />
+      <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
+      <SliderWrapper />
+      </> : 
+      <div className={styles.App__FilteredFilmWrapper}>
+        {movies.filter(el=>el.title.toLowerCase().includes(filter.toLowerCase())).map(el=> <img src={el.poster} alt={el.title} key={el.id}></img>)}
+      </div>
+      }
       <Footer />
     </div>
   );
