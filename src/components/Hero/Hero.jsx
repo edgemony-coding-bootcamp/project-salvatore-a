@@ -12,7 +12,7 @@ export default function Hero({ toggleModal }) {
     return (
         < div className={styles.Hero}>
             <div className={styles.Hero__ContVideo}>
-                <img className={styles.Hero__BackgrVid} src={strangerImage} alt="Stranger Things"/>
+                <img className={styles.Hero__BackgrVid} src={strangerImage} alt="Stranger Things" />
                 {/* <ReactPlayer
                     playing={true}
                     loop={true}
