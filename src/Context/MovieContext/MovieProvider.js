@@ -5,12 +5,12 @@ import { createContext, useContext, useReducer } from "react";
 const initialState = {
     movies: [],
     loading: false,
-    error
+    error: false,
 }
 
 const MovieContext = createContext({});
 
-export const useMovieContext = useContext(MovieContext);
+export const useMovieContext = () => useContext(MovieContext);
 
 export default function MovieContextProvider ({children}) {
     const [state, dispatch] = useReducer(MovieReducer, initialState);
