@@ -1,3 +1,12 @@
-.SliderWrapper{
-    margin-top: 800px;
+.SliderWrapper {
+    margin-top: 80px;
+}
+
+@media all and (min-width: 600px) {
+
+    .SliderWrapper {
+        margin-top: 350px;
+    }
+
+
 }

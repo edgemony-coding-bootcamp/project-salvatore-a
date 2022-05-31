@@ -1,5 +1,5 @@
 import styles from "./ModalPlay.module.scss";
-import stranger from "./../../../src/logo.png"
+import stranger from "./../../../src/logo.png";
 
 export default function ModalPlay({ isVisible, toggleModal }) {
     return (
