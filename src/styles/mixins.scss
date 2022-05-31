@@ -1,17 +1,36 @@
-
-@mixin flex($justify:flex-start, $align:flex-start, $dir: row, $gap:20px, $wrap: wrap){
-    display: flex;
-    justify-content: $justify;
-    align-items: $align;
-    flex-direction: $dir;
-    gap: $gap;
-    flex-wrap: $wrap;
+@mixin flex(
+  $justify: flex-start,
+  $align: flex-start,
+  $dir: row,
+  $gap: 20px,
+  $wrap: wrap
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $dir;
+  gap: $gap;
+  flex-wrap: $wrap;
 }
 
 @mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@mixin imageStyle {
+  cursor: pointer;
+  height: 150px;
+  width: 120px;
+  object-fit: cover;
+  transition: 250ms all;
+  padding: 0 5px;
+  @media screen and (min-width: 700px) {
+    width: 222px;
+    height: 127px;
+    object-fit: cover;
+  }
 }

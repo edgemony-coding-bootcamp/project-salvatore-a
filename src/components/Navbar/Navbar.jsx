@@ -10,7 +10,7 @@ import { AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({getFilter}) {
   const { fetchAllUsers, users } = useUserContext();
 
   const icons = [
@@ -27,6 +27,8 @@ export default function Navbar() {
   }, []);
 
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [searchClass, setSearchClass] = useState(false);
+  const [filter, setFilter] = useState("");
 
   const getOnlyName = (text) => {
     const textToArray = text.split("");
@@ -48,8 +50,9 @@ const listenScrollEvent = () => {
 
 
   return (
-<div className={styles.Navbar} style={{ backgroundColor: navColor, transition: "all 1s"}}>
-<div className={styles.Navbar__Wrapper}>
+    <div className={styles.Navbar} style={{ backgroundColor: navColor, transition: "all 1s"}>
+      <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
+        <div className={styles.Navbar__Wrapper}>
 <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
 <ul className={styles.Navbar__MenuWrapper}>
 <li>Nuovi e popolari</li>
@@ -57,41 +60,77 @@ const listenScrollEvent = () => {
 <li>Categorie</li>
 </ul>
 </div>
-<div className={styles.Navbar__IconsWrapper}>
-  <FaSearch />
-  <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
-  <div
-    className={styles.Navbar__IconsWrapper__User}
-    onMouseOver={() => {
-      setMenuOpen(true);
-    }}
-    onClick={() => setMenuOpen((prev) => !prev)}
-  >
-    <img
-      alt="User Icon"
-      src="https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZoA7Ad6wq_Mr6n2PeiNE7b3crY5UFBH3HZBKFEn-sNnuFYr2nFRDhXaJ-n4AffDKow6laNMiqveHP9dquslaL1U7sGHr8g.png?r=e59"
-    ></img>
-    <MdArrowDropDown />
+      <div className={styles.Navbar__IconsWrapper}>
+        <div onMouseLeave={()=>{return searchClass?setSearchClass(false):null}} className={styles.Navbar__IconsWrapper__SearchGroup}>
+          <input
+            className={
+              searchClass
+                ? styles.Navbar__IconsWrapper__SearchGroup__showInput
+                : ""
+            }
+            type="text"
+            placeholder="Titoli, persone, generi"
+            value={filter}
+            onChange={(e)=>{setFilter(e.target.value); getFilter(e.target.value)}}
+          />
+          <span
+            onClick={() => setSearchClass((prev) => !prev)}
+            className={
+              searchClass
+                ? styles.Navbar__IconsWrapper__SearchGroup__moveBtn
+                : ""
+            }
+          >
+            <FaSearch />
+          </span>
+        </div>
+        <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
+        <div
+          className={styles.Navbar__IconsWrapper__User}
+          onMouseOver={() => {
+            setMenuOpen(true);
+          }}
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <img
+            alt="User Icon"
+            src="https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZoA7Ad6wq_Mr6n2PeiNE7b3crY5UFBH3HZBKFEn-sNnuFYr2nFRDhXaJ-n4AffDKow6laNMiqveHP9dquslaL1U7sGHr8g.png?r=e59"
+          ></img>
+          <MdArrowDropDown />
 
-    {isMenuOpen && (
-      <div
-        className={styles.Navbar__UserMenu}
-        onMouseLeave={() => {
-          setMenuOpen(false);
-        }}
-      >
-        <ul>
-          {users &&
-            users
-              .filter((user) => user.id !== 0)
-              .map((user, index) => (
-                <li key={user.id}>
-                  <img
-                    className={styles.Navbar__UserMenu__UserIcon}
-                    src={icons[index]}
-                    alt={`${getOnlyName(user.email)} icon`}
-                  />
-                  {getOnlyName(user.email)}
+          {isMenuOpen && (
+            <div
+              className={styles.Navbar__UserMenu}
+              onMouseLeave={()=>{return isMenuOpen?setMenuOpen(false):null}}
+            >
+              <ul>
+                {users &&
+                  users
+                    .filter((user) => user.id !== 0)
+                    .map((user, index) => (
+                      <li key={user.id}>
+                        <img
+                          className={styles.Navbar__UserMenu__UserIcon}
+                          src={icons[index]}
+                          alt={`${getOnlyName(user.email)} icon`}
+                        />
+                        {getOnlyName(user.email)}
+                      </li>
+                    ))}
+                <li>
+                  <BsPencil /> Gestisci i profili
+                </li>
+                <hr />
+                <li>
+                  <AiOutlineUser /> Account
+                </li>
+                <li>
+                  <AiOutlineQuestionCircle />
+                  Centro assistenza
+                </li>
+                <hr />
+                <li className={styles.Navbar__UserMenu__Exit}>
+                  Esci da Edgeflix
                 </li>
               ))}
           <li>

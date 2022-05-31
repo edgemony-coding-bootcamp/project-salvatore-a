@@ -7,6 +7,7 @@ import SliderWrapper from "./components/SliderWrapper";
 import ModalPlay from "./components/ModalPlay/ModalPlay";
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
+import { useMovieContext } from "./Context/MovieContext/MovieProvider";
 import MovieContextProvider from "./Context/MovieContext/MovieProvider";
 
 import styles from "./App.module.scss";
@@ -18,6 +19,8 @@ function App() {
     datas: {}
   });
   const [isVisible, setVisible] = useState(false);
+  const [filter, setFilter] = useState("");
+  const { movies } = useMovieContext();
 
   const toggleDetailsModal = (datas = {}) => {
     setModalInfos({
@@ -26,6 +29,9 @@ function App() {
     });
   };
 
+  const getFilter = (filter) => {
+    setFilter(filter);
+  };
   const togglePlayModal = () => {
     setVisible(!isVisible);
   }
@@ -33,15 +39,34 @@ function App() {
   return (
     <div className={styles.App}>
       <UserContextProvider>
-        <Header />
+        <Header getFilter={getFilter} />
       </UserContextProvider>
+      {!filter ? (
+        <>
+          <Hero toggleModal={toggleModal} />
+          <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
+          <SliderWrapper />
+          <ModalDetails isVisible={modalInfos.visibility} movieData={modalInfos.datas} toggleModal={toggleDetailsModal} />
 
-      <MovieContextProvider>
-        <Hero toggleModal={togglePlayModal} />
-        <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
-        <SliderWrapper toggleModal={toggleDetailsModal} />
-        <ModalDetails isVisible={modalInfos.visibility} movieData={modalInfos.datas} toggleModal={toggleDetailsModal} />
-      </MovieContextProvider>
+        </>
+      ) : (
+        <div className={styles.App__FilteredFilmWrapper}>
+          <h1>Ecco i risultati della tua ricerca:</h1>
+          {movies
+            .filter(
+              (el) =>
+                el.title.toLowerCase().includes(filter.toLowerCase()) ||
+                el.cast
+                  .join(" ")
+                  .toLowerCase()
+                  .includes(filter.toLowerCase()) ||
+                el.genres.join(" ").toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((el) => (
+              <img src={el.poster} alt={el.title} key={el.id}></img>
+            ))}
+        </div>
+      )}
       <Footer />
     </div>
   );

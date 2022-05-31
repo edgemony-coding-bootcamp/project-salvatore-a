@@ -1,4 +1,6 @@
 @import "./styles/variables.scss";
+@import "./styles/mixins.scss";
+
 
 * {
   box-sizing: border-box;
@@ -63,4 +65,10 @@ body {
 
 .App {
   overflow: hidden;
+  &__FilteredFilmWrapper{
+    margin-top: 120px;
+    img{
+      @include imageStyle;
+    }
+  }
 }
