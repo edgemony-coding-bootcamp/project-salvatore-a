@@ -39,7 +39,7 @@ export default function Navbar() {
     <div className={styles.Navbar}>
       <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
       <div className={styles.Navbar__IconsWrapper}>
-        <div onMouseLeave={()=>{setSearchClass(prev=>!prev)}} className={styles.Navbar__IconsWrapper__SearchGroup}>
+        <div onMouseLeave={()=>{return searchClass?setSearchClass(false):null}} className={styles.Navbar__IconsWrapper__SearchGroup}>
           <input
             className={
               searchClass
@@ -77,9 +77,7 @@ export default function Navbar() {
           {isMenuOpen && (
             <div
               className={styles.Navbar__UserMenu}
-              onMouseLeave={() => {
-                setMenuOpen(false);
-              }}
+              onMouseLeave={()=>{return isMenuOpen?setMenuOpen(false):null}}
             >
               <ul>
                 {users &&
