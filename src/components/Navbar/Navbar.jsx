@@ -10,7 +10,7 @@ import { AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
 import { useEffect, useState } from "react";
 
-export default function Navbar({getFilter}) {
+export default function Navbar({ getFilter }) {
   const { fetchAllUsers, users } = useUserContext();
 
   const icons = [
@@ -36,11 +36,10 @@ export default function Navbar({getFilter}) {
     return textToArray[0].toUpperCase() + textToArray.slice(1).join("");
   };
 
-
-const [navColor, setnavColor] = useState("transparent");
-const listenScrollEvent = () => {
-  window.scrollY > 10 ? setnavColor("#141414") : setnavColor("transparent");
-};
+  const [navColor, setnavColor] = useState("transparent");
+  const listenScrollEvent = () => {
+    window.scrollY > 10 ? setnavColor("#141414") : setnavColor("transparent");
+  };
   useEffect(() => {
     window.addEventListener("scroll", listenScrollEvent);
     return () => {
@@ -48,20 +47,26 @@ const listenScrollEvent = () => {
     };
   }, []);
 
-
   return (
-    <div className={styles.Navbar} style={{ backgroundColor: navColor, transition: "all 1s"}>
+    <div
+      className={styles.Navbar}
+      style={{ backgroundColor: navColor, transition: "all 1s" }}
+    >
       <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
-        <div className={styles.Navbar__Wrapper}>
-<img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
-<ul className={styles.Navbar__MenuWrapper}>
-<li>Nuovi e popolari</li>
-<li>La mia lista</li>
-<li>Categorie</li>
-</ul>
-</div>
+      {/* <div className={styles.Navbar__Wrapper}>
+        <ul className={styles.Navbar__MenuWrapper}>
+          <li>Nuovi e popolari</li>
+          <li>La mia lista</li>
+          <li>Categorie</li>
+        </ul>
+      </div> */}
       <div className={styles.Navbar__IconsWrapper}>
-        <div onMouseLeave={()=>{return searchClass?setSearchClass(false):null}} className={styles.Navbar__IconsWrapper__SearchGroup}>
+        <div
+          onMouseLeave={() => {
+            return searchClass ? setSearchClass(false) : null;
+          }}
+          className={styles.Navbar__IconsWrapper__SearchGroup}
+        >
           <input
             className={
               searchClass
@@ -71,7 +76,10 @@ const listenScrollEvent = () => {
             type="text"
             placeholder="Titoli, persone, generi"
             value={filter}
-            onChange={(e)=>{setFilter(e.target.value); getFilter(e.target.value)}}
+            onChange={(e) => {
+              setFilter(e.target.value);
+              getFilter(e.target.value);
+            }}
           />
           <span
             onClick={() => setSearchClass((prev) => !prev)}
@@ -101,7 +109,9 @@ const listenScrollEvent = () => {
           {isMenuOpen && (
             <div
               className={styles.Navbar__UserMenu}
-              onMouseLeave={()=>{return isMenuOpen?setMenuOpen(false):null}}
+              onMouseLeave={() => {
+                return isMenuOpen ? setMenuOpen(false) : null;
+              }}
             >
               <ul>
                 {users &&
@@ -132,27 +142,11 @@ const listenScrollEvent = () => {
                 <li className={styles.Navbar__UserMenu__Exit}>
                   Esci da Edgeflix
                 </li>
-              ))}
-          <li>
-            <BsPencil /> Gestisci i profili
-          </li>
-          <hr />
-          <li>
-            <AiOutlineUser /> Account
-          </li>
-          <li>
-            <AiOutlineQuestionCircle />
-            Centro assistenza
-          </li>
-          <hr />
-          <li className={styles.Navbar__UserMenu__Exit}>
-            Esci da Edgeflix
-          </li>
-        </ul>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
-    )}
-  </div>
-</div>
-</div>
-);
+    </div>
+  );
 }

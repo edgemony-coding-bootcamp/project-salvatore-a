@@ -8,7 +8,6 @@ import ModalPlay from "./components/ModalPlay/ModalPlay";
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
 import { useMovieContext } from "./Context/MovieContext/MovieProvider";
-import MovieContextProvider from "./Context/MovieContext/MovieProvider";
 
 import styles from "./App.module.scss";
 import { useState } from "react";
@@ -32,6 +31,7 @@ function App() {
   const getFilter = (filter) => {
     setFilter(filter);
   };
+
   const togglePlayModal = () => {
     setVisible(!isVisible);
   }
@@ -43,9 +43,9 @@ function App() {
       </UserContextProvider>
       {!filter ? (
         <>
-          <Hero toggleModal={toggleModal} />
-          <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
-          <SliderWrapper />
+          <Hero toggleModal={togglePlayModal} />
+          <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
+          <SliderWrapper toggleModal={toggleDetailsModal}/>
           <ModalDetails isVisible={modalInfos.visibility} movieData={modalInfos.datas} toggleModal={toggleDetailsModal} />
 
         </>
