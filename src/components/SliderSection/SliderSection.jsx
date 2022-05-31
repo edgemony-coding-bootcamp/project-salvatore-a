@@ -13,7 +13,6 @@ export default function SliderSection({ moviesData, title }) {
       src={el.poster}
       alt={el.title}
       key={el.id}
-      id={el.id}
       onDragStart={handleDragStart}
       role="presentation"
     ></img>

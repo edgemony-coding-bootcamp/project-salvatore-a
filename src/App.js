@@ -11,11 +11,18 @@ import MovieContextProvider from "./Context/MovieContext/MovieProvider";
 import { useState } from "react";
 
 function App() {
-  const [isVisible, setVisible] = useState(false);
+  const [modalInfos, setModalInfos] = useState({
+    visibility: false,
+    datas: []
+  });
 
-  const toggleModal = () => {
-    setVisible(!isVisible);
+  const toggleModal = (datas = []) => {
+    setModalInfos({
+      visibility: !modalInfos.visibility,
+      datas: datas
+    });
   };
+
   return (
     <div className={styles.App}>
       <UserContextProvider>
@@ -24,7 +31,7 @@ function App() {
 
       <MovieContextProvider>
         <Hero toggleModal={toggleModal} />
-        <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
+        <ModalPlay isVisible={modalInfos.visibility} toggleModal={toggleModal} />
         <SliderWrapper />
       </MovieContextProvider>
       <Footer />
