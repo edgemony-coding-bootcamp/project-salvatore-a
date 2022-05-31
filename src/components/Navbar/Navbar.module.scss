@@ -24,20 +24,49 @@
     }
     font-size: 20px;
 
-    &__Notify{
+    &__Notify {
       display: none;
     }
 
     &__User {
-      @include flex($align:center, $gap:3px);
+      @include flex($align: center, $gap: 3px);
       cursor: pointer;
       img {
         border-radius: 5px;
       }
     }
+    &__SearchGroup {
+      @include flex($align:center);
+      input {
+        padding: 10px 10px 10px 50px;
+        opacity: 0;
+        width: 0;
+        transition: opacity 0.5s ease-out;
+        transition: width 0.5s ease-out;
+        background-color: rgba(0, 0, 0, 0.628);
+        border: 1px solid $white;
+        color: $white;
+        position: relative;
+        left: 50px;
+      }
+      &__showInput {
+        width: 250px !important;
+        opacity: 1 !important;
+      }
+      span{
+        position: relative;
+        right: 0px;
+        transition: right 0.5s ease-out;
+        cursor: pointer;
+        z-index: 1;
+      }
+      &__moveBtn{
+        right: 210px !important;
+      }
+    }
   }
 
-  &__UserMenu{
+  &__UserMenu {
     position: absolute;
     width: 200px;
     top: 40px;
@@ -45,21 +74,21 @@
     border: 1px solid $grey;
     background-color: rgba(0, 0, 0, 0.831);
     z-index: 1;
-    li{
-      @include flex($align:center);
+    li {
+      @include flex($align: center);
       list-style: none;
       font-size: 0.8rem;
       height: 40px;
       margin-left: 10px;
       font-weight: bold;
     }
-    >svg{
+    > svg {
       font-size: 2em;
     }
-    &__UserIcon{
+    &__UserIcon {
       height: 70%;
     }
-    &__Exit{
+    &__Exit {
       justify-content: center !important;
       margin: 0 !important;
       height: 50px !important;
@@ -67,12 +96,12 @@
   }
 }
 
-@media all and (min-width: 700px){
-  .Navbar{
+@media all and (min-width: 700px) {
+  .Navbar {
     padding: 1em 2em;
 
-    &__IconsWrapper{
-      &__Notify{
+    &__IconsWrapper {
+      &__Notify {
         display: block;
       }
     }

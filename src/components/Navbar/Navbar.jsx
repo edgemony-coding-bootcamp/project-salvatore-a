@@ -27,6 +27,7 @@ export default function Navbar() {
   }, []);
 
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [searchClass, setSearchClass] = useState(false);
 
   const getOnlyName = (text) => {
     const textToArray = text.split("");
@@ -38,7 +39,27 @@ export default function Navbar() {
     <div className={styles.Navbar}>
       <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
       <div className={styles.Navbar__IconsWrapper}>
-        <FaSearch />
+        <div onMouseLeave={()=>{setSearchClass(prev=>!prev)}} className={styles.Navbar__IconsWrapper__SearchGroup}>
+          <input
+            className={
+              searchClass
+                ? styles.Navbar__IconsWrapper__SearchGroup__showInput
+                : ""
+            }
+            type="text"
+            placeholder="Titoli, persone, generi"
+          />
+          <span
+            onClick={() => setSearchClass((prev) => !prev)}
+            className={
+              searchClass
+                ? styles.Navbar__IconsWrapper__SearchGroup__moveBtn
+                : ""
+            }
+          >
+            <FaSearch />
+          </span>
+        </div>
         <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
         <div
           className={styles.Navbar__IconsWrapper__User}
