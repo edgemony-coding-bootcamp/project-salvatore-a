@@ -36,9 +36,30 @@ export default function Navbar({getFilter}) {
     return textToArray[0].toUpperCase() + textToArray.slice(1).join("");
   };
 
+
+const [navColor, setnavColor] = useState("transparent");
+const listenScrollEvent = () => {
+  window.scrollY > 10 ? setnavColor("#141414") : setnavColor("transparent");
+};
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+    return () => {
+      window.removeEventListener("scroll", listenScrollEvent);
+    };
+  }, []);
+
+
   return (
-    <div className={styles.Navbar}>
+    <div className={styles.Navbar} style={{ backgroundColor: navColor, transition: "all 1s"}>
       <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
+        <div className={styles.Navbar__Wrapper}>
+<img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
+<ul className={styles.Navbar__MenuWrapper}>
+<li>Nuovi e popolari</li>
+<li>La mia lista</li>
+<li>Categorie</li>
+</ul>
+</div>
       <div className={styles.Navbar__IconsWrapper}>
         <div onMouseLeave={()=>{return searchClass?setSearchClass(false):null}} className={styles.Navbar__IconsWrapper__SearchGroup}>
           <input
@@ -111,11 +132,27 @@ export default function Navbar({getFilter}) {
                 <li className={styles.Navbar__UserMenu__Exit}>
                   Esci da Edgeflix
                 </li>
-              </ul>
-            </div>
-          )}
-        </div>
+              ))}
+          <li>
+            <BsPencil /> Gestisci i profili
+          </li>
+          <hr />
+          <li>
+            <AiOutlineUser /> Account
+          </li>
+          <li>
+            <AiOutlineQuestionCircle />
+            Centro assistenza
+          </li>
+          <hr />
+          <li className={styles.Navbar__UserMenu__Exit}>
+            Esci da Edgeflix
+          </li>
+        </ul>
       </div>
-    </div>
-  );
+    )}
+  </div>
+</div>
+</div>
+);
 }

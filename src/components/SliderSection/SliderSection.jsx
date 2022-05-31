@@ -5,15 +5,15 @@ import { FaSmileWink } from "react-icons/fa";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
-export default function SliderSection({ moviesData, title }) {
+export default function SliderSection({ moviesData, title, toggleModal }) {
   const handleDragStart = (e) => e.preventDefault();
 
   const images = moviesData.map((el) => (
     <img
+    onClick={() => {toggleModal(el)}}
       src={el.poster}
       alt={el.title}
       key={el.id}
-      id={el.id}
       onDragStart={handleDragStart}
       role="presentation"
     ></img>

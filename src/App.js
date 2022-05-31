@@ -1,27 +1,40 @@
-import styles from "./App.module.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import ModalDetails from "./components/ModalDetails/ModalDetails";
 
 import SliderWrapper from "./components/SliderWrapper";
 import ModalPlay from "./components/ModalPlay/ModalPlay";
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
 import { useMovieContext } from "./Context/MovieContext/MovieProvider";
+import MovieContextProvider from "./Context/MovieContext/MovieProvider";
+
+import styles from "./App.module.scss";
 import { useState } from "react";
 
 function App() {
+  const [modalInfos, setModalInfos] = useState({
+    visibility: false,
+    datas: {}
+  });
   const [isVisible, setVisible] = useState(false);
   const [filter, setFilter] = useState("");
   const { movies } = useMovieContext();
 
-  const toggleModal = () => {
-    setVisible(!isVisible);
+  const toggleDetailsModal = (datas = {}) => {
+    setModalInfos({
+      visibility: !modalInfos.visibility,
+      datas: datas
+    });
   };
 
   const getFilter = (filter) => {
     setFilter(filter);
   };
+  const togglePlayModal = () => {
+    setVisible(!isVisible);
+  }
 
   return (
     <div className={styles.App}>
@@ -33,6 +46,8 @@ function App() {
           <Hero toggleModal={toggleModal} />
           <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
           <SliderWrapper />
+          <ModalDetails isVisible={modalInfos.visibility} movieData={modalInfos.datas} toggleModal={toggleDetailsModal} />
+
         </>
       ) : (
         <div className={styles.App__FilteredFilmWrapper}>
@@ -56,5 +71,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;
