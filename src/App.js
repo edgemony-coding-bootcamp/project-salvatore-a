@@ -13,7 +13,7 @@ import { useState } from "react";
 function App() {
   const [isVisible, setVisible] = useState(false);
   const [filter, setFilter] = useState("");
-  const {movies} = useMovieContext();
+  const { movies } = useMovieContext();
 
   const toggleModal = () => {
     setVisible(!isVisible);
@@ -28,16 +28,30 @@ function App() {
       <UserContextProvider>
         <Header getFilter={getFilter} />
       </UserContextProvider>
-      {!filter ?
-      <>
-      <Hero toggleModal={toggleModal} />
-      <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
-      <SliderWrapper />
-      </> : 
-      <div className={styles.App__FilteredFilmWrapper}>
-        {movies.filter(el=>el.title.toLowerCase().includes(filter.toLowerCase())).map(el=> <img src={el.poster} alt={el.title} key={el.id}></img>)}
-      </div>
-      }
+      {!filter ? (
+        <>
+          <Hero toggleModal={toggleModal} />
+          <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
+          <SliderWrapper />
+        </>
+      ) : (
+        <div className={styles.App__FilteredFilmWrapper}>
+          <h1>Ecco i risultati della tua ricerca:</h1>
+          {movies
+            .filter(
+              (el) =>
+                el.title.toLowerCase().includes(filter.toLowerCase()) ||
+                el.cast
+                  .join(" ")
+                  .toLowerCase()
+                  .includes(filter.toLowerCase()) ||
+                el.genres.join(" ").toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((el) => (
+              <img src={el.poster} alt={el.title} key={el.id}></img>
+            ))}
+        </div>
+      )}
       <Footer />
     </div>
   );
