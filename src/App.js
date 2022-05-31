@@ -28,9 +28,8 @@ function App() {
       <MovieContextProvider>
         <Hero toggleModal={toggleModal} />
         <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
-        <MovieContextProvider>
         <SliderWrapper />
-        </MovieContextProvider>
+      </MovieContextProvider>
       <Footer />
     </div>
   );
