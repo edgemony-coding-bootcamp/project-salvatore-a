@@ -1,13 +1,15 @@
-import styles from './App.module.scss';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header';
-import Hero from './components/Hero';
+import styles from "./App.module.scss";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import UserContextProvider from "./Context/UserContext/UserProvider";
+import MovieContextProvider from "./Context/MovieContext/MovieProvider";
+import SliderWrapper from "./components/SliderWrapper";
 import ModalPlay from './components/ModalPlay/ModalPlay';
 import SliderSection from './components/SliderSection/SliderSection';
 
 import UserContextProvider from "./Context/UserContext/UserProvider";
 import MovieContextProvider from "./Context/MovieContext/MovieProvider";
-import SliderWrapper from './components/SliderWrapper';
 import { useState } from 'react';
 
 function App() {
@@ -22,9 +24,10 @@ function App() {
       <UserContextProvider>
         <Header />
       </UserContextProvider>
-      <Hero toggleModal={toggleModal} />
-      <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
       <MovieContextProvider>
+        <Hero toggleModal={toggleModal} />
+        <ModalPlay isVisible={isVisible} toggleModal={toggleModal} />
+        <MovieContextProvider>
         <SliderWrapper />
       </MovieContextProvider>
       <Footer />
