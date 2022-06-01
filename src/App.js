@@ -49,13 +49,18 @@ function App() {
       </UserContextProvider>
       {!filter ? (
         <>
-          <Hero toggleModal={togglePlayModal} />
+          <Hero
+            toggleModal={togglePlayModal}
+            toggleDetailsModal={toggleDetailsModal}
+            movieData={movies[0]} />
+
           <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
           <SliderWrapper toggleModal={toggleDetailsModal} />
           <ModalDetails
             isVisible={modalInfos.visibility}
             movieData={modalInfos.datas}
             toggleModal={toggleDetailsModal}
+            togglePlayModal={togglePlayModal}
           />
         </>
       ) : (
@@ -88,6 +93,7 @@ function App() {
               </ul>
             </div>
           )}
+
         </div>
       )}
       <Footer />
