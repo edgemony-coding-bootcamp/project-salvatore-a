@@ -39,7 +39,9 @@ export default function Navbar({ getFilter }) {
   const [navColor, setnavColor] = useState("transparent");
 
   const listenScrollEvent = () => {
-    window.scrollY > 10 ? setnavColor("rgb(20, 20, 20)") : setnavColor("transparent");
+    window.scrollY > 10
+      ? setnavColor("rgb(20, 20, 20)")
+      : setnavColor("transparent");
   };
 
   useEffect(() => {
@@ -55,13 +57,6 @@ export default function Navbar({ getFilter }) {
       style={{ backgroundColor: navColor, transition: "all 1s" }}
     >
       <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
-      {/* <div className={styles.Navbar__Wrapper}>
-        <ul className={styles.Navbar__MenuWrapper}>
-          <li>Nuovi e popolari</li>
-          <li>La mia lista</li>
-          <li>Categorie</li>
-        </ul>
-      </div> */}
       <div className={styles.Navbar__IconsWrapper}>
         <div
           onMouseLeave={() => {
@@ -70,6 +65,7 @@ export default function Navbar({ getFilter }) {
           className={styles.Navbar__IconsWrapper__SearchGroup}
         >
           <input
+            autoFocus={true}
             className={
               searchClass
                 ? styles.Navbar__IconsWrapper__SearchGroup__showInput
@@ -111,7 +107,9 @@ export default function Navbar({ getFilter }) {
             <div
               className={styles.Navbar__UserMenu}
               onMouseLeave={() => {
-                return isMenuOpen ? setTimeout(()=>setMenuOpen(false), 1000) : null;
+                return isMenuOpen
+                  ? setTimeout(() => setMenuOpen(false), 1000)
+                  : null;
               }}
             >
               <ul>
