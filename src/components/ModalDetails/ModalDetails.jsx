@@ -1,9 +1,10 @@
 import styles from "./ModalDetails.module.scss";
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { MdAddCircleOutline, MdPlayCircleOutline } from 'react-icons/md'
+import { useMovieContext } from './../../Context/MovieContext/MovieProvider'
 
 export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal }) {
-    // const context = useMovieContext
+    const addToFavourite = useMovieContext().favouriteMovie
 
     return (
         <div >
@@ -22,7 +23,7 @@ export default function ModalDetails({ isVisible, movieData, toggleModal, toggle
                             <h3 className={styles.ModalData__Desc}>{movieData.description}</h3>
                             <h4 className={styles.ModalData__Genres}> Genere: {movieData.genres.join(", ")}</h4>
                             <h4 className={styles.ModalData__Cast}> Cast:{movieData.cast.join(", ")}</h4>
-                            <MdAddCircleOutline onClick={() => { }} className={styles.ModalData__BtnCir} />
+                            <MdAddCircleOutline onClick={() => addToFavourite(movieData.id)} className={styles.ModalData__BtnCir} />
                             <MdPlayCircleOutline onClick={() => togglePlayModal()} className={styles.ModalData__BtnCir} />
                         </div>
                     </div>
