@@ -1,0 +1,55 @@
+@import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
+
+.SearchInput {
+  input {
+    opacity: 0;
+    width: 0;
+    background-color: rgba(0, 0, 0, 0.628);
+    border: 1px solid $white;
+    color: $white;
+  }
+  &__showInput {
+    padding: 10px 10px 10px 50px;
+    width: 100vw !important;
+    opacity: 1 !important;
+  }
+  &__display {
+    width: 100vw !important;
+    opacity: 1 !important;
+    padding: 10px 10px 10px 50px;
+  }
+  span {
+    position: relative;
+    right: 0px;
+    cursor: pointer;
+    z-index: 1;
+    padding: 5px 0;
+  }
+  &__searchBtnMobile {
+    position: absolute;
+    left: 20px;
+    top: -27px;
+  }
+}
+
+@media (min-width: 700px) {
+  .SearchInput {
+    @include flex($align: center);
+    input {
+      transition: opacity 0.5s ease-out;
+      transition: width 0.5s ease-out;
+    }
+    &__showInput {
+      width: 250px !important;
+      position: relative;
+      left: 50px;
+    }
+    span {
+      transition: right 0.5s ease-out;
+    }
+    &__moveBtn {
+      right: 210px !important;
+    }
+  }
+}

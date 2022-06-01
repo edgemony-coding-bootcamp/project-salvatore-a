@@ -2,21 +2,12 @@ import styles from "./Navbar.module.scss";
 import logo from "./../../logo.png";
 import UsersMenu from "./../UsersMenu";
 
-import { FaSearch } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
+import SearchInput from "../SearchInput/SearchInput";
 
 export default function Navbar({ getFilter }) {
-  const searchInput = useRef();
-
-  const searchElements = () => {
-    setSearchClass((prev) => !prev);
-    searchInput.current.focus();
-  };
-
-  const [searchClass, setSearchClass] = useState(false);
-  const [filter, setFilter] = useState("");
 
   const [navColor, setnavColor] = useState("transparent");
 
@@ -41,41 +32,9 @@ export default function Navbar({ getFilter }) {
       <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
 
       <div className={styles.Navbar__IconsWrapper}>
-        <div
-          onMouseLeave={() => {
-            return searchClass ? setSearchClass(false) : null;
-          }}
-          className={styles.Navbar__IconsWrapper__SearchGroup}
-        >
-          <input
-            autoFocus={true}
-            className={
-              searchClass
-                ? styles.Navbar__IconsWrapper__SearchGroup__showInput
-                : ""
-            }
-            type="text"
-            ref={searchInput}
-            placeholder="Titoli, persone, generi"
-            value={filter}
-            onChange={(e) => {
-              setFilter(e.target.value);
-              getFilter(e.target.value);
-            }}
-          />
-          <span
-            onClick={() => searchElements()}
-            className={
-              searchClass
-                ? styles.Navbar__IconsWrapper__SearchGroup__moveBtn
-                : ""
-            }
-          >
-            <FaSearch />
-          </span>
-        </div>
+        <SearchInput getFilter={getFilter}/>
         <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
-        <UsersMenu/>
+        <UsersMenu />
       </div>
     </div>
   );

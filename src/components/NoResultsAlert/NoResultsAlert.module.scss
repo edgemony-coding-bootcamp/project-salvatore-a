@@ -1,0 +1,15 @@
+.NoResultsAlert {
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  p {
+    line-height: 23px;
+    margin-bottom: 10px;
+  }
+  ul {
+    margin-left: 20px;
+  }
+}
