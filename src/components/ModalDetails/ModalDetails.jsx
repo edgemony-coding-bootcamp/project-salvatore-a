@@ -1,15 +1,18 @@
 import styles from "./ModalDetails.module.scss";
+import { useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { MdAddCircleOutline, MdPlayCircleOutline } from 'react-icons/md'
+import { FiMinusCircle } from 'react-icons/fi'
+import { useMovieContext } from './../../Context/MovieContext/MovieProvider'
 
-export default function ModalDetails({ isVisible, movieData, toggleModal }) {
+export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal, setRender, render }) {
+    const addToFavourite = useMovieContext().favouriteMovie
+    const [isFavorite, setIsFavorite] = useState(movieData.favorite);
     return (
         <div >
             {isVisible && (
                 <>
-                    {console.log(movieData)}
-
-                    <div className={styles.Overlay}> </div>
+                    <div onClick={() => toggleModal()} className={styles.Overlay}> </div>
                     <div className={styles.ModalContainer}>
                         <IoIosCloseCircleOutline onClick={() => toggleModal()} className={styles.ModalContainer__BtnClose} />
 
@@ -20,10 +23,19 @@ export default function ModalDetails({ isVisible, movieData, toggleModal }) {
                             <h1 className={styles.ModalData__Title}>{movieData.title}</h1>
                             <h3 className={styles.ModalData__Season}> Stagioni: {movieData.seasons} </h3>
                             <h3 className={styles.ModalData__Desc}>{movieData.description}</h3>
-                            <h4 className={styles.ModalData__Genres}> Genere: {movieData.genres}</h4>
-                            <h4 className={styles.ModalData__Cast}> Cast:{movieData.cast}</h4>
-                            <MdAddCircleOutline onClick={() => { }} className={styles.ModalData__BtnCir} />
-                            <MdPlayCircleOutline onClick={() => { }} className={styles.ModalData__BtnCir} />
+                            <h4 className={styles.ModalData__Genres}> Genere: {movieData.genres.join(", ")}</h4>
+                            <h4 className={styles.ModalData__Cast}> Cast:{movieData.cast.join(", ")}</h4>
+                            {isFavorite ? (<FiMinusCircle className={styles.ModalData__BtnCir}
+                                onClick={() => {
+                                    addToFavourite(movieData.id, !isFavorite)
+                                        .then(() => { setRender(prev => !prev); setIsFavorite(!isFavorite) })
+                                }} />) :
+                                <MdAddCircleOutline onClick={() => {
+                                    addToFavourite(movieData.id, !isFavorite)
+                                        .then(() => { setRender(prev => !prev); setIsFavorite(!isFavorite) })
+                                }}
+                                    className={styles.ModalData__BtnCir} />}
+                            <MdPlayCircleOutline onClick={() => togglePlayModal()} className={styles.ModalData__BtnCir} />
                         </div>
                     </div>
                 </>

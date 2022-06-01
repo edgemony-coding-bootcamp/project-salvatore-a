@@ -50,6 +50,7 @@ export default function Navbar({ getFilter }) {
           className={styles.Navbar__IconsWrapper__SearchGroup}
         >
           <input
+            autoFocus={true}
             className={
               searchClass
                 ? styles.Navbar__IconsWrapper__SearchGroup__showInput
@@ -76,7 +77,7 @@ export default function Navbar({ getFilter }) {
           </span>
         </div>
         <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
-        <UsersMenu />
+
       </div>
     </div>
   );

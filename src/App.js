@@ -10,16 +10,24 @@ import UserContextProvider from "./Context/UserContext/UserProvider";
 import { useMovieContext } from "./Context/MovieContext/MovieProvider";
 
 import styles from "./App.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [render, setRender] = useState(false);
   const [modalInfos, setModalInfos] = useState({
     visibility: false,
     datas: {},
   });
+  const { fetchAllMovies } = useMovieContext();
   const [isVisible, setVisible] = useState(false);
   const [filter, setFilter] = useState("");
   const { movies } = useMovieContext();
+  const filteredArray = movies.filter(
+    (el) =>
+      el.title.toLowerCase().includes(filter.toLowerCase()) ||
+      el.cast.join(" ").toLowerCase().includes(filter.toLowerCase()) ||
+      el.genres.join(" ").toLowerCase().includes(filter.toLowerCase())
+  );
 
   const toggleDetailsModal = (datas = {}) => {
     setModalInfos({
@@ -36,6 +44,12 @@ function App() {
     setVisible(!isVisible);
   };
 
+
+  useEffect(() => {
+    fetchAllMovies();
+    //eslint-disable-next-line
+  }, [render]);
+
   return (
     <div className={styles.App}>
       <UserContextProvider>
@@ -43,34 +57,53 @@ function App() {
       </UserContextProvider>
       {!filter ? (
         <>
-          <Hero toggleModal={togglePlayModal} />
+          <Hero
+            toggleModal={togglePlayModal}
+            toggleDetailsModal={toggleDetailsModal}
+            movieData={movies[0]} />
+
           <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
           <SliderWrapper toggleModal={toggleDetailsModal} />
           <ModalDetails
             isVisible={modalInfos.visibility}
             movieData={modalInfos.datas}
             toggleModal={toggleDetailsModal}
+            togglePlayModal={togglePlayModal}
+            setRender={setRender}
+            render={render}
           />
         </>
       ) : (
         <div className={styles.App__FilteredFilmWrapper}>
-          <h1>Ecco i risultati della tua ricerca:</h1>
-            {movies
-              .filter(
-                (el) =>
-                  el.title.toLowerCase().includes(filter.toLowerCase()) ||
-                  el.cast
-                    .join(" ")
-                    .toLowerCase()
-                    .includes(filter.toLowerCase()) ||
-                  el.genres
-                    .join(" ")
-                    .toLowerCase()
-                    .includes(filter.toLowerCase())
-              )
-              .map((el) => (
+          {filteredArray.length ? (
+            <>
+              <h1>Ecco i risultati della tua ricerca:</h1>
+              {filteredArray.map((el) => (
                 <img src={el.poster} alt={el.title} key={el.id}></img>
               ))}
+            </>
+          ) : (
+            <div className={styles.App__noResultsAlert}>
+              <p>
+                Nessun risultato per la tua ricerca di <i>{filter}</i>.
+                <br />
+                Suggerimenti:
+              </p>
+              <ul>
+                <li>Prova con parole chiave diverse</li>
+                <li>Cerchi un film o una serie TV?</li>
+                <li>
+                  Prova a usare il titolo di un film o programma TV oppure il
+                  nome di un attore
+                </li>
+                <li>
+                  Prova con un genere, per esempio Commedia,Romantici, Sport o
+                  Dramma
+                </li>
+              </ul>
+            </div>
+          )}
+
         </div>
       )}
       <Footer />
