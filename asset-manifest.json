@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/project-salvatore-a/static/css/main.7aeeecd0.css",
+    "main.js": "/project-salvatore-a/static/js/main.86f9b7c6.js",
+    "static/js/787.037d72d9.chunk.js": "/project-salvatore-a/static/js/787.037d72d9.chunk.js",
+    "static/media/logo.png": "/project-salvatore-a/static/media/logo.606f44d2a13c4c194bf1.png",
+    "index.html": "/project-salvatore-a/index.html",
+    "main.7aeeecd0.css.map": "/project-salvatore-a/static/css/main.7aeeecd0.css.map",
+    "main.86f9b7c6.js.map": "/project-salvatore-a/static/js/main.86f9b7c6.js.map",
+    "787.037d72d9.chunk.js.map": "/project-salvatore-a/static/js/787.037d72d9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7aeeecd0.css",
+    "static/js/main.86f9b7c6.js"
+  ]
+}
