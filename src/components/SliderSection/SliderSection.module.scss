@@ -19,6 +19,21 @@
     img {
       @include imageStyle;
     }
+    position: relative;
+  }
+
+
+  &__Left {
+    top:calc(50% - 10px);
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+  }
+  &__Right {
+    top:calc(50% - 10px);
+    transform: translateY(-50%);
+    position: absolute;
+    right: 0;
   }
 
   &__ListEmpty{
