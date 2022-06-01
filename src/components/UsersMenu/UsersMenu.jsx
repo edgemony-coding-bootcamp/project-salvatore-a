@@ -39,7 +39,7 @@ export default function UsersMenu() {
           <ul>
             {users &&
               users
-                .filter((user, index) => index !== 0)
+                .filter((user, index) => index > 0 && index <5)
                 .map((user, index) => (
                   <li key={user.id}>
                     <img
@@ -62,7 +62,7 @@ export default function UsersMenu() {
               Centro assistenza
             </li>
             <hr />
-            <li className={styles.UsersMenu__DropdownMenuy__Exit}>Esci da Edgeflix</li>
+            <li className={styles.UsersMenu__DropdownMenu__Exit}>Esci da Edgeflix</li>
           </ul>
         </div>
       )}

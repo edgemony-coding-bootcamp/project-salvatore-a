@@ -11,22 +11,28 @@ import { useMovieContext } from "./Context/MovieContext/MovieProvider";
 
 import styles from "./App.module.scss";
 import { useState, useEffect } from "react";
+import SearchInput from "./components/SearchInput/SearchInput";
+import NoResultsAlert from "./components/NoResultsAlert";
+
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function App() {
   const [render, setRender] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
   const [modalInfos, setModalInfos] = useState({
     visibility: false,
     datas: {},
   });
   const { fetchAllMovies } = useMovieContext();
   const [isVisible, setVisible] = useState(false);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
   const { movies } = useMovieContext();
   const filteredArray = movies.filter(
     (el) =>
-      el.title.toLowerCase().includes(filter.toLowerCase()) ||
-      el.cast.join(" ").toLowerCase().includes(filter.toLowerCase()) ||
-      el.genres.join(" ").toLowerCase().includes(filter.toLowerCase())
+      el.title.toLowerCase().includes(filter.filter.toLowerCase()) ||
+      el.cast.join(" ").toLowerCase().includes(filter.filter.toLowerCase()) ||
+      el.genres.join(" ").toLowerCase().includes(filter.filter.toLowerCase())
   );
 
   const toggleDetailsModal = (datas = {}) => {
@@ -36,46 +42,37 @@ function App() {
     });
   };
 
-  const getFilter = (filter) => {
-    setFilter(filter);
+  const getFilter = (input = "", isOnFocus = false) => {
+    setFilter({ filter: input, isOnFocus: isOnFocus });
   };
 
   const togglePlayModal = () => {
     setVisible(!isVisible);
   };
 
-
   useEffect(() => {
     fetchAllMovies();
     //eslint-disable-next-line
   }, [render]);
 
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+  });
+
   return (
     <div className={styles.App}>
-      <UserContextProvider>
-        <Header getFilter={getFilter} />
-      </UserContextProvider>
-      {!filter ? (
-        <>
-          <Hero
-            toggleModal={togglePlayModal}
-            toggleDetailsModal={toggleDetailsModal}
-            movieData={movies[0]} />
-
-          <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
-          <SliderWrapper toggleModal={toggleDetailsModal} />
-          <ModalDetails
-            isVisible={modalInfos.visibility}
-            movieData={modalInfos.datas}
-            toggleModal={toggleDetailsModal}
-            togglePlayModal={togglePlayModal}
-            setRender={setRender}
-            render={render}
-          />
-
-        </>
-      ) : (
-        <div className={styles.App__FilteredFilmWrapper}>
+      {screenWidth < 700 && filter.isOnFocus ? (
+        <div className={styles.App__MobileSearch}>
+          <span
+            className={styles.App__MobileSearch__CloseBtn}
+            onClick={() => getFilter("", false)}
+          >
+            <AiOutlineArrowLeft />
+          </span>
+          <SearchInput onFocus={filter.isOnFocus} getFilter={getFilter} />
           {filteredArray.length ? (
             <>
               <h1>Ecco i risultati della tua ricerca:</h1>
@@ -84,30 +81,49 @@ function App() {
               ))}
             </>
           ) : (
-            <div className={styles.App__noResultsAlert}>
-              <p>
-                Nessun risultato per la tua ricerca di <i>{filter}</i>.
-                <br />
-                Suggerimenti:
-              </p>
-              <ul>
-                <li>Prova con parole chiave diverse</li>
-                <li>Cerchi un film o una serie TV?</li>
-                <li>
-                  Prova a usare il titolo di un film o programma TV oppure il
-                  nome di un attore
-                </li>
-                <li>
-                  Prova con un genere, per esempio Commedia,Romantici, Sport o
-                  Dramma
-                </li>
-              </ul>
+            <NoResultsAlert filter={filter.filter} />
+          )}
+        </div>
+      ) : (
+        <>
+          <UserContextProvider>
+            <Header getFilter={getFilter} />
+          </UserContextProvider>
+          {!filter.filter ? (
+            <>
+              <Hero
+                toggleModal={togglePlayModal}
+                toggleDetailsModal={toggleDetailsModal}
+                movieData={movies[0]}
+              />
+              <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
+              <SliderWrapper toggleModal={toggleDetailsModal} />
+              <ModalDetails
+                isVisible={modalInfos.visibility}
+                movieData={modalInfos.datas}
+                toggleModal={toggleDetailsModal}
+                togglePlayModal={togglePlayModal}
+                setRender={setRender}
+                render={render}
+              />
+            </>
+          ) : (
+            <div className={styles.App__FilteredFilmWrapper}>
+              {filteredArray.length ? (
+                <>
+                  <h1>Ecco i risultati della tua ricerca:</h1>
+                  {filteredArray.map((el) => (
+                    <img src={el.poster} alt={el.title} key={el.id}></img>
+                  ))}
+                </>
+              ) : (
+                <NoResultsAlert filter={filter.filter} />
+              )}
             </div>
           )}
-
-        </div>
+          <Footer />
+        </>
       )}
-      <Footer />
     </div>
   );
 }
