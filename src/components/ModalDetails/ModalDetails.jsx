@@ -1,11 +1,13 @@
 import styles from "./ModalDetails.module.scss";
+import { useState } from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { MdAddCircleOutline, MdPlayCircleOutline } from 'react-icons/md'
+import { FiMinusCircle } from 'react-icons/fi'
 import { useMovieContext } from './../../Context/MovieContext/MovieProvider'
 
-export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal }) {
+export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal, setRender, render }) {
     const addToFavourite = useMovieContext().favouriteMovie
-
+    const [isFavorite, setIsFavorite] = useState(movieData.favorite);
     return (
         <div >
             {isVisible && (
@@ -23,7 +25,16 @@ export default function ModalDetails({ isVisible, movieData, toggleModal, toggle
                             <h3 className={styles.ModalData__Desc}>{movieData.description}</h3>
                             <h4 className={styles.ModalData__Genres}> Genere: {movieData.genres.join(", ")}</h4>
                             <h4 className={styles.ModalData__Cast}> Cast:{movieData.cast.join(", ")}</h4>
-                            <MdAddCircleOutline onClick={() => addToFavourite(movieData.id)} className={styles.ModalData__BtnCir} />
+                            {isFavorite ? (<FiMinusCircle className={styles.ModalData__BtnCir}
+                                onClick={() => {
+                                    addToFavourite(movieData.id, !isFavorite)
+                                        .then(() => { setRender(prev => !prev); setIsFavorite(!isFavorite) })
+                                }} />) :
+                                <MdAddCircleOutline onClick={() => {
+                                    addToFavourite(movieData.id, !isFavorite)
+                                        .then(() => { setRender(prev => !prev); setIsFavorite(!isFavorite) })
+                                }}
+                                    className={styles.ModalData__BtnCir} />}
                             <MdPlayCircleOutline onClick={() => togglePlayModal()} className={styles.ModalData__BtnCir} />
                         </div>
                     </div>

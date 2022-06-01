@@ -61,7 +61,7 @@ export default function MovieContextProvider({ children }) {
       dispatch({ type: RATING_MOVIES_ERROR, payload: error });
     }
   };
-  const favouriteMovie = async (id) => {
+  const favouriteMovie = async (id, isFavourite) => {
     dispatch({ type: FAVOURITE_MOVIES_REQUEST });
     try {
       const res = await fetch(
@@ -72,7 +72,7 @@ export default function MovieContextProvider({ children }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            favorite: true,
+            favorite: isFavourite,
           }),
         }
       );

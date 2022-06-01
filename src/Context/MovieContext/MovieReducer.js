@@ -35,9 +35,9 @@ export default function MovieReducer(state, action) {
         loading: true,
       };
     case FAVOURITE_MOVIES_SUCCESS:
-        const moviesArray = state.movies;
-        const getIndex = moviesArray.findIndex(el=>el.id ===action.payload);
-        moviesArray[getIndex] = {...moviesArray[getIndex], favorite: true};
+      const moviesArray = state.movies;
+      const getIndex = moviesArray.findIndex(el => el.id === action.payload);
+      moviesArray[getIndex] = { ...moviesArray[getIndex], favorite: !moviesArray[getIndex].favorite };
       return {
         ...state,
         loading: false,
@@ -55,9 +55,9 @@ export default function MovieReducer(state, action) {
         loading: true,
       };
     case RATING_MOVIES_SUCCESS:
-        const movies = state.movies;
-        const index = moviesArray.findIndex(el=>el.id ===action.payload);
-        movies[index] = {...movies[index], rating: action.payload};
+      const movies = state.movies;
+      const index = moviesArray.findIndex(el => el.id === action.payload);
+      movies[index] = { ...movies[index], rating: action.payload };
       return {
         ...state,
         loading: false,

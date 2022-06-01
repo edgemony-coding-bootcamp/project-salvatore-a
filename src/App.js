@@ -10,13 +10,15 @@ import UserContextProvider from "./Context/UserContext/UserProvider";
 import { useMovieContext } from "./Context/MovieContext/MovieProvider";
 
 import styles from "./App.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [render, setRender] = useState(false);
   const [modalInfos, setModalInfos] = useState({
     visibility: false,
     datas: {},
   });
+  const { fetchAllMovies } = useMovieContext();
   const [isVisible, setVisible] = useState(false);
   const [filter, setFilter] = useState("");
   const { movies } = useMovieContext();
@@ -42,6 +44,12 @@ function App() {
     setVisible(!isVisible);
   };
 
+
+  useEffect(() => {
+    fetchAllMovies();
+    //eslint-disable-next-line
+  }, [render]);
+
   return (
     <div className={styles.App}>
       <UserContextProvider>
@@ -61,6 +69,8 @@ function App() {
             movieData={modalInfos.datas}
             toggleModal={toggleDetailsModal}
             togglePlayModal={togglePlayModal}
+            setRender={setRender}
+            render={render}
           />
         </>
       ) : (
