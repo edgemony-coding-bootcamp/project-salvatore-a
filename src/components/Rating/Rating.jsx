@@ -4,7 +4,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { useState, useEffect } from 'react';
 
 
-export default function Rating({ movieData }) {
+export default function Rating({ movieData, setRender }) {
     const [rating, setRating] = useState(0);
     const addRating = useMovieContext().movieRating
 
@@ -28,7 +28,10 @@ export default function Rating({ movieData }) {
                                 type="button"
                                 key={index}
                                 className={index <= rating ? styles.Rating__On : styles.Rating__Off}
-                                onClick={() => { movieData && addRating(movieData.id, index); setRating(index) }}
+                                onClick={() => {
+                                    movieData && addRating(movieData.id, index)
+                                        .then(() => { setRender(prev => !prev); setRating(index) })
+                                }}
                             >
                                 {/* {console.log(movieData.id)} */}
                                 {/* {console.log(movieData)} */}
