@@ -5,7 +5,6 @@ import { FaSearch } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 
 import { useEffect, useState, useRef } from "react";
-import UsersMenu from "../UsersMenu/UsersMenu";
 
 export default function Navbar({ getFilter }) {
   const searchInput = useRef();

@@ -2,7 +2,6 @@ import styles from "./SliderWrapper.module.scss";
 
 import SliderSection from "../SliderSection";
 import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
-import { useEffect } from "react";
 
 export default function SliderWrapper({ toggleModal }) {
   const { movies } = useMovieContext();
