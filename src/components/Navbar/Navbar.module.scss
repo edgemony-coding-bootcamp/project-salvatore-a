@@ -35,16 +35,8 @@
         font-size:1.4em;
       }
     }
-
     &__Notify {
       display: none;
-    }
-  &__User {
-      @include flex($align:center, $gap:3px);
-      cursor: pointer;
-      img {
-        border-radius: 5px;
-      }
     }
     &__SearchGroup {
       @include flex($align:center);
@@ -76,35 +68,6 @@
       &__moveBtn{
         right: 210px !important;
       }
-    }
-  }
-
-  &__UserMenu {
-    position: absolute;
-    width: 200px;
-    top: 40px;
-    right: 0;
-    border: 1px solid $grey;
-    background-color: rgba(0, 0, 0, 0.831);
-    z-index: 1;
-    li {
-      @include flex($align: center);
-      list-style: none;
-      font-size: 0.8rem;
-      height: 40px;
-      margin-left: 10px;
-      font-weight: bold;
-    }
-    > svg {
-      font-size: 2em;
-    }
-    &__UserIcon {
-      height: 70%;
-    }
-    &__Exit {
-      justify-content: center !important;
-      margin: 0 !important;
-      height: 50px !important;
     }
   }
 }
