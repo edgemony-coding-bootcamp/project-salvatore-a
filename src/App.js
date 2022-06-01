@@ -72,6 +72,7 @@ function App() {
             setRender={setRender}
             render={render}
           />
+
         </>
       ) : (
         <div className={styles.App__FilteredFilmWrapper}>
