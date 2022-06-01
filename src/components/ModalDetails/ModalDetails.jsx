@@ -1,12 +1,10 @@
 import styles from "./ModalDetails.module.scss";
-import stranger from "./../../../src/logo.png";
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import { BsPlayCircle } from 'react-icons/bs';
 import { MdAddCircleOutline, MdPlayCircleOutline } from 'react-icons/md'
-
 
 export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal }) {
     // const context = useMovieContext
+
     return (
         <div >
             {isVisible && (
@@ -29,8 +27,6 @@ export default function ModalDetails({ isVisible, movieData, toggleModal, toggle
                             <MdAddCircleOutline onClick={() => { }} className={styles.ModalData__BtnCir} />
                             <MdPlayCircleOutline onClick={() => togglePlayModal()} className={styles.ModalData__BtnCir} />
                         </div>
-
-
                     </div>
                 </>
             )}
