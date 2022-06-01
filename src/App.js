@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import SearchInput from "./components/SearchInput/SearchInput";
 import NoResultsAlert from "./components/NoResultsAlert";
 
+import { MdPlayCircleOutline } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 function App() {
@@ -66,19 +67,27 @@ function App() {
     <div className={styles.App}>
       {screenWidth < 700 && filter.isOnFocus ? (
         <div className={styles.App__MobileSearch}>
-          <span
-            className={styles.App__MobileSearch__CloseBtn}
-            onClick={() => getFilter("", false)}
-          >
-            <AiOutlineArrowLeft />
-          </span>
-          <SearchInput onFocus={filter.isOnFocus} getFilter={getFilter} />
+          <div className={styles.App__MobileSearch__Header}>
+            <span
+              className={styles.App__MobileSearch__CloseBtn}
+              onClick={() => getFilter("", false)}
+            >
+              <AiOutlineArrowLeft />
+            </span>
+            <SearchInput onFocus={filter.isOnFocus} getFilter={getFilter} />
+          </div>
           {filteredArray.length ? (
             <>
-              <h1>Ecco i risultati della tua ricerca:</h1>
-              {filteredArray.map((el) => (
-                <img src={el.poster} alt={el.title} key={el.id}></img>
-              ))}
+              <div className={styles.App__MobileSearch__MoviesWrapper}>
+                <h1>Ecco i risultati della tua ricerca:</h1>
+                {filteredArray.map((el) => (
+                  <div key={el.id} onClick={() => toggleDetailsModal(el)}>
+                    <img src={el.poster} alt={el.title} key={el.id}></img>
+                    <p>{el.title}</p>
+                    <MdPlayCircleOutline onClick={() => togglePlayModal()} />
+                  </div>
+                ))}
+              </div>
             </>
           ) : (
             <NoResultsAlert filter={filter.filter} />
@@ -113,7 +122,7 @@ function App() {
                 <>
                   <h1>Ecco i risultati della tua ricerca:</h1>
                   {filteredArray.map((el) => (
-                    <img src={el.poster} alt={el.title} key={el.id}></img>
+                    <img key={el.id} src={el.poster} alt={el.title} key={el.id}></img>
                   ))}
                 </>
               ) : (

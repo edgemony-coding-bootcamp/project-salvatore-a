@@ -7,7 +7,7 @@ import { MdAddCircleOutline, MdPlayCircleOutline } from 'react-icons/md'
 import { FiMinusCircle } from 'react-icons/fi'
 import { useMovieContext } from './../../Context/MovieContext/MovieProvider'
 
-export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal, setRender, render }) {
+export default function ModalDetails({ isVisible, movieData, toggleModal, togglePlayModal, setRender}) {
     const addToFavourite = useMovieContext().favouriteMovie
     const [isFavorite, setIsFavorite] = useState(movieData.favorite);
     return (
