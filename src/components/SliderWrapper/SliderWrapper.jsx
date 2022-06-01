@@ -13,11 +13,12 @@ export default function SliderWrapper({ toggleModal }) {
 
   return (
     <div className={styles.SliderWrapper}>
+      
       {movies &&
         <SliderSection toggleModal={toggleModal} moviesData={movies} title="Serie TV" />
       }
       {newMovies && (
-        <SliderSection toggleModal={toggleModal} moviesData={newMovies} title="Nuovi e popolari" />
+        <SliderSection  toggleModal={toggleModal} moviesData={newMovies} title="Nuovi e popolari" />
       )}
       {favoriteMovies && (
         <SliderSection toggleModal={toggleModal} moviesData={favoriteMovies} title="La tua lista" />

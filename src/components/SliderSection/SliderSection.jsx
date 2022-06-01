@@ -1,9 +1,14 @@
 import styles from "./SliderSection.module.scss";
 
+import { useEffect, useState } from "react";
+
 import { FaSmileWink } from "react-icons/fa";
 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export default function SliderSection({ moviesData, title, toggleModal }) {
   const handleDragStart = (e) => e.preventDefault();
@@ -17,20 +22,30 @@ export default function SliderSection({ moviesData, title, toggleModal }) {
       onDragStart={handleDragStart}
       role="presentation"
     ></img>
-  ));
+  )); 
 
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+  });
+  
   return (
     <div className={styles.SliderSection}>
       <h1 className={styles.SliderSection__Title}>{title}</h1>
       {moviesData.length ? (
         <div className={styles.SliderSection__Slider}>
+          
           <AliceCarousel
-            mouseTracking={true}
+            mouseTracking={window.innerWidth > 770 ? false :screenWidth}
             items={images}
             infinite={true}
             autoHeight={true}
             autoWidth={true}
-            disableButtonsControls={true}
+            disableButtonsControls={window.innerWidth > 770 ? false :screenWidth}
             disableDotsControls={true}
             responsive={{
               0: {
@@ -43,8 +58,15 @@ export default function SliderSection({ moviesData, title, toggleModal }) {
                 items: 6,
               },
             }}
+            renderPrevButton={() => {
+              return <span className={styles.SliderSection__Left}> <MdOutlineArrowBackIosNew /> </span>
+            }}
+            renderNextButton={() => {
+              return <span className={styles.SliderSection__Right}> <MdOutlineArrowForwardIos /> </span>
+            }}
           />
-        </div>
+           </div>
+          
       ) : (
         <div className={styles.SliderSection__ListEmpty}>
           Whoooops, lista vuota... aggiungi qualcosa! <FaSmileWink />
