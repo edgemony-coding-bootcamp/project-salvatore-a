@@ -122,7 +122,7 @@ function App() {
                 <>
                   <h1>Ecco i risultati della tua ricerca:</h1>
                   {filteredArray.map((el) => (
-                    <img key={el.id} src={el.poster} alt={el.title} key={el.id}></img>
+                    <img key={el.id} src={el.poster} alt={el.title}></img>
                   ))}
                 </>
               ) : (
