@@ -43,34 +43,39 @@ function App() {
       </UserContextProvider>
       {!filter ? (
         <>
-          <Hero toggleModal={togglePlayModal} />
+          <Hero
+            toggleModal={togglePlayModal}
+            toggleDetailsModal={toggleDetailsModal}
+            movieData={movies[0]} />
+
           <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
           <SliderWrapper toggleModal={toggleDetailsModal} />
           <ModalDetails
             isVisible={modalInfos.visibility}
             movieData={modalInfos.datas}
             toggleModal={toggleDetailsModal}
+            togglePlayModal={togglePlayModal}
           />
         </>
       ) : (
         <div className={styles.App__FilteredFilmWrapper}>
           <h1>Ecco i risultati della tua ricerca:</h1>
-            {movies
-              .filter(
-                (el) =>
-                  el.title.toLowerCase().includes(filter.toLowerCase()) ||
-                  el.cast
-                    .join(" ")
-                    .toLowerCase()
-                    .includes(filter.toLowerCase()) ||
-                  el.genres
-                    .join(" ")
-                    .toLowerCase()
-                    .includes(filter.toLowerCase())
-              )
-              .map((el) => (
-                <img src={el.poster} alt={el.title} key={el.id}></img>
-              ))}
+          {movies
+            .filter(
+              (el) =>
+                el.title.toLowerCase().includes(filter.toLowerCase()) ||
+                el.cast
+                  .join(" ")
+                  .toLowerCase()
+                  .includes(filter.toLowerCase()) ||
+                el.genres
+                  .join(" ")
+                  .toLowerCase()
+                  .includes(filter.toLowerCase())
+            )
+            .map((el) => (
+              <img src={el.poster} alt={el.title} key={el.id}></img>
+            ))}
         </div>
       )}
       <Footer />
