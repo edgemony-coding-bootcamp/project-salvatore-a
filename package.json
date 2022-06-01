@@ -1,7 +1,7 @@
 {
-  "name": "a",
+  "name": "Edgeflix",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://edgemony-coding-bootcamp.github.io/project-salvatore-a/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

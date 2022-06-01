@@ -87,17 +87,53 @@ body {
     }
   }
   &__MobileSearch {
-    background-color: $black;
+    min-height: 100vh;
+    padding-top: 120px;
+    background-color: rgba(0, 0, 0, 0.84);
+    font-size: 12px;
+    font-weight: bold;
     h1 {
       font-size: medium;
     }
     img {
       @include imageStyle;
+      height: 100%;
+      width: 125px;
+      padding: 0;
+    }
+    &__Header{
+      position: fixed;
+      top: 0;
+      height: 100px;
+      background-color: black;
+
     }
     &__CloseBtn {
       > svg {
         font-size: 44px;
         padding: 10px;
+      }
+    }
+    &__MoviesWrapper{
+      h1{
+        margin: 10px;
+      }
+      padding: 0 0 40px 0;
+      >div{
+        @include flex($align:center, $gap:4px);
+        background-color: $black;
+        margin: 5px 0;
+        height: 75px;
+        overflow-wrap: break-word; 
+        cursor: pointer;
+
+        >svg{
+          position: absolute;
+          right: 10px;
+          font-size: 25px;
+          cursor: pointer;
+          z-index: 1;
+        }
       }
     }
   }
