@@ -1,5 +1,6 @@
 import styles from "./Navbar.module.scss";
 import logo from "./../../logo.png";
+import UsersMenu from "./../UsersMenu";
 
 import { FaSearch } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
@@ -12,8 +13,6 @@ export default function Navbar({ getFilter }) {
   const searchElements = () => {
     setSearchClass((prev) => !prev);
     searchInput.current.focus();
-    console.log("CURRENT", searchInput.current);
-    console.log("SEARCHINPUT", searchInput);
   };
 
   const [searchClass, setSearchClass] = useState(false);
@@ -76,7 +75,7 @@ export default function Navbar({ getFilter }) {
           </span>
         </div>
         <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
-
+        <UsersMenu/>
       </div>
     </div>
   );

@@ -14,12 +14,6 @@ export default function UsersMenu() {
     //eslint-disable-next-line
   }, []);
 
-  const getOnlyName = (text) => {
-    const textToArray = text.split("");
-    textToArray.splice(textToArray.findIndex((char) => char === "@"));
-    return textToArray[0].toUpperCase() + textToArray.slice(1).join("");
-  };
-
   return (
     <div
       className={styles.UsersMenu}
@@ -45,15 +39,15 @@ export default function UsersMenu() {
           <ul>
             {users &&
               users
-                .filter((user) => user.id !== 0)
+                .filter((user, index) => index !== 0)
                 .map((user, index) => (
                   <li key={user.id}>
                     <img
                       className={styles.UsersMenu__DropdownMenu__UserIcon}
                       src={user.avatar}
-                      alt={`${getOnlyName(user.email)} icon`}
+                      alt={`${user.username} icon`}
                     />
-                    {getOnlyName(user.email)}
+                    {user.username}
                   </li>
                 ))}
             <li>
