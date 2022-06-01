@@ -1,13 +1,13 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
-import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
+// import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
 // import ReactPlayer from 'react-player'
 import styles from "./Hero.module.scss";
 const strangerImage = new URL("https://pad.mymovies.it/filmclub/2016/06/082/coverlg_home.jpg");
 
 export default function Hero({ toggleModal }) {
-    const [isMuted, setIsMuted] = useState(true)
+    // const [isMuted, setIsMuted] = useState(true)
 
     return (
         < div className={styles.Hero}>
