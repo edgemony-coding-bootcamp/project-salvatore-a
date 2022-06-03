@@ -136,6 +136,15 @@ body {
     }
 
     &__MoviesWrapper {
+      &__Section {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        p {
+          margin-left: 10px;
+        }
+      }
+
       h1 {
         margin: 10px;
       }
