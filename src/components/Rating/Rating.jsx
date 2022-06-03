@@ -11,7 +11,6 @@ export default function Rating({ movieData, setRender }) {
     useEffect(() => {
         if (movieData) {
             setRating(movieData.rating);
-            (console.log(movieData.rating))
         }
 
         //eslint-disable-next-line
@@ -33,8 +32,6 @@ export default function Rating({ movieData, setRender }) {
                                         .then(() => { setRender(prev => !prev); setRating(index) })
                                 }}
                             >
-                                {/* {console.log(movieData.id)} */}
-                                {/* {console.log(movieData)} */}
                                 <span className={styles.Rating__Span}><AiFillStar className={styles.Rating__Star} /></span>
                             </button>
                         );
