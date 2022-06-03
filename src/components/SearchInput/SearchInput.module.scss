@@ -44,7 +44,8 @@
       font-size: 14px;
     }
     &__showInput {
-      width: 250px !important;
+      width: 198px !important;
+      // width: 250px !important;
       position: relative;
       left: 50px;
     }
@@ -52,6 +53,18 @@
       transition: right 0.5s ease-out;
       right: 0;
       top: 0 !important;
+    }
+    &__moveBtn {
+      right: 158px !important;
+      // right: 210px !important;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .SearchInput {
+    &__showInput {
+      width: 250px !important;
     }
     &__moveBtn {
       right: 210px !important;

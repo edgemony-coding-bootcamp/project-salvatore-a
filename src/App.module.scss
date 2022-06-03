@@ -74,9 +74,22 @@ body {
       @include imageStyle;
     }
 
-    h1 {
-      margin-bottom: 1em;
+    p {
+      margin-bottom: 1.5em;
     }
+  }
+
+  &__BackBtn {
+    @include flex-center;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 16px;
+    text-align: center;
+    width: 170px;
+    margin: 20px;
+    border: 1px solid $white;
+  }
+
   }
 
   &__MobileSearch {
@@ -103,7 +116,6 @@ body {
       height: 100px;
       background-color: black;
       z-index: 1;
-
     }
 
     &__CloseBtn {
@@ -117,25 +129,16 @@ body {
       h1 {
         margin: 10px;
       }
+
       padding: 0 0 40px 0;
 
-    &__Section{
-      display: flex;
-      align-items: center;
-      height: 100%;
-      p {
-        margin-left: 10px;
-      }
-    }
-
-      >div {
+      > div {
         @include flex($align: center, $gap: 4px);
         background-color: $black;
         margin: 5px 0;
         height: 75px;
         overflow-wrap: break-word;
         cursor: pointer;
-
         >svg {
           position: absolute;
           right: 10px;

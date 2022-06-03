@@ -16,6 +16,7 @@ import NoResultsAlert from "./components/NoResultsAlert";
 
 import { MdPlayCircleOutline } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { BsSkipBackwardFill } from "react-icons/bs";
 
 function App() {
   const [render, setRender] = useState(false);
@@ -89,6 +90,9 @@ function App() {
             <>
               <div className={styles.App__MobileSearch__MoviesWrapper}>
                 <h1>Ecco i risultati della tua ricerca:</h1>
+                <p>
+                  Hai cercato <i> {filter.filter} </i>{" "}
+                </p>
                 {filteredArray.map((el) => (
                   <div >
                     <div className= {styles.App__MobileSearch__MoviesWrapper__Section}key={el.id} onClick={() => toggleDetailsModal(el)}> 
@@ -125,6 +129,16 @@ function App() {
               {filteredArray.length ? (
                 <>
                   <h1>Ecco i risultati della tua ricerca:</h1>
+                  <p>
+                    Hai cercato <i> {filter.filter} </i>{" "}
+                  </p>
+                  <div
+                    className={styles.App__BackBtn}
+                    onClick={() => setFilter({ filter: "", isOnFocus: false })}
+                  >
+                    <BsSkipBackwardFill />
+                    Torna Indietro
+                  </div>
                   {filteredArray.map((el) => (
                     <img key={el.id} src={el.poster} alt={el.title}></img>
                   ))}
