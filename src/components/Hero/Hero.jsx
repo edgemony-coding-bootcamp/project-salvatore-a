@@ -4,9 +4,9 @@ import { AiOutlineInfoCircle } from 'react-icons/ai'
 // import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
 // import ReactPlayer from 'react-player'
 import styles from "./Hero.module.scss";
-const strangerImage = new URL("https://pad.mymovies.it/filmclub/2016/06/082/coverlg_home.jpg");
+const strangerImage = require('./../../assets/hero-stranger.webp');
+const strangerLogo = require('./../../assets/Stranger-Things-logo.webp');
 
-const strangerLogo = new URL("https://1000marche.net/wp-content/uploads/2020/03/Stranger-Things-logo.png");
 export default function Hero({ toggleModal, toggleDetailsModal, movieData }) {
     // const [isMuted, setIsMuted] = useState(true)
 
