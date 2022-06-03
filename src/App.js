@@ -140,7 +140,7 @@ function App() {
                     Torna Indietro
                   </div>
                   {filteredArray.map((el) => (
-                    <img key={el.id} src={el.poster} alt={el.title}></img>
+                    <img onClick={()=>toggleDetailsModal(el)} key={el.id} src={el.poster} alt={el.title}></img>
                   ))}
                 </>
               ) : (
