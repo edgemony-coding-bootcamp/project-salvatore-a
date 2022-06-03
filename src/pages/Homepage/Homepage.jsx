@@ -11,11 +11,11 @@ import { MdPlayCircleOutline } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsSkipBackwardFill } from "react-icons/bs";
 
+import { useEffect, useState } from "react";
 import UserContextProvider from "./../../Context/UserContext/UserProvider";
+import {useMovieContext} from "../../Context/MovieContext/MovieProvider";
 
 import styles from "./Homepage.module.scss";
-import { useEffect, useState } from "react";
-import {useMovieContext} from "../../Context/MovieContext/MovieProvider";
 
 export default function Homepage() {
   const [render, setRender] = useState(false);
@@ -144,7 +144,7 @@ export default function Homepage() {
                     Torna Indietro
                   </div>
                   {filteredArray.map((el) => (
-                    <img key={el.id} src={el.poster} alt={el.title}></img>
+                    <img onClick={() => toggleDetailsModal(el)} key={el.id} src={el.poster} alt={el.title}></img>
                   ))}
                 </>
               ) : (

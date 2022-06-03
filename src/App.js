@@ -2,7 +2,7 @@ import styles from "./App.module.scss";
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 const Homepage = lazy(() => import("./pages/Homepage"));
-const Login = lazy(() => import("./pages/Login"));
+const Signin = lazy(() => import("./pages/Signin"));
 const Signup = lazy(() => import("./pages/Signup"));
 
 function App() {
@@ -19,10 +19,10 @@ function App() {
           ></Route>
 
           <Route
-            path="/project-salvatore-a/login"
+            path="/project-salvatore-a/signin"
             element={
               <Suspense fallback={<></>}>
-                <Login />
+                <Signin />
               </Suspense>
             }
           ></Route>
