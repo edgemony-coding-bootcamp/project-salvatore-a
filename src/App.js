@@ -1,19 +1,33 @@
 import styles from "./App.module.scss";
-import {HashRouter, Routes, Route} from "react-router-dom"
-import {lazy, Suspense} from "react";
+import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+const Homepage = lazy(() => import("./pages/Homepage"));
+const Login = lazy(() => import("./pages/Login"));
 
 function App() {
-  const Homepage = lazy(() => import("./pages/Homepage"));
-
   return (
     <div className={styles.App}>
-      <HashRouter>
+      {/* <Router> */}
         <Routes>
-          <Route index element={<Suspense>
-            <Homepage/>
-          </Suspense>}/>
+          <Route
+            path="/project-salvatore-a/"
+            element={
+              <Suspense fallback={<></>}>
+                <Homepage />
+              </Suspense>
+            }
+          ></Route>
+
+          <Route
+            path="/project-salvatore-a/login"
+            element={
+              <Suspense fallback={<></>}>
+                <Login />
+              </Suspense>
+            }
+          ></Route>
         </Routes>
-      </HashRouter>
+      {/* </Router> */}
     </div>
   );
 }
