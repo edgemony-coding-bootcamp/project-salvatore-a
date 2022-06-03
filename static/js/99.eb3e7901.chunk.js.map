@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/99.eb3e7901.chunk.js","mappings":"gKACA,MCDe,WACX,OACI","sources":["pages/Signup/index.jsx","pages/Signup/Signup.jsx"],"sourcesContent":["import Signup from \"./Signup\";\nexport default Signup;","export default function Signup () {\n    return (\n        <div>\n            signup\n        </div>\n    )\n}"],"names":[],"sourceRoot":""}
