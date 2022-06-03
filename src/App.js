@@ -65,6 +65,15 @@ function App() {
 
   return (
     <div className={styles.App}>
+       <ModalDetails
+                isVisible={modalInfos.visibility}
+                movieData={modalInfos.datas}
+                toggleModal={toggleDetailsModal}
+                togglePlayModal={togglePlayModal}
+                setRender={setRender}
+                render={render}
+              />
+      <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
       {screenWidth < 700 && filter.isOnFocus ? (
         <div className={styles.App__MobileSearch}>
           <div className={styles.App__MobileSearch__Header}>
@@ -81,9 +90,11 @@ function App() {
               <div className={styles.App__MobileSearch__MoviesWrapper}>
                 <h1>Ecco i risultati della tua ricerca:</h1>
                 {filteredArray.map((el) => (
-                  <div key={el.id} onClick={() => toggleDetailsModal(el)}>
-                    <img src={el.poster} alt={el.title} key={el.id}></img>
-                    <p>{el.title}</p>
+                  <div >
+                    <div className= {styles.App__MobileSearch__MoviesWrapper__Section}key={el.id} onClick={() => toggleDetailsModal(el)}> 
+                      <img src={el.poster} alt={el.title} key={el.id}></img>
+                      <p>{el.title}</p>
+                    </div>
                     <MdPlayCircleOutline onClick={() => togglePlayModal()} />
                   </div>
                 ))}
@@ -105,16 +116,9 @@ function App() {
                 toggleDetailsModal={toggleDetailsModal}
                 movieData={movies[0]}
               />
-              <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
+              
               <SliderWrapper toggleModal={toggleDetailsModal} />
-              <ModalDetails
-                isVisible={modalInfos.visibility}
-                movieData={modalInfos.datas}
-                toggleModal={toggleDetailsModal}
-                togglePlayModal={togglePlayModal}
-                setRender={setRender}
-                render={render}
-              />
+             
             </>
           ) : (
             <div className={styles.App__FilteredFilmWrapper}>

@@ -51,7 +51,6 @@ export default function MovieContextProvider({ children }) {
         }
       );
       const { status } = await res.json();
-      console.log("fetch-status", status);
       if (status === 200) {
         dispatch({ type: RATING_MOVIES_SUCCESS, payload: newRating });
       } else {
@@ -77,7 +76,6 @@ export default function MovieContextProvider({ children }) {
         }
       );
       const { status } = await res.json();
-      console.log("fetch-status", status);
       if (status === 200) {
         dispatch({ type: FAVOURITE_MOVIES_SUCCESS, payload: id });
       } else {

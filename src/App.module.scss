@@ -102,6 +102,7 @@ body {
       top: 0;
       height: 100px;
       background-color: black;
+      z-index: 1;
 
     }
 
@@ -116,8 +117,16 @@ body {
       h1 {
         margin: 10px;
       }
-
       padding: 0 0 40px 0;
+
+    &__Section{
+      display: flex;
+      align-items: center;
+      height: 100%;
+      p {
+        margin-left: 10px;
+      }
+    }
 
       >div {
         @include flex($align: center, $gap: 4px);
