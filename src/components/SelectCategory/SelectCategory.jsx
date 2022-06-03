@@ -20,18 +20,19 @@ export default function SelectCategory({ getFilter }) {
 
   return (
     <div className={styles.SelectCategory}>
-      <div onClick={() => setCategoryMenuVisibility((prev) => !prev)} className={styles.SelectCategory__MenuTitle}>
-        <span>
-          {" "}
-          Categorie
-        </span>
+      <div
+        onClick={() => setCategoryMenuVisibility((prev) => !prev)}
+        className={styles.SelectCategory__MenuTitle}
+      >
+        <span> Categorie</span>
         <MdArrowDropDown />
       </div>
       {CategoryMenuVisibility && (
         <div className={styles.SelectCategory__CategoriesWrapper}>
           <ul>
-            {getCategories(movies).map((selectedGenre) => (
+            {getCategories(movies).map((selectedGenre, index) => (
               <li
+                key={index}
                 onClick={(e) => {
                   getFilter(selectedGenre);
                   setCategoryMenuVisibility(false);

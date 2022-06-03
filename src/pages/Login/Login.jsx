@@ -1,7 +1,7 @@
-// import styles from "./Login.module.scss";
+import AccessForm from "../../components/AccessForm";
 
 export default function Login () {
     return (
-        <div>ciao</div>
+        <AccessForm/>
     )
 }
