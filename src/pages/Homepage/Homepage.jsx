@@ -64,7 +64,7 @@ export default function Homepage() {
   });
 
   return (
-    <>
+    <div className={styles.Homepage}>
       <ModalDetails
         isVisible={modalInfos.visibility}
         movieData={modalInfos.datas}
@@ -75,10 +75,10 @@ export default function Homepage() {
       />
       <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
       {screenWidth < 700 && filter.isOnFocus ? (
-        <div className={styles.App__MobileSearch}>
-          <div className={styles.App__MobileSearch__Header}>
+        <div className={styles.Homepage__MobileSearch}>
+          <div className={styles.Homepage__MobileSearch__Header}>
             <span
-              className={styles.App__MobileSearch__CloseBtn}
+              className={styles.Homepage__MobileSearch__CloseBtn}
               onClick={() => getFilter("", false)}
             >
               <AiOutlineArrowLeft />
@@ -87,7 +87,7 @@ export default function Homepage() {
           </div>
           {filteredArray.length ? (
             <>
-              <div className={styles.App__MobileSearch__MoviesWrapper}>
+              <div className={styles.Homepage__MobileSearch__MoviesWrapper}>
                 <h1>Ecco i risultati della tua ricerca:</h1>
                 <p>
                   Hai cercato <i> {filter.filter} </i>{" "}
@@ -96,7 +96,7 @@ export default function Homepage() {
                   <div>
                     <div
                       className={
-                        styles.App__MobileSearch__MoviesWrapper__Section
+                        styles.Homepage__MobileSearch__MoviesWrapper__Section
                       }
                       key={el.id}
                       onClick={() => toggleDetailsModal(el)}
@@ -129,7 +129,7 @@ export default function Homepage() {
               <SliderWrapper toggleModal={toggleDetailsModal} />
             </>
           ) : (
-            <div className={styles.App__FilteredFilmWrapper}>
+            <div className={styles.Homepage__FilteredFilmWrapper}>
               {filteredArray.length ? (
                 <>
                   <h1>Ecco i risultati della tua ricerca:</h1>
@@ -137,7 +137,7 @@ export default function Homepage() {
                     Hai cercato <i> {filter.filter} </i>{" "}
                   </p>
                   <div
-                    className={styles.App__BackBtn}
+                    className={styles.Homepage__BackBtn}
                     onClick={() => setFilter({ filter: "", isOnFocus: false })}
                   >
                     <BsSkipBackwardFill />
@@ -155,6 +155,6 @@ export default function Homepage() {
           <Footer />
         </>
       )}
-    </>
+    </div>
   );
 }
