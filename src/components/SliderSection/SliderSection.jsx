@@ -42,7 +42,7 @@ export default function SliderSection({ moviesData, title, toggleModal }) {
           <AliceCarousel
             mouseTracking={window.innerWidth > 770 ? false :screenWidth}
             items={images}
-            infinite={true}
+            infinite={false}
             autoHeight={true}
             autoWidth={true}
             disableButtonsControls={window.innerWidth > 770 ? false :screenWidth}
