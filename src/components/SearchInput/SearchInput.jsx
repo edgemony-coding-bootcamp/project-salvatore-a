@@ -18,7 +18,7 @@ export default function SearchInput({ getFilter, onFocus }) {
     <>
       <div
         onMouseLeave={() => {
-          return searchClass ? setSearchClass(false) : null;
+          return searchClass ? setTimeout(() => setSearchClass(false), 500) : null 
         }}
         className={styles.SearchInput}
       >
