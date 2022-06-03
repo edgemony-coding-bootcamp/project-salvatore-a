@@ -80,6 +80,7 @@ function App() {
             <>
               <div className={styles.App__MobileSearch__MoviesWrapper}>
                 <h1>Ecco i risultati della tua ricerca:</h1>
+                <p>Hai cercato <i> {filter.filter} </i> </p>
                 {filteredArray.map((el) => (
                   <div key={el.id} onClick={() => toggleDetailsModal(el)}>
                     <img src={el.poster} alt={el.title} key={el.id}></img>
@@ -121,6 +122,7 @@ function App() {
               {filteredArray.length ? (
                 <>
                   <h1>Ecco i risultati della tua ricerca:</h1>
+                  <p>Hai cercato <i> {filter.filter} </i> </p>
                   {filteredArray.map((el) => (
                     <img key={el.id} src={el.poster} alt={el.title}></img>
                   ))}

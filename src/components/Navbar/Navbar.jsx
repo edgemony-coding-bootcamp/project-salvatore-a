@@ -1,6 +1,7 @@
 import styles from "./Navbar.module.scss";
 import logo from "./../../logo.png";
 import UsersMenu from "./../UsersMenu";
+import SelectCategory from "./../SelectCategory";
 
 import { IoMdNotifications } from "react-icons/io";
 
@@ -29,10 +30,12 @@ export default function Navbar({ getFilter }) {
       className={styles.Navbar}
       style={{ backgroundColor: navColor, transition: "all 1s" }}
     >
-      <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
-
+      <div className={styles.Navbar__GroupApp}>
+        <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
+        <SelectCategory getFilter={getFilter} />
+      </div>
       <div className={styles.Navbar__IconsWrapper}>
-        <SearchInput getFilter={getFilter}/>
+        <SearchInput getFilter={getFilter} />
         <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
         <UsersMenu />
       </div>

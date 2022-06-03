@@ -11,60 +11,48 @@
   font-family: "Netflix Sans";
   font-weight: 100;
   font-display: optional;
-  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2)
-      format("woff2"),
-    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff)
-      format("woff");
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2) format("woff2"),
+    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff) format("woff");
 }
 
 @font-face {
   font-family: "Netflix Sans";
   font-weight: 300;
   font-display: optional;
-  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2)
-      format("woff2"),
-    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff)
-      format("woff");
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2) format("woff2"),
+    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff) format("woff");
 }
 
 @font-face {
   font-family: "Netflix Sans";
   font-weight: 400;
   font-display: optional;
-  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2)
-      format("woff2"),
-    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff)
-      format("woff");
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2) format("woff2"),
+    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff) format("woff");
 }
 
 @font-face {
   font-family: "Netflix Sans";
   font-weight: 700;
   font-display: optional;
-  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2)
-      format("woff2"),
-    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff)
-      format("woff");
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2) format("woff2"),
+    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff) format("woff");
 }
 
 @font-face {
   font-family: "Netflix Sans";
   font-weight: 800;
   font-display: optional;
-  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2)
-      format("woff2"),
-    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff)
-      format("woff");
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2) format("woff2"),
+    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff) format("woff");
 }
 
 @font-face {
   font-family: "Netflix Sans";
   font-weight: 900;
   font-display: optional;
-  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2)
-      format("woff2"),
-    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff)
-      format("woff");
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2) format("woff2"),
+    url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff) format("woff");
 }
 
 body {
@@ -76,58 +64,69 @@ body {
 
 .App {
   overflow: hidden;
+
   &__FilteredFilmWrapper {
     padding: 0 3.5em;
     margin-top: 90px;
+
     img {
       @include imageStyle;
     }
-    h1 {
-      margin-bottom: 1em;
+
+    p {
+      margin-bottom: 1.5em;
     }
   }
+
   &__MobileSearch {
     min-height: 100vh;
     padding-top: 120px;
     background-color: rgba(0, 0, 0, 0.84);
     font-size: 12px;
     font-weight: bold;
+
     h1 {
       font-size: medium;
     }
+
     img {
       @include imageStyle;
       height: 100%;
       width: 125px;
       padding: 0;
     }
-    &__Header{
+
+    &__Header {
       position: fixed;
       top: 0;
       height: 100px;
       background-color: black;
 
     }
+
     &__CloseBtn {
-      > svg {
+      >svg {
         font-size: 44px;
         padding: 10px;
       }
     }
-    &__MoviesWrapper{
-      h1{
+
+    &__MoviesWrapper {
+      h1 {
         margin: 10px;
       }
+
       padding: 0 0 40px 0;
-      >div{
-        @include flex($align:center, $gap:4px);
+
+      >div {
+        @include flex($align: center, $gap: 4px);
         background-color: $black;
         margin: 5px 0;
         height: 75px;
-        overflow-wrap: break-word; 
+        overflow-wrap: break-word;
         cursor: pointer;
 
-        >svg{
+        >svg {
           position: absolute;
           right: 10px;
           font-size: 25px;

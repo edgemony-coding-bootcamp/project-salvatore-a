@@ -13,6 +13,7 @@
   &__Wrapper {
     display: flex;
   }
+
   &__Logo {
     height: 35px;
   }
@@ -22,19 +23,26 @@
     @include flex($justify: space-between, $align: center);
   }
 
+  &__GroupApp {
+    @include flex($align: center);
+  }
+
   &__IconsWrapper {
     position: relative;
-    @include flex ($align:center);
-    > svg {
+    @include flex ($align: center);
+
+    >svg {
       margin: 5px;
       cursor: pointer;
       font-size: 1.2em;
     }
+
     @media all and (min-width: 700px) {
       svg {
         font-size: 1.4em;
       }
     }
+
     &__Notify {
       display: none;
     }
