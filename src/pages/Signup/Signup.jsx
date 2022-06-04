@@ -23,7 +23,7 @@ export default function Signup() {
 
       <small className={styles.Signup__redirect}>
         Sei già registrato? {" "}
-        <Link to="/project-salvatore-a/signin">
+        <Link to="/signin">
           {/* eslint-disable-next-line */}
           <a>Sign In!</a>
         </Link>
