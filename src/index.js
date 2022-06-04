@@ -4,16 +4,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import MovieContextProvider from "./Context/MovieContext/MovieProvider";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MovieContextProvider>
-      <BrowserRouter>
+    <HashRouter>
+      <MovieContextProvider>
         <App />
-      </BrowserRouter>
-    </MovieContextProvider>
+      </MovieContextProvider>
+    </HashRouter>
   </React.StrictMode>
 );
 

@@ -8,44 +8,43 @@ const Signup = lazy(() => import("./pages/Signup"));
 function App() {
   return (
     <div className={styles.App}>
-        <Routes>
+      <Routes>
+        <Route
+          index
+          element={
+            <Suspense fallback={<></>}>
+              <Signin />
+            </Suspense>
+          }
+        ></Route>
 
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<></>}>
-                <Signin />
-              </Suspense>
-            }
-          ></Route>
+        <Route
+          path="/signin"
+          element={
+            <Suspense fallback={<></>}>
+              <Signin />
+            </Suspense>
+          }
+        ></Route>
 
-          <Route
-            path="/signin"
-            element={
-              <Suspense fallback={<></>}>
-                <Signin />
-              </Suspense>
-            }
-          ></Route>
+        <Route
+          path="/signup"
+          element={
+            <Suspense fallback={<></>}>
+              <Signup />
+            </Suspense>
+          }
+        ></Route>
 
-          <Route
-            path="/signup"
-            element={
-              <Suspense fallback={<></>}>
-                <Signup />
-              </Suspense>
-            }
-          ></Route>
-
-          <Route
-            path="/browse"
-            element={
-              <Suspense fallback={<></>}>
-                <Homepage />
-              </Suspense>
-            }
-          ></Route>
-        </Routes>
+        <Route
+          path="/browse"
+          element={
+            <Suspense fallback={<></>}>
+              <Homepage />
+            </Suspense>
+          }
+        ></Route>
+      </Routes>
     </div>
   );
 }
