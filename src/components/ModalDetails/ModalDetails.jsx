@@ -6,7 +6,7 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { MdAddCircleOutline, MdPlayCircleOutline } from "react-icons/md";
 import { FiMinusCircle } from "react-icons/fi";
 import { useMovieContext } from "./../../Context/MovieContext/MovieProvider";
-import Overlay from "../Overlay";
+import Overlay from "./../Overlay";
 
 export default function ModalDetails({
   isVisible,
