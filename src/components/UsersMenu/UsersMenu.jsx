@@ -4,10 +4,12 @@ import { AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
 import {useEffect, useState} from "react";
 import {useUserContext} from "../../Context/UserContext/UserProvider";
 import styles from "./UsersMenu.module.scss";
+import {useNavigate} from "react-router-dom";
 
 export default function UsersMenu() {
   const { fetchAllUsers, users } = useUserContext();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllUsers();
@@ -62,7 +64,7 @@ export default function UsersMenu() {
               Centro assistenza
             </li>
             <hr />
-            <li className={styles.UsersMenu__DropdownMenu__Exit}>Esci da Edgeflix</li>
+            <li onClick={()=>navigate("/signin")} className={styles.UsersMenu__DropdownMenu__Exit}>Esci da Edgeflix</li>
           </ul>
         </div>
       )}

@@ -23,4 +23,13 @@
     background-image: url("./../../assets/accessBg.webp");
     height: 100vh;
     @include flex($dir:column, $align:center, $justify:center);
+
+    &__redirect{
+        color: $white;
+        font-weight: bold;
+        z-index: 2;
+        a{
+            color: $red;
+        }
+    }
 }
