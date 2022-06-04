@@ -73,9 +73,12 @@ export default function AccessForm({ sendData, formType }) {
           id="password"
         />
       </div>
-
       <div className={styles.AccessForm__inputGroup}>
-        <input type="submit" value="Sign In" />
+        {formType === "signup" ? (
+          <input type="submit" value="Sign Up" />
+        ) : (
+          <input type="submit" value="Sign In" />
+        )}
       </div>
     </form>
   );
