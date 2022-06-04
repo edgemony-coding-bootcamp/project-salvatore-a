@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./AccessForm.module.scss";
 
-export default function AccessForm({ sendData }) {
+export default function AccessForm({ sendData, formType }) {
   const [values, setValues] = useState({});
   const navigate = useNavigate();
 
@@ -16,31 +16,45 @@ export default function AccessForm({ sendData }) {
 
   const submitForm = (e) => {
     e.preventDefault();
+    navigate("/browse");
     sendData(values);
-    navigate("/project-salvatore-a");
   };
 
   return (
     <form
-      autocomplete="off"
+      autoComplete="false"
       onSubmit={submitForm}
       className={styles.AccessForm}
     >
-      <div className={styles.AccessForm__inputGroup}>
-        <label htmlFor="username">Username</label>
-        <input
-          autoComplete="off"
-          type="text"
-          value={values.username || ""}
-          name="username"
-          onChange={onInputsChange}
-          id="username"
-        />
-      </div>
+      {formType === "signup" ? (
+        <>
+          <div className={styles.AccessForm__inputGroup}>
+            <label htmlFor="avatar">Avatar</label>
+            <input
+              type="text"
+              value={values.avatar || ""}
+              name="avatar"
+              onChange={onInputsChange}
+              id="avatar"
+            />
+          </div>
+          <div className={styles.AccessForm__inputGroup}>
+            <label htmlFor="username">Username</label>
+            <input
+              autoComplete="false"
+              type="text"
+              value={values.username || ""}
+              name="username"
+              onChange={onInputsChange}
+              id="username"
+            />
+          </div>
+        </>
+      ) : null}
       <div className={styles.AccessForm__inputGroup}>
         <label htmlFor="email">Email</label>
         <input
-          autoComplete="off"
+          autoComplete="false"
           type="email"
           value={values.email || ""}
           name="email"
@@ -51,7 +65,7 @@ export default function AccessForm({ sendData }) {
       <div className={styles.AccessForm__inputGroup}>
         <label htmlFor="password">Password</label>
         <input
-          autoComplete="off"
+          autoComplete="new-password"
           type="password"
           value={values.password || ""}
           name="password"
@@ -60,17 +74,11 @@ export default function AccessForm({ sendData }) {
         />
       </div>
       <div className={styles.AccessForm__inputGroup}>
-        <label htmlFor="avatar">Avatar</label>
-        <input
-          type="text"
-          value={values.avatar || ""}
-          name="avatar"
-          onChange={onInputsChange}
-          id="avatar"
-        />
-      </div>
-      <div className={styles.AccessForm__inputGroup}>
-        <input type="submit" value="Sign In" />
+        {formType === "signup" ? (
+          <input type="submit" value="Sign Up" />
+        ) : (
+          <input type="submit" value="Sign In" />
+        )}
       </div>
     </form>
   );

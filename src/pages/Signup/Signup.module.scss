@@ -1,0 +1,35 @@
+@import "./../../styles/mixins.scss";
+@import "./../../styles/variables.scss";
+
+.Signup {
+  img {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    z-index: 3;
+    width: 150px;
+    cursor: pointer;
+    @media (min-width: 700px) {
+      width: 200px;
+    }
+  }
+
+  h1 {
+    text-align: left;
+    z-index: 3;
+    width: 80vw;
+    max-width: 300px;
+  }
+  background-image: url("./../../assets/accessBg.webp");
+  height: 100vh;
+  @include flex($dir: column, $align: center, $justify: center);
+
+  &__redirect {
+    color: $white;
+    font-weight: bold;
+    z-index: 2;
+    a {
+      color: $red;
+    }
+  }
+}

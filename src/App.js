@@ -9,17 +9,9 @@ function App() {
   return (
     <div className={styles.App}>
         <Routes>
-          <Route
-            path="/project-salvatore-a/"
-            element={
-              <Suspense fallback={<></>}>
-                <Homepage />
-              </Suspense>
-            }
-          ></Route>
 
           <Route
-            path="/project-salvatore-a/signin"
+            path="/"
             element={
               <Suspense fallback={<></>}>
                 <Signin />
@@ -28,15 +20,32 @@ function App() {
           ></Route>
 
           <Route
-            path="/project-salvatore-a/signup"
+            path="/signin"
+            element={
+              <Suspense fallback={<></>}>
+                <Signin />
+              </Suspense>
+            }
+          ></Route>
+
+          <Route
+            path="/signup"
             element={
               <Suspense fallback={<></>}>
                 <Signup />
               </Suspense>
             }
           ></Route>
+
+          <Route
+            path="/browse"
+            element={
+              <Suspense fallback={<></>}>
+                <Homepage />
+              </Suspense>
+            }
+          ></Route>
         </Routes>
-      {/* </Router> */}
     </div>
   );
 }
