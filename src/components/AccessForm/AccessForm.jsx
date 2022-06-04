@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../Context/UserContext/UserProvider";
 
 import styles from "./AccessForm.module.scss";
 
 export default function AccessForm({ sendData, formType }) {
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState({
+    avatar: "https://cdn-icons-png.flaticon.com/512/843/843331.png?w=740",
+  });
   const navigate = useNavigate();
+
+  const { users, fetchAllUsers } = useUserContext();
+
+  useEffect(() => {
+    fetchAllUsers();
+    //eslint-disable-next-line
+  }, []);
 
   const onInputsChange = (e) => {
     const name = e.target.name;
@@ -16,8 +26,44 @@ export default function AccessForm({ sendData, formType }) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    navigate("/browse");
-    sendData(values);
+    fetchAccess(values, formType);
+  };
+
+  const fetchAccess = async (values, requestType) => {
+    if (requestType === "signup") {
+      try {
+        const request = await fetch(
+          "https://edgemony-backend.herokuapp.com/users",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+          }
+        );
+        const response = await request.json();
+        if (request.status !== 201) {
+          throw new Error(response);
+        } else {
+          localStorage.setItem("JWT_accessToken", response.accessToken);
+          localStorage.setItem("currentUser", response.user.id);
+          navigate("/browse");
+        }
+      } catch (e) {
+        alert(e);
+      }
+    } else {
+      const emailVerification = users.filter(
+        (user) => user.email === values.email
+      );
+      if (emailVerification.length) {
+        localStorage.setItem("currentUser", emailVerification[0].id);
+        navigate("/browse");
+      } else {
+        alert("Questa email non esiste, registrati!");
+      }
+    }
   };
 
   return (
@@ -32,7 +78,7 @@ export default function AccessForm({ sendData, formType }) {
             <label htmlFor="avatar">Avatar</label>
             <input
               type="text"
-              value={values.avatar || ""}
+              value={values.avatar}
               name="avatar"
               onChange={onInputsChange}
               id="avatar"
@@ -41,7 +87,8 @@ export default function AccessForm({ sendData, formType }) {
           <div className={styles.AccessForm__inputGroup}>
             <label htmlFor="username">Username</label>
             <input
-              autoComplete="false"
+              required
+              autoComplete="new-password"
               type="text"
               value={values.username || ""}
               name="username"
@@ -54,7 +101,8 @@ export default function AccessForm({ sendData, formType }) {
       <div className={styles.AccessForm__inputGroup}>
         <label htmlFor="email">Email</label>
         <input
-          autoComplete="false"
+          required
+          autoComplete="new-password"
           type="email"
           value={values.email || ""}
           name="email"
@@ -65,6 +113,7 @@ export default function AccessForm({ sendData, formType }) {
       <div className={styles.AccessForm__inputGroup}>
         <label htmlFor="password">Password</label>
         <input
+          required
           autoComplete="new-password"
           type="password"
           value={values.password || ""}

@@ -12,7 +12,6 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsSkipBackwardFill } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
-import UserContextProvider from "./../../Context/UserContext/UserProvider";
 import {useMovieContext} from "../../Context/MovieContext/MovieProvider";
 
 import styles from "./Homepage.module.scss";
@@ -115,9 +114,7 @@ export default function Homepage() {
         </div>
       ) : (
         <>
-          <UserContextProvider>
             <Header getFilter={getFilter} />
-          </UserContextProvider>
           {!filter.filter ? (
             <>
               <Hero

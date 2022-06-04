@@ -1,20 +1,34 @@
 import { MdArrowDropDown } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
-import {useEffect, useState} from "react";
-import {useUserContext} from "../../Context/UserContext/UserProvider";
+import { useEffect, useState } from "react";
+import { useUserContext } from "../../Context/UserContext/UserProvider";
 import styles from "./UsersMenu.module.scss";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function UsersMenu() {
-  const { fetchAllUsers, users } = useUserContext();
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const { fetchAllUsers } = useUserContext();
+
+  const actualUserID = localStorage.getItem("currentUser");
+
+  const [actualUser] = useUserContext().users.filter(
+    (user) => user.id === parseInt(actualUserID)
+  );
+
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllUsers();
     //eslint-disable-next-line
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("JWT_accessToken");
+    navigate("/signin");
+  };
 
   return (
     <div
@@ -24,10 +38,15 @@ export default function UsersMenu() {
       }}
       onClick={() => setMenuOpen((prev) => !prev)}
     >
-      <img
-        alt="User Icon"
-        src="https://occ-0-3092-2581.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABZoA7Ad6wq_Mr6n2PeiNE7b3crY5UFBH3HZBKFEn-sNnuFYr2nFRDhXaJ-n4AffDKow6laNMiqveHP9dquslaL1U7sGHr8g.png?r=e59"
-      ></img>
+      {actualUser && (
+        <img
+          alt={actualUser.username || "Anonimo"}
+          src={
+            actualUser.avatar ||
+            "https://cdn-icons-png.flaticon.com/512/843/843331.png?w=740"
+          }
+        ></img>
+      )}
       <MdArrowDropDown />
       {isMenuOpen && (
         <div
@@ -39,21 +58,22 @@ export default function UsersMenu() {
           }}
         >
           <ul>
-            {users &&
-              users
-                .filter((user, index) => index > 0 && index <5)
-                .map((user, index) => (
-                  <li key={user.id}>
-                    <img
-                      className={styles.UsersMenu__DropdownMenu__UserIcon}
-                      src={user.avatar}
-                      alt={`${user.username} icon`}
-                    />
-                    {user.username}
-                  </li>
-                ))}
+            {actualUser && (
+              <li key={actualUser?.id}>
+                <img
+                  className={styles.UsersMenu__DropdownMenu__UserIcon}
+                  src={
+                    actualUser?.avatar ||
+                    "https://cdn-icons-png.flaticon.com/512/843/843331.png?w=740"
+                  }
+                  alt={actualUser?.username || "Anonimo"}
+                />
+                {actualUser?.username || "Anonimo"}
+              </li>
+            )}
+
             <li>
-              <BsPencil /> Gestisci i profili
+              <BsPencil /> Gestisci il profilo
             </li>
             <hr />
             <li>
@@ -64,7 +84,12 @@ export default function UsersMenu() {
               Centro assistenza
             </li>
             <hr />
-            <li onClick={()=>navigate("/signin")} className={styles.UsersMenu__DropdownMenu__Exit}>Esci da Edgeflix</li>
+            <li
+              onClick={() => logout()}
+              className={styles.UsersMenu__DropdownMenu__Exit}
+            >
+              Esci da Edgeflix
+            </li>
           </ul>
         </div>
       )}

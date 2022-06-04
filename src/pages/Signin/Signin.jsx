@@ -13,11 +13,7 @@ export default function Signin() {
       <h1>Sign In</h1>
       <AccessForm formType={"signin"} />
       <small className={styles.Signin__redirect}>
-        Non sei ancora registrato?{" "}
-        <Link to="/signup">
-          {/* eslint-disable-next-line */}
-          <a>Sign Up!</a>
-        </Link>
+        Non sei ancora registrato? <Link to="/signup">Sign Up!</Link>
       </small>
     </div>
   );
