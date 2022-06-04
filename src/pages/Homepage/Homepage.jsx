@@ -28,7 +28,10 @@ export default function Homepage() {
   const [isVisible, setVisible] = useState(false);
   const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
   const { movies } = useMovieContext();
-  const filteredArray = movies.filter(
+  const actualUserID = localStorage.getItem("currentUser");
+  const userMovies = useMovieContext().movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+
+  const filteredArray = userMovies.filter(
     (el) =>
       el.title.toLowerCase().includes(filter.filter.toLowerCase()) ||
       el.cast.join(" ").toLowerCase().includes(filter.filter.toLowerCase()) ||
