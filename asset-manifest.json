@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/project-salvatore-a/static/css/main.ba93d2ac.css",
-    "main.js": "/project-salvatore-a/static/js/main.0155054f.js",
+    "main.js": "/project-salvatore-a/static/js/main.7c4cdc58.js",
     "static/css/72.123babb3.chunk.css": "/project-salvatore-a/static/css/72.123babb3.chunk.css",
     "static/js/72.d46dea1b.chunk.js": "/project-salvatore-a/static/js/72.d46dea1b.chunk.js",
     "static/css/891.04314afa.chunk.css": "/project-salvatore-a/static/css/891.04314afa.chunk.css",
     "static/js/891.6f151598.chunk.js": "/project-salvatore-a/static/js/891.6f151598.chunk.js",
     "static/css/938.261a3f5f.chunk.css": "/project-salvatore-a/static/css/938.261a3f5f.chunk.css",
-    "static/js/938.8a32d5dc.chunk.js": "/project-salvatore-a/static/js/938.8a32d5dc.chunk.js",
+    "static/js/938.5f000ff4.chunk.js": "/project-salvatore-a/static/js/938.5f000ff4.chunk.js",
     "static/js/787.aae3408c.chunk.js": "/project-salvatore-a/static/js/787.aae3408c.chunk.js",
     "static/js/135.3c9333ba.chunk.js": "/project-salvatore-a/static/js/135.3c9333ba.chunk.js",
     "static/media/hero-stranger.webp": "/project-salvatore-a/static/media/hero-stranger.083d9054f3fd1aacf4f4.webp",
@@ -16,18 +16,18 @@
     "static/media/Stranger-Things-logo.webp": "/project-salvatore-a/static/media/Stranger-Things-logo.4c69a318b55b9178a8f7.webp",
     "index.html": "/project-salvatore-a/index.html",
     "main.ba93d2ac.css.map": "/project-salvatore-a/static/css/main.ba93d2ac.css.map",
-    "main.0155054f.js.map": "/project-salvatore-a/static/js/main.0155054f.js.map",
+    "main.7c4cdc58.js.map": "/project-salvatore-a/static/js/main.7c4cdc58.js.map",
     "72.123babb3.chunk.css.map": "/project-salvatore-a/static/css/72.123babb3.chunk.css.map",
     "72.d46dea1b.chunk.js.map": "/project-salvatore-a/static/js/72.d46dea1b.chunk.js.map",
     "891.04314afa.chunk.css.map": "/project-salvatore-a/static/css/891.04314afa.chunk.css.map",
     "891.6f151598.chunk.js.map": "/project-salvatore-a/static/js/891.6f151598.chunk.js.map",
     "938.261a3f5f.chunk.css.map": "/project-salvatore-a/static/css/938.261a3f5f.chunk.css.map",
-    "938.8a32d5dc.chunk.js.map": "/project-salvatore-a/static/js/938.8a32d5dc.chunk.js.map",
+    "938.5f000ff4.chunk.js.map": "/project-salvatore-a/static/js/938.5f000ff4.chunk.js.map",
     "787.aae3408c.chunk.js.map": "/project-salvatore-a/static/js/787.aae3408c.chunk.js.map",
     "135.3c9333ba.chunk.js.map": "/project-salvatore-a/static/js/135.3c9333ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ba93d2ac.css",
-    "static/js/main.0155054f.js"
+    "static/js/main.7c4cdc58.js"
   ]
 }
