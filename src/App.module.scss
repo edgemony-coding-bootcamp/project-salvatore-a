@@ -6,6 +6,22 @@
   margin: 0;
   padding: 0;
   image-resolution: 72dpi;
+  scrollbar-width: thin;
+  scrollbar-color: $red transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $red;
+  border-radius: 5px;
 }
 
 @font-face {
@@ -73,5 +89,6 @@ body {
   background-color: $black;
   color: $white;
   scroll-behavior: smooth;
+  overflow: overlay;
 }
 
