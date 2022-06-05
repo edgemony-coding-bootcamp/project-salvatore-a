@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/project-salvatore-a/static/css/main.ba93d2ac.css",
+    "main.css": "/project-salvatore-a/static/css/main.6ca49cac.css",
     "main.js": "/project-salvatore-a/static/js/main.ce2152ac.js",
     "static/css/72.288110f5.chunk.css": "/project-salvatore-a/static/css/72.288110f5.chunk.css",
     "static/js/72.938e02b7.chunk.js": "/project-salvatore-a/static/js/72.938e02b7.chunk.js",
@@ -15,7 +15,7 @@
     "static/media/logo.png": "/project-salvatore-a/static/media/logo.606f44d2a13c4c194bf1.png",
     "static/media/Stranger-Things-logo.webp": "/project-salvatore-a/static/media/Stranger-Things-logo.4c69a318b55b9178a8f7.webp",
     "index.html": "/project-salvatore-a/index.html",
-    "main.ba93d2ac.css.map": "/project-salvatore-a/static/css/main.ba93d2ac.css.map",
+    "main.6ca49cac.css.map": "/project-salvatore-a/static/css/main.6ca49cac.css.map",
     "main.ce2152ac.js.map": "/project-salvatore-a/static/js/main.ce2152ac.js.map",
     "72.288110f5.chunk.css.map": "/project-salvatore-a/static/css/72.288110f5.chunk.css.map",
     "72.938e02b7.chunk.js.map": "/project-salvatore-a/static/js/72.938e02b7.chunk.js.map",
@@ -27,7 +27,7 @@
     "135.f6d1b8ba.chunk.js.map": "/project-salvatore-a/static/js/135.f6d1b8ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba93d2ac.css",
+    "static/css/main.6ca49cac.css",
     "static/js/main.ce2152ac.js"
   ]
 }
