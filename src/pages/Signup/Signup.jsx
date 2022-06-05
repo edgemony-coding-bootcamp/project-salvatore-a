@@ -10,7 +10,7 @@ export default function Signup() {
 
   return (
     <div className={styles.Signup}>
-      <img onClick={() => navigate("/signin")} src={logo} alt="Edgeflix" />
+      <img className={styles.Signup__Logo} onClick={() => navigate("/signin")} src={logo} alt="Edgeflix" />
 
       <h1>Signup</h1>
       <Overlay />
