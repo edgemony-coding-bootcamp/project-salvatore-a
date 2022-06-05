@@ -1,8 +1,6 @@
 import styles from "./App.module.scss";
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-const Signin = lazy(() => import("./pages/Signin"));
-const Signup = lazy(() => import("./pages/Signup"));
 const Protected = lazy(() => import("./components/Protected"));
 
 function App() {
@@ -13,7 +11,7 @@ function App() {
           index
           element={
             <Suspense fallback={<></>}>
-              <Protected />
+              <Protected redirect="Signin"/>
             </Suspense>
           }
         ></Route>
@@ -22,7 +20,7 @@ function App() {
           path="/signin"
           element={
             <Suspense fallback={<></>}>
-              <Signin />
+              <Protected redirect={"Signin"}/>
             </Suspense>
           }
         ></Route>
@@ -31,7 +29,7 @@ function App() {
           path="/signup"
           element={
             <Suspense fallback={<></>}>
-              <Signup />
+              <Protected redirect={"Signup"} />
             </Suspense>
           }
         ></Route>
@@ -40,7 +38,7 @@ function App() {
           path="/browse"
           element={
             <Suspense fallback={<></>}>
-              <Protected />
+              <Protected redirect={"Signin"}/>
             </Suspense>
           }
         ></Route>
