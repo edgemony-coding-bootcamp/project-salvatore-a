@@ -4,6 +4,7 @@
 .UsersMenu {
   @include flex($align: center, $gap: 3px);
   cursor: pointer;
+  z-index: 2;
   img {
     border-radius: 5px;
     width: 30px;
