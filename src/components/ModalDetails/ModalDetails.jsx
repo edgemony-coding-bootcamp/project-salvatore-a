@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { MdAddCircleOutline, MdPlayCircleOutline } from "react-icons/md";
 import { FiMinusCircle } from "react-icons/fi";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+
 import { useMovieContext } from "./../../Context/MovieContext/MovieProvider";
 import Overlay from "./../Overlay";
 
@@ -16,12 +18,24 @@ export default function ModalDetails({
   setRender,
 }) {
   const addToFavourite = useMovieContext().favouriteMovie;
+  const { hideMovie } = useMovieContext();
   const [isFavorite, setIsFavorite] = useState(movieData && movieData.favorite);
 
-  useEffect(()=>{
-    setIsFavorite(movieData && movieData.favorite)
-  }, [movieData])
-  
+  useEffect(() => {
+    setIsFavorite(movieData && movieData.favorite);
+  }, [movieData]);
+
+  const hideMovieAndClose = () => {
+    const actualUserID = localStorage.getItem("currentUser");
+    const movieDataCopy = movieData;
+    const userIndex = movieData.users.findIndex(
+      (user) => user === parseInt(actualUserID)
+    );
+    movieDataCopy.users.splice(userIndex, 1);
+    hideMovie(movieData.id, movieDataCopy.users);
+    toggleModal();
+  };
+
   return (
     <div>
       {isVisible && (
@@ -80,6 +94,10 @@ export default function ModalDetails({
               )}
               <MdPlayCircleOutline
                 onClick={() => togglePlayModal()}
+                className={styles.ModalData__BtnCir}
+              />
+              <AiOutlineEyeInvisible
+                onClick={() => hideMovieAndClose()}
                 className={styles.ModalData__BtnCir}
               />
             </div>

@@ -8,6 +8,9 @@ import {
   RATING_MOVIES_REQUEST,
   RATING_MOVIES_SUCCESS,
   RATING_MOVIES_ERROR,
+  HIDE_MOVIES_REQUEST,
+  HIDE_MOVIES_SUCCESS,
+  HIDE_MOVIES_ERROR,
 } from "./MovieConst";
 
 import MovieReducer from "./MovieReducer";
@@ -85,6 +88,34 @@ export default function MovieContextProvider({ children }) {
       dispatch({ type: FAVOURITE_MOVIES_ERROR, payload: error });
     }
   };
+
+  const hideMovie = async (movieID, newUsersArray) => {
+    dispatch({ type: HIDE_MOVIES_REQUEST });
+    try {
+      const req = await fetch(
+        `https://edgemony-backend.herokuapp.com/series/${movieID}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            users: newUsersArray,
+          }),
+        }
+      );
+      if (req.status === 200) {
+        dispatch({
+          type: HIDE_MOVIES_SUCCESS,
+          payload: { movieID: movieID, users: newUsersArray },
+        });
+      } else {
+        throw new Error("Impossibile eseguire la richiesta.");
+      }
+    } catch (e) {
+      dispatch({ type: HIDE_MOVIES_ERROR, payload: e });
+    }
+  };
   return (
     <MovieContext.Provider
       value={{
@@ -92,6 +123,7 @@ export default function MovieContextProvider({ children }) {
         fetchAllMovies,
         movieRating,
         favouriteMovie,
+        hideMovie,
       }}
     >
       {children}
