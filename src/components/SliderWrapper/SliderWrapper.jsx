@@ -4,9 +4,11 @@ import SliderSection from "../SliderSection";
 import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 
 export default function SliderWrapper({ toggleModal }) {
-  const { movies } = useMovieContext();
-  const newMovies = useMovieContext().movies.filter((movie) => movie.new);
-  const favoriteMovies = useMovieContext().movies.filter(
+  const actualUserID = localStorage.getItem("currentUser");
+  const userMovies = useMovieContext().movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+
+  const newMovies = userMovies.filter((movie) => movie.new);
+  const favoriteMovies = userMovies.filter(
     (movie) => movie.favorite
   );
 
@@ -14,8 +16,8 @@ export default function SliderWrapper({ toggleModal }) {
   return (
     <div className={styles.SliderWrapper}>
       
-      {movies &&
-        <SliderSection toggleModal={toggleModal} moviesData={movies} title="Serie TV" />
+      {userMovies &&
+        <SliderSection toggleModal={toggleModal} moviesData={userMovies} title="Serie TV" />
       }
       {newMovies && (
         <SliderSection  toggleModal={toggleModal} moviesData={newMovies} title="Nuovi e popolari" />

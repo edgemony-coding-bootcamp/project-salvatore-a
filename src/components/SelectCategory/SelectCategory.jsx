@@ -4,11 +4,12 @@ import { useMovieContext } from "./../../Context/MovieContext/MovieProvider";
 import { MdArrowDropDown } from "react-icons/md";
 
 export default function SelectCategory({ getFilter }) {
-  const { movies } = useMovieContext();
+  const actualUserID = localStorage.getItem("currentUser");
+  const userMovies = useMovieContext().movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
 
   const getCategories = (movies) => {
     let catArray = [];
-    movies.forEach((el) => {
+    userMovies.forEach((el) => {
       for (const genre of el.genres) {
         if (catArray.indexOf(genre) === -1) catArray.push(genre);
       }
@@ -30,7 +31,7 @@ export default function SelectCategory({ getFilter }) {
       {CategoryMenuVisibility && (
         <div className={styles.SelectCategory__CategoriesWrapper}>
           <ul>
-            {getCategories(movies).map((selectedGenre, index) => (
+            {getCategories(userMovies).map((selectedGenre, index) => (
               <li
                 key={index}
                 onClick={(e) => {
