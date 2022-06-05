@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
-
+import { avatars } from "./../../assets/avatars";
 import styles from "./AccessForm.module.scss";
 
 export default function AccessForm({ sendData, formType }) {
@@ -66,6 +66,14 @@ export default function AccessForm({ sendData, formType }) {
     }
   };
 
+  const [avatarSelection, setAvatarSelection] = useState("");
+
+  const chooseAvatar = (e) => {
+    const id = e.target.id;
+    setAvatarSelection(id);
+    setValues((prev)=> ({...prev, avatar: e.target.id}))
+  };
+
   return (
     <form
       autoComplete="false"
@@ -74,15 +82,18 @@ export default function AccessForm({ sendData, formType }) {
     >
       {formType === "signup" ? (
         <>
-          <div className={styles.AccessForm__inputGroup}>
-            <label htmlFor="avatar">Avatar</label>
-            <input
-              type="text"
-              value={values.avatar}
-              name="avatar"
-              onChange={onInputsChange}
-              id="avatar"
-            />
+          <div className={styles.AccessForm__AvatarsWrapper}>
+            <small>Scegli il tuo avatar!</small>
+            {avatars.map((avatar, index) => (
+              <img
+                id={avatar}
+                className={avatarSelection === avatar ? (styles.Selected) : null}
+                onClick={chooseAvatar}
+                key={index}
+                src={avatar}
+                alt={`Avatar ${index}`}
+              />
+            ))}
           </div>
           <div className={styles.AccessForm__inputGroup}>
             <label htmlFor="username">Username</label>
