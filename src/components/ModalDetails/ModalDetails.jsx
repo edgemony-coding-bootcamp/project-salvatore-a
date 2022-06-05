@@ -20,19 +20,20 @@ export default function ModalDetails({
   const addToFavourite = useMovieContext().favouriteMovie;
   const { hideMovie } = useMovieContext();
   const [isFavorite, setIsFavorite] = useState(movieData && movieData.favorite);
+  const actualUserID = localStorage.getItem("currentUser");
 
   useEffect(() => {
     setIsFavorite(movieData && movieData.favorite);
   }, [movieData]);
 
   const hideMovieAndClose = () => {
-    const actualUserID = localStorage.getItem("currentUser");
     const movieDataCopy = movieData;
     const userIndex = movieData.users.findIndex(
       (user) => user === parseInt(actualUserID)
     );
     movieDataCopy.users.splice(userIndex, 1);
     hideMovie(movieData.id, movieDataCopy.users);
+
     toggleModal();
   };
 
@@ -97,8 +98,18 @@ export default function ModalDetails({
                 className={styles.ModalData__BtnCir}
               />
               <AiOutlineEyeInvisible
-                onClick={() => hideMovieAndClose()}
-                className={styles.ModalData__BtnCir}
+                onClick={() =>
+                  actualUserID === "admin" ? null : hideMovieAndClose()
+                }
+                title={
+                  actualUserID==="admin" ? "Hai effettuato l'accesso come admin, dunque non puoi nascondere nulla :)" : null
+                }
+                
+                className={
+                  actualUserID === "admin"
+                    ? styles.ModalData__BtnCirInactive
+                    : styles.ModalData__BtnCir
+                }
               />
             </div>
           </div>

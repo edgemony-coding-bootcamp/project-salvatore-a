@@ -11,6 +11,9 @@ import {
   HIDE_MOVIES_REQUEST,
   HIDE_MOVIES_SUCCESS,
   HIDE_MOVIES_ERROR,
+  DELETE_MOVIES_REQUEST,
+  DELETE_MOVIES_SUCCESS,
+  DELETE_MOVIES_ERROR,
 } from "./MovieConst";
 
 import MovieReducer from "./MovieReducer";
@@ -116,6 +119,27 @@ export default function MovieContextProvider({ children }) {
       dispatch({ type: HIDE_MOVIES_ERROR, payload: e });
     }
   };
+  const deleteMovie = async (id) => {
+    dispatch({ type: DELETE_MOVIES_REQUEST });
+    try {
+      const req = await fetch(
+        `https://edgemony-backend.herokuapp.com/series/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (req.status === 200) {
+        dispatch({ type: DELETE_MOVIES_SUCCESS, payload: id });
+      } else {
+        throw new Error("Impossibile eseguire l'eliminazione.");
+      }
+    } catch (error) {
+      dispatch({ type: DELETE_MOVIES_ERROR, payload: error });
+    }
+  };
   return (
     <MovieContext.Provider
       value={{
@@ -124,6 +148,7 @@ export default function MovieContextProvider({ children }) {
         movieRating,
         favouriteMovie,
         hideMovie,
+        deleteMovie,
       }}
     >
       {children}

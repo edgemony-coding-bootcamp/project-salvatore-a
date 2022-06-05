@@ -1,35 +1,55 @@
 @import "./../../styles/mixins.scss";
 @import "./../../styles/variables.scss";
 
-.Signin{
-    img{
-        position: absolute;
-        top: 15px;
-        left: 25px;
-        z-index: 3;
-        width: 150px;
-        cursor: pointer;
-        @media (min-width: 700px){
-            width: 200px;
+.Signin {
+  img {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    z-index: 3;
+    width: 150px;
+    cursor: pointer;
+    @media (min-width: 700px) {
+      width: 200px;
+    }
+  }
+
+  h1 {
+    text-align: left;
+    z-index: 3;
+    width: 80vw;
+    max-width: 300px;
+  }
+  background-image: url("./../../assets/accessBg.webp");
+  height: 100vh;
+  @include flex($dir: column, $align: center, $justify: center);
+
+  &__redirect {
+    color: $white;
+    font-weight: bold;
+    z-index: 2;
+    a {
+      color: $red;
+    }
+  }
+  &__RapidAccess {
+    @include buttonStyle;
+    background-color: transparent;
+    color: $white;
+    z-index: 2;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    transition: all 0.5s ease-out;
+    &:hover{
+        background-color: $red;
+        border: 1px solid $red;
+    }
+    @media (max-width:600px){
+        &{
+            font-size: 13px;
+            width: 140px;
         }
     }
-
-    h1{
-        text-align: left;
-        z-index: 3;
-        width: 80vw;
-        max-width: 300px;
-    }
-    background-image: url("./../../assets/accessBg.webp");
-    height: 100vh;
-    @include flex($dir:column, $align:center, $justify:center);
-
-    &__redirect{
-        color: $white;
-        font-weight: bold;
-        z-index: 2;
-        a{
-            color: $red;
-        }
-    }
+  }
 }

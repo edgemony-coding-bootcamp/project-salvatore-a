@@ -34,3 +34,14 @@
     object-fit: cover;
   }
 }
+
+@mixin buttonStyle {
+  @include flex-center;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 16px;
+  text-align: center;
+  width: 170px;
+  margin: 20px;
+  border: 1px solid $white;
+}

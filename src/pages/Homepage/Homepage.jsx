@@ -29,7 +29,7 @@ export default function Homepage() {
   const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
   const { movies } = useMovieContext();
   const actualUserID = localStorage.getItem("currentUser");
-  const userMovies = useMovieContext().movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+  const userMovies = actualUserID === "admin" ? movies : movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
 
   const filteredArray = userMovies.filter(
     (el) =>

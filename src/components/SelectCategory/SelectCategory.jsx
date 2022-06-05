@@ -5,7 +5,8 @@ import { MdArrowDropDown } from "react-icons/md";
 
 export default function SelectCategory({ getFilter }) {
   const actualUserID = localStorage.getItem("currentUser");
-  const userMovies = useMovieContext().movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+  const {movies} = useMovieContext();
+  const userMovies = actualUserID === "admin" ? movies : movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
 
   const getCategories = (movies) => {
     let catArray = [];

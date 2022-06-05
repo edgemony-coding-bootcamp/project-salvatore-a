@@ -11,6 +11,9 @@ import {
   HIDE_MOVIES_REQUEST,
   HIDE_MOVIES_SUCCESS,
   HIDE_MOVIES_ERROR,
+  DELETE_MOVIES_REQUEST,
+  DELETE_MOVIES_SUCCESS,
+  DELETE_MOVIES_ERROR,
 } from "./MovieConst";
 
 export default function MovieReducer(state, action) {
@@ -91,6 +94,26 @@ export default function MovieReducer(state, action) {
         movies: moviesCopy,
       };
     case HIDE_MOVIES_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case DELETE_MOVIES_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case DELETE_MOVIES_SUCCESS:
+      const copy = state.movies;
+      const id = moviesCopy.findIndex((el) => el.id === action.payload);
+      copy.splice(id, 1)
+      return {
+        ...state,
+        loading: false,
+        movies: copy,
+      };
+    case DELETE_MOVIES_ERROR:
       return {
         ...state,
         loading: false,
