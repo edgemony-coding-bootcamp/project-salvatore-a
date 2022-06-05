@@ -7,3 +7,13 @@
     background-color: rgba(0, 0, 0, 0.842);
     z-index: 2;
 }
+
+.OverlayNotVisible{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    z-index: 2;
+}
