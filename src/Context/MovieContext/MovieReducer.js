@@ -84,8 +84,6 @@ export default function MovieReducer(state, action) {
     case HIDE_MOVIES_SUCCESS:
       const moviesCopy = state.movies;
       const movieIndex = moviesCopy.findIndex((el) => el.id === action.payload.movie_id);
-      // const userIndex = movies[movieIndex].users.findIndex(user => user === parseInt(action.payload.user_id))
-      // moviesCopy[movieIndex].users.splice(userIndex, 1);
       moviesCopy[movieIndex] = {...moviesCopy[movieIndex], users: action.payload.users}
       return {
         ...state,
