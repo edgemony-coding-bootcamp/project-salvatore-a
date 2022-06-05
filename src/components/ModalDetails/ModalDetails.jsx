@@ -1,7 +1,7 @@
 import styles from "./ModalDetails.module.scss";
 import Rating from "./../Rating/Rating";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { MdAddCircleOutline, MdPlayCircleOutline } from "react-icons/md";
 import { FiMinusCircle } from "react-icons/fi";
@@ -16,7 +16,12 @@ export default function ModalDetails({
   setRender,
 }) {
   const addToFavourite = useMovieContext().favouriteMovie;
-  const [isFavorite, setIsFavorite] = useState(movieData.favorite);
+  const [isFavorite, setIsFavorite] = useState(movieData && movieData.favorite);
+
+  useEffect(()=>{
+    setIsFavorite(movieData && movieData.favorite)
+  }, [movieData])
+  
   return (
     <div>
       {isVisible && (
