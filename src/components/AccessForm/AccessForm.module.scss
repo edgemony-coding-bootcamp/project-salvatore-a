@@ -5,9 +5,14 @@
   width: 80vw;
   max-width: 300px;
   z-index: 3;
+  &__ErrorMessage{
+    margin-left: 10px;
+    color: $red;
+    font-weight: bold;
+  }
   &__AvatarsWrapper{
     .Selected{
-      border: 5px solid red;
+      border: 5px solid $red;
     }
     >small{
       display: block;

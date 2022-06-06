@@ -55,7 +55,7 @@ export default function Homepage() {
   };
 
   useEffect(() => {
-    fetchAllMovies(token);
+    fetchAllMovies(token, actualUserID === "admin");
     if(error){
       alert(error);
       setTimeout(()=>{

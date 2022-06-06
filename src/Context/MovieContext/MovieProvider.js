@@ -31,21 +31,24 @@ export const useMovieContext = () => useContext(MovieContext);
 
 export default function MovieContextProvider({ children }) {
   const [state, dispatch] = useReducer(MovieReducer, initialState);
-  const fetchAllMovies = async (token) => {
+  const fetchAllMovies = async (token, admin) => {
     dispatch({ type: FETCH_ALL_MOVIES_REQUEST });
     try {
-      const res = await fetch("https://edgemony-backend.herokuapp.com/660/series",{
-        headers: {
-          Authorization : `Bearer ${token}`,
-        }
-      });
+      const res = !admin
+        ? await fetch("https://edgemony-backend.herokuapp.com/660/series", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+        : await fetch("https://edgemony-backend.herokuapp.com/series");
+
       const data = await res.json();
 
-      if(res.status !== 401){
-        dispatch({ type: FETCH_ALL_MOVIES_SUCCESS, payload: data }) 
-      }else{
+      if (res.status !== 401) {
+        dispatch({ type: FETCH_ALL_MOVIES_SUCCESS, payload: data });
+      } else {
         throw new Error("Non sei autorizzato ad accedere a questa pagina");
-      }    
+      }
     } catch (e) {
       dispatch({ type: FETCH_ALL_MOVIES_ERROR, payload: e });
     }
