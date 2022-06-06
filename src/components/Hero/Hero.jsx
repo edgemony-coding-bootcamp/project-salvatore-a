@@ -22,17 +22,17 @@ export default function Hero({ toggleModal, toggleDetailsModal, movieData }) {
                 <div className={styles.Hero__BtnWrap}>
                     <button onClick={() => toggleModal()} className={styles.Hero__BtnPlay}> < BsFillPlayFill className={styles.Hero__BtnIcon} />  Riproduci</button>
                     <button onClick={() => toggleDetailsModal(movieData)} className={styles.Hero__BtnInfo}> < AiOutlineInfoCircle className={styles.Hero__BtnIcon} /> Altre info</button>
+                    {isMuted ? (
+                        <BiVolumeMute className={styles.Hero__BtnMute}
+                            onClick={() => setIsMuted(false)} />) : (
+                        <BiVolumeFull className={styles.Hero__BtnMute}
+                            onClick={() => setIsMuted(true)} />
 
+                    )
+                    }
 
                 </div>
-                {isMuted ? (
-                    <BiVolumeMute className={styles.Hero__BtnMute}
-                        onClick={() => setIsMuted(false)} />) : (
-                    <BiVolumeFull className={styles.Hero__BtnMute}
-                        onClick={() => setIsMuted(true)} />
 
-                )
-                }
             </div>
         </div >
     );
