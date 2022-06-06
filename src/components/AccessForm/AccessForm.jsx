@@ -54,9 +54,13 @@ export default function AccessForm({ sendData, endPoint }) {
         navigate("/browse");
       }
     } catch (e) {
-      alert(e);
+      // alert(e);
+      setAlertMessage({isVisible: true, message: e});
     }
   };
+
+  const [alertMessage, setAlertMessage] = useState({isVisible: false, message: ""})
+
 
   const [avatarSelection, setAvatarSelection] = useState("");
 
@@ -72,8 +76,10 @@ export default function AccessForm({ sendData, endPoint }) {
       onSubmit={submitForm}
       className={styles.AccessForm}
     >
+      {alertMessage.isVisible && <small className={styles.AccessForm__ErrorMessage}>{String(alertMessage.message)}</small>}
       {endPoint === "users" ? (
         <>
+
           <div className={styles.AccessForm__AvatarsWrapper}>
             <small>Scegli il tuo avatar!</small>
             {avatars.map((avatar, index) => (
@@ -128,9 +134,9 @@ export default function AccessForm({ sendData, endPoint }) {
       <div className={styles.AccessForm__inputGroup}>
         {endPoint === "users" ? (
           <input type="submit" value="Sign Up" />
-        ) : (
-          <input type="submit" value="Sign In" />
-        )}
+          ) : (
+            <input type="submit" value="Sign In" />
+            )}
       </div>
     </form>
   );
