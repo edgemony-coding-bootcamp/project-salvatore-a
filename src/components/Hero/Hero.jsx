@@ -13,7 +13,7 @@ export default function Hero({ toggleModal, toggleDetailsModal, movieData }) {
     return (
         < div className={styles.Hero}>
 
-            <video className={styles.Hero__BackgrVid} src={VideoBg} autoPlay muted={isMuted} />
+            <video className={styles.Hero__BackgrVid} src={VideoBg} autoPlay loop muted={isMuted} />
 
             <div className={styles.Hero__WrapOver}>
                 {/* <h1 className={styles.Hero__Title} >Stranger Things </h1> */}
