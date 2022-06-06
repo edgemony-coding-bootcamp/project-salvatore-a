@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/project-salvatore-a/static/css/main.6ca49cac.css",
-    "main.js": "/project-salvatore-a/static/js/main.7fc52fb1.js",
-    "static/css/482.3c8c9f60.chunk.css": "/project-salvatore-a/static/css/482.3c8c9f60.chunk.css",
-    "static/js/482.4368c241.chunk.js": "/project-salvatore-a/static/js/482.4368c241.chunk.js",
+    "main.js": "/project-salvatore-a/static/js/main.57559de0.js",
+    "static/css/482.c0511641.chunk.css": "/project-salvatore-a/static/css/482.c0511641.chunk.css",
+    "static/js/482.1ba83d7b.chunk.js": "/project-salvatore-a/static/js/482.1ba83d7b.chunk.js",
     "static/js/787.aae3408c.chunk.js": "/project-salvatore-a/static/js/787.aae3408c.chunk.js",
     "static/js/572.d61e8b80.chunk.js": "/project-salvatore-a/static/js/572.d61e8b80.chunk.js",
     "static/media/StrangerT.mp4": "/project-salvatore-a/static/media/StrangerT.6f1a9c2318e0ee8ebf2a.mp4",
@@ -14,14 +14,14 @@
     "static/media/Stranger-Things-logo.webp": "/project-salvatore-a/static/media/Stranger-Things-logo.4c69a318b55b9178a8f7.webp",
     "index.html": "/project-salvatore-a/index.html",
     "main.6ca49cac.css.map": "/project-salvatore-a/static/css/main.6ca49cac.css.map",
-    "main.7fc52fb1.js.map": "/project-salvatore-a/static/js/main.7fc52fb1.js.map",
-    "482.3c8c9f60.chunk.css.map": "/project-salvatore-a/static/css/482.3c8c9f60.chunk.css.map",
-    "482.4368c241.chunk.js.map": "/project-salvatore-a/static/js/482.4368c241.chunk.js.map",
+    "main.57559de0.js.map": "/project-salvatore-a/static/js/main.57559de0.js.map",
+    "482.c0511641.chunk.css.map": "/project-salvatore-a/static/css/482.c0511641.chunk.css.map",
+    "482.1ba83d7b.chunk.js.map": "/project-salvatore-a/static/js/482.1ba83d7b.chunk.js.map",
     "787.aae3408c.chunk.js.map": "/project-salvatore-a/static/js/787.aae3408c.chunk.js.map",
     "572.d61e8b80.chunk.js.map": "/project-salvatore-a/static/js/572.d61e8b80.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ca49cac.css",
-    "static/js/main.7fc52fb1.js"
+    "static/js/main.57559de0.js"
   ]
 }
