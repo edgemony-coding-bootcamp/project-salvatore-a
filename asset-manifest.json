@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/project-salvatore-a/static/css/main.6ca49cac.css",
-    "main.js": "/project-salvatore-a/static/js/main.01a91431.js",
+    "main.js": "/project-salvatore-a/static/js/main.20495772.js",
     "static/css/482.015a7bc7.chunk.css": "/project-salvatore-a/static/css/482.015a7bc7.chunk.css",
-    "static/js/482.a85183af.chunk.js": "/project-salvatore-a/static/js/482.a85183af.chunk.js",
+    "static/js/482.d91a6a00.chunk.js": "/project-salvatore-a/static/js/482.d91a6a00.chunk.js",
     "static/js/787.aae3408c.chunk.js": "/project-salvatore-a/static/js/787.aae3408c.chunk.js",
     "static/js/572.d61e8b80.chunk.js": "/project-salvatore-a/static/js/572.d61e8b80.chunk.js",
     "static/media/StrangerT.mp4": "/project-salvatore-a/static/media/StrangerT.6f1a9c2318e0ee8ebf2a.mp4",
@@ -14,14 +14,14 @@
     "static/media/Stranger-Things-logo.webp": "/project-salvatore-a/static/media/Stranger-Things-logo.4c69a318b55b9178a8f7.webp",
     "index.html": "/project-salvatore-a/index.html",
     "main.6ca49cac.css.map": "/project-salvatore-a/static/css/main.6ca49cac.css.map",
-    "main.01a91431.js.map": "/project-salvatore-a/static/js/main.01a91431.js.map",
+    "main.20495772.js.map": "/project-salvatore-a/static/js/main.20495772.js.map",
     "482.015a7bc7.chunk.css.map": "/project-salvatore-a/static/css/482.015a7bc7.chunk.css.map",
-    "482.a85183af.chunk.js.map": "/project-salvatore-a/static/js/482.a85183af.chunk.js.map",
+    "482.d91a6a00.chunk.js.map": "/project-salvatore-a/static/js/482.d91a6a00.chunk.js.map",
     "787.aae3408c.chunk.js.map": "/project-salvatore-a/static/js/787.aae3408c.chunk.js.map",
     "572.d61e8b80.chunk.js.map": "/project-salvatore-a/static/js/572.d61e8b80.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ca49cac.css",
-    "static/js/main.01a91431.js"
+    "static/js/main.20495772.js"
   ]
 }
