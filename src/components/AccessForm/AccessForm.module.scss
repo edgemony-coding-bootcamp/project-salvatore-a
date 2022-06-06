@@ -14,6 +14,12 @@
   .Visible {
     display: flex !important;
   }
+  
+   &__ErrorMessage{
+    margin-left: 10px;
+    color: $red;
+    font-weight: bold;
+  }
 
   &__AccessPlans {
     @include SignupCards;
@@ -43,7 +49,8 @@
       }
     }
   }
-
+ 
+  
   &__AvatarsWrapper {
     @include SignupCards;
     img {
@@ -52,6 +59,7 @@
       cursor: pointer;
     }
   }
+  
   &__inputGroup {
     margin: 10px 0;
     position: relative;

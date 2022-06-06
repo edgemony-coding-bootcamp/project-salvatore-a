@@ -88,14 +88,16 @@ export default function Homepage() {
   };
 
   useEffect(() => {
-    fetchAllMovies(token);
-    if (error) {
+    fetchAllMovies(token, actualUserID === "admin");
+    
+    if(error){
       alert(error);
       setTimeout(() => {
         localStorage.removeItem("JWT_accessToken");
         localStorage.removeItem("currentUser");
       }, 5000);
     }
+    
     fetchAllUsers().then(() => setActualUserPlan(actualUser?.accessPlan));
 
     //eslint-disable-next-line
