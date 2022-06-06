@@ -74,6 +74,18 @@
     background-color: rgba(18, 18, 18, 0.514);
   }
 
+  &__BtnMute {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 40px;
+    border: 1px solid;
+    border-radius: 30px;
+  }
+
+  &__BtnMute:hover {
+    color: rgb(145, 145, 145);
+  }
+
   // &__BtnMute {
   //   margin-top: 10px;
   //   cursor: pointer;
@@ -123,11 +135,6 @@
         font-size: 20px;
       }
 
-      &__BtnMute {
-        border: #fff solid 2px;
-        font-size: 40px;
-        display: none;
-      }
     }
   }
 
