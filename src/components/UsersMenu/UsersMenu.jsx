@@ -2,7 +2,7 @@ import { MdArrowDropDown } from "react-icons/md";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineQuestionCircle } from "react-icons/ai";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
 import { useNavigate } from "react-router-dom";
 
@@ -16,8 +16,6 @@ import styles from "./UsersMenu.module.scss";
 export default function UsersMenu() {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const { fetchAllUsers } = useUserContext();
-
   const actualUserID = localStorage.getItem("currentUser");
 
   const [actualUser] = useUserContext().users.filter(
@@ -25,11 +23,6 @@ export default function UsersMenu() {
   );
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetchAllUsers();
-    //eslint-disable-next-line
-  }, []);
 
   const logout = () => {
     localStorage.removeItem("currentUser");
