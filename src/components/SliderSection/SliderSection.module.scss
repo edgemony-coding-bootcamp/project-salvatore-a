@@ -5,7 +5,7 @@
     font-size: 1rem;
     margin: 10px 0 5px 10px;
   }
-  @media (min-width:700px){
+  @media (min-width: 700px) {
     &__Title {
       font-size: 1.5rem;
       margin: 30px 0 5px 2em;
@@ -16,28 +16,31 @@
     height: 157px;
     width: 100vw;
     scroll-behavior: smooth;
-    img {
-      @include imageStyle;
-    }
     position: relative;
+    >div>div:first-child{
+      img {
+        @include imageStyle;
+        transition: all 0.5 ease-out;
+      }
+      img:hover{
+        transform: scale(1.1);
+      }
+    }
   }
-
 
   &__Left {
-    top:calc(50% - 10px);
-    transform: translateY(-50%);
-    position: absolute;
-    left: 0;
+    @include sliderArrows;
+    left: 10px;
   }
   &__Right {
-    top:calc(50% - 10px);
-    transform: translateY(-50%);
-    position: absolute;
-    right: 0;
+    @include sliderArrows;
+    right: 10px;
   }
 
-  &__ListEmpty{
-    padding: 1em;
-    margin-left: 2em;
+  &__ListEmpty {
+    font-size: 24px;
+    padding: 50px;
+    text-align: left;
+    margin: 0;
   }
 }
