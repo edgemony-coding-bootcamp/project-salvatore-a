@@ -12,25 +12,58 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsSkipBackwardFill } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
-import {useMovieContext} from "../../Context/MovieContext/MovieProvider";
+import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 
 import styles from "./Homepage.module.scss";
+import { useUserContext } from "../../Context/UserContext/UserProvider";
 
 export default function Homepage() {
   const [render, setRender] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const token = localStorage.getItem("JWT_accessToken");
-  
+  const [isVisible, setVisible] = useState(false);
+  const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
   const [modalInfos, setModalInfos] = useState({
     visibility: false,
     datas: {},
   });
+
   const { fetchAllMovies } = useMovieContext();
-  const [isVisible, setVisible] = useState(false);
-  const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
   const { movies, error } = useMovieContext();
+  const { fetchAllUsers } = useUserContext();
+
   const actualUserID = localStorage.getItem("currentUser");
-  const userMovies = actualUserID === "admin" ? movies : movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+  const actualUser = useUserContext().users.filter(
+    (user) => user.id === parseInt(actualUserID)
+  )[0];
+
+  const token = localStorage.getItem("JWT_accessToken");
+
+  const [actualUserPlan, setActualUserPlan] = useState("");
+
+  useEffect(() => {
+    actualUserID === "admin" && setActualUserPlan("admin");
+    actualUser?.accessPlan && setActualUserPlan(actualUser.accessPlan);
+    //eslint-disable-next-line
+  }, [actualUser]);
+
+  const getMovieList = (userPlan) => {
+    switch (userPlan) {
+      case "admin":
+      case "Premium":
+        return movies;
+      case "Basic":
+        return movies.filter((movie, index) => index % 2 === 0);
+      default:
+        return [];
+    }
+  };
+
+  const userMovies = actualUserPlan
+    ? getMovieList(actualUserPlan)
+    : movies.filter(
+        (movie) =>
+          movie.users.filter((id) => id === parseInt(actualUserID)).length > 0
+      );
 
   const filteredArray = userMovies.filter(
     (el) =>
@@ -56,13 +89,15 @@ export default function Homepage() {
 
   useEffect(() => {
     fetchAllMovies(token);
-    if(error){
+    if (error) {
       alert(error);
-      setTimeout(()=>{
-        localStorage.removeItem("JWT_accessToken")
-        localStorage.removeItem("currentUser")
-      }, 5000)
+      setTimeout(() => {
+        localStorage.removeItem("JWT_accessToken");
+        localStorage.removeItem("currentUser");
+      }, 5000);
     }
+    fetchAllUsers().then(() => setActualUserPlan(actualUser?.accessPlan));
+
     //eslint-disable-next-line
   }, [render, token]);
 
@@ -125,7 +160,7 @@ export default function Homepage() {
         </div>
       ) : (
         <>
-            <Header getFilter={getFilter} />
+          <Header userMovies={userMovies} getFilter={getFilter} />
           {!filter.filter ? (
             <>
               <Hero
@@ -134,7 +169,10 @@ export default function Homepage() {
                 movieData={movies[0]}
               />
 
-              <SliderWrapper toggleModal={toggleDetailsModal} />
+              <SliderWrapper
+                userMovies={userMovies}
+                toggleModal={toggleDetailsModal}
+              />
             </>
           ) : (
             <div className={styles.Homepage__FilteredFilmWrapper}>
@@ -152,7 +190,12 @@ export default function Homepage() {
                     Torna Indietro
                   </div>
                   {filteredArray.map((el) => (
-                    <img onClick={() => toggleDetailsModal(el)} key={el.id} src={el.poster} alt={el.title}></img>
+                    <img
+                      onClick={() => toggleDetailsModal(el)}
+                      key={el.id}
+                      src={el.poster}
+                      alt={el.title}
+                    ></img>
                   ))}
                 </>
               ) : (

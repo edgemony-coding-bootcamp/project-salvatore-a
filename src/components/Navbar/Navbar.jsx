@@ -8,8 +8,7 @@ import { IoMdNotifications } from "react-icons/io";
 import { useEffect, useState } from "react";
 import SearchInput from "../SearchInput/SearchInput";
 
-export default function Navbar({ getFilter }) {
-
+export default function Navbar({ getFilter, userMovies }) {
   const [navColor, setnavColor] = useState("transparent");
 
   const listenScrollEvent = () => {
@@ -31,8 +30,12 @@ export default function Navbar({ getFilter }) {
       style={{ backgroundColor: navColor, transition: "all 1s" }}
     >
       <div className={styles.Navbar__GroupApp}>
-        <img className={styles.Navbar__Logo} src={logo} alt="Edgeflix" />
-        <SelectCategory getFilter={getFilter} />
+        <img
+          className={styles.Navbar__Logo}
+          src={logo}
+          alt="Edgeflix"
+        />
+        <SelectCategory userMovies={userMovies} getFilter={getFilter} />
       </div>
       <div className={styles.Navbar__IconsWrapper}>
         <SearchInput getFilter={getFilter} />

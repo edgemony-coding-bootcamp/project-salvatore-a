@@ -1,12 +1,8 @@
 import styles from "./SelectCategory.module.scss";
 import { useState } from "react";
-import { useMovieContext } from "./../../Context/MovieContext/MovieProvider";
 import { MdArrowDropDown } from "react-icons/md";
 
-export default function SelectCategory({ getFilter }) {
-  const actualUserID = localStorage.getItem("currentUser");
-  const {movies} = useMovieContext();
-  const userMovies = actualUserID === "admin" ? movies : movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+export default function SelectCategory({ getFilter, userMovies }) {
 
   const getCategories = (movies) => {
     let catArray = [];

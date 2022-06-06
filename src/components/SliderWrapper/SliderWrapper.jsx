@@ -1,12 +1,8 @@
 import styles from "./SliderWrapper.module.scss";
 
 import SliderSection from "../SliderSection";
-import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 
-export default function SliderWrapper({ toggleModal }) {
-  const actualUserID = localStorage.getItem("currentUser");
-  const {movies} = useMovieContext();
-  const userMovies = actualUserID === "admin" ? movies : movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
+export default function SliderWrapper({ toggleModal, userMovies }) {
 
   const newMovies = userMovies.filter((movie) => movie.new);
   const favoriteMovies = userMovies.filter(
