@@ -4,13 +4,17 @@ import { useUserContext } from "../../Context/UserContext/UserProvider";
 import { avatars } from "./../../assets/avatars";
 import styles from "./AccessForm.module.scss";
 
-export default function AccessForm({ sendData, formType }) {
-  const [values, setValues] = useState({
-    avatar: "https://cdn-icons-png.flaticon.com/512/843/843331.png?w=740",
-  });
+export default function AccessForm({ sendData, endPoint }) {
+  const [values, setValues] = useState(
+    endPoint !== "login"
+      ? {
+          avatar: "https://cdn-icons-png.flaticon.com/512/843/843331.png?w=740",
+        }
+      : {}
+  );
   const navigate = useNavigate();
 
-  const { users, fetchAllUsers } = useUserContext();
+  const { fetchAllUsers } = useUserContext();
 
   useEffect(() => {
     fetchAllUsers();
@@ -26,43 +30,31 @@ export default function AccessForm({ sendData, formType }) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    fetchAccess(values, formType);
+    fetchAccess(values, endPoint);
   };
 
-  const fetchAccess = async (values, requestType) => {
-    if (requestType === "signup") {
-      try {
-        const request = await fetch(
-          "https://edgemony-backend.herokuapp.com/users",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-          }
-        );
-        const response = await request.json();
-        if (request.status !== 201) {
-          throw new Error(response);
-        } else {
-          localStorage.setItem("JWT_accessToken", response.accessToken);
-          localStorage.setItem("currentUser", response.user.id);
-          navigate("/browse");
+  const fetchAccess = async (values, endPoint) => {
+    try {
+      const request = await fetch(
+        `https://edgemony-backend.herokuapp.com/${endPoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
         }
-      } catch (e) {
-        alert(e);
-      }
-    } else {
-      const emailVerification = users.filter(
-        (user) => user.email === values.email
       );
-      if (emailVerification.length) {
-        localStorage.setItem("currentUser", emailVerification[0].id);
-        navigate("/browse");
+      const response = await request.json();
+      if (request.status !== 200) {
+        throw new Error(response);
       } else {
-        alert("Questa email non esiste, registrati!");
+        localStorage.setItem("JWT_accessToken", response.accessToken);
+        localStorage.setItem("currentUser", response.user.id);
+        navigate("/browse");
       }
+    } catch (e) {
+      alert(e);
     }
   };
 
@@ -71,7 +63,7 @@ export default function AccessForm({ sendData, formType }) {
   const chooseAvatar = (e) => {
     const id = e.target.id;
     setAvatarSelection(id);
-    setValues((prev)=> ({...prev, avatar: e.target.id}))
+    setValues((prev) => ({ ...prev, avatar: e.target.id }));
   };
 
   return (
@@ -80,14 +72,14 @@ export default function AccessForm({ sendData, formType }) {
       onSubmit={submitForm}
       className={styles.AccessForm}
     >
-      {formType === "signup" ? (
+      {endPoint === "users" ? (
         <>
           <div className={styles.AccessForm__AvatarsWrapper}>
             <small>Scegli il tuo avatar!</small>
             {avatars.map((avatar, index) => (
               <img
                 id={avatar}
-                className={avatarSelection === avatar ? (styles.Selected) : null}
+                className={avatarSelection === avatar ? styles.Selected : null}
                 onClick={chooseAvatar}
                 key={index}
                 src={avatar}
@@ -134,7 +126,7 @@ export default function AccessForm({ sendData, formType }) {
         />
       </div>
       <div className={styles.AccessForm__inputGroup}>
-        {formType === "signup" ? (
+        {endPoint === "users" ? (
           <input type="submit" value="Sign Up" />
         ) : (
           <input type="submit" value="Sign In" />

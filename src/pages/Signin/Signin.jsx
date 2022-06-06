@@ -18,7 +18,7 @@ export default function Signin() {
       <img src={logo} alt="Edgeflix" />
       <Overlay />
       <h1>Sign In</h1>
-      <AccessForm formType={"signin"} />
+      <AccessForm endPoint="login" />
       <small className={styles.Signin__redirect}>
         Non sei ancora registrato? <Link to="/signup">Sign Up!</Link>
       </small>

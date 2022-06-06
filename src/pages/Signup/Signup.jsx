@@ -14,7 +14,7 @@ export default function Signup() {
 
       <h1>Signup</h1>
       <Overlay />
-      <AccessForm formType={"signup"} />
+      <AccessForm endPoint="users"/>
 
       <small className={styles.Signup__redirect}>
         Sei già registrato? <Link to="/signin">Sign In!</Link>

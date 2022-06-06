@@ -19,7 +19,8 @@ import styles from "./Homepage.module.scss";
 export default function Homepage() {
   const [render, setRender] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-
+  const token = localStorage.getItem("JWT_accessToken");
+  
   const [modalInfos, setModalInfos] = useState({
     visibility: false,
     datas: {},
@@ -27,7 +28,7 @@ export default function Homepage() {
   const { fetchAllMovies } = useMovieContext();
   const [isVisible, setVisible] = useState(false);
   const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
-  const { movies } = useMovieContext();
+  const { movies, error } = useMovieContext();
   const actualUserID = localStorage.getItem("currentUser");
   const userMovies = actualUserID === "admin" ? movies : movies.filter(movie=> movie.users.filter(id=>id===parseInt(actualUserID)).length>0);
 
@@ -54,9 +55,16 @@ export default function Homepage() {
   };
 
   useEffect(() => {
-    fetchAllMovies();
+    fetchAllMovies(token);
+    if(error){
+      alert(error);
+      setTimeout(()=>{
+        localStorage.removeItem("JWT_accessToken")
+        localStorage.removeItem("currentUser")
+      }, 5000)
+    }
     //eslint-disable-next-line
-  }, [render]);
+  }, [render, token]);
 
   useEffect(() => {
     function handleResize() {
