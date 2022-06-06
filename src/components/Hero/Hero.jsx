@@ -1,36 +1,21 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiOutlineInfoCircle } from 'react-icons/ai'
-// import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
-// import ReactPlayer from 'react-player'
+import { BiVolumeMute, BiVolumeFull } from 'react-icons/bi'
 import styles from "./Hero.module.scss";
-const strangerImage = require('./../../assets/hero-stranger.webp');
+
+import videoBg from './../../assets/StrangerT.mp4'
 const strangerLogo = require('./../../assets/Stranger-Things-logo.webp');
 
 export default function Hero({ toggleModal, toggleDetailsModal, movieData }) {
-    // const [isMuted, setIsMuted] = useState(true)
+    const [isMuted, setIsMuted] = useState(true)
 
 
     return (
         < div className={styles.Hero}>
-            {/* <div className={styles.Hero__ContVideo}> */}
-            <img className={styles.Hero__BackgrVid} src={strangerImage} alt="Stranger Things" />
-            {/* <ReactPlayer
-                    playing={true}
-                    loop={true}
-                    width='100vw'
-                    height='100vh'
-                    muted={isMuted}
-                    controls={false}
-                    title={false}
-                    className={styles.Hero__BackgrVid}
-                    volume={1}
+            <video className={styles.Hero__BackgrVid} src={videoBg} autoPlay loop muted={isMuted} />
 
-                    url='https://vimeo.com/593786555'
-                /> */}
-            {/* </div> */}
             <div className={styles.Hero__WrapOver}>
-                {/* <h1 className={styles.Hero__Title} >Stranger Things </h1> */}
                 <img className={styles.Hero__Title} src={strangerLogo} alt="Stranger Things" />
                 <h3 className={styles.Hero__Desc}> {movieData && movieData.description} </h3>
                 <div className={styles.Hero__BtnWrap}>
@@ -39,14 +24,14 @@ export default function Hero({ toggleModal, toggleDetailsModal, movieData }) {
 
 
                 </div>
-                {/* {isMuted ? (
+                {isMuted ? (
                     <BiVolumeMute className={styles.Hero__BtnMute}
                         onClick={() => setIsMuted(false)} />) : (
                     <BiVolumeFull className={styles.Hero__BtnMute}
                         onClick={() => setIsMuted(true)} />
 
                 )
-                } */}
+                }
             </div>
         </div >
     );
