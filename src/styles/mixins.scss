@@ -45,3 +45,21 @@
   margin: 20px;
   border: 1px solid $white;
 }
+
+@mixin sliderArrows {
+  top: calc(50% - 10px);
+  transform: translateY(-50%);
+  position: absolute;
+  padding: 5px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 10px #000;
+  transition: all 0.5s ease-out;
+  &:hover{
+    font-size: 30px;
+  }
+}
