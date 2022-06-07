@@ -2,19 +2,10 @@
 @import "./../../styles/variables.scss";
 
 .Signup {
-
   background-image: url("./../../assets/accessBg.webp");
-  height: 100vh;
-  margin-top: 40px;
   @include flex($dir: column, $align: center, $justify: center, $wrap: no-wrap);
-
-  @media all and (min-width: 700px){
-    margin-top: 0;
-  }
-
-  @media all and (max-width:600px) and (orientation : landscape){
-    padding-top: 250px;
-  }
+  min-height: 100vh;
+  padding-bottom: 50px;
 
   &__Logo {
     position: absolute;
@@ -32,14 +23,17 @@
     text-align: left;
     z-index: 3;
     width: 80vw;
-    padding: 60px 0 0 0;
+    padding: 100px 0 0 0;
     max-width: 300px;
+    @media all and (min-width: 800px){
+      padding-top: 50px;
+    }
   }
 
   &__redirect {
     color: $white;
     font-weight: bold;
-    z-index: 2;
+    z-index: 3;
     a {
       color: $red;
     }
