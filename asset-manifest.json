@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/project-salvatore-a/static/css/main.6ca49cac.css",
-    "main.js": "/project-salvatore-a/static/js/main.a80ff3df.js",
-    "static/css/482.5b497ff1.chunk.css": "/project-salvatore-a/static/css/482.5b497ff1.chunk.css",
-    "static/js/482.a437b0d0.chunk.js": "/project-salvatore-a/static/js/482.a437b0d0.chunk.js",
+    "main.js": "/project-salvatore-a/static/js/main.a8ac1f7c.js",
+    "static/css/482.df6abd47.chunk.css": "/project-salvatore-a/static/css/482.df6abd47.chunk.css",
+    "static/js/482.5d42f18b.chunk.js": "/project-salvatore-a/static/js/482.5d42f18b.chunk.js",
     "static/js/787.aae3408c.chunk.js": "/project-salvatore-a/static/js/787.aae3408c.chunk.js",
     "static/js/572.f2fd65b7.chunk.js": "/project-salvatore-a/static/js/572.f2fd65b7.chunk.js",
     "static/media/StrangerT.mp4": "/project-salvatore-a/static/media/StrangerT.6f1a9c2318e0ee8ebf2a.mp4",
@@ -14,14 +14,14 @@
     "static/media/Stranger-Things-logo.webp": "/project-salvatore-a/static/media/Stranger-Things-logo.4c69a318b55b9178a8f7.webp",
     "index.html": "/project-salvatore-a/index.html",
     "main.6ca49cac.css.map": "/project-salvatore-a/static/css/main.6ca49cac.css.map",
-    "main.a80ff3df.js.map": "/project-salvatore-a/static/js/main.a80ff3df.js.map",
-    "482.5b497ff1.chunk.css.map": "/project-salvatore-a/static/css/482.5b497ff1.chunk.css.map",
-    "482.a437b0d0.chunk.js.map": "/project-salvatore-a/static/js/482.a437b0d0.chunk.js.map",
+    "main.a8ac1f7c.js.map": "/project-salvatore-a/static/js/main.a8ac1f7c.js.map",
+    "482.df6abd47.chunk.css.map": "/project-salvatore-a/static/css/482.df6abd47.chunk.css.map",
+    "482.5d42f18b.chunk.js.map": "/project-salvatore-a/static/js/482.5d42f18b.chunk.js.map",
     "787.aae3408c.chunk.js.map": "/project-salvatore-a/static/js/787.aae3408c.chunk.js.map",
     "572.f2fd65b7.chunk.js.map": "/project-salvatore-a/static/js/572.f2fd65b7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6ca49cac.css",
-    "static/js/main.a80ff3df.js"
+    "static/js/main.a8ac1f7c.js"
   ]
 }
