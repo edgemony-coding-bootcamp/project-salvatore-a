@@ -2,6 +2,20 @@
 @import "./../../styles/variables.scss";
 
 .Signup {
+
+  background-image: url("./../../assets/accessBg.webp");
+  height: 100vh;
+  margin-top: 40px;
+  @include flex($dir: column, $align: center, $justify: center, $wrap: no-wrap);
+
+  @media all and (min-width: 700px){
+    margin-top: 0;
+  }
+
+  @media all and (max-width:600px) and (orientation : landscape){
+    padding-top: 250px;
+  }
+
   &__Logo {
     position: absolute;
     top: 15px;
@@ -18,11 +32,9 @@
     text-align: left;
     z-index: 3;
     width: 80vw;
+    padding: 60px 0 0 0;
     max-width: 300px;
   }
-  background-image: url("./../../assets/accessBg.webp");
-  height: 100vh;
-  @include flex($dir: column, $align: center, $justify: center);
 
   &__redirect {
     color: $white;

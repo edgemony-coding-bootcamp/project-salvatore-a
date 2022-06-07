@@ -40,13 +40,15 @@ export default function Homepage() {
 
   const [actualUserPlan, setActualUserPlan] = useState("");
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    actualUserID === "admin" && setActualUserPlan("admin");
     actualUser?.accessPlan && setActualUserPlan(actualUser.accessPlan);
+    actualUserID === "admin" && setActualUserPlan(actualUserID);
     //eslint-disable-next-line
-  }, [actualUser]);
+  });
 
   const getMovieList = (userPlan) => {
+    localStorage.setItem("customUser", true)
     switch (userPlan) {
       case "admin":
       case "Premium":
@@ -140,7 +142,7 @@ export default function Homepage() {
                   Hai cercato <i> {filter.filter} </i>{" "}
                 </p>
                 {filteredArray.map((el) => (
-                  <div>
+                  <div key={el.id}>
                     <div
                       className={
                         styles.Homepage__MobileSearch__MoviesWrapper__Section

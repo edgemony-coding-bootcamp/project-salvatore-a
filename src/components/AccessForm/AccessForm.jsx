@@ -57,7 +57,6 @@ export default function AccessForm({ sendData, endPoint }) {
         }
       );
       const response = await request.json();
-      console.log(request.status)
       if (request.status !== 200 && request.status !== 201) {
         throw new Error(response);
       } else {
@@ -66,7 +65,6 @@ export default function AccessForm({ sendData, endPoint }) {
         navigate("/browse");
       }
     } catch (e) {
-      // alert(e);
       setAlertMessage({isVisible: true, message: e});
     }
   };
