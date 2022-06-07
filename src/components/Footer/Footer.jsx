@@ -37,9 +37,9 @@ export default function Footer() {
             <li>Informazioni sull'azienda</li>
           </ul>
         </div>
-        <button className={styles.Footer__button}>Codice di servizio</button>
+        <button className={styles.Footer__button} onClick={() => window.open("https://github.com/edgemony-coding-bootcamp/project-salvatore-a", "_blank")}>Repo Project</button>
         <p className={styles.Footer__authors}>
-          Credits by Ester Giulio Carmelo Alessia Paolo
+          Didactic Project for Edgemony Coding Bootcamp - Credits by Ester Giulio Carmelo Alessia
         </p>
       </div>
     </div>
