@@ -1,7 +1,9 @@
-import styles from "./App.module.scss";
+import Protected from "./components/Protected/Protected";
+
 import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
-const Protected = lazy(() => import("./components/Protected"));
+import { Suspense } from "react";
+
+import styles from "./App.module.scss";
 
 function App() {
   return (
