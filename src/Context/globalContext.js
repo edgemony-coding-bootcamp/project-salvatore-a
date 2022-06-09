@@ -6,7 +6,7 @@ const initialState = {
   isVisible: false,
   filter: { filter: "", isOnFocus: false },
   modalInfos: { visibility: false, datas: {} },
-  userMovies: [],
+  actualUserPlan: "",
 };
 
 const reducer = (state, action) => {
@@ -20,9 +20,9 @@ const reducer = (state, action) => {
     case "setFilter":
       return { ...state, filter: action.payload };
     case "modalInfos":
-      return { ...state, modalInfos: action.payload };  
-    case "setUserMovies":
-      return { ...state, userMovies: action.payload };
+      return { ...state, modalInfos: action.payload };
+    case "setActualUserPlan":
+      return { ...state, actualUserPlan: action.payload };
     default:
       return state;
   }
@@ -34,8 +34,12 @@ export const UseGlobalContext = () => useContext(GlobalContext);
 export default function GlobalContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const setActualUserPlan = (userPlan) => {
+    dispatch({type: "setActualUserPlan", payload: userPlan})
+  }
+
   return (
-    <GlobalContext.Provider value={{ state, dispatch }}>
+    <GlobalContext.Provider value={{ state, dispatch, setActualUserPlan }}>
       {children}
     </GlobalContext.Provider>
   );

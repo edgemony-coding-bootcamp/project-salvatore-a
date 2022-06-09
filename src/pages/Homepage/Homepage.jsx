@@ -11,7 +11,7 @@ import { MdPlayCircleOutline } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsSkipBackwardFill } from "react-icons/bs";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 
 import styles from "./Homepage.module.scss";
@@ -25,7 +25,9 @@ export default function Homepage() {
       filter,
       modalInfos: { visibility },
       screenWidth,
+      actualUserPlan,
     },
+    setActualUserPlan,
     dispatch,
   } = UseGlobalContext();
 
@@ -40,14 +42,7 @@ export default function Homepage() {
 
   const token = localStorage.getItem("JWT_accessToken");
 
-  const [actualUserPlan, setActualUserPlan] = useState("");
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    actualUser?.accessPlan && setActualUserPlan(actualUser.accessPlan);
-    actualUserID === "admin" && setActualUserPlan(actualUserID);
-    //eslint-disable-next-line
-  });
+  // const [actualUserPlan, setActualUserPlan] = useState("");
 
   const getMovieList = (userPlan) => {
     localStorage.setItem("customUser", true);
@@ -68,13 +63,6 @@ export default function Homepage() {
         (movie) =>
           movie.users.filter((id) => id === parseInt(actualUserID)).length > 0
       );
-
-  // dispatch({type: "setUserMovies", payload: actualUserPlan
-  // ? getMovieList(actualUserPlan)
-  // : movies.filter(
-  //     (movie) =>
-  //       movie.users.filter((id) => id === parseInt(actualUserID)).length > 0
-  //   )})
 
   const filteredArray = userMovies.filter(
     (el) =>
@@ -107,17 +95,23 @@ export default function Homepage() {
         localStorage.removeItem("currentUser");
       }, 5000);
     }
-
     fetchAllUsers().then(() => setActualUserPlan(actualUser?.accessPlan));
-
     //eslint-disable-next-line
   }, [render, token]);
+  
 
   useEffect(() => {
     function handleResize() {
       dispatch({ type: "setScreenWidth", payload: window.innerWidth });
     }
     window.addEventListener("resize", handleResize);
+  });
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    actualUser?.accessPlan && setActualUserPlan(actualUser.accessPlan);
+    actualUserID === "admin" && setActualUserPlan(actualUserID);
+    //eslint-disable-next-line
   });
 
   return (
