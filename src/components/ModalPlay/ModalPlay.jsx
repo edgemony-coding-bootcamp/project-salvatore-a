@@ -1,8 +1,10 @@
 import styles from "./ModalPlay.module.scss";
 import stranger from "./../../../src/logo.png";
 import Overlay from "../Overlay";
+import {UseGlobalContext} from "../../Context/globalContext";
 
-export default function ModalPlay({ isVisible, toggleModal }) {
+export default function ModalPlay({ toggleModal }) {
+  const {state : {isVisible}} = UseGlobalContext();
   return (
     <div>
       {isVisible && (

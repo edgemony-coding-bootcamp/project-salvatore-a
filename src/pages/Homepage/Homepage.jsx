@@ -16,16 +16,18 @@ import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 
 import styles from "./Homepage.module.scss";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
+import { UseGlobalContext } from "../../Context/globalContext";
 
 export default function Homepage() {
-  const [render, setRender] = useState(false);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [isVisible, setVisible] = useState(false);
-  const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
-  const [modalInfos, setModalInfos] = useState({
-    visibility: false,
-    datas: {},
-  });
+  const {
+    state: {
+      render,
+      filter,
+      modalInfos: { visibility },
+      screenWidth,
+    },
+    dispatch,
+  } = UseGlobalContext();
 
   const { fetchAllMovies } = useMovieContext();
   const { movies, error } = useMovieContext();
@@ -48,7 +50,7 @@ export default function Homepage() {
   });
 
   const getMovieList = (userPlan) => {
-    localStorage.setItem("customUser", true)
+    localStorage.setItem("customUser", true);
     switch (userPlan) {
       case "admin":
       case "Premium":
@@ -67,6 +69,13 @@ export default function Homepage() {
           movie.users.filter((id) => id === parseInt(actualUserID)).length > 0
       );
 
+  // dispatch({type: "setUserMovies", payload: actualUserPlan
+  // ? getMovieList(actualUserPlan)
+  // : movies.filter(
+  //     (movie) =>
+  //       movie.users.filter((id) => id === parseInt(actualUserID)).length > 0
+  //   )})
+
   const filteredArray = userMovies.filter(
     (el) =>
       el.title.toLowerCase().includes(filter.filter.toLowerCase()) ||
@@ -75,31 +84,30 @@ export default function Homepage() {
   );
 
   const toggleDetailsModal = (datas = {}) => {
-    setModalInfos({
-      visibility: !modalInfos.visibility,
-      datas: datas,
+    dispatch({
+      type: "modalInfos",
+      payload: {
+        visibility: !visibility,
+        datas: datas,
+      },
     });
   };
 
-  const getFilter = (input = "", isOnFocus = false) => {
-    setFilter({ filter: input, isOnFocus: isOnFocus });
-  };
-
   const togglePlayModal = () => {
-    setVisible(!isVisible);
+    dispatch({ type: "setIsVisible" });
   };
 
   useEffect(() => {
     fetchAllMovies(token, actualUserID === "admin");
-    
-    if(error){
+
+    if (error) {
       alert(error);
       setTimeout(() => {
         localStorage.removeItem("JWT_accessToken");
         localStorage.removeItem("currentUser");
       }, 5000);
     }
-    
+
     fetchAllUsers().then(() => setActualUserPlan(actualUser?.accessPlan));
 
     //eslint-disable-next-line
@@ -107,7 +115,7 @@ export default function Homepage() {
 
   useEffect(() => {
     function handleResize() {
-      setScreenWidth(window.innerWidth);
+      dispatch({ type: "setScreenWidth", payload: window.innerWidth });
     }
     window.addEventListener("resize", handleResize);
   });
@@ -115,24 +123,25 @@ export default function Homepage() {
   return (
     <div className={styles.Homepage}>
       <ModalDetails
-        isVisible={modalInfos.visibility}
-        movieData={modalInfos.datas}
         toggleModal={toggleDetailsModal}
         togglePlayModal={togglePlayModal}
-        setRender={setRender}
-        render={render}
       />
-      <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
+      <ModalPlay toggleModal={togglePlayModal} />
       {screenWidth < 700 && filter.isOnFocus ? (
         <div className={styles.Homepage__MobileSearch}>
           <div className={styles.Homepage__MobileSearch__Header}>
             <span
               className={styles.Homepage__MobileSearch__CloseBtn}
-              onClick={() => getFilter("", false)}
+              onClick={() =>
+                dispatch({
+                  type: "setFilter",
+                  payload: { filter: "", isOnFocus: false },
+                })
+              }
             >
               <AiOutlineArrowLeft />
             </span>
-            <SearchInput onFocus={filter.isOnFocus} getFilter={getFilter} />
+            <SearchInput onFocus={filter.isOnFocus} />
           </div>
           {filteredArray.length ? (
             <>
@@ -164,7 +173,7 @@ export default function Homepage() {
         </div>
       ) : (
         <>
-          <Header userMovies={userMovies} getFilter={getFilter} />
+          <Header userMovies={userMovies} />
           {!filter.filter ? (
             <>
               <Hero
@@ -188,7 +197,12 @@ export default function Homepage() {
                   </p>
                   <div
                     className={styles.Homepage__BackBtn}
-                    onClick={() => setFilter({ filter: "", isOnFocus: false })}
+                    onClick={() =>
+                      dispatch({
+                        type: "setFilter",
+                        payload: { filter: "", isOnFocus: false },
+                      })
+                    }
                   >
                     <BsSkipBackwardFill />
                     Torna Indietro
