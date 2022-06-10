@@ -32,7 +32,7 @@ export default function Homepage() {
   } = UseGlobalContext();
 
   const { fetchAllMovies } = useMovieContext();
-  const { movies, error } = useMovieContext();
+  const { movies } = useMovieContext();
   const { fetchAllUsers } = useUserContext();
 
   const actualUserID = localStorage.getItem("currentUser");
@@ -41,9 +41,6 @@ export default function Homepage() {
   )[0];
 
   const token = localStorage.getItem("JWT_accessToken");
-
-  // const [actualUserPlan, setActualUserPlan] = useState("");
-
   const getMovieList = (userPlan) => {
     localStorage.setItem("customUser", true);
     switch (userPlan) {
@@ -88,17 +85,9 @@ export default function Homepage() {
   useEffect(() => {
     fetchAllMovies(token, actualUserID === "admin");
 
-    if (error) {
-      alert(error);
-      setTimeout(() => {
-        localStorage.removeItem("JWT_accessToken");
-        localStorage.removeItem("currentUser");
-      }, 5000);
-    }
     fetchAllUsers().then(() => setActualUserPlan(actualUser?.accessPlan));
     //eslint-disable-next-line
   }, [render, token]);
-  
 
   useEffect(() => {
     function handleResize() {
