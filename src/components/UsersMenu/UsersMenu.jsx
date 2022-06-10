@@ -87,6 +87,7 @@ export default function UsersMenu() {
                 )
               )}
 
+              {actualUser?.accessPlan && <li className={styles.UsersMenu__DropdownMenu__AccessPlan}>Piano di accesso: {actualUser.accessPlan}</li>}
               <li>
                 <BsPencil /> Gestisci il profilo
               </li>

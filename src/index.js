@@ -10,17 +10,20 @@ import UserContextProvider from "./Context/UserContext/UserProvider";
 import { HashRouter } from "react-router-dom";
 
 import "./index.css";
+import GlobalContextProvider from "./Context/globalContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserContextProvider>
-      <MovieContextProvider>
-        <HashRouter>
-          <App />
-        </HashRouter>
-      </MovieContextProvider>
-    </UserContextProvider>
+    <GlobalContextProvider>
+      <UserContextProvider>
+        <MovieContextProvider>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </MovieContextProvider>
+      </UserContextProvider>
+    </GlobalContextProvider>
   </React.StrictMode>
 );
 

@@ -2,16 +2,18 @@ import { FaSearch } from "react-icons/fa";
 
 import { useRef, useState } from "react";
 import styles from "./SearchInput.module.scss";
+import {UseGlobalContext} from "../../Context/globalContext";
 
-export default function SearchInput({ getFilter, onFocus }) {
+export default function SearchInput({ onFocus }) {
   const [searchClass, setSearchClass] = useState(false);
   const [filter, setFilter] = useState("");
   const searchInput = useRef();
+  const {dispatch} = UseGlobalContext()
 
   const searchElements = () => {
     setSearchClass((prev) => !prev);
     searchInput.current.focus();
-    getFilter("", true);
+    dispatch({type: "setFilter", payload: {filter: "", onFocus: true}})
   };
 
   return (
@@ -37,7 +39,7 @@ export default function SearchInput({ getFilter, onFocus }) {
           value={filter}
           onChange={(e) => {
             setFilter(e.target.value);
-            getFilter(e.target.value, true);
+            dispatch({type: "setFilter", payload: {filter: e.target.value, onFocus: true}})
           }}
         />
         <span
