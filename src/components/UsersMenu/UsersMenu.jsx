@@ -27,7 +27,7 @@ export default function UsersMenu() {
   const logout = () => {
     localStorage.removeItem("currentUser");
     localStorage.removeItem("JWT_accessToken");
-    localStorage.removeItem("customUser");
+    // localStorage.removeItem("customUser");
     navigate("/signin");
   };
 

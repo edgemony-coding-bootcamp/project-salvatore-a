@@ -99,21 +99,23 @@ export default function ModalDetails({ togglePlayModal, toggleModal}) {
               />
               <AiOutlineEyeInvisible
                 onClick={() =>
-                  actualUserID === "admin" ||
-                  localStorage.getItem("customUser") === "true"
+                  actualUserID === "admin" 
+                  // ||
+                  // localStorage.getItem("customUser") === "true"
                     ? null
                     : hideMovieAndClose()
                 }
                 title={
                   actualUserID === "admin"
                     ? "Hai effettuato l'accesso come admin, dunque non puoi nascondere nulla :)"
-                    : localStorage.getItem("customUser") === "true"
-                    ? "Per i nuovi utenti è stato temporaneamente disabilitato questo servizio, riprova un'altra volta :)"
+                    // : localStorage.getItem("customUser") === "true"
+                    // ? "Per i nuovi utenti è stato temporaneamente disabilitato questo servizio, riprova un'altra volta :)"
                     : null
                 }
                 className={
-                  actualUserID === "admin" ||
-                  localStorage.getItem("customUser") === "true"
+                  actualUserID === "admin" 
+                  // ||
+                  // localStorage.getItem("customUser") === "true"
                     ? styles.ModalData__BtnCirInactive
                     : styles.ModalData__BtnCir
                 }

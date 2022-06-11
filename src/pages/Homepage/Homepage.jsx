@@ -42,7 +42,7 @@ export default function Homepage() {
 
   const token = localStorage.getItem("JWT_accessToken");
   const getMovieList = (userPlan) => {
-    localStorage.setItem("customUser", true);
+    // localStorage.setItem("customUser", true);
     switch (userPlan) {
       case "admin":
       case "Premium":
