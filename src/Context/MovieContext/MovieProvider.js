@@ -32,6 +32,7 @@ export const useMovieContext = () => useContext(MovieContext);
 export default function MovieContextProvider({ children }) {
 
   const [state, dispatch] = useReducer(MovieReducer, initialState);
+
   const fetchAllMovies = async (token, admin) => {
     dispatch({ type: FETCH_ALL_MOVIES_REQUEST });
     try {
