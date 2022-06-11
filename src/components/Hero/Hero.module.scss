@@ -88,16 +88,6 @@
     color: rgb(145, 145, 145);
   }
 
-  // &__BtnMute {
-  //   margin-top: 10px;
-  //   cursor: pointer;
-  //   padding: 5px;
-  //   border: #fff solid 4px;
-  //   border-radius: 50px;
-  //   font-size: 50px;
-  //   transition: all 0.3;
-  //   vertical-align: middle;
-  // }
 
   @media (min-width: 300px) and (max-width: 600px) {
     .Hero {
@@ -108,7 +98,7 @@
       }
 
       &__WrapOver {
-        margin-left: 20px;
+        margin-left: 43px;
         max-width: 90%;
       }
 
@@ -124,13 +114,13 @@
 
       &__BtnPlay {
         width: 120px;
-        font-size: 15px;
+        font-size: 13px;
         margin-left: 0.3em;
       }
 
       &__BtnInfo {
         width: 120px;
-        font-size: 15px;
+        font-size: 13px;
       }
 
       &__BtnIcon {
