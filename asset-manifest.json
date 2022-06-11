@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/project-salvatore-a/static/css/main.6ca49cac.css",
-    "main.js": "/project-salvatore-a/static/js/main.74bf3ea3.js",
+    "main.js": "/project-salvatore-a/static/js/main.c664aac3.js",
     "static/css/77.fbe1aad5.chunk.css": "/project-salvatore-a/static/css/77.fbe1aad5.chunk.css",
-    "static/js/77.9c699ff5.chunk.js": "/project-salvatore-a/static/js/77.9c699ff5.chunk.js",
+    "static/js/77.dc16d2ea.chunk.js": "/project-salvatore-a/static/js/77.dc16d2ea.chunk.js",
     "static/css/72.d730af29.chunk.css": "/project-salvatore-a/static/css/72.d730af29.chunk.css",
     "static/js/72.ff879ba1.chunk.js": "/project-salvatore-a/static/js/72.ff879ba1.chunk.js",
     "static/css/891.8db86d35.chunk.css": "/project-salvatore-a/static/css/891.8db86d35.chunk.css",
@@ -19,9 +19,9 @@
     "static/media/Stranger-Things-logo.webp": "/project-salvatore-a/static/media/Stranger-Things-logo.4c69a318b55b9178a8f7.webp",
     "index.html": "/project-salvatore-a/index.html",
     "main.6ca49cac.css.map": "/project-salvatore-a/static/css/main.6ca49cac.css.map",
-    "main.74bf3ea3.js.map": "/project-salvatore-a/static/js/main.74bf3ea3.js.map",
+    "main.c664aac3.js.map": "/project-salvatore-a/static/js/main.c664aac3.js.map",
     "77.fbe1aad5.chunk.css.map": "/project-salvatore-a/static/css/77.fbe1aad5.chunk.css.map",
-    "77.9c699ff5.chunk.js.map": "/project-salvatore-a/static/js/77.9c699ff5.chunk.js.map",
+    "77.dc16d2ea.chunk.js.map": "/project-salvatore-a/static/js/77.dc16d2ea.chunk.js.map",
     "72.d730af29.chunk.css.map": "/project-salvatore-a/static/css/72.d730af29.chunk.css.map",
     "72.ff879ba1.chunk.js.map": "/project-salvatore-a/static/js/72.ff879ba1.chunk.js.map",
     "891.8db86d35.chunk.css.map": "/project-salvatore-a/static/css/891.8db86d35.chunk.css.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.6ca49cac.css",
-    "static/js/main.74bf3ea3.js"
+    "static/js/main.c664aac3.js"
   ]
 }
