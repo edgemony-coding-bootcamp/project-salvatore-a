@@ -1,13 +1,9 @@
 import { useState } from "react";
-import {UseGlobalContext} from "../../Context/globalContext";
 
 import styles from "./SelectCategory.module.scss";
 import { MdArrowDropDown } from "react-icons/md";
 
-export default function SelectCategory({ userMovies }) {
-
-  const {dispatch} = UseGlobalContext();
-
+export default function SelectCategory({ getFilter, userMovies }) {
   const getCategories = (movies) => {
     let catArray = [];
     userMovies.forEach((el) => {
@@ -36,7 +32,7 @@ export default function SelectCategory({ userMovies }) {
               <li
                 key={index}
                 onClick={(e) => {
-                  dispatch({type: 'setFilter', payload:{filter: selectedGenre}})
+                  getFilter(selectedGenre);
                   setCategoryMenuVisibility(false);
                 }}
               >

@@ -11,25 +11,21 @@ import { MdPlayCircleOutline } from "react-icons/md";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsSkipBackwardFill } from "react-icons/bs";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMovieContext } from "../../Context/MovieContext/MovieProvider";
 
 import styles from "./Homepage.module.scss";
 import { useUserContext } from "../../Context/UserContext/UserProvider";
-import { UseGlobalContext } from "../../Context/globalContext";
 
 export default function Homepage() {
-  const {
-    state: {
-      render,
-      filter,
-      modalInfos: { visibility },
-      screenWidth,
-      actualUserPlan,
-    },
-    setActualUserPlan,
-    dispatch,
-  } = UseGlobalContext();
+  const [render, setRender] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [isVisible, setVisible] = useState(false);
+  const [filter, setFilter] = useState({ filter: "", isOnFocus: false });
+  const [modalInfos, setModalInfos] = useState({
+    visibility: false,
+    datas: {},
+  });
 
   const { fetchAllMovies } = useMovieContext();
   const { movies } = useMovieContext();
@@ -41,6 +37,16 @@ export default function Homepage() {
   )[0];
 
   const token = localStorage.getItem("JWT_accessToken");
+
+  const [actualUserPlan, setActualUserPlan] = useState("");
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    actualUser?.accessPlan && setActualUserPlan(actualUser.accessPlan);
+    actualUserID === "admin" && setActualUserPlan(actualUserID);
+    //eslint-disable-next-line
+  });
+
   const getMovieList = (userPlan) => {
     // localStorage.setItem("customUser", true);
     switch (userPlan) {
@@ -69,17 +75,18 @@ export default function Homepage() {
   );
 
   const toggleDetailsModal = (datas = {}) => {
-    dispatch({
-      type: "modalInfos",
-      payload: {
-        visibility: !visibility,
-        datas: datas,
-      },
+    setModalInfos({
+      visibility: !modalInfos.visibility,
+      datas: datas,
     });
   };
 
+  const getFilter = (input = "", isOnFocus = false) => {
+    setFilter({ filter: input, isOnFocus: isOnFocus });
+  };
+
   const togglePlayModal = () => {
-    dispatch({ type: "setIsVisible" });
+    setVisible(!isVisible);
   };
 
   useEffect(() => {
@@ -91,7 +98,7 @@ export default function Homepage() {
 
   useEffect(() => {
     function handleResize() {
-      dispatch({ type: "setScreenWidth", payload: window.innerWidth });
+      setScreenWidth(window.innerWidth);
     }
     window.addEventListener("resize", handleResize);
   });
@@ -106,25 +113,23 @@ export default function Homepage() {
   return (
     <div className={styles.Homepage}>
       <ModalDetails
+        isVisible={modalInfos.visibility}
+        movieData={modalInfos.datas}
         toggleModal={toggleDetailsModal}
         togglePlayModal={togglePlayModal}
+        setRender={setRender}
       />
-      <ModalPlay toggleModal={togglePlayModal} />
+      <ModalPlay isVisible={isVisible} toggleModal={togglePlayModal} />
       {screenWidth < 700 && filter.isOnFocus ? (
         <div className={styles.Homepage__MobileSearch}>
           <div className={styles.Homepage__MobileSearch__Header}>
             <span
               className={styles.Homepage__MobileSearch__CloseBtn}
-              onClick={() =>
-                dispatch({
-                  type: "setFilter",
-                  payload: { filter: "", isOnFocus: false },
-                })
-              }
+              onClick={() => getFilter("", false)}
             >
               <AiOutlineArrowLeft />
             </span>
-            <SearchInput onFocus={filter.isOnFocus} />
+            <SearchInput onFocus={filter.isOnFocus} getFilter={getFilter} />
           </div>
           {filteredArray.length ? (
             <>
@@ -156,7 +161,7 @@ export default function Homepage() {
         </div>
       ) : (
         <>
-          <Header userMovies={userMovies} />
+          <Header userMovies={userMovies} getFilter={getFilter} />
           {!filter.filter ? (
             <>
               <Hero
@@ -180,12 +185,7 @@ export default function Homepage() {
                   </p>
                   <div
                     className={styles.Homepage__BackBtn}
-                    onClick={() =>
-                      dispatch({
-                        type: "setFilter",
-                        payload: { filter: "", isOnFocus: false },
-                      })
-                    }
+                    onClick={() => setFilter({ filter: "", isOnFocus: false })}
                   >
                     <BsSkipBackwardFill />
                     Torna Indietro
