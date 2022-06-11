@@ -7,10 +7,8 @@ import { IoMdNotifications } from "react-icons/io";
 
 import { useEffect, useState } from "react";
 import SearchInput from "../SearchInput/SearchInput";
-import {UseGlobalContext} from "../../Context/globalContext";
 
-export default function Navbar({ userMovies }) {
-  const {dispatch} = UseGlobalContext();
+export default function Navbar({ getFilter, userMovies }) {
   const [navColor, setnavColor] = useState("transparent");
 
   const listenScrollEvent = () => {
@@ -36,12 +34,14 @@ export default function Navbar({ userMovies }) {
           className={styles.Navbar__Logo}
           src={logo}
           alt="Edgeflix"
-          onClick={()=>dispatch({type:"setFilter", payload:{filter:"", isOnFocus:false}})}
+          onClick={() => {
+            getFilter("", false);
+          }}
         />
-        <SelectCategory userMovies={userMovies} />
+        <SelectCategory userMovies={userMovies} getFilter={getFilter} />
       </div>
       <div className={styles.Navbar__IconsWrapper}>
-        <SearchInput/>
+        <SearchInput getFilter={getFilter} />
         <IoMdNotifications className={styles.Navbar__IconsWrapper__Notify} />
         <UsersMenu />
       </div>
